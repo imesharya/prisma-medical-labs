@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Ø§Ø­Ø¬Ø² Ø²ÙØ§Ø±ØªÙ Ø§ÙÙÙØ²ÙÙØ© â ÙØ®ØªØ¨Ø±Ø§Øª Ø¨Ø±ÙØ²ÙØ§ Ø§ÙØ·Ø¨ÙØ©</title>
+<title>احجز زيارتك المنزلية — مختبرات بريزما الطبية</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Aref+Ruqaa+Ink:wght@700&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -21,7 +21,7 @@ body{
   direction:rtl;
 }
 
-/* ââ HEADER ââ */
+/* ── HEADER ── */
 header{
   position:fixed;top:0;right:0;left:0;z-index:100;
   height:68px;padding:0 2rem;
@@ -48,7 +48,7 @@ header{
 }
 .hdr-back:hover{background:rgba(0,191,255,0.14);border-color:var(--cyan);}
 
-/* ââ CANVAS BG ââ */
+/* ── CANVAS BG ── */
 canvas#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
 .page-ov{
   position:fixed;inset:0;z-index:1;pointer-events:none;
@@ -56,7 +56,7 @@ canvas#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events
              radial-gradient(ellipse 40% 60% at 10% 80%,rgba(0,169,157,0.08) 0%,transparent 70%);
 }
 
-/* ââ MAIN CONTENT ââ */
+/* ── MAIN CONTENT ── */
 main{
   position:relative;z-index:2;
   min-height:100vh;
@@ -64,7 +64,7 @@ main{
   display:flex;flex-direction:column;align-items:center;
 }
 
-/* ââ PAGE HEADER ââ */
+/* ── PAGE HEADER ── */
 .page-badge{
   display:inline-flex;align-items:center;gap:8px;
   padding:7px 18px;border-radius:100px;
@@ -104,7 +104,7 @@ main{
   font-weight:300;margin-bottom:52px;
 }
 
-/* ââ FORM CARD ââ */
+/* ── FORM CARD ── */
 .form-card{
   width:100%;max-width:520px;
   background:rgba(13,13,26,0.92);
@@ -151,7 +151,7 @@ main{
   text-align:center;margin-bottom:32px;line-height:1.7;
 }
 
-/* ââ FIELD ââ */
+/* ── FIELD ── */
 .field{margin-bottom:20px;}
 .field-label{
   display:block;font-size:11px;letter-spacing:2px;
@@ -195,7 +195,7 @@ main{
 }
 .field-err.show{display:flex;opacity:1;transform:translateY(0);}
 
-/* ââ SUBMIT BTN ââ */
+/* ── SUBMIT BTN ── */
 .submit-btn{
   width:100%;padding:17px;border:none;border-radius:12px;
   color:#fff;font-family:'Tajawal',sans-serif;
@@ -223,7 +223,7 @@ main{
   0%{left:-100%;}60%,100%{left:150%;}
 }
 
-/* ââ SUCCESS STATE ââ */
+/* ── SUCCESS STATE ── */
 .success-state{
   display:none;text-align:center;padding:20px 0;
   animation:fadeInUp 0.5s ease;
@@ -270,7 +270,7 @@ main{
 }
 .success-back:hover{background:rgba(0,191,255,0.14);}
 
-/* ââ FEATURES STRIP ââ */
+/* ── FEATURES STRIP ── */
 .features{
   width:100%;max-width:520px;
   margin-top:28px;
@@ -295,7 +295,7 @@ main{
 .feat-title{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px;}
 .feat-desc{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.5;}
 
-/* ââ FOOTER ââ */
+/* ── FOOTER ── */
 footer{
   position:relative;z-index:2;
   background:#0d0d0d;padding:36px 2rem;
@@ -317,7 +317,7 @@ footer::before{
 .ft-links a:hover{color:var(--cyan);}
 .ft-copy{font-size:10px;color:rgba(255,255,255,0.15);width:100%;text-align:center;margin-top:16px;}
 
-/* ââ RESPONSIVE ââ */
+/* ── RESPONSIVE ── */
 @media(max-width:600px){
   .form-card{padding:32px 22px 28px;border-radius:18px;}
   .features{grid-template-columns:1fr;gap:8px;}
@@ -337,11 +337,11 @@ footer::before{
 <header>
   <a href="index.html" class="logo-wrap">
     <span class="logo-name">PRISMA</span>
-    <span class="logo-sub">ÙØ®ØªØ¨Ø±Ø§Øª Ø¨Ø±ÙØ²ÙØ§ Ø§ÙØ·Ø¨ÙØ©</span>
+    <span class="logo-sub">مختبرات بريزما الطبية</span>
   </a>
   <a href="index.html" class="hdr-back">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-    Ø§ÙØ¹ÙØ¯Ø© ÙÙÙÙÙØ¹
+    العودة للموقع
   </a>
 </header>
 
@@ -353,9 +353,9 @@ footer::before{
 <main>
 
   <!-- Page Header -->
-  <div class="page-badge"><span></span>Ø®Ø¯ÙØ© Ø­ØµØ±ÙØ©</div>
-  <h1 class="page-title">Ø§Ø­Ø¬Ø² <em>Ø²ÙØ§Ø±ØªÙ Ø§ÙÙÙØ²ÙÙØ©</em></h1>
-  <p class="page-sub">Ø¹Ø¨ÙØ¦ Ø¨ÙØ§ÙØ§ØªÙ ÙØ³ÙØªÙØ§ØµÙ ÙØ¹Ù ÙØ±ÙÙÙØ§ ÙØªØ£ÙÙØ¯ Ø§ÙØ²ÙØ§Ø±Ø© Ø§ÙÙÙØ²ÙÙØ© ÙÙ Ø£ÙØ±Ø¨ ÙÙØª</p>
+  <div class="page-badge"><span></span>خدمة حصرية</div>
+  <h1 class="page-title">احجز <em>زيارتك المنزلية</em></h1>
+  <p class="page-sub">عبّئ بياناتك وسيتواصل معك فريقنا لتأكيد الزيارة المنزلية في أقرب وقت</p>
 
   <!-- Form Card -->
   <div class="form-card" id="formCard">
@@ -376,44 +376,44 @@ footer::before{
       </svg>
     </div>
 
-    <h2 class="card-title">Ø·ÙØ¨ Ø²ÙØ§Ø±Ø© ÙÙØ²ÙÙØ©</h2>
-    <p class="card-sub">Ø£Ø¯Ø®Ù Ø¨ÙØ§ÙØ§ØªÙ ÙØ³ÙØªÙØ§ØµÙ ÙØ¹Ù Ø®ÙØ§Ù Ø£ÙÙ ÙÙ Ø³Ø§Ø¹Ø©</p>
+    <h2 class="card-title">طلب زيارة منزلية</h2>
+    <p class="card-sub">أدخل بياناتك وسنتواصل معك خلال أقل من ساعة</p>
 
     <!-- Form -->
     <form id="homeForm" novalidate>
       <!-- Name -->
       <div class="field">
-        <label class="field-label" for="fname">Ø§ÙØ§Ø³Ù Ø§ÙÙØ§ÙÙ</label>
+        <label class="field-label" for="fname">الاسم الكامل</label>
         <div class="field-wrap">
-          <input type="text" id="fname" placeholder="Ø£Ø¯Ø®Ù Ø§ÙØ§Ø³Ù" autocomplete="name"/>
+          <input type="text" id="fname" placeholder="أدخل الاسم" autocomplete="name"/>
           <span class="field-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
           </span>
         </div>
         <div class="field-err" id="fname-err">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          ÙØ±Ø¬Ù Ø¥Ø¯Ø®Ø§Ù Ø§ÙØ§Ø³Ù Ø§ÙÙØ§ÙÙ
+          يرجى إدخال الاسم الكامل
         </div>
       </div>
 
       <!-- Phone -->
       <div class="field">
-        <label class="field-label" for="fphone">Ø±ÙÙ Ø§ÙØ¬ÙØ§Ù</label>
+        <label class="field-label" for="fphone">رقم الجوال</label>
         <div class="field-wrap">
-          <input type="tel" id="fphone" placeholder="Ø£Ø¯Ø®Ù Ø±ÙÙ Ø§ÙØ¬ÙØ§Ù" autocomplete="tel" inputmode="numeric"/>
+          <input type="tel" id="fphone" placeholder="أدخل رقم الجوال" autocomplete="tel" inputmode="numeric"/>
           <span class="field-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           </span>
         </div>
         <div class="field-err" id="fphone-err">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <span id="fphone-err-msg">ÙØ±Ø¬Ù Ø¥Ø¯Ø®Ø§Ù Ø±ÙÙ Ø§ÙØ¬ÙØ§Ù</span>
+          <span id="fphone-err-msg">يرجى إدخال رقم الجوال</span>
         </div>
       </div>
 
       <button type="submit" class="submit-btn">
         <span class="btn-shine"></span>
-        ØªØ£ÙÙØ¯ Ø§ÙØ­Ø¬Ø²
+        تأكيد الحجز
       </button>
     </form>
 
@@ -429,11 +429,11 @@ footer::before{
           </defs>
         </svg>
       </div>
-      <h3 class="success-title">ØªÙ Ø§Ø³ØªÙØ§Ù Ø·ÙØ¨Ù Ø¨ÙØ¬Ø§Ø­</h3>
-      <p class="success-msg">Ø´ÙØ±Ø§Ù ÙØ«ÙØªÙ Ø¨ÙØ®ØªØ¨Ø±Ø§Øª Ø¨Ø±ÙØ²ÙØ§. Ø³ÙØªÙØ§ØµÙ ÙØ¹Ù ÙØ±ÙÙÙØ§ ÙØªØ£ÙÙØ¯ ÙÙØ¹Ø¯ Ø§ÙØ²ÙØ§Ø±Ø© Ø§ÙÙÙØ²ÙÙØ© ÙØ±ÙØ¨Ø§Ù</p>
+      <h3 class="success-title">تم استلام طلبك بنجاح</h3>
+      <p class="success-msg">شكراً لثقتك بمختبرات بريزما. سيتواصل معك فريقنا لتأكيد موعد الزيارة المنزلية قريباً</p>
       <a href="index.html" class="success-back">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
-        Ø§ÙØ¹ÙØ¯Ø© ÙÙÙÙÙØ¹
+        العودة للموقع
       </a>
     </div>
 
@@ -442,24 +442,24 @@ footer::before{
   <!-- Features Strip -->
   <div class="features" id="featsWrap">
     <div class="feat-card">
-      <span class="feat-icon">â¡</span>
+      <span class="feat-icon">⚡</span>
       <div>
-        <div class="feat-title">ØªÙØ§ØµÙ Ø³Ø±ÙØ¹</div>
-        <div class="feat-desc">ÙØªÙØ§ØµÙ ÙØ¹Ù Ø®ÙØ§Ù Ø£ÙÙ ÙÙ Ø³Ø§Ø¹Ø©</div>
+        <div class="feat-title">تواصل سريع</div>
+        <div class="feat-desc">نتواصل معك خلال أقل من ساعة</div>
       </div>
     </div>
     <div class="feat-card">
-      <span class="feat-icon">ð </span>
+      <span class="feat-icon">🏠</span>
       <div>
-        <div class="feat-title">Ø®Ø¯ÙØ© ÙÙØ²ÙÙØ©</div>
-        <div class="feat-desc">Ø£Ø®Ø° Ø§ÙØ¹ÙÙØ§Øª ÙÙ ÙÙØ²ÙÙ Ø¨Ø±Ø§Ø­Ø© ØªØ§ÙØ©</div>
+        <div class="feat-title">خدمة منزلية</div>
+        <div class="feat-desc">أخذ العينات في منزلك براحة تامة</div>
       </div>
     </div>
     <div class="feat-card">
-      <span class="feat-icon">â</span>
+      <span class="feat-icon">✅</span>
       <div>
-        <div class="feat-title">Ø­Ø¬Ø² Ø¨Ø³ÙØ·</div>
-        <div class="feat-desc">Ø®Ø·ÙØªØ§Ù ÙÙØ· ÙØªØ£ÙÙØ¯ Ø§ÙØ²ÙØ§Ø±Ø©</div>
+        <div class="feat-title">حجز بسيط</div>
+        <div class="feat-desc">خطوتان فقط لتأكيد الزيارة</div>
       </div>
     </div>
   </div>
@@ -469,18 +469,18 @@ footer::before{
 <!-- FOOTER -->
 <footer>
   <div class="ft-inner">
-    <div><span class="ft-logo">PRISMA<span>ÙØ®ØªØ¨Ø±Ø§Øª Ø¨Ø±ÙØ²ÙØ§ Ø§ÙØ·Ø¨ÙØ©</span></span></div>
+    <div><span class="ft-logo">PRISMA<span>مختبرات بريزما الطبية</span></span></div>
     <div class="ft-links">
       <a href="tel:+966920031642" onclick="window.location.href='tel:+966920031642';return true;">920031642</a>
-      <a href="https://wa.me/00966115102470">ÙØ§ØªØ³Ø§Ø¨</a>
-      <a href="index.html">Ø§ÙÙÙÙØ¹ Ø§ÙØ±Ø¦ÙØ³Ù</a>
+      <a href="https://wa.me/00966115102470">واتساب</a>
+      <a href="index.html">الموقع الرئيسي</a>
     </div>
-    <p class="ft-copy">Â© 2025 ÙØ®ØªØ¨Ø±Ø§Øª Ø¨Ø±ÙØ²ÙØ§ Ø§ÙØ·Ø¨ÙØ©</p>
+    <p class="ft-copy">© 2025 مختبرات بريزما الطبية</p>
   </div>
 </footer>
 
 <script>
-/* ââ CANVAS BG (DNA clone - subtle version) ââ */
+/* ── CANVAS BG (DNA clone - subtle version) ── */
 (function(){
   var cv=document.getElementById('bg'),ctx=cv.getContext('2d');
   var W,H,t=0;
@@ -517,7 +517,7 @@ footer::before{
   (function loop(){t++;draw(t);requestAnimationFrame(loop);})();
 })();
 
-/* ââ VALIDATION & FORM ââ */
+/* ── VALIDATION & FORM ── */
 var form=document.getElementById('homeForm');
 var fnameEl=document.getElementById('fname');
 var fphoneEl=document.getElementById('fphone');
@@ -552,11 +552,11 @@ form.addEventListener('submit',function(e){
 
   if(!phone){
     fphoneEl.classList.add('error-field');
-    showErr('fphone-err',true,'ÙØ±Ø¬Ù Ø¥Ø¯Ø®Ø§Ù Ø±ÙÙ Ø§ÙØ¬ÙØ§Ù');
+    showErr('fphone-err',true,'يرجى إدخال رقم الجوال');
     ok=false;
   } else if(!validatePhone(phone)){
     fphoneEl.classList.add('error-field');
-    showErr('fphone-err',true,'Ø±ÙÙ Ø§ÙØ¬ÙØ§Ù ØºÙØ± ØµØ­ÙØ­ (ÙØ«Ø§Ù: 05XXXXXXXX)');
+    showErr('fphone-err',true,'رقم الجوال غير صحيح (مثال: 05XXXXXXXX)');
     ok=false;
   } else {
     fphoneEl.classList.remove('error-field');showErr('fphone-err',false);
@@ -565,7 +565,7 @@ form.addEventListener('submit',function(e){
   if(ok){
     // Animate submit button
     var btn=form.querySelector('.submit-btn');
-    btn.textContent='Ø¬Ø§Ø±Ù Ø§ÙØ¥Ø±Ø³Ø§Ù...';
+    btn.textContent='جاري الإرسال...';
     btn.style.opacity='0.7';
     btn.disabled=true;
     setTimeout(function(){
