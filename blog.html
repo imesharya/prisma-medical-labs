@@ -1,0 +1,2801 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta property="og:title" content="مدونة مختبرات بريزما — مقالات طبية موثوقة">
+    <meta property="og:description" content="مدونة مختبرات بريزما الطبية توفر معلومات دقيقة عن التحاليل الطبية والفحوصات الصحية.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_SA">
+    <meta property="og:image" content="https://www.prismalaboratory.com/og-image.jpg">
+    <link rel="canonical" href="https://www.prismalaboratory.com/blog.html">
+    <title>مدونة مختبرات بريزما — مقالات طبية موثوقة</title>
+    <meta name="description" content="مدونة مختبرات بريزما الطبية توفر معلومات دقيقة عن التحاليل الطبية والفحوصات الصحية في الرياض، السعودية.">
+    <meta name="keywords" content="تحاليل طبية، فحوصات صحية، الرياض، مختبرات طبية">
+    <meta name="author" content="Prisma Laboratories">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #00bfff;
+            --teal: #00a99d;
+            --purple: #6b4fbb;
+            --magenta: #e91e8c;
+            --dark-bg: #111827;
+            --card-bg: #13131f;
+            --text-light: #f0f4f8;
+            --text-muted: #a0aec0;
+        }
+
+        *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif !important; }
+        html, body {
+            height: 100%;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Header — Unified with site */
+        header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 100;
+            height: 68px;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(13,13,13,0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0,191,255,0.15);
+        }
+
+        .hdr-cta {
+            padding: 9px 22px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            background: linear-gradient(135deg, var(--magenta), var(--purple));
+            color: #fff;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            color: var(--magenta);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Blog Listing View */
+        #blog-listing {
+            padding: 3rem 2rem;
+            padding-top: calc(68px + 3rem);
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .blog-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .blog-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .search-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--cyan);
+            border-radius: 0.5rem;
+            color: var(--text-light);
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .category-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 0.65rem 1.25rem;
+            background-color: var(--card-bg);
+            border: 2px solid var(--teal);
+            color: var(--text-light);
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 500;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            border-color: var(--magenta);
+            color: #000;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-card {
+            background-color: var(--card-bg);
+            border: 1px solid #1f2937;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+        }
+
+        .article-thumbnail {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--magenta) 100%);
+        }
+
+        .article-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .article-card:hover .article-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .article-hero-image {
+            width: 100%;
+            max-height: 400px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .article-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: rgba(0, 191, 255, 0.1);
+            color: var(--cyan);
+            padding: 0.35rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .article-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .article-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid #1f2937;
+            padding-top: 1rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        /* Article View */
+        #article-view {
+            display: none;
+            padding: 2rem;
+            padding-top: calc(68px + 2rem);
+        }
+
+        .article-header {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .breadcrumb a {
+            color: var(--cyan);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .article-title-main {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .article-meta-main {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .article-meta-main span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-body {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .article-body h2 {
+            font-size: 1.75rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--cyan);
+        }
+
+        .article-body h3 {
+            font-size: 1.35rem;
+            margin: 1.25rem 0 0.75rem;
+            color: var(--teal);
+        }
+
+        .article-body p {
+            margin-bottom: 1rem;
+            line-height: 1.9;
+            color: var(--text-light);
+        }
+
+        .article-body ul, .article-body ol {
+            margin: 1rem 0 1rem 2rem;
+            color: var(--text-light);
+        }
+
+        .article-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .disclaimer {
+            background-color: rgba(233, 30, 140, 0.05);
+            border-right: 4px solid var(--magenta);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #1f2937;
+        }
+
+        .faq-section h2 {
+            color: var(--cyan);
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #1f2937;
+            padding-bottom: 1rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--teal);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            color: var(--magenta);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            display: none;
+            color: var(--text-light);
+            padding: 0 0 1rem 0;
+            line-height: 1.9;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .cta-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: linear-gradient(135deg, rgba(0, 191, 255, 0.1), rgba(233, 30, 140, 0.1));
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--cyan);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--cyan);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .cta-section p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 191, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--card-bg);
+            color: var(--cyan);
+            border: 2px solid var(--cyan);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 191, 255, 0.1);
+        }
+
+        .related-articles {
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .related-articles h2 {
+            color: var(--cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .related-articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .related-card {
+            background-color: var(--card-bg);
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            border: 1px solid #1f2937;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .related-card:hover {
+            border-color: var(--cyan);
+            background-color: rgba(0, 191, 255, 0.05);
+        }
+
+        .related-card-title {
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .related-card-category {
+            font-size: 0.8rem;
+            color: var(--teal);
+        }
+
+        .back-button {
+            margin-bottom: 1rem;
+        }
+
+        .back-button a {
+            color: var(--cyan);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .back-button a:hover {
+            color: var(--magenta);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0f1419 100%);
+            padding: 2rem;
+            border-top: 2px solid var(--cyan);
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            color: var(--cyan);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--magenta);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid #1f2937;
+            padding-top: 1.5rem;
+        }
+
+        /* Floating CTA Buttons */
+        .float-cta-wrap{position:fixed;bottom:28px;z-index:150;display:flex;flex-direction:column;gap:14px;animation:floatIn 0.6s ease forwards;opacity:0;}
+        .float-cta-right{right:24px;}
+        .float-cta-left{left:24px;}
+        .float-cta-btn{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,0.35);transition:transform 0.3s cubic-bezier(0.34,1.3,0.64,1),box-shadow 0.3s;text-decoration:none;position:relative;}
+        .float-cta-btn:hover{transform:scale(1.12) translateY(-3px);}
+        .float-cta-btn:active{transform:scale(0.95);}
+        .float-cta-wa{background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 6px 28px rgba(37,211,102,0.4);}
+        .float-cta-wa:hover{box-shadow:0 10px 36px rgba(37,211,102,0.55);}
+        .float-cta-call{background:linear-gradient(135deg,#00bfff,#6b4fbb);box-shadow:0 6px 28px rgba(0,191,255,0.35);}
+        .float-cta-call:hover{box-shadow:0 10px 36px rgba(0,191,255,0.5);}
+        .float-cta-btn svg{filter:drop-shadow(0 1px 2px rgba(0,0,0,0.2));}
+        .float-cta-wa::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.4);animation:floatPulse 2s ease-in-out infinite;}
+        .float-cta-call::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(0,191,255,0.3);animation:floatPulse 2.5s ease-in-out infinite;}
+        .float-cta-tooltip{position:absolute;white-space:nowrap;padding:6px 14px;background:rgba(0,0,0,0.85);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;border-radius:8px;pointer-events:none;opacity:0;transition:opacity 0.25s,transform 0.25s;backdrop-filter:blur(8px);}
+        .float-cta-right .float-cta-tooltip{right:72px;top:50%;transform:translateY(-50%) translateX(6px);}
+        .float-cta-left .float-cta-tooltip{left:72px;top:50%;transform:translateY(-50%) translateX(-6px);}
+        .float-cta-btn:hover .float-cta-tooltip{opacity:1;transform:translateY(-50%) translateX(0);}
+        @keyframes floatIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+        @keyframes floatPulse{0%,100%{opacity:0.4;transform:scale(1);}50%{opacity:0;transform:scale(1.3);}}
+        @media(max-width:480px){.float-cta-btn{width:52px;height:52px;}.float-cta-wrap{bottom:20px;}.float-cta-right{right:16px;}.float-cta-left{left:16px;}.float-cta-tooltip{display:none;}}
+
+        /* Share Buttons */
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: 0.65rem 1.25rem;
+            background-color: var(--card-bg);
+            border: 1px solid #1f2937;
+            color: var(--text-light);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Tajawal', sans-serif;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .share-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-title-main {
+                font-size: 1.5rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-filter {
+                flex-direction: column;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            .category-buttons {
+                justify-content: flex-start;
+            }
+
+            header .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                margin-right: 0;
+            }
+
+            #blog-listing {
+                padding: 1.5rem 1rem;
+            }
+
+            #article-view {
+                padding: 1rem;
+            }
+
+            .whatsapp-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header — Unified with site -->
+    <header>
+        <div style="display:flex;align-items:flex-end;gap:0;">
+            <div>
+                <div style="font-family:'Tajawal',sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;line-height:1;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb,#e91e8c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PRISMA</div>
+                <div style="font-family:'Tajawal',sans-serif;font-size:7.5px;font-weight:300;color:rgba(255,255,255,0.5);letter-spacing:5px;margin-top:3px;">Laboratory</div>
+                <div style="font-family:'Tajawal',sans-serif;font-size:9px;font-weight:400;color:rgba(255,255,255,0.4);margin-top:2px;">مختبرات بريزما الطبية</div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 48" style="height:44px;width:auto;flex-shrink:0;margin-left:2px;margin-bottom:-2px;"><defs><linearGradient id="lnG" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00bfff"/><stop offset="40%" stop-color="#00a99d"/><stop offset="100%" stop-color="#6b4fbb"/></linearGradient></defs><line x1="54" y1="1" x2="1" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/><line x1="54" y1="9" x2="10" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/><line x1="54" y1="17" x2="19" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/><line x1="54" y1="25" x2="28" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/></svg>
+        </div>
+        <div style="display:flex;gap:14px;align-items:center;">
+            <a href="index.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">الرئيسية</a>
+            <a href="about.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">من نحن</a>
+            <a href="blog.html" style="color:#fff;text-decoration:none;font-size:12px;font-weight:700;transition:color 0.2s;border-bottom:2px solid #00bfff;padding-bottom:2px;">المدونة</a>
+            <a href="home-visit.html" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">زيارة منزلية</a>
+            <a href="index.html#form-sec" class="hdr-cta">احجز الآن</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Blog Listing View -->
+        <div id="blog-listing">
+            <div class="blog-header">
+                <h2>مدونة مختبرات بريزما</h2>
+                <p>معلومات طبية موثوقة وشاملة عن التحاليل والفحوصات الصحية</p>
+            </div>
+
+            <div class="search-filter">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="ابحث عن مقالة...">
+                </div>
+                <div class="category-buttons">
+                    <button class="category-btn active" data-category="all">الكل</button>
+                    <button class="category-btn" data-category="digestive">الجهاز الهضمي</button>
+                    <button class="category-btn" data-category="infectious">الأمراض المعدية</button>
+                    <button class="category-btn" data-category="vitamins">الفيتامينات</button>
+                    <button class="category-btn" data-category="endocrine">الغدد الصماء</button>
+                    <button class="category-btn" data-category="diabetes">السكري</button>
+                    <button class="category-btn" data-category="blood">أمراض الدم</button>
+                    <button class="category-btn" data-category="preventive">الفحص الوقائي</button>
+                    <button class="category-btn" data-category="mens-health">هرمونات الرجل</button>
+                    <button class="category-btn" data-category="organ-function">وظائف الأعضاء</button>
+                    <button class="category-btn" data-category="premarital">فحوصات ما قبل الزواج</button>
+                </div>
+            </div>
+
+            <div class="blog-grid" id="blogGrid"></div>
+        </div>
+
+        <!-- Article View -->
+        <div id="article-view">
+            <div class="back-button">
+                <a href="#" onclick="showBlogListing(event)">← العودة إلى المدونة</a>
+            </div>
+            <div id="articleContent"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background:#0a0a0f;padding:0 0 0;margin-top:3rem;">
+<div style="height:3px;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb,#e91e8c);"></div>
+<div style="max-width:1100px;margin:0 auto;padding:50px 2rem 30px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;">
+
+<div>
+<h4 style="font-size:14px;font-weight:800;color:#00a99d;margin-bottom:20px;letter-spacing:1px;">معلومات التواصل</h4>
+<div style="display:flex;flex-direction:column;gap:14px;">
+<a href="https://maps.google.com/?q=Prisma+Laboratory+Riyadh" target="_blank" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.6);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#00a99d'" onmouseout="this.style.color='rgba(255,255,255,0.6)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00a99d" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>الرياض، المملكة العربية السعودية</a>
+<a href="tel:+966920031642" onclick="window.location.href='tel:+966920031642';return true;" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.6);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#00bfff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>920031642</a>
+<a href="https://wa.me/966920031642" target="_blank" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.6);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#00C896'" onmouseout="this.style.color='rgba(255,255,255,0.6)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="1.5" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>966920031642</a>
+<a href="mailto:info@prismalaboratory.com" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:rgba(255,255,255,0.6);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#6b4fbb'" onmouseout="this.style.color='rgba(255,255,255,0.6)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b4fbb" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>info@prismalaboratory.com</a>
+</div>
+</div>
+
+<div>
+<h4 style="font-size:14px;font-weight:800;color:#00bfff;margin-bottom:20px;letter-spacing:1px;">روابط سريعة</h4>
+<div style="display:flex;flex-direction:column;gap:12px;">
+<a href="index.html" style="text-decoration:none;color:rgba(255,255,255,0.5);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">الرئيسية</a>
+<a href="index.html#pkgs" style="text-decoration:none;color:rgba(255,255,255,0.5);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">الباقات</a>
+<a href="index.html#form-sec" style="text-decoration:none;color:rgba(255,255,255,0.5);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">احجز موعد</a>
+<a href="home-visit.html" style="text-decoration:none;color:rgba(255,255,255,0.5);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">خدمة الزيارة المنزلية</a>
+<a href="about.html" style="text-decoration:none;color:rgba(255,255,255,0.5);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">من نحن</a>
+<a href="blog.html" style="text-decoration:none;color:rgba(255,255,255,0.5);font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#00bfff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">المدونة الطبية</a>
+</div>
+<div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
+<p style="font-size:11px;color:rgba(255,255,255,0.35);line-height:1.9;text-align:justify;">تعد مختبرات بريزما (Prisma Laboratories) ثمرة تلاقي الخبرة الطبية العريقة مع التكنولوجيا التشخيصية المتقدمة. انطلقت رحلتنا في قلب المملكة العربية السعودية، بقيادة مجموعة من الاستشاريين السعوديين الذين وضعوا نصب أعينهم هدفاً واحداً: الارتقاء بالمعايير المخبرية لتتجاوز حدود الفحص التقليدي إلى تقديم تجربة صحية متكاملة.</p>
+</div>
+</div>
+
+<div>
+<h4 style="font-size:14px;font-weight:800;color:#6b4fbb;margin-bottom:20px;letter-spacing:1px;">ساعات العمل</h4>
+<div style="display:flex;flex-direction:column;gap:14px;">
+<div style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.6);font-size:13px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b4fbb" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>24 ساعة</div>
+<div style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.45);font-size:12px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b4fbb" stroke-width="1.5" stroke-linecap="round" opacity="0.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>الجمعة - السبت: 4 مساءً - 12 منتصف الليل</div>
+</div>
+<div style="margin-top:24px;">
+<div style="display:flex;align-items:flex-end;gap:0;">
+<div><div style="font-family:'Tajawal',sans-serif;font-size:16px;font-weight:900;letter-spacing:3px;line-height:1;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb,#e91e8c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PRISMA</div><div style="font-family:'Tajawal',sans-serif;font-size:6.5px;font-weight:300;color:rgba(255,255,255,0.35);letter-spacing:5px;margin-top:2px;">Laboratory</div><div style="font-family:'Tajawal',sans-serif;font-size:8px;color:rgba(255,255,255,0.25);margin-top:1px;">مختبرات بريزما الطبية</div></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 48" style="height:32px;width:auto;flex-shrink:0;margin-left:2px;margin-bottom:-2px;"><defs><linearGradient id="flG2b" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00bfff" stop-opacity="0.4"/><stop offset="50%" stop-color="#00a99d" stop-opacity="0.3"/><stop offset="100%" stop-color="#6b4fbb" stop-opacity="0.2"/></linearGradient></defs><line x1="54" y1="1" x2="1" y2="47" stroke="url(#flG2b)" stroke-width="2.5" stroke-linecap="round"/><line x1="54" y1="9" x2="10" y2="47" stroke="url(#flG2b)" stroke-width="2.5" stroke-linecap="round"/><line x1="54" y1="17" x2="19" y2="47" stroke="url(#flG2b)" stroke-width="2.5" stroke-linecap="round"/><line x1="54" y1="25" x2="28" y2="47" stroke="url(#flG2b)" stroke-width="2.5" stroke-linecap="round"/></svg>
+</div>
+</div>
+</div>
+
+</div>
+<div style="border-top:1px solid rgba(255,255,255,0.06);max-width:1100px;margin:0 auto;padding:20px 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+<p style="font-size:11px;color:rgba(255,255,255,0.2);">مختبر بريزما للتحاليل الطبية — خدمات تحليلية عالية الجودة في المملكة العربية السعودية</p>
+<p style="font-size:11px;color:rgba(255,255,255,0.15);">© 2026 Prisma Lab. جميع الحقوق محفوظة</p>
+</div>
+</footer>
+
+    <!-- Floating CTA Buttons -->
+    <div class="float-cta-wrap float-cta-right">
+      <a href="https://wa.me/966920031642?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%A8%D9%8A%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF" class="float-cta-btn float-cta-wa" target="_blank" aria-label="تواصل واتساب">
+        <span class="float-cta-tooltip">تواصل واتساب</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+    <div class="float-cta-wrap float-cta-left">
+      <a href="tel:+966920031642" class="float-cta-btn float-cta-call" aria-label="اتصال مباشر">
+        <span class="float-cta-tooltip">اتصل الآن</span>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      </a>
+    </div>
+
+    <script>
+        // Articles Data
+        const articles = [
+            {
+                id: 1,
+                slug: 'h-pylori-breath-test',
+                title: 'فحص جرثومة المعدة عن طريق التنفس: الدليل الشامل',
+                excerpt: 'تعرّف على فحص جرثومة المعدة بالتنفس (UBT)، كيفية عمله، التحضيرات المطلوبة، ودقة النتائج.',
+                category: 'digestive',
+                categoryName: 'الجهاز الهضمي',
+                date: '2024-03-20',
+                readTime: 8,
+                emoji: '🫁',
+                image: 'blog-images/01-h-pylori-breath-test.png',
+                metaTitle: 'فحص جرثومة المعدة بالتنفس | الدليل الشامل — مختبرات بريزما',
+                metaDescription: 'تعرّف على فحص جرثومة المعدة عن طريق التنفس (UBT): كيف يعمل، متى تحتاجه، التحضيرات، دقة النتائج، وأهمية الكشف المبكر. احجز الآن في مختبرات بريزما بالرياض.',
+                keywords: 'جرثومة المعدة, فحص التنفس, تحليل جرثومة المعدة, UBT, الملوية البوابية, H. pylori',
+                content: `
+<h2>ما هي جرثومة المعدة (H. pylori)؟</h2>
+<p>جرثومة المعدة، المعروفة علمياً باسم الملوية البوابية (Helicobacter pylori أو H. pylori)، هي بكتيريا تعيش في بطانة المعدة والأمعاء الدقيقة. اكتُشفت هذه البكتيريا عام 1982، وأحدثت ثورة في فهمنا لأمراض الجهاز الهضمي، حيث ثبت أنها المسؤولة الرئيسية عن قرحة المعدة والالتهاب المزمن في المعدة (gastritis).</p>
+
+<p>تنتشر جرثومة المعدة عالمياً، وتصيب حوالي نصف سكان العالم، خاصة في الدول النامية. في المملكة العربية السعودية، تشير الدراسات إلى انتشار هذه البكتيريا بنسبة كبيرة تتراوح بين 30-40% من السكان.</p>
+
+<h3>كيف تنتقل جرثومة المعدة؟</h3>
+<p>تنتقل البكتيريا بشكل أساسي عن طريق:</p>
+<ul>
+<li><strong>الغذاء والماء الملوثان:</strong> خاصة في المناطق ذات الصرف الصحي السيء</li>
+<li><strong>الاتصال المباشر:</strong> من شخص مصاب إلى آخر، خاصة من الأم إلى الأطفال</li>
+<li><strong>استخدام أدوات الطعام المشتركة:</strong> مثل الملعقة والكوب والأسنان</li>
+<li><strong>عدم النظافة الشخصية:</strong> وعدم غسل اليدين بشكل صحيح قبل الطعام</li>
+</ul>
+
+<h2>أعراض الإصابة بجرثومة المعدة</h2>
+<p>من المهم معرفة أن حوالي 80% من المصابين بجرثومة المعدة لا تظهر عليهم أي أعراض. لكن عند ظهور الأعراض، تشمل:</p>
+
+<ul>
+<li><strong>الحموضة وحرقان المعدة:</strong> شعور حارق في المنطقة العلوية من البطن والصدر</li>
+<li><strong>الانتفاخ والغازات:</strong> شعور بالامتلاء والضغط في البطن</li>
+<li><strong>الغثيان والقيء:</strong> خاصة في الصباح أو بعد الوجبات الدسمة</li>
+<li><strong>فقدان الشهية:</strong> شعور بعدم الرغبة في تناول الطعام</li>
+<li><strong>فقدان الوزن غير المبرر:</strong> نزول الوزن دون تغيير النظام الغذائي</li>
+<li><strong>آلام في المعدة والبطن:</strong> قد تكون خفيفة أو حادة</li>
+<li><strong>الإسهال أو الإمساك:</strong> تغييرات في نظام الجهاز الهضمي</li>
+<li><strong>الدم في البراز أو القيء:</strong> علامة تحذيرية تستدعي رعاية طبية فورية</li>
+</ul>
+
+<h2>فحص جرثومة المعدة عن طريق التنفس (UBT)</h2>
+
+<h3>ما هو فحص اليوريا بالتنفس؟</h3>
+<p>فحص اليوريا بالتنفس (Urea Breath Test - UBT) يعتبر من أحدث وأكثر الطرق دقة لتشخيص جرثومة المعدة. يعتمد الفحص على خاصية فريدة لبكتيريا H. pylori: إنتاج إنزيم اليوريز (urease) الذي يحول اليوريا إلى ثاني أكسيد الكربون والأمونيا.</p>
+
+<h3>كيف يعمل الفحص؟</h3>
+<p><strong>المرحلة الأولى: تناول اليوريا المُشّعة</strong></p>
+<p>يتناول المريض كبسولة أو محلول يحتوي على اليوريا المشّعة (Labeled Urea) برقم كتلة محدد (C-13 أو C-14). اليوريا المستخدمة آمنة تماماً ولا تُسبب تأثيرات جانبية، وإذا كانت البكتيريا موجودة في المعدة، فإن إنزيم اليوريز الذي تُفرزه يقوم بتحويل اليوريا إلى ثاني أكسيد كربون والأمونيا.</p>
+
+<p><strong>المرحلة الثانية: امتصاص ثاني أكسيد الكربون</strong></p>
+<p>ثاني أكسيد الكربون المشّع ينتقل من المعدة إلى الدم، وينتقل الدم إلى الرئتين حيث يتم تنفسه وطرحه مع الهواء المُزفور.</p>
+
+<p><strong>المرحلة الثالثة: جمع عينة التنفس</strong></p>
+<p>يقوم المريض بتنفس عينة في وعاء خاص (أنبوب أو كيس) يتم إرساله إلى المختبر، حيث يتم قياس مستوى الكربون المشّع في العينة. إذا كانت النسبة عالية، فهذا يعني وجود البكتيريا.</p>
+
+<h2>متى تحتاج إلى فحص جرثومة المعدة؟</h2>
+<p>يُنصح بإجراء فحص UBT في الحالات التالية:</p>
+
+<ul>
+<li><strong>أعراض الجهاز الهضمي المزمنة:</strong> حموضة مستمرة، آلام في المعدة، استمرت لأكثر من أسبوعين</li>
+<li><strong>التاريخ العائلي:</strong> إذا كان أحد أفراد الأسرة مصاباً بجرثومة المعدة أو قرحة معدية</li>
+<li><strong>قرحة المعدة أو الأمعاء الدقيقة:</strong> حتى بدون أعراض</li>
+<li><strong>قبل بدء العلاج:</strong> التأكد من التشخيص قبل أخذ المضادات الحيوية</li>
+<li><strong>بعد العلاج:</strong> للتأكد من نجاح العلاج والقضاء على البكتيريا (على الأقل بعد 4 أسابيع من انتهاء العلاج)</li>
+<li><strong>الفحص الوقائي:</strong> للأشخاص الذين يعانون من أعراض غير واضحة أو لديهم عوامل خطر</li>
+</ul>
+
+<h2>التحضير لفحص UBT</h2>
+<p>يتطلب الفحص تحضيرات معينة لضمان دقة النتائج:</p>
+
+<ul>
+<li><strong>الصيام:</strong> يجب الصيام لمدة 4-6 ساعات قبل الفحص، أو على الأقل عدم تناول الطعام قبل الفحص بـ 6 ساعات</li>
+<li><strong>التوقف عن بعض الأدوية:</strong> التوقف عن مثبطات مضخة البروتون (PPI) مثل الأوميبرازول قبل 2-4 أسابيع من الفحص</li>
+<li><strong>التوقف عن المضادات الحيوية:</strong> التوقف عن أي مضادات حيوية قبل 4 أسابيع على الأقل من الفحص</li>
+<li><strong>التوقف عن بيسموث:</strong> التوقف عن مستحضرات البيسموث قبل 4 أسابيع</li>
+<li><strong>عدم استخدام غسول الفم:</strong> في يوم الفحص</li>
+<li><strong>إخبار الطبيب بجميع الأدوية:</strong> المكملات والأعشاب والفيتامينات</li>
+</ul>
+
+<div class="disclaimer">
+<strong>⚠️ تنبيه مهم:</strong> يُنصح بمراجعة الطبيب المختص قبل إيقاف أي أدوية، حيث قد يكون الطبيب بحاجة إلى تعديل العلاج الحالي قبل الفحص.
+</div>
+
+<h2>خطوات الفحص</h2>
+<ol>
+<li><strong>تسجيل البيانات:</strong> يتم تسجيل معلومات المريض الأساسية والأدوية المستخدمة</li>
+<li><strong>أخذ عينة الدم أو اللعاب (اختياري):</strong> قد يطلب المختبر عينة أساسية</li>
+<li><strong>تناول اليوريا المشّعة:</strong> يتناول المريض الكبسولة أو المحلول</li>
+<li><strong>الانتظار:</strong> ينتظر المريض 10-15 دقيقة لامتصاص المادة</li>
+<li><strong>جمع العينة:</strong> يقوم المريض بالتنفس في الأنبوب المخصص</li>
+<li><strong>التحليل:</strong> تُرسل العينة إلى المختبر للتحليل وإعطاء النتائج</li>
+</ol>
+
+<h2>دقة فحص UBT</h2>
+<p>يعتبر فحص اليوريا بالتنفس من أكثر الفحوصات دقة لتشخيص جرثومة المعدة:</p>
+
+<ul>
+<li><strong>الحساسية (Sensitivity):</strong> تصل إلى 95-98%، أي أنه يكتشف البكتيريا في 95-98% من المصابين فعلاً</li>
+<li><strong>الخصوصية (Specificity):</strong> تصل إلى 95-100%، أي أنه لا يعطي نتائج موجبة كاذبة</li>
+<li><strong>الدقة الإجمالية:</strong> تزيد عن 95% في الكشف عن جرثومة المعدة</li>
+</ul>
+
+<h2>فهم النتائج</h2>
+
+<p><strong>النتيجة الموجبة (Positive):</strong> وجود جرثومة المعدة في المعدة. يُنصح بالعلاج الفوري حسب توصيات الطبيب المختص.</p>
+
+<p><strong>النتيجة السالبة (Negative):</strong> عدم وجود جرثومة المعدة. إذا كانت الأعراض مستمرة، قد يكون السبب شيء آخر يتطلب فحوصات إضافية.</p>
+
+<p><strong>النتيجة غير محددة (Inconclusive):</strong> نادرة جداً، وقد تحتاج إلى إعادة الفحص بعد فترة.</p>
+
+<h2>أهمية الكشف المبكر والعلاج</h2>
+<p>الكشف المبكر والعلاج الفوري لجرثومة المعدة مهم جداً لأسباب عديدة:</p>
+
+<ul>
+<li><strong>منع المضاعفات:</strong> تجنب تطور القرحة والنزيف والثقوب</li>
+<li><strong>منع السرطان:</strong> تقليل خطر سرطان المعدة (بمعدل 70%)</li>
+<li><strong>تحسين نوعية الحياة:</strong> التخلص من الأعراض المزعجة</li>
+<li><strong>سهولة العلاج:</strong> العلاج في المراحل المبكرة أسهل وأكثر فعالية</li>
+<li><strong>حماية المحيطين:</strong> منع انتقال العدوى إلى أفراد الأسرة</li>
+</ul>
+
+<h2>العلاج</h2>
+<p>يتطلب علاج جرثومة المعدة استخدام مجموعة من المضادات الحيوية (عادة 3-4 أدوية) لمدة 10-14 يوم. العلاج يُسمى "ثلاثي" أو "رباعي" الأدوية حسب الحالة والمضاعفات.</p>
+
+<p>النسبة المئوية لنجاح العلاج تتراوح بين 85-95% عند اتباع التعليمات بشكل صحيح.</p>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> يُنصح بمراجعة الطبيب المختص بأمراض الجهاز الهضمي لتحديد نوع العلاج المناسب والعقاقير الملائمة حسب كل حالة.
+</div>
+
+<h2>الوقاية من جرثومة المعدة</h2>
+<ul>
+<li>غسل اليدين بانتظام قبل الطعام وبعد دخول الحمام</li>
+<li>تناول الطعام النظيف من مصادر موثوقة</li>
+<li>شرب مياه نظيفة أو معقمة</li>
+<li>عدم مشاركة أدوات الطعام والشراب مع الآخرين</li>
+<li>الحفاظ على النظافة الشخصية وفي المنزل</li>
+<li>طهي الطعام جيداً وتخزينه بشكل صحيح</li>
+</ul>
+                `,
+                relatedArticles: [2, 4, 7]
+            },
+            {
+                id: 2,
+                slug: 'sti-std-screening-guide',
+                title: 'الأمراض المنقولة جنسياً: دليلك الشامل للفحص والوقاية',
+                excerpt: 'دليل طبي شامل عن الأمراض المنقولة جنسياً، أنواعها، أعراضها، ودليل الفحص والوقاية.',
+                category: 'infectious',
+                categoryName: 'الأمراض المعدية',
+                date: '2024-03-19',
+                readTime: 10,
+                emoji: '🛡️',
+                image: 'blog-images/02-sti-testing.png',
+                metaTitle: 'تحليل الأمراض المنقولة جنسياً | فحص STI شامل وسري — مختبرات بريزما',
+                metaDescription: 'دليل طبي شامل عن الأمراض المنقولة جنسياً: أنواعها، أعراضها، أهمية الفحص المبكر، وكيف تحمي نفسك. فحوصات سرية ودقيقة في مختبرات بريزما بالرياض.',
+                keywords: 'الأمراض المنقولة جنسياً, تحليل STI, فحص الأمراض التناسلية, HIV, الكلاميديا, السيلان',
+                content: `
+<h2>مقدمة عن الأمراض المنقولة جنسياً</h2>
+<p>الأمراض المنقولة جنسياً (Sexually Transmitted Infections - STIs) هي عدوى تنتقل من شخص لآخر بشكل أساسي من خلال الاتصال الجنسي. تشكل هذه الأمراض مشكلة صحية عامة كبيرة عالمياً، حيث تؤثر على ملايين الأشخاص سنوياً بغض النظر عن الجنس أو العمر أو الخلفية الاجتماعية.</p>
+
+<p>تتميز الأمراض المنقولة جنسياً بأن حوالي 50% من المصابين لا تظهر عليهم أي أعراض، مما يجعل الفحص المبكر والدوري ضرورياً لتجنب المضاعفات وعدم نقل العدوى للآخرين.</p>
+
+<h2>الأنواع الشائعة للأمراض المنقولة جنسياً</h2>
+
+<h3>1. الكلاميديا (Chlamydia trachomatis)</h3>
+<p>البكتيريا الكلاميديا تعتبر من أكثر الأمراض المنقولة جنسياً انتشاراً عالمياً. معظم المصابين لا تظهر عليهم أعراض، لكن قد يشعرون بألم عند التبول، إفرازات غير طبيعية، وألم أثناء العلاقة الحميمة. الكلاميديا قابلة للعلاج تماماً بالمضادات الحيوية إذا تم اكتشافها مبكراً.</p>
+
+<h3>2. السيلان (Gonorrhea)</h3>
+<p>يسببه بكتيريا Neisseria gonorrhoeae. الأعراض تشمل إفرازات صديدية من الجهاز التناسلي، ألم عند التبول، وقد تكون الأعراض شديدة عند الذكور. في الإناث، قد تكون الأعراض خفيفة أو غير موجودة. السيلان يتطلب علاجاً فوري بالمضادات الحيوية.</p>
+
+<h3>3. الزهري (Syphilis)</h3>
+<p>يسببه بكتيريا Treponema pallidum. المرض ينقسم إلى ثلاث مراحل: الزهري الأولي (قرحة في موقع العدوى)، الزهري الثانوي (طفح جلدي، ألم في المفاصل)، والزهري الكامن (قد لا تظهر أعراض). الزهري خطير جداً إذا لم يتم علاجه ويمكن أن يسبب مضاعفات خطيرة.</p>
+
+<h3>4. فيروس نقص المناعة البشرية (HIV)</h3>
+<p>HIV هو فيروس يضعف جهاز المناعة. قد لا تظهر الأعراض مباشرة بعد الإصابة، لكن الفيروس ينتشر في الجسم. الأعراض الأولية قد تشمل حمى، تعب، ألم في العضلات. المرض قابل للسيطرة الآن بالأدوية الحديثة (antiretroviral therapy)، لكن لا يوجد علاج نهائي.</p>
+
+<h3>5. فيروس الهربس البسيط (HSV)</h3>
+<p>ينقسم إلى نوعين: HSV-1 و HSV-2. يسبب تقرحات مؤلمة في الأعضاء التناسلية والفم. الفيروس يبقى خامداً في الجسم ويمكن أن ينشط مجدداً عند ضعف المناعة أو الإجهاد.</p>
+
+<h3>6. فيروس الورم الحليمي البشري (HPV)</h3>
+<p>أكثر من 100 نوع من HPV معروف. بعضها يسبب سرطان عنق الرحم والسرطانات الأخرى. لا تظهر أعراض غالباً، وقد يشفى الجسم من العدوى بنفسه، لكن بعض الأنواع قد تستمر وتسبب مشاكل صحية.</p>
+
+<h3>7. التهاب الكبد الفيروسي B و C</h3>
+<p>Hepatitis B و C تنتقل عن طريق الدم والسوائل الجسدية. تسبب التهاب الكبد والعديد من المضاعفات الخطيرة. لحسن الحظ، يوجد لقاح فعال ضد Hepatitis B.</p>
+
+<h3>8. السعار (Mycoplasma)</h3>
+<p>بكتيريا تسبب التهابات في المسالك البولية والجهاز التناسلي. قد تكون الأعراض خفيفة أو غير موجودة عند البعض.</p>
+
+<h3>9. المشعرة (Trichomonas vaginalis)</h3>
+<p>طفيل أحادي الخلية يسبب التهاب المهبل والمسالك البولية. الأعراض قد تشمل إفرازات ذات رائحة كريهة، حكة، وألم عند التبول.</p>
+
+<h2>أعراض الأمراض المنقولة جنسياً</h2>
+<p>من المهم معرفة أن معظم الأمراض المنقولة جنسياً قد لا تظهر عليها أعراض في البداية. عندما تظهر الأعراض، قد تشمل:</p>
+
+<ul>
+<li>إفرازات غير طبيعية من الجهاز التناسلي أو الشرج أو الحلق</li>
+<li>ألم أو حرقان عند التبول</li>
+<li>ألم أثناء العلاقة الحميمة</li>
+<li>ألم في البطن أو منطقة الحوض</li>
+<li>قروح أو تقرحات في الأعضاء التناسلية</li>
+<li>حكة أو طفح جلدي</li>
+<li>حمى وقشعريرة</li>
+<li>تورم في الغدد الليمفاوية</li>
+<li>ألم في الحلق (عند الإصابة عن طريق الفم)</li>
+<li>نزيف مهبلي غير منتظم أو نزيف بين فترات الحيض</li>
+</ul>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> يُنصح بمراجعة الطبيب المختص فوراً عند ظهور أي من هذه الأعراض، خاصة إذا استمرت لأكثر من أسبوعين.
+</div>
+
+<h2>أهمية الفحص المبكر والدوري</h2>
+
+<p><strong>الكشف المبكر ينقذ الحياة:</strong> الفحص الدوري، حتى بدون ظهور أعراض، يساعد في اكتشاف الأمراض مبكراً قبل تطورها.</p>
+
+<p><strong>منع المضاعفات:</strong> بعض الأمراض المنقولة جنسياً قد تسبب مضاعفات خطيرة تشمل العقم، الحمل خارج الرحم، السرطان، وأمراض القلب.</p>
+
+<p><strong>منع انتقال العدوى:</strong> الكشف والعلاج يقللان من احتمالية نقل العدوى للشريك.</p>
+
+<p><strong>تحسين نوعية الحياة:</strong> المعالجة المبكرة تقلل الأعراض والمضاعفات وتحسن الصحة العامة.</p>
+
+<h2>من يحتاج إلى الفحص؟</h2>
+<p>ينبغي الفحص الدوري لـ:</p>
+
+<ul>
+<li>جميع البالغين الناشطين جنسياً (مرة واحدة على الأقل سنوياً)</li>
+<li>النساء تحت سن 25 سنة الناشطات جنسياً</li>
+<li>الأشخاص لديهم أكثر من شريك جنسي واحد</li>
+<li>أولئك الذين شركاؤهم لديهم أمراض منقولة جنسياً</li>
+<li>الحوامل (كجزء من الرعاية السابقة للولادة)</li>
+<li>الأشخاص الذين ينوون الزواج (فحوصات ما قبل الزواج)</li>
+<li>أولئك الذين يتبرعون بالدم أو أعضاء</li>
+<li>الأشخاص الذين يعانون من أعراض مشبوهة</li>
+</ul>
+
+<h2>اختبارات الأمراض المنقولة جنسياً</h2>
+
+<h3>أنواع الفحوصات المتاحة:</h3>
+<ul>
+<li><strong>فحوصات البول (Urine Tests):</strong> بسيطة وسهلة للكلاميديا والسيلان والتهاب المسالك</li>
+<li><strong>فحوصات الدم (Blood Tests):</strong> للكشف عن HIV، Hepatitis B و C، والزهري</li>
+<li><strong>مسحات من الحلق أو الشرج:</strong> للكشف عن العدوى في هذه المناطق</li>
+<li><strong>فحوصات PCR (تفاعل البوليميراز المتسلسل):</strong> من أدق الطرق للكشف عن البكتيريا والفيروسات</li>
+<li><strong>الفحص البدني والمسح المجهري:</strong> عند الضرورة</li>
+</ul>
+
+<h2>الخصوصية والسرية في الفحص</h2>
+
+<p>في مختبرات بريزما، نفهم حساسية هذا الموضوع ونقدم:</p>
+
+<ul>
+<li><strong>الخصوصية الكاملة:</strong> جميع المعلومات والنتائج سرية تماماً</li>
+<li><strong>الفحص المريح والآمن:</strong> تم تدريب الموظفين على التعامل بحساسية واحترافية</li>
+<li><strong>النتائج السرية:</strong> يمكن الحصول عليها بطريقة آمنة وسرية تماماً</li>
+<li><strong>عدم الحكم:</strong> فريقنا هنا لمساعدتك وليس لإصدار أحكام</li>
+<li><strong>التشاور مع المتخصصين:</strong> يمكنك الاستشارة مع الطبيب في نفس المركز</li>
+</ul>
+
+<h2>خطوات الوقاية من الأمراض المنقولة جنسياً</h2>
+
+<ul>
+<li><strong>الممارسة الآمنة:</strong> استخدام الواقي الذكري بشكل صحيح والمتسق</li>
+<li><strong>التطعيمات:</strong> التطعيم ضد HPV و Hepatitis B (متاح للأطفال والبالغين)</li>
+<li><strong>الفحوصات الدورية:</strong> خاصة للنشطين جنسياً</li>
+<li><strong>التواصل مع الشريك:</strong> مناقشة التاريخ الصحي والفحوصات معاً</li>
+<li><strong>العلاج الفوري:</strong> إذا تم اكتشاف أي مرض، العلاج الفوري والكامل ضروري</li>
+<li><strong>الامتناع عن الجنس أثناء المرض أو العلاج:</strong> حسب تعليمات الطبيب</li>
+<li><strong>النظافة الشخصية:</strong> غسل اليدين والأعضاء التناسلية بانتظام</li>
+<li><strong>تجنب المواد المشتركة:</strong> عدم مشاركة أدوات النظافة الشخصية</li>
+</ul>
+
+<h2>العلاج والشفاء</h2>
+
+<p><strong>البكتيريا:</strong> معظم الأمراض البكتيرية (الكلاميديا، السيلان، الزهري) قابلة للشفاء تماماً بالمضادات الحيوية المناسبة.</p>
+
+<p><strong>الفيروسات:</strong> معظم الأمراض الفيروسية قابلة للسيطرة وليست قابلة للشفاء بشكل كامل، لكن الأدوية الحديثة تسيطر على الأعراض والمضاعفات بشكل فعال جداً.</p>
+
+<p><strong>الامتثال للعلاج:</strong> من المهم جداً إكمال العلاج كاملاً حتى لو اختفت الأعراض، وعدم إيقاف الأدوية بشكل مبكر.</p>
+
+<h2>الرسالة الختامية</h2>
+
+<p>الأمراض المنقولة جنسياً شائعة وليس هناك عار في الإصابة بها. ملايين الأشخاص حول العالم يواجهون هذا الوضع. الخطوة الأولى نحو الصحة والسلام النفسي هي الفحص المبكر والعلاج. في مختبرات بريزما، نحن هنا لدعمك برفق واحترافية.</p>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> يُنصح بمراجعة الطبيب المختص قبل وبعد الفحص للحصول على التشاور والعلاج المناسب. النتائج الإيجابية لا تعني نهاية العالم، بل هي بداية طريق الشفاء والصحة.
+</div>
+                `,
+                relatedArticles: [1, 7, 10]
+            },
+            {
+                id: 3,
+                slug: 'vitamin-d-deficiency-test',
+                title: 'نقص فيتامين د في السعودية: الأسباب والأعراض والفحص',
+                excerpt: 'تعرّف على أسباب نقص فيتامين د رغم الشمس، الأعراض، وأهمية الفحص والعلاج.',
+                category: 'vitamins',
+                categoryName: 'الفيتامينات',
+                date: '2024-03-18',
+                readTime: 7,
+                emoji: '☀️',
+                image: 'blog-images/03-vitamin-d.png',
+                metaTitle: 'تحليل فيتامين د | أعراض النقص وأهمية الفحص — مختبرات بريزما',
+                metaDescription: 'نقص فيتامين د منتشر في السعودية رغم الشمس. تعرّف على الأعراض، أسباب النقص، كيف تقرأ نتيجة التحليل، ومتى تحتاج الفحص.',
+                keywords: 'فيتامين د, نقص فيتامين د, تحليل فيتامين د, 25-OH vitamin D',
+                content: `
+<h2>الفيتامين د والسعودية: مفارقة مثيرة للقلق</h2>
+<p>قد يبدو غريباً أن تعاني السعودية، دولة تتمتع بأشعة شمس قوية وساعات نهار طويلة، من مشكلة انتشار نقص فيتامين د. لكن الواقع يشير إلى أن نسبة كبيرة من سكان المملكة يعانون من نقص هذا الفيتامين الحيوي.</p>
+
+<p>تشير الدراسات الحديثة إلى أن 50-80% من سكان المملكة العربية السعودية يعانون من نقص فيتامين د، وهذه نسبة مقلقة تتطلب توعية وفحوصات دورية.</p>
+
+<h3>لماذا نقص فيتامين د شائع في السعودية رغم أشعة الشمس القوية؟</h3>
+
+<ul>
+<li><strong>الملابس الثقيلة والمغطاة:</strong> الأنماط الثقافية والدينية تتطلب ارتداء ملابس تغطي معظم الجسم، مما يقلل من تعرض الجلد لأشعة الشمس</li>
+<li><strong>قضاء الوقت داخل المباني:</strong> نمط الحياة الحديث يتطلب قضاء معظم الوقت في أماكن مكيفة (مكاتب، سيارات، منازل)</li>
+<li><strong>درجات الحرارة العالية جداً:</strong> خلال الصيف، الناس يتجنبون قضاء الوقت خارج المنزل لتجنب الحرارة الشديدة</li>
+<li><strong>استخدام واقي الشمس والنظارات الشمسية:</strong> تقليل امتصاص أشعة UVB الضرورية للفيتامين د</li>
+<li><strong>النظام الغذائي:</strong> الغذاء الحديث يحتوي على كميات قليلة من الأطعمة الغنية بفيتامين د</li>
+</ul>
+
+<h2>ما هو فيتامين د وما دوره في الجسم؟</h2>
+<p>فيتامين د ليس مجرد فيتامين عادي، بل هو أشبه بالهرمون لأهميته الحيوية. يقوم الجسم بتصنيع فيتامين د عند تعرض الجلد لأشعة الشمس (تحديداً الأشعة فوق البنفسجية من نوع B - UVB).</p>
+
+<p><strong>الوظائف الرئيسية لفيتامين د:</strong></p>
+
+<ul>
+<li><strong>امتصاص الكالسيوم والفسفور:</strong> ضروري لصحة العظام والأسنان</li>
+<li><strong>تقوية المناعة:</strong> يعزز جهاز المناعة ويساعد في محاربة الالتهابات</li>
+<li><strong>صحة العضلات:</strong> يساعد في قوة وسلامة العضلات</li>
+<li><strong>تنظيم الالتهاب:</strong> يساعد في السيطرة على الالتهابات المزمنة</li>
+<li><strong>صحة القلب والأوعية الدموية:</strong> يساهم في صحة القلب والضغط الدموي</li>
+<li><strong>الصحة النفسية:</strong> يؤثر على المزاج والاكتئاب</li>
+<li><strong>السيطرة على نسبة السكر:</strong> يساعد في تنظيم نسبة السكر في الدم</li>
+</ul>
+
+<h2>أعراض نقص فيتامين د</h2>
+<p>الكثيرون لا يدركون أنهم يعانون من نقص فيتامين د لأن الأعراض قد تكون خفيفة في البداية:</p>
+
+<ul>
+<li><strong>التعب والإرهاق المستمر:</strong> شعور بالتعب حتى مع الراحة الكافية</li>
+<li><strong>آلام العظام والمفاصل:</strong> خاصة في الأرجل والحوض والعمود الفقري</li>
+<li><strong>ضعف العضلات:</strong> صعوبة في رفع الأشياء أو صعود الدرج</li>
+<li><strong>آلام في العضلات (Myalgia):</strong> آلام عامة في جميع أنحاء الجسم</li>
+<li><strong>الاكتئاب والحزن:</strong> تأثير على الحالة المزاجية والنفسية</li>
+<li><strong>الحساسية المتكررة والعدوى المتكررة:</strong> ضعف المناعة يؤدي لعدوى متكررة</li>
+<li><strong>بطء التئام الجروح:</strong> استغراق وقت أطول في شفاء الجروح والكسور</li>
+<li><strong>هشاشة العظام:</strong> في الحالات المتقدمة</li>
+<li><strong>الحكة الجلدية والطفح الجلدي:</strong> قد تكون من علامات النقص الشديد</li>
+<li><strong>تساقط الشعر:</strong> في بعض الحالات</li>
+</ul>
+
+<h2>تحليل فيتامين د (25-OH Vitamin D Test)</h2>
+
+<h3>ما هو الفحص؟</h3>
+<p>يتم قياس فيتامين د في الجسم من خلال قياس تركيز 25-hydroxyvitamin D في الدم، وهي أفضل طريقة لتقييم مستويات فيتامين د في الجسم.</p>
+
+<h3>نتائج التحليل وتفسيرها:</h3>
+
+<p><strong>النسب الطبيعية (الوحدة: ng/mL):</strong></p>
+
+<ul>
+<li><strong>أقل من 20 ng/mL:</strong> نقص شديد يتطلب علاجاً فورياً</li>
+<li><strong>20 - 29 ng/mL:</strong> نقص معتدل يتطلب علاج ومراقبة</li>
+<li><strong>30 - 50 ng/mL:</strong> مستوى كافي للمعظم الأشخاص</li>
+<li><strong>50 - 100 ng/mL:</strong> مستوى ممتاز</li>
+<li><strong>أكثر من 100 ng/mL:</strong> قد يكون مرتفعاً جداً ويتطلب استشارة طبية</li>
+</ul>
+
+<h3>متى تحتاج للفحص؟</h3>
+
+<ul>
+<li>إذا كنت تعاني من أعراض نقص فيتامين د</li>
+<li>إذا كان لديك عوامل خطر (عدم التعرض للشمس، نظام غذائي منخفض في فيتامين د)</li>
+<li>كجزء من الفحص الدوري والوقائي (خاصة للنساء والأطفال والمسنين)</li>
+<li>قبل بدء العلاج لأمراض تتطلب مستويات جيدة من فيتامين د</li>
+<li>لمتابعة العلاج إذا كنت تأخذ مكملات فيتامين د</li>
+</ul>
+
+<h2>التحضير للفحص</h2>
+<ul>
+<li>لا يتطلب صيام</li>
+<li>يمكنك أن تأخذ أي طعام أو شراب قبل الفحص</li>
+<li>إخبار الطبيب بأي مكملات فيتامين د تأخذها</li>
+<li>الفحص بسيط: سحب عينة دم من الذراع</li>
+</ul>
+
+<h2>علاج نقص فيتامين د</h2>
+
+<h3>الحصول على فيتامين د بشكل طبيعي:</h3>
+
+<p><strong>التعرض للشمس:</strong> 10-30 دقيقة من التعرض لأشعة الشمس بدون واقي شمس (حسب نوع الجلد وموقع الشمس)</p>
+
+<p><strong>الأطعمة الغنية بفيتامين د:</strong></p>
+
+<ul>
+<li>الأسماك الدهنية (السلمون، الماكريل، الرنجة)</li>
+<li>زيت كبد الحوت</li>
+<li>صفار البيض</li>
+<li>الفطر (خاصة عند تعريضه للشمس)</li>
+<li>الحليب المدعم بفيتامين د</li>
+<li>العصائر المدعمة</li>
+<li>الأجبان</li>
+</ul>
+
+<h3>المكملات الغذائية:</h3>
+
+<p>في حالات النقص، يوصي الطبيب بمكملات فيتامين د. الجرعات تختلف حسب درجة النقص والعمر والحالة الصحية.</p>
+
+<p>الجرعات الموصى بها:</p>
+
+<ul>
+<li><strong>الأطفال والبالغين:</strong> 600-800 وحدة دولية يومياً (للوقاية)</li>
+<li><strong>في حالة النقص:</strong> قد تصل إلى 1000-4000 وحدة دولية يومياً حسب شدة النقص</li>
+</ul>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> يُنصح بمراجعة الطبيب المختص لتحديد الجرعة المناسبة بناءً على نتائج التحليل والحالة الصحية الفردية.
+</div>
+
+<h2>نقص فيتامين د والحمل</h2>
+<p>نقص فيتامين د عند الحوامل قد يؤدي إلى مضاعفات خطيرة، لذلك من المهم جداً فحص مستويات فيتامين د أثناء الحمل والتأكد من الكمية الكافية.</p>
+
+<h2>الوقاية من نقص فيتامين د</h2>
+
+<ul>
+<li>التعرض المنتظم والآمن للشمس</li>
+<li>تناول الأطعمة الغنية بفيتامين د</li>
+<li>استهلاك المنتجات المدعمة بفيتامين د</li>
+<li>فحص دوري لمستويات فيتامين د</li>
+<li>المكملات الغذائية عند الحاجة</li>
+<li>الانتباه للعوامل التي قد تقلل امتصاص فيتامين د</li>
+</ul>
+                `,
+                relatedArticles: [4, 5, 7]
+            },
+            {
+                id: 4,
+                slug: 'thyroid-tsh-test-guide',
+                title: 'تحليل الغدة الدرقية TSH: متى تحتاجه وكيف تقرأ نتائجه',
+                excerpt: 'دليل شامل عن تحليل الغدة الدرقية TSH: الأعراض، النسب الطبيعية، وتأثير الهرمونات.',
+                category: 'endocrine',
+                categoryName: 'الغدد الصماء',
+                date: '2024-03-17',
+                readTime: 7,
+                emoji: '🧬',
+                image: 'blog-images/04-thyroid-tsh.png',
+                metaTitle: 'تحليل الغدة الدرقية TSH | الدليل الكامل — مختبرات بريزما',
+                metaDescription: 'كل ما تحتاج معرفته عن تحليل TSH للغدة الدرقية: الأعراض، النتائج الطبيعية، خمول أو فرط النشاط، ومتى تراجع الطبيب.',
+                keywords: 'تحليل الغدة الدرقية, TSH, فحص الغدة الدرقية, T3, T4',
+                content: `
+<h2>دور الغدة الدرقية في الجسم</h2>
+<p>الغدة الدرقية (Thyroid Gland) هي غدة صغيرة تقع في مقدمة الرقبة، تحت تفاحة آدم. رغم حجمها الصغير، لها دور حيوي جداً في الجسم، حيث تتحكم في سرعة الأيض (metabolism) وإنتاج الطاقة.</p>
+
+<p>الغدة الدرقية تنتج هرمونات تسمى T3 و T4، وهذه الهرمونات تتحكم في:</p>
+
+<ul>
+<li>سرعة ضربات القلب</li>
+<li>درجة حرارة الجسم</li>
+<li>معدل حرق السعرات الحرارية</li>
+<li>النمو والتطور</li>
+<li>الحالة المزاجية والتركيز الذهني</li>
+<li>الخصوبة والصحة الجنسية</li>
+<li>صحة الجلد والشعر</li>
+</ul>
+
+<h2>ما هو هرمون TSH؟</h2>
+<p>TSH (Thyroid Stimulating Hormone) هو هرمون ينتج من الغدة النخامية (pituitary gland) في الدماغ. يُعتبر TSH هو "الجرس" الذي يأمر الغدة الدرقية بإنتاج المزيد من الهرمونات عندما تنخفض مستويات T3 و T4.</p>
+
+<p>تحليل TSH هو أفضل اختبار أولي للتحقق من صحة الغدة الدرقية، لأنه حساس جداً وينعكس بسرعة على أي خلل في الغدة الدرقية.</p>
+
+<h2>الحالات الشائعة لأمراض الغدة الدرقية</h2>
+
+<h3>قصور الغدة الدرقية (Hypothyroidism)</h3>
+<p>حالة حيث تنتج الغدة هرمونات أقل من اللازم. الأعراض تشمل:</p>
+
+<ul>
+<li>التعب والإرهاق الشديد</li>
+<li>زيادة الوزن بدون سبب واضح</li>
+<li>بطء ضربات القلب</li>
+<li>البرد (الشعور الدائم بالبرد)</li>
+<li>جفاف الجلد والشعر</li>
+<li>تساقط الشعر</li>
+<li>الإمساك</li>
+<li>الاكتئاب والحزن</li>
+<li>مشاكل في التركيز والذاكرة</li>
+<li>بطء النمو عند الأطفال</li>
+</ul>
+
+<h3>فرط نشاط الغدة الدرقية (Hyperthyroidism)</h3>
+<p>حالة حيث تنتج الغدة هرمونات أكثر من اللازم. الأعراض تشمل:</p>
+
+<ul>
+<li>العصبية والقلق الشديد</li>
+<li>فقدان الوزن بسرعة رغم زيادة الشهية</li>
+<li>تسارع ضربات القلب والخفقان</li>
+<li>الهبات الساخنة والتعرق الزائد</li>
+<li>رعشة اليدين</li>
+<li>مشاكل في النوم والأرق</li>
+<li>ضعف العضلات</li>
+<li>تورم الرقبة (تضخم الغدة)</li>
+</ul>
+
+<h2>اختبار TSH والنسب الطبيعية</h2>
+
+<h3>النسب الطبيعية لـ TSH:</h3>
+
+<p><strong>الوحدة: mIU/L (milli-International Unit per Liter)</strong></p>
+
+<ul>
+<li><strong>0.4 - 4.0 mIU/L:</strong> المدى الطبيعي المقبول عموماً</li>
+<li><strong>أقل من 0.4 mIU/L:</strong> قد يشير إلى فرط نشاط الغدة الدرقية</li>
+<li><strong>أكثر من 4.0 mIU/L:</strong> قد يشير إلى قصور الغدة الدرقية</li>
+</ul>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> النسب الطبيعية قد تختلف قليلاً بين المختبرات، لذا يجب مراجعة النطاق الطبيعي الموضح في تقرير المختبر.
+</div>
+
+<h3>اختبارات T3 و T4:</h3>
+
+<p>عندما يكون TSH غير طبيعي، قد يطلب الطبيب اختبارات إضافية:</p>
+
+<ul>
+<li><strong>T4 الحر (Free T4):</strong> يقيس كمية هرمون T4 النشط في الدم</li>
+<li><strong>T3 الحر (Free T3):</strong> يقيس كمية هرمون T3 النشط</li>
+<li><strong>الأجسام المضادة:</strong> للتحقق من الأمراض المناعية للغدة الدرقية</li>
+</ul>
+
+<h2>متى تحتاج لفحص الغدة الدرقية؟</h2>
+
+<ul>
+<li><strong>الأعراض المشبوهة:</strong> إذا كنت تعاني من أعراض قصور أو فرط نشاط الغدة</li>
+<li><strong>التاريخ العائلي:</strong> إذا كان في العائلة من يعاني من أمراض الغدة الدرقية</li>
+<li><strong>الحوامل:</strong> اختبار الغدة الدرقية مهم جداً أثناء الحمل</li>
+<li><strong>النساء فوق سن 50:</strong> كفحص دوري</li>
+<li><strong>الأشخاص الذين يتناولون أدوية:</strong> قد تؤثر على الغدة الدرقية</li>
+<li><strong>قبل علاج العقم:</strong> الغدة الدرقية تؤثر على الخصوبة</li>
+<li><strong>الفحص الدوري:</strong> كجزء من الفحص الشامل</li>
+</ul>
+
+<h2>التحضير للفحص</h2>
+
+<ul>
+<li><strong>لا يتطلب صيام:</strong> يمكنك تناول الطعام والشراب بشكل طبيعي</li>
+<li><strong>الجرعة الصباحية:</strong> إذا كنت تتناول دواء الغدة الدرقية، تأكد من أخذه قبل الفحص (إن أمكن)</li>
+<li><strong>تجنب المكملات:</strong> بعض المكملات مثل الحديد والكالسيوم قد تؤثر على الاختبار، استشر طبيبك</li>
+<li><strong>عينة دم بسيطة:</strong> الفحص يتطلب عينة دم من الذراع فقط</li>
+</ul>
+
+<h2>العلاج والمتابعة</h2>
+
+<p>إذا تم تشخيص مرض في الغدة الدرقية، يوجد علاجات فعالة جداً:</p>
+
+<ul>
+<li><strong>قصور الغدة:</strong> تناول هرمون T4 (Levothyroxine) لتعويض النقص</li>
+<li><strong>فرط النشاط:</strong> أدوية لتثبيط إنتاج الهرمونات أو العلاج بالإشعاع أو الجراحة</li>
+<li><strong>المتابعة الدورية:</strong> فحوصات دورية لضمان الجرعة المناسبة</li>
+<li><strong>النظام الغذائي:</strong> بعض الأطعمة قد تؤثر على الغدة الدرقية</li>
+</ul>
+
+<h2>الغدة الدرقية والحمل</h2>
+
+<p>أمراض الغدة الدرقية قد تؤثر على الحمل والأجنة. من المهم جداً فحص الغدة الدرقية قبل الحمل وأثناءه. قصور الغدة الدرقية غير المعالج قد يؤدي إلى:</p>
+
+<ul>
+<li>عدم القدرة على الحمل</li>
+<li>الإجهاض</li>
+<li>مضاعفات الحمل</li>
+<li>مشاكل في نمو الجنين والطفل</li>
+</ul>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> يُنصح بفحص الغدة الدرقية قبل الحمل وأثناء الحمل تحت إشراف الطبيب المختص.
+</div>
+                `,
+                relatedArticles: [3, 5, 7]
+            },
+            {
+                id: 5,
+                slug: 'hba1c-insulin-resistance-test',
+                title: 'السكر التراكمي HbA1c ومقاومة الأنسولين: الفحص الذهبي لصحتك',
+                excerpt: 'فحص السكر التراكمي HbA1c هو المعيار الذهبي لمراقبة السكري. تعرّف على النسب الطبيعية.',
+                category: 'diabetes',
+                categoryName: 'السكري',
+                date: '2024-03-16',
+                readTime: 8,
+                emoji: '🩺',
+                image: 'blog-images/05-hba1c-diabetes.png',
+                metaTitle: 'تحليل السكر التراكمي HbA1c ومقاومة الأنسولين — مختبرات بريزما',
+                metaDescription: 'فحص السكر التراكمي HbA1c هو المعيار الذهبي لمتابعة السكري. تعرّف على مقاومة الأنسولين، النسب الطبيعية، ومتى تحتاج الفحص.',
+                keywords: 'السكر التراكمي, HbA1c, مقاومة الأنسولين, فحص السكري, HOMA-IR',
+                content: `
+<h2>مقدمة عن السكري في السعودية</h2>
+<p>السعودية تحتل مرتبة عالية جداً في معدلات السكري عالمياً. حسب الإحصاءات الحديثة، يعاني حوالي 25-30% من سكان المملكة من السكري أو المرحلة السابقة للسكري (prediabetes). هذا يجعل الفحص المبكر والدوري ضرورياً لكل شخص.</p>
+
+<h2>ما هو فحص السكر التراكمي (HbA1c)؟</h2>
+
+<p>فحص السكر التراكمي (Glycated Hemoglobin أو HbA1c) يقيس متوسط مستوى السكر في الدم على مدى فترة 2-3 أشهر السابقة. على عكس فحص السكر الصائم الذي يقيس السكر في لحظة واحدة، فإن HbA1c يعطي صورة شاملة عن مدى التحكم في السكر لفترة طويلة.</p>
+
+<h3>كيف يعمل الفحص؟</h3>
+
+<p>عندما تكون نسبة السكر عالية في الدم، تتحد جزيئات السكر (glucose) مع خلايا الدم الحمراء (hemoglobin) وتشكل مركب جديد يُسمى glycated hemoglobin. كلما ارتفعت نسبة السكر لفترة أطول، كلما ارتفع عدد هذه المركبات، وكلما ارتفع مستوى HbA1c.</p>
+
+<h2>النسب الطبيعية والتصنيفات</h2>
+
+<p><strong>الوحدة: % (نسبة مئوية)</strong></p>
+
+<ul>
+<li><strong>أقل من 5.7%:</strong> طبيعي - لا يوجد مرض السكري</li>
+<li><strong>5.7% - 6.4%:</strong> مرحلة ما قبل السكري (Prediabetes) - خطر التطور إلى السكري</li>
+<li><strong>6.5% فما فوق:</strong> السكري (Diabetes) - تشخيص السكري</li>
+</ul>
+
+<p><strong>بالنسبة لمرضى السكري المشخصين:</strong></p>
+
+<ul>
+<li><strong>أقل من 7%:</strong> تحكم جيد</li>
+<li><strong>7% - 8%:</strong> تحكم معقول</li>
+<li><strong>أكثر من 8%:</strong> تحكم ضعيف يتطلب تعديل العلاج</li>
+</ul>
+
+<div class="disclaimer">
+<strong>⚠️ ملاحظة:</strong> الأهداف قد تختلف حسب عمر المريض، الحالة الصحية، والتوصيات الطبية الشخصية.
+</div>
+
+<h2>الفرق بين فحص HbA1c والسكر الصائم</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+<tr style="background-color: rgba(0, 191, 255, 0.1);">
+<td style="padding: 0.75rem; border: 1px solid #1f2937;"><strong>الخاصية</strong></td>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;"><strong>السكر الصائم (FBS)</strong></td>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;"><strong>HbA1c</strong></td>
+</tr>
+<tr>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;">ما يقيسه</td>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;">السكر في لحظة واحدة</td>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;">متوسط السكر على 2-3 أشهر</td>
+</tr>
+<tr>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;">التحضير</td>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;">صيام 8-10 ساعات</td>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;">بدون صيام</td>
+</tr>
+<tr>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;">التأثر بالغذاء</td>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;">عالي جداً</td>
+<td style="padding: 0.75rm; border: 1px solid #1f2937;">منخفض جداً</td>
+</tr>
+<tr>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;">الدقة التشخيصية</td>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;">دقيق للتشخيص الأولي</td>
+<td style="padding: 0.75rem; border: 1px solid #1f2937;">أكثر دقة للمراقبة</td>
+</tr>
+</table>
+
+<h2>مقاومة الأنسولين (Insulin Resistance)</h2>
+
+<h3>ما هي مقاومة الأنسولين؟</h3>
+
+<p>الأنسولين هو الهرمون الذي ينتجه البنكرياس لتنظيم نسبة السكر في الدم. في حالة مقاومة الأنسولين، لا تستجيب خلايا الجسم للأنسولين بشكل طبيعي، مما يجعل البنكرياس ينتج المزيد من الأنسولين محاولة تصحيح الوضع. هذا يمكن أن يؤدي إلى السكري مع الوقت.</p>
+
+<h3>فحص HOMA-IR (Homeostatic Model Assessment for Insulin Resistance)</h3>
+
+<p>هذا الفحص يقيس مقاومة الأنسولين من خلال قياس مستويات الأنسولين والسكر الصائم. الصيغة هي:</p>
+
+<p><strong>HOMA-IR = (الأنسولين الصائم × السكر الصائم) / 22.5</strong></p>
+
+<p><strong>التفسير:</strong></p>
+
+<ul>
+<li><strong>أقل من 2:</strong> حساسية طبيعية للأنسولين</li>
+<li><strong>2 - 4:</strong> مقاومة أنسولين معتدلة</li>
+<li><strong>أكثر من 4:</strong> مقاومة أنسولين عالية</li>
+</ul>
+
+<h2>أعراض مقاومة الأنسولين</h2>
+
+<ul>
+<li>التعب والإرهاق بعد الوجبات</li>
+<li>الجوع الشديد والرغبة في الأكل بكثرة</li>
+<li>زيادة الوزن، خاصة في منطقة البطن</li>
+<li>صعوبة فقدان الوزن رغم الحمية</li>
+<li>ضباب ذهني (Brain fog) وصعوبة التركيز</li>
+<li>تقلبات المزاج</li>
+<li>مشاكل جلدية مثل الأكزيما والصدفية</li>
+<li>ارتفاع ضغط الدم</li>
+<li>مشاكل في الخصوبة والدورة الشهرية غير المنتظمة</li>
+</ul>
+
+<h2>عوامل الخطر</h2>
+
+<ul>
+<li>السمنة والوزن الزائد</li>
+<li>عدم ممارسة النشاط البدني</li>
+<li>نظام غذائي غني بالسكريات والدهون</li>
+<li>التاريخ العائلي للسكري</li>
+<li>الضغط النفسي والإجهاد المزمن</li>
+<li>قلة النوم</li>
+<li>العمر (تزداد المقاومة مع العمر)</li>
+<li>متلازمة تكيس المبايض (PCOS) عند النساء</li>
+</ul>
+
+<h2>متى تحتاج لفحص HbA1c؟</h2>
+
+<ul>
+<li><strong>الأشخاص فوق 45 سنة:</strong> كفحص دوري</li>
+<li><strong>الأشخاص الأصغر سناً مع عوامل خطر:</strong> السمنة، التاريخ العائلي</li>
+<li><strong>الحوامل:</strong> الفحص ضروري للكشف عن سكري الحمل</li>
+<li><strong>مرضى السكري المشخصين:</strong> كل 3 أشهر تقريباً</li>
+<li><strong>الذين لديهم prediabetes:</strong> كل 6-12 شهر</li>
+<li><strong>الفحص الدوري الروتيني:</strong> جزء من الفحص الشامل</li>
+</ul>
+
+<h2>التحضير للفحص</h2>
+
+<ul>
+<li><strong>لا يتطلب صيام:</strong> يمكنك تناول الطعام بشكل طبيعي</li>
+<li><strong>عينة دم بسيطة:</strong> سحب دم من الذراع</li>
+<li><strong>الوقت:</strong> النتائج عادة تأتي خلال يومين</li>
+<li><strong>تكرار الفحص:</strong> لا ننصح بتكرار الفحص كثيراً لأن النتائج تتغير ببطء</li>
+</ul>
+
+<h2>الوقاية والعلاج</h2>
+
+<p><strong>نمط الحياة:</strong></p>
+
+<ul>
+<li>خفض الوزن (5-10% من الوزن الحالي قد يحسن المقاومة)</li>
+<li>ممارسة الرياضة 150 دقيقة أسبوعياً</li>
+<li>تناول طعام صحي غني بالألياف والبروتين</li>
+<li>تجنب المشروبات السكرية</li>
+<li>النوم الكافي (7-9 ساعات)</li>
+<li>إدارة الضغط النفسي</li>
+</ul>
+
+<p><strong>الأدوية:</strong> في حالات مقاومة الأنسولين الشديدة أو السكري، قد يوصي الطبيب بأدوية مثل الميتفورمين (Metformin).</p>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> يُنصح بمراجعة الطبيب المختص لتقييم الحالة والحصول على خطة علاج مشخصة.
+</div>
+                `,
+                relatedArticles: [3, 4, 7]
+            },
+            {
+                id: 6,
+                slug: 'iron-deficiency-anemia-test',
+                title: 'فقر الدم ونقص الحديد: الأعراض والتحاليل المطلوبة',
+                excerpt: 'تعرّف على فقر الدم ونقص الحديد: الأعراض، التحاليل المطلوبة، والنسب الطبيعية.',
+                category: 'blood',
+                categoryName: 'أمراض الدم',
+                date: '2024-03-15',
+                readTime: 7,
+                emoji: '🩸',
+                image: 'blog-images/06-anemia-iron.png',
+                metaTitle: 'تحليل فقر الدم ونقص الحديد | الفيريتين والحديد — مختبرات بريزما',
+                metaDescription: 'هل تعاني من التعب وتساقط الشعر؟ قد يكون نقص الحديد. تعرّف على تحاليل فقر الدم: CBC، الفيريتين، الحديد، TIBC وكيف تقرأ نتائجك.',
+                keywords: 'فقر الدم, نقص الحديد, الفيريتين, تحليل الدم, CBC, فقر الدم بنقص الحديد',
+                content: `
+<h2>ما هو فقر الدم (Anemia)؟</h2>
+<p>فقر الدم هو حالة ينخفض فيها عدد خلايا الدم الحمراء أو تركيز الهيموجلوبين (Hemoglobin) في الدم عن المستويات الطبيعية. الهيموجلوبين هو البروتين الموجود في خلايا الدم الحمراء الذي يحمل الأكسجين إلى أنسجة الجسم.</p>
+
+<p>عندما تنخفض مستويات الهيموجلوبين، يصل أقل من الأكسجين اللازم إلى الأنسجة، مما يسبب أعراضاً مختلفة.</p>
+
+<h2>أنواع فقر الدم</h2>
+
+<p><strong>فقر الدم بنقص الحديد (Iron Deficiency Anemia):</strong> هو النوع الأكثر انتشاراً عالمياً، ويُسبب حوالي 50% من حالات فقر الدم. يحدث عندما لا يحصل الجسم على كمية كافية من الحديد.</p>
+
+<p><strong>الأنواع الأخرى:</strong> فقر الدم الناتج عن نقص الفولات (folate)، نقص فيتامين B12، الأمراض المزمنة، والأمراض الوراثية مثل الثلاسيميا والأنيميا المنجلية.</p>
+
+<h2>أعراض فقر الدم</h2>
+
+<ul>
+<li><strong>التعب والإرهاق الشديد:</strong> حتى عند الراحة</li>
+<li><strong>الضعف العام:</strong> صعوبة في أداء الأنشطة اليومية</li>
+<li><strong>الشعور بضيق التنفس:</strong> خاصة عند بذل المجهود</li>
+<li><strong>الدوخة والدوار:</strong> قد يؤدي للإغماء</li>
+<li><strong>الصداع:</strong> متكرر ومستمر</li>
+<li><strong>شحوب الجلد:</strong> لون الجلد والشفاه يصبح فاتح اللون</li>
+<li><strong>الشعور البارد:</strong> برودة الأطراف والقدمين</li>
+<li><strong>تسارع ضربات القلب:</strong> Palpitations</li>
+<li><strong>تساقط الشعر:</strong> زيادة في تساقط الشعر</li>
+<li><strong>ضعف الأظافر وتقصفها:</strong> أظافر ضعيفة وسهلة الكسر</li>
+<li><strong>الرغبة في تناول مواد غير غذائية (Pica):</strong> مثل الثلج أو التراب</li>
+<li><strong>مشاكل في التركيز والذاكرة</strong></li>
+</ul>
+
+<h2>أسباب نقص الحديد</h2>
+
+<h3>عند النساء:</h3>
+<ul>
+<li><strong>الدورة الشهرية الغزيرة:</strong> فقدان دم كثير أثناء الحيض</li>
+<li><strong>الحمل والإرضاع:</strong> احتياج الجسم لحديد أكثر</li>
+<li><strong>النزيف الداخلي أو الخارجي:</strong> نزيف معوي، قرحة، باسور</li>
+</ul>
+
+<h3>عند الجميع:</h3>
+<ul>
+<li><strong>النظام الغذائي الفقير بالحديد:</strong> خاصة النباتيين والنباتيين الصرفيين</li>
+<li><strong>سوء امتصاص الحديد:</strong> مشاكل في الجهاز الهضمي</li>
+<li><strong>الأمراض المزمنة:</strong> السرطان، الأمراض الكلوية</li>
+<li><strong>جراحات الجهاز الهضمي:</strong> استئصال جزء من المعدة أو الأمعاء</li>
+<li><strong>فيروس نقص المناعة (HIV)</strong></li>
+<li><strong>التبرع بالدم المتكرر:</strong> بدون إعطاء وقت كافي للتعويض</li>
+</ul>
+
+<h2>التحاليل المطلوبة لتشخيص فقر الدم</h2>
+
+<h3>1. تحليل الدم الكامل (Complete Blood Count - CBC)</h3>
+
+<p><strong>الهيموجلوبين (Hemoglobin):</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong>
+  <ul>
+  <li>الرجال: 13.5 - 17.5 g/dL</li>
+  <li>النساء: 12.0 - 15.5 g/dL</li>
+  </ul>
+</li>
+<li><strong>أقل من النطاق الطبيعي:</strong> يشير إلى فقر الدم</li>
+</ul>
+
+<p><strong>الهيماتوكريت (Hematocrit - HCT):</strong> نسبة حجم خلايا الدم الحمراء من إجمالي الدم</p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong>
+  <ul>
+  <li>الرجال: 41% - 50%</li>
+  <li>النساء: 36% - 44%</li>
+  </ul>
+</li>
+</ul>
+
+<p><strong>عدد كريات الدم الحمراء (RBC):</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong>
+  <ul>
+  <li>الرجال: 4.7 - 6.1 مليون/ميكروليتر</li>
+  <li>النساء: 4.2 - 5.4 مليون/ميكروليتر</li>
+  </ul>
+</li>
+</ul>
+
+<h3>2. فحوصات الحديد</h3>
+
+<p><strong>الحديد في الدم (Serum Iron):</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 60 - 170 ميكروغرام/ديسيلتر</li>
+<li><strong>أقل من الطبيعي:</strong> نقص الحديد</li>
+</ul>
+
+<p><strong>الفيريتين (Ferritin):</strong> يمثل مخزون الحديد في الجسم</p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong>
+  <ul>
+  <li>الرجال: 24 - 336 نانوغرام/ميلليلتر</li>
+  <li>النساء: 11 - 122 نانوغرام/ميلليلتر</li>
+  </ul>
+</li>
+<li><strong>أقل من 12:</strong> نقص مخزون الحديد</li>
+</ul>
+
+<p><strong>نقل الحديد (Transferrin/TIBC):</strong> البروتين الذي ينقل الحديد</p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 250 - 350 ميكروغرام/ديسيلتر</li>
+<li><strong>مرتفع:</strong> يشير إلى نقص الحديد</li>
+</ul>
+
+<h3>3. فحوصات إضافية</h3>
+
+<p><strong>فيتامين B12 وحمض الفوليك:</strong> للتحقق من أنواع فقر الدم الأخرى</p>
+
+<p><strong>اختبارات الكبد والكلى:</strong> للتحقق من الأمراض المزمنة</p>
+
+<h2>من يحتاج للفحص؟</h2>
+
+<ul>
+<li>النساء في سن الإنجاب (خاصة مع دورة شهرية غزيرة)</li>
+<li>الحوامل والمرضعات</li>
+<li>النباتيون والنباتيون الصرفيون</li>
+<li>الأشخاص الذين يعانون من أمراض معوية (Crohn's, celiac)</li>
+<li>الأشخاص الذين يتبرعون بالدم بانتظام</li>
+<li>الأطفال والرضع</li>
+<li>الأشخاص ذوو الأعراض المشبوهة</li>
+</ul>
+
+<h2>التحضير للفحص</h2>
+
+<ul>
+<li><strong>صيام ليلة واحدة:</strong> يفضل الصيام 12 ساعة للحصول على نتائج أكثر دقة</li>
+<li><strong>تجنب الكثير من السوائل:</strong> قد تؤثر على تركيز الهيموجلوبين</li>
+<li><strong>عينة دم من الذراع:</strong> الفحص بسيط وسريع</li>
+</ul>
+
+<h2>العلاج والوقاية</h2>
+
+<h3>العلاج:</h3>
+
+<ul>
+<li><strong>مكملات الحديد:</strong> الأشكال الشائعة: كبريتات الحديد (Ferrous sulfate)</li>
+<li><strong>تعديل النظام الغذائي:</strong> إضافة أطعمة غنية بالحديد</li>
+<li><strong>علاج السبب الأساسي:</strong> إذا كان النزيف، الدورة الشهرية الغزيرة، إلخ</li>
+<li><strong>الحقن الوريدية (IV Iron):</strong> في الحالات الشديدة</li>
+<li><strong>نقل الدم:</strong> في الحالات الطارئة</li>
+</ul>
+
+<h3>الأطعمة الغنية بالحديد:</h3>
+
+<ul>
+<li><strong>الحديد الحيمي (Heme Iron - من المصادر الحيوانية):</strong> اللحوم الحمراء، الكبد والكلى، الأسماك والمحار</li>
+<li><strong>الحديد غير الحيمي (Non-heme Iron - من المصادر النباتية):</strong> الخضار الورقية الداكنة (السبانخ، الملفوف)، العدس، الفول، الحبوب المدعمة، الشوكولاتة السوداء</li>
+<li><strong>لتحسين الامتصاص:</strong> تناول مصادر فيتامين C مع الحديد (البرتقال، الكيوي، الفراولة)</li>
+</ul>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> يُنصح بمراجعة الطبيب المختص قبل تناول مكملات الحديد، حيث قد يكون لها آثار جانبية وقد لا تكون مناسبة للجميع.
+</div>
+                `,
+                relatedArticles: [3, 5, 7]
+            },
+            {
+                id: 7,
+                slug: 'comprehensive-health-checkup',
+                title: 'الفحص الشامل: لماذا يحتاج كل شخص لباقة تحاليل دورية',
+                excerpt: 'الفحص الشامل الدوري أساس الوقاية. تعرّف على أهم التحاليل وباقات بريزما.',
+                category: 'preventive',
+                categoryName: 'الفحص الوقائي',
+                date: '2024-03-14',
+                readTime: 7,
+                emoji: '💚',
+                image: 'blog-images/07-comprehensive-checkup.png',
+                metaTitle: 'الفحص الشامل | باقات التحاليل الدورية — مختبرات بريزما',
+                metaDescription: 'الفحص الشامل الدوري أساس الوقاية. تعرّف على أهم التحاليل التي يحتاجها كل شخص حسب العمر والجنس. باقات بريزما تبدأ من 399 ريال.',
+                keywords: 'فحص شامل, تحاليل دورية, الفحص الوقائي, باقات التحاليل',
+                content: `
+<h2>أهمية الفحص الشامل الدوري</h2>
+<p>الوقاية خير من العلاج. هذا المثل الشهير ينطبق تماماً على الصحة. الفحص الشامل الدوري ليس مجرد رفاهية، بل هو استثمار في صحتك ومستقبلك. من خلال الفحص المبكر، يمكن اكتشاف الأمراض في مراحلها الأولى عندما يكون العلاج أسهل وأكثر فعالية.</p>
+
+<p>الدراسات الطبية تشير إلى أن الأشخاص الذين يخضعون لفحوصات دورية لديهم معدلات شفاء أعلى وتكاليف علاجية أقل مقارنة بمن ينتظرون ظهور الأعراض.</p>
+
+<h2>الفوائد الرئيسية للفحص الشامل</h2>
+
+<ul>
+<li><strong>الكشف المبكر عن الأمراض:</strong> قبل ظهور الأعراض</li>
+<li><strong>منع المضاعفات:</strong> التعامل مع المرض في مراحله المبكرة</li>
+<li><strong>تحسين نوعية الحياة:</strong> العلاج المبكر يقلل المعاناة</li>
+<li><strong>توفير التكاليف:</strong> العلاج المبكر أرخص من العلاج الطارئ</li>
+<li><strong>السلام النفسي:</strong> معرفة أن صحتك بحالة جيدة</li>
+<li><strong>تقليل معدلات الوفيات:</strong> الأمراض المكتشفة مبكراً لها معدلات شفاء أعلى</li>
+</ul>
+
+<h2>التحاليل الأساسية في الفحص الشامل</h2>
+
+<h3>1. فحوصات الدم الأساسية</h3>
+
+<ul>
+<li><strong>تحليل الدم الكامل (CBC):</strong> عد خلايا الدم البيضاء والحمراء والصفائح</li>
+<li><strong>كيمياء الدم (Chemistry Panel):</strong> وظائف الكبد والكلى، الأملاح والشوارد</li>
+<li><strong>الدهون (Lipid Profile):</strong> الكوليسترول والدهون الثلاثية</li>
+<li><strong>السكر (Glucose):</strong> صائم وعشوائي</li>
+<li><strong>فيتامين D و B12:</strong> للتحقق من النقص</li>
+</ul>
+
+<h3>2. فحوصات الهرمونات</h3>
+
+<ul>
+<li><strong>الغدة الدرقية (TSH):</strong> لفحص وظائف الغدة الدرقية</li>
+<li><strong>هرمونات الجنس:</strong> عند الحاجة حسب العمر والجنس</li>
+<li><strong>الكورتيزول:</strong> عند الشك بمشاكل الإجهاد</li>
+</ul>
+
+<h3>3. فحوصات الأمراض المعدية</h3>
+
+<ul>
+<li><strong>فيروس نقص المناعة (HIV):</strong> خاصة عند بداية الحياة الجنسية أو بعد سلوك محفوف بالمخاطر</li>
+<li><strong>التهاب الكبد B و C:</strong> مهم جداً</li>
+<li><strong>الزهري (Syphilis):</strong> جزء من الفحص الشامل</li>
+</ul>
+
+<h3>4. فحوصات ضغط الدم والقلب</h3>
+
+<ul>
+<li><strong>ضغط الدم:</strong> قياس أساسي يتم في كل زيارة</li>
+<li><strong>مخطط القلب (ECG):</strong> للأشخاص فوق 40 سنة أو مع عوامل خطر</li>
+<li><strong>الجلوكوز والدهون:</strong> لتقييم خطر أمراض القلب</li>
+</ul>
+
+<h3>5. فحوصات السرطان (Screening)</h3>
+
+<ul>
+<li><strong>سرطان الثدي:</strong> الماموجرام وفحص الثدي للنساء</li>
+<li><strong>سرطان عنق الرحم:</strong> مسحة عنق الرحم (Pap smear) للنساء</li>
+<li><strong>سرطان القولون:</strong> تنظير القولون للأشخاص فوق 50 سنة</li>
+<li><strong>سرطان البنكرياس:</strong> CA 19-9 عند الحاجة</li>
+</ul>
+
+<h2>من يحتاج للفحص الشامل ومتى؟</h2>
+
+<h3>الأشخاص الأصحاء:</h3>
+
+<ul>
+<li><strong>الأطفال والمراهقون:</strong> فحص سنوي أو كل سنتين</li>
+<li><strong>البالغون 18-40 سنة:</strong> كل سنة أو سنتين</li>
+<li><strong>البالغون 40-50 سنة:</strong> سنوياً</li>
+<li><strong>البالغون فوق 50 سنة:</strong> سنوياً أو حتى كل 6 أشهر</li>
+</ul>
+
+<h3>الأشخاص مع عوامل خطر:</h3>
+
+<ul>
+<li>التاريخ العائلي لأمراض القلب والسكري والسرطان</li>
+<li>السمنة والوزن الزائد</li>
+<li>المدخنون والعاملون في بيئات ملوثة</li>
+<li>مرضى السكري والقلب والكبد والكلى</li>
+<li>الأشخاص تحت ضغط نفسي مستمر</li>
+</ul>
+
+<h2>باقات الفحص الشامل في مختبرات بريزما</h2>
+
+<h3>الباقة الأساسية - 399 ريال</h3>
+<ul>
+<li>تحليل الدم الكامل (CBC)</li>
+<li>كيمياء الدم (أملاح، كبد، كلى)</li>
+<li>السكر الصائم</li>
+<li>الدهون (كوليسترول، دهون ثلاثية)</li>
+<li>وظائف الكبد</li>
+</ul>
+
+<h3>الباقة المتوسطة - 699 ريال (ينصح بها)</h3>
+<ul>
+<li>جميع ما في الباقة الأساسية</li>
+<li>الغدة الدرقية (TSH, T3, T4)</li>
+<li>فيتامين D</li>
+<li>الحديد والفيريتين</li>
+<li>B12 وحمض الفوليك</li>
+<li>الأمراض المعدية (HIV, Hepatitis B و C)</li>
+</ul>
+
+<h3>الباقة الفاخرة - 1299 ريال (الأشمل)</h3>
+<ul>
+<li>جميع ما في الباقة المتوسطة</li>
+<li>الهرمونات الإضافية</li>
+<li>مستضادات السرطان (Cancer markers)</li>
+<li>فحص شامل للأملاح والمعادن</li>
+<li>استشارة طبية مجانية لتفسير النتائج</li>
+<li>تقرير مفصل وشامل</li>
+</ul>
+
+<h2>خطوات الفحص الشامل</h2>
+
+<ol>
+<li><strong>التسجيل والاستقبال:</strong> تسجيل البيانات الأساسية والتاريخ الطبي</li>
+<li><strong>قياس الضغط والوزن:</strong> قياسات أساسية</li>
+<li><strong>سحب الدم:</strong> على يد فني متخصص</li>
+<li><strong>المعالجة والتحليل:</strong> معالجة العينات في المختبر</li>
+<li><strong>إصدار التقرير:</strong> تقرير شامل مع النتائج والقيم الطبيعية</li>
+<li><strong>الاستشارة (اختيارية):</strong> مع الطبيب لشرح النتائج</li>
+</ol>
+
+<h2>ما بعد الفحص الشامل</h2>
+
+<p><strong>إذا كانت النتائج طبيعية:</strong></p>
+
+<ul>
+<li>استمر في نمط حياتك الصحي</li>
+<li>كرر الفحص حسب التوصيات الطبية</li>
+<li>راقب أي أعراض جديدة</li>
+</ul>
+
+<p><strong>إذا كانت النتائج غير طبيعية:</strong></p>
+
+<ul>
+<li>استشر الطبيب المختص</li>
+<li>قد تحتاج لفحوصات إضافية</li>
+<li>اتبع التوصيات الطبية للعلاج</li>
+<li><strong>لا تقلق:</strong> معظم الحالات يمكن السيطرة عليها بالعلاج والمتابعة</li>
+</ul>
+
+<h2>نصائح لفحص صحيح</h2>
+
+<ul>
+<li><strong>الصيام:</strong> صم 8-12 ساعة قبل الفحص للحصول على نتائج أكثر دقة</li>
+<li><strong>الراحة:</strong> تجنب الإجهاد قبل الفحص</li>
+<li><strong>الأدوية:</strong> أخبر الطبيب بأي أدوية تأخذها</li>
+<li><strong>الالتزام:</strong> اتبع تعليمات الطبيب بدقة</li>
+<li><strong>الانتظام:</strong> كرر الفحص بانتظام حسب التوصيات</li>
+</ul>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> يُنصح بمراجعة الطبيب المختص قبل الفحص لتحديد نوع الفحص المناسب لحالتك الصحية.
+</div>
+                `,
+                relatedArticles: [3, 4, 5]
+            },
+            {
+                id: 8,
+                slug: 'testosterone-test-men',
+                title: 'هرمون الذكورة (التستوستيرون): الأعراض والفحص والحلول',
+                excerpt: 'نقص هرمون الذكورة يؤثر على الطاقة والمزاج. تعرّف على أعراض النقص والنسب الطبيعية.',
+                category: 'mens-health',
+                categoryName: 'هرمونات الرجل',
+                date: '2024-03-13',
+                readTime: 7,
+                emoji: '💪',
+                image: 'blog-images/08-testosterone.png',
+                metaTitle: 'تحليل هرمون الذكورة التستوستيرون | أعراض النقص — مختبرات بريزما',
+                metaDescription: 'نقص هرمون الذكورة يؤثر على الطاقة والمزاج والصحة الجنسية. تعرّف على أعراض النقص، التحاليل المطلوبة، والنسب الطبيعية.',
+                keywords: 'هرمون الذكورة, التستوستيرون, نقص التستوستيرون, فحص الذكورة, Testosterone',
+                content: `
+<h2>ما هو هرمون التستوستيرون؟</h2>
+<p>التستوستيرون (Testosterone) هو الهرمون الذكري الرئيسي الذي ينتجه الخصيتان (في الذكور) والمبيضان والغدد الكظرية (في الإناث، بكميات أقل). هذا الهرمون مهم جداً للصحة العامة، ليس فقط للصحة الجنسية.</p>
+
+<h3>دور هرمون التستوستيرون في الجسم:</h3>
+
+<ul>
+<li><strong>تطور الخصائص الجنسية الذكرية:</strong> نمو الذكر في البلوغ</li>
+<li><strong>الصحة الجنسية:</strong> الانتصاب والرغبة الجنسية</li>
+<li><strong>الخصوبة والإنجاب:</strong> إنتاج الحيوانات المنوية</li>
+<li><strong>بناء العضلات:</strong> تطور وقوة العضلات</li>
+<li><strong>قوة العظام:</strong> الحفاظ على كثافة العظام</li>
+<li><strong>الطاقة والحيوية:</strong> الشعور بالنشاط والحيوية</li>
+<li><strong>المزاج والثقة:</strong> تأثير على الحالة النفسية والمزاج</li>
+<li><strong>سرعة الأيض:</strong> حرق السعرات الحرارية</li>
+<li><strong>صحة القلب:</strong> تأثير على ضغط الدم والقلب</li>
+<li><strong>قوة المناعة:</strong> مساهمة في الدفاع المناعي</li>
+</ul>
+
+<h2>أعراض نقص التستوستيرون (Hypogonadism)</h2>
+
+<h3>الأعراض الجنسية:</h3>
+
+<ul>
+<li>انخفاض الرغبة الجنسية (Low libido)</li>
+<li>ضعف الانتصاب أو صعوبة الحفاظ على الانتصاب</li>
+<li>انخفاض عدد مرات الانتصاب الليلي</li>
+<li>انخفاض حجم السائل المنوي</li>
+<li>العقم أو صعوبة الإنجاب</li>
+</ul>
+
+<h3>الأعراض الجسدية:</h3>
+
+<ul>
+<li>التعب والإرهاق الشديد</li>
+<li>نقص الطاقة وقلة الحيوية</li>
+<li>ضعف العضلات</li>
+<li>زيادة الدهون في الجسم، خاصة حول الثدي والبطن</li>
+<li>ترهل الجلد</li>
+<li>تقليل حجم العضلات</li>
+<li>هشاشة العظام وسهولة الكسور</li>
+<li>تقليل شعر الجسم والذقن</li>
+<li>الهبات الساخنة والتعرق الليلي</li>
+</ul>
+
+<h3>الأعراض النفسية والعاطفية:</h3>
+
+<ul>
+<li>الاكتئاب والحزن</li>
+<li>القلق والعصبية</li>
+<li>نقص الثقة بالنفس</li>
+<li>صعوبة التركيز والذاكرة (Brain fog)</li>
+<li>الشعور بالاستحياء والخجل</li>
+<li>فقدان الحماس والدافع</li>
+<li>الشعور بالعزلة الاجتماعية</li>
+</ul>
+
+<h2>أسباب نقص التستوستيرون</h2>
+
+<h3>أسباب طبيعية:</h3>
+
+<ul>
+<li><strong>العمر:</strong> ينخفض التستوستيرون بحوالي 1% سنوياً بعد سن 30</li>
+<li><strong>السمنة والوزن الزائد:</strong> الدهون تقلل من إنتاج التستوستيرون</li>
+<li><strong>عدم النشاط البدني:</strong> قلة الرياضة</li>
+<li><strong>سوء النوم:</strong> النوم الكافي ضروري لإنتاج الهرمون</li>
+<li><strong>الضغط النفسي والإجهاد:</strong> الإجهاد المزمن يقلل الهرمون</li>
+<li><strong>سوء التغذية:</strong> نقص المعادن مثل الزنك</li>
+<li><strong>شرب الكحول الزائد:</strong> يقلل من إنتاج التستوستيرون</li>
+</ul>
+
+<h3>أسباب طبية:</h3>
+
+<ul>
+<li>أمراض الخصيتين (التهاب، إصابة، تأخر النمو)</li>
+<li>أمراض الغدة النخامية والدماغ</li>
+<li>أمراض الكبد والكلى</li>
+<li>مرض السكري</li>
+<li>أمراض القلب</li>
+<li>السمنة الشديدة</li>
+<li>الأمراض الوراثية (Klinefelter syndrome)</li>
+</ul>
+
+<h3>الأدوية:</h3>
+
+<ul>
+<li>بعض الأدوية النفسية</li>
+<li>أدوية ضغط الدم</li>
+<li>الأدوية الهرمونية</li>
+<li>بعض مسكنات الألم</li>
+</ul>
+
+<h2>فحص التستوستيرون</h2>
+
+<h3>أنواع الفحوصات:</h3>
+
+<p><strong>التستوستيرون الكلي (Total Testosterone):</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 300 - 1000 نانوغرام/ديسيليتر (ng/dL)</li>
+<li>أو 10.4 - 34.7 نانومول/ليتر (nmol/L)</li>
+<li><strong>أقل من 300 ng/dL:</strong> قد يشير إلى نقص التستوستيرون</li>
+</ul>
+
+<p><strong>التستوستيرون الحر (Free Testosterone):</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 7 - 24 بيكوغرام/ميلليلتر (pg/mL)</li>
+<li>يمثل التستوستيرون النشط في الجسم</li>
+</ul>
+
+<p><strong>SHBG (Sex Hormone Binding Globulin):</strong></p>
+
+<ul>
+<li>بروتين يرتبط بالتستوستيرون</li>
+<li><strong>النسب الطبيعية:</strong> 10 - 55 نانومول/ليتر</li>
+</ul>
+
+<h2>متى تحتاج لفحص التستوستيرون؟</h2>
+
+<ul>
+<li>إذا كنت تعاني من أعراض نقص التستوستيرون</li>
+<li>مشاكل في الانتصاب أو قلة الرغبة الجنسية</li>
+<li>الاكتئاب والقلق المستمر</li>
+<li>عدم القدرة على بناء العضلات رغم التمرين</li>
+<li>مشاكل في الخصوبة والعقم</li>
+<li>قبل بدء أي علاج هرموني</li>
+<li>الفحص الروتيني للرجال فوق 40 سنة</li>
+</ul>
+
+<h2>التحضير للفحص</h2>
+
+<ul>
+<li><strong>الصيام:</strong> يفضل الصيام 12 ساعة قبل الفحص</li>
+<li><strong>التوقيت:</strong> الفحص الأول يجب أن يكون في الصباح (قبل 9-10 صباحاً) لأن التستوستيرون يكون أعلى في الصباح</li>
+<li><strong>تجنب الإجهاد:</strong> محاولة تجنب الضغط النفسي قبل الفحص</li>
+<li><strong>النوم:</strong> نم بشكل كافي الليلة قبل الفحص</li>
+<li><strong>تجنب الرياضة الشاقة:</strong> لا تمارس تمارين ثقيلة قبل الفحص بـ 24 ساعة</li>
+</ul>
+
+<h2>العلاج والخيارات</h2>
+
+<h3>تعديلات نمط الحياة (الخطوة الأولى):</h3>
+
+<ul>
+<li><strong>ممارسة الرياضة:</strong> تمارين القوة والمقاومة (3-4 مرات أسبوعياً)</li>
+<li><strong>فقدان الوزن:</strong> إذا كنت تعاني من السمنة</li>
+<li><strong>النوم الكافي:</strong> 7-9 ساعات يومياً</li>
+<li><strong>تقليل الضغط النفسي:</strong> اليوغا، التأمل، المشي</li>
+<li><strong>تحسين التغذية:</strong>
+  <ul>
+  <li>الأطعمة الغنية بالزنك (المحار، اللحم الأحمر، البذور)</li>
+  <li>الأطعمة الغنية بفيتامين D (الأسماك، البيض، الحليب)</li>
+  <li>الدهون الصحية (الأفوكادو، المكسرات، زيت الزيتون)</li>
+  </ul>
+</li>
+<li><strong>تقليل الكحول:</strong> أو تجنبه تماماً</li>
+<li><strong>تجنب المنشطات غير الموصوفة:</strong> لها آثار جانبية خطيرة</li>
+</ul>
+
+<h3>المكملات الغذائية:</h3>
+
+<ul>
+<li>الزنك (Zinc)</li>
+<li>فيتامين D</li>
+<li>الفيتامينات المتعددة</li>
+<li><strong>يُنصح بمراجعة الطبيب قبل تناول أي مكملات</strong></li>
+</ul>
+
+<h3>العلاج الهرموني (Testosterone Replacement Therapy):</h3>
+
+<p>في الحالات الشديدة، قد يصف الطبيب:</p>
+
+<ul>
+<li>حقن التستوستيرون</li>
+<li>الجل الموضعي</li>
+<li>اللصقات (Patches)</li>
+<li><strong>يتطلب متابعة دقيقة وفحوصات منتظمة</strong></li>
+</ul>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> يُنصح بمراجعة الطبيب المختص قبل بدء أي علاج. العلاج الهرموني له فوائد وأضرار، ويجب أن يكون تحت إشراف طبي دقيق.
+</div>
+
+<h2>الوقاية والحفاظ على المستويات الطبيعية</h2>
+
+<ul>
+<li>الحفاظ على وزن صحي</li>
+<li>ممارسة الرياضة بانتظام</li>
+<li>نوم كافي وجيد</li>
+<li>إدارة الضغط النفسي</li>
+<li>تغذية صحية ومتوازنة</li>
+<li>تجنب المواد الضارة</li>
+<li>فحوصات دورية</li>
+</ul>
+                `,
+                relatedArticles: [4, 5, 7]
+            },
+            {
+                id: 9,
+                slug: 'liver-function-test-guide',
+                title: 'تحليل وظائف الكبد: دليلك لفهم النتائج',
+                excerpt: 'تعرّف على تحاليل وظائف الكبد: ALT، AST، البيليروبين. كيف تقرأ نتائجك.',
+                category: 'organ-function',
+                categoryName: 'وظائف الأعضاء',
+                date: '2024-03-12',
+                readTime: 7,
+                emoji: '🔬',
+                image: 'blog-images/09-liver-function.png',
+                metaTitle: 'تحليل وظائف الكبد | ALT AST والبيليروبين — مختبرات بريزما',
+                metaDescription: 'تعرّف على تحاليل وظائف الكبد: ALT، AST، GGT، الألبومين، البيليروبين. كيف تقرأ نتائجك ومتى تقلق.',
+                keywords: 'تحليل الكبد, وظائف الكبد, ALT, AST, البيليروبين, أنزيمات الكبد',
+                content: `
+<h2>أهمية الكبد ودوره في الجسم</h2>
+<p>الكبد هو أكبر عضو داخلي في الجسم، ويقع تحت القفص الصدري من اليمين. يلعب الكبد دوراً حيوياً جداً في الجسم، حيث يقوم بأكثر من 500 وظيفة مختلفة.</p>
+
+<h3>الوظائف الرئيسية للكبد:</h3>
+
+<ul>
+<li><strong>إنتاج الصفراء:</strong> تساعد في هضم الدهون</li>
+<li><strong>تنقية الدم:</strong> إزالة السموم والنفايات</li>
+<li><strong>إنتاج البروتينات:</strong> مثل الألبومين والبروتينات المسؤولة عن تجلط الدم</li>
+<li><strong>تخزين الفيتامينات والمعادن:</strong> الحديد وفيتامينات A و B و D</li>
+<li><strong>معالجة المغذيات:</strong> من الطعام الممتص</li>
+<li><strong>إنتاج الكوليسترول:</strong> الضروري لوظائف الجسم</li>
+<li><strong>تنظيم مستويات السكر:</strong> تخزين واطلاق الجلوكوز</li>
+<li><strong>حماية من العدوى:</strong> جزء من جهاز المناعة</li>
+<li><strong>تكسير الأدوية والكحول:</strong> معالجة المواد الضارة</li>
+<li><strong>إنتاج عوامل التجلط:</strong> منع النزيف</li>
+</ul>
+
+<h2>تحاليل وظائف الكبد (Liver Function Tests - LFTs)</h2>
+
+<h3>1. الإنزيمات الكبدية</h3>
+
+<p><strong>ALT (Alanine Aminotransferase) - ناقلة أمين الألانين:</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 7 - 35 وحدة/لتر (U/L)</li>
+<li>إنزيم موجود بشكل أساسي في الكبد</li>
+<li>يرتفع عند تلف خلايا الكبد</li>
+<li><strong>أهم مؤشر لتلف الكبد</strong></li>
+</ul>
+
+<p><strong>AST (Aspartate Aminotransferase) - ناقلة أمين الأسبارتات:</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 10 - 35 وحدة/لتر (U/L)</li>
+<li>موجود في الكبد والعضلات والقلب</li>
+<li>يرتفع مع تلف الكبد والعضلات والقلب</li>
+</ul>
+
+<p><strong>GGT (Gamma-Glutamyl Transferase) - جاما جلوتاميل ترانسفيراز:</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 0 - 50 وحدة/لتر (U/L) (قد تختلف حسب المختبر)</li>
+<li>يرتفع مع أمراض الكبد والمرارة</li>
+<li>حساس جداً لأمراض الكبد</li>
+</ul>
+
+<p><strong>ALP (Alkaline Phosphatase) - الفسفاتاز القلوي:</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 30 - 90 وحدة/لتر (U/L)</li>
+<li>موجود في الكبد والعظام والأمعاء</li>
+<li>يرتفع في أمراض الكبد والعظام والحمل</li>
+</ul>
+
+<h3>2. بروتينات الدم</h3>
+
+<p><strong>الألبومين (Albumin):</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 3.5 - 5.5 جرام/ديسيليتر (g/dL)</li>
+<li>البروتين الرئيسي الذي ينتجه الكبد</li>
+<li>انخفاضه يشير إلى تليف أو فشل الكبد</li>
+</ul>
+
+<p><strong>البروتين الكلي (Total Protein):</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 6.0 - 8.3 جرام/ديسيليتر (g/dL)</li>
+<li>مجموع الألبومين والجلوبيولينات</li>
+</ul>
+
+<h3>3. البيليروبين (Bilirubin)</h3>
+
+<p><strong>البيليروبين الكلي (Total Bilirubin):</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 0.1 - 1.2 ملليغرام/ديسيليتر (mg/dL)</li>
+<li>ينتج من تحطم خلايا الدم الحمراء</li>
+<li>يتم معالجته في الكبد</li>
+<li>ارتفاعه يسبب اليرقان (اصفرار الجلد والعينين)</li>
+</ul>
+
+<p><strong>البيليروبين المباشر (Direct/Conjugated Bilirubin):</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 0.0 - 0.3 ملليغرام/ديسيليتر (mg/dL)</li>
+<li>البيليروبين الذي يتم معالجته في الكبد</li>
+</ul>
+
+<p><strong>البيليروبين غير المباشر (Indirect/Unconjugated Bilirubin):</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 0.1 - 0.9 ملليغرام/ديسيليتر (mg/dL)</li>
+</ul>
+
+<h3>4. عوامل التجلط</h3>
+
+<p><strong>PT/INR (Prothrombin Time):</strong></p>
+
+<ul>
+<li><strong>النسب الطبيعية:</strong> 11 - 13.5 ثانية (قد تختلف)</li>
+<li>يقيس قدرة الدم على التجلط</li>
+<li>ينتج عامل التجلط في الكبد</li>
+</ul>
+
+<h2>أسباب ارتفاع إنزيمات الكبد</h2>
+
+<h3>أسباب شائعة:</h3>
+
+<ul>
+<li><strong>فيروسات التهاب الكبد (Hepatitis A, B, C, E):</strong> العدوى الفيروسية</li>
+<li><strong>دهون الكبد (Fatty Liver):</strong> تراكم الدهون في الكبد</li>
+<li><strong>الكبد الدهني غير الكحولي (NAFLD)</strong></li>
+<li><strong>الكبد الدهني الكحولي:</strong> الإفراط في شرب الكحول</li>
+<li><strong>تليف الكبد (Cirrhosis):</strong> تندب الكبد</li>
+<li><strong>التهاب الكبد المناعي (Autoimmune Hepatitis)</strong></li>
+<li><strong>حصوات المرارة (Gallstones)</strong></li>
+<li><strong>التهاب البنكرياس (Pancreatitis)</strong></li>
+<li><strong>السمنة والسكري</strong></li>
+<li><strong>بعض الأدوية:</strong> الباراسيتامول، المضادات الحيوية، أدوية ضغط الدم</li>
+<li><strong>الإفراط في المكملات الغذائية (خاصة الحديد)</strong></li>
+<li><strong>أمراض وراثية:</strong> مثل hemochromatosis و Wilson's disease</li>
+</ul>
+
+<h2>متى تحتاج لفحص وظائف الكبد؟</h2>
+
+<ul>
+<li>أعراض تشير إلى مشاكل في الكبد (اليرقان، البول الغامق، البراز الفاتح)</li>
+<li>ألم في الجانب الأيمن من البطن</li>
+<li>إرهاق وضعف مستمر</li>
+<li>تاريخ عائلي لأمراض الكبد</li>
+<li>التهاب الكبد السابق أو الحالي</li>
+<li>الإفراط في شرب الكحول</li>
+<li>استخدام أدوية قد تؤثر على الكبد</li>
+<li>قبل تناول بعض الأدوية الجديدة</li>
+<li>فحص دوري للأشخاص مع عوامل خطر</li>
+<li>الفحص الشامل الدوري</li>
+</ul>
+
+<h2>التحضير للفحص</h2>
+
+<ul>
+<li><strong>صيام 8-12 ساعة:</strong> للحصول على نتائج أكثر دقة</li>
+<li><strong>تجنب الكحول:</strong> قبل الفحص بـ 24 ساعة على الأقل</li>
+<li><strong>عينة دم بسيطة:</strong> من الذراع</li>
+<li><strong>إخبار الطبيب بالأدوية:</strong> قد تؤثر على النتائج</li>
+</ul>
+
+<h2>الأمراض الشائعة للكبد</h2>
+
+<p><strong>الكبد الدهني (Fatty Liver):</strong></p>
+
+<p>تراكم الدهون في الكبد. قد يكون كحولياً أو غير كحولي. عادة لا تظهر أعراض في البداية، لكن قد يؤدي إلى تليف الكبد مع الوقت.</p>
+
+<p><strong>التهاب الكبد الفيروسي (Viral Hepatitis):</strong></p>
+
+<p>التهاب الكبد A و B و C و D و E. A و E غالباً مؤقت، بينما B و C قد تصبح مزمنة وتؤدي إلى تليف الكبد.</p>
+
+<p><strong>تليف الكبد (Cirrhosis):</strong></p>
+
+<p>تندب دائم للكبد ناتج عن أمراض مزمنة. قد يؤدي إلى فشل الكبد.</p>
+
+<h2>الوقاية وصحة الكبد</h2>
+
+<ul>
+<li><strong>تجنب الكحول:</strong> أو تقليله إلى الحد الأدنى</li>
+<li><strong>التطعيم:</strong> ضد التهاب الكبد A و B</li>
+<li><strong>الممارسة الآمنة:</strong> تجنب انتقال فيروسات التهاب الكبد</li>
+<li><strong>الحفاظ على وزن صحي:</strong> تجنب السمنة والكبد الدهني</li>
+<li><strong>نظام غذائي صحي:</strong> غني بالألياف والفيتامينات</li>
+<li><strong>ممارسة الرياضة:</strong> بانتظام</li>
+<li><strong>تجنب العقاقير غير الموصوفة:</strong> الكحول والمخدرات</li>
+<li><strong>استخدام الأدوية بحذر:</strong> اتبع التعليمات والجرعات</li>
+<li><strong>النظافة:</strong> غسل اليدين جيداً والطعام النظيف</li>
+<li><strong>فحوصات دورية:</strong> خاصة للأشخاص مع عوامل خطر</li>
+</ul>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> يُنصح بمراجعة الطبيب المختص عند ظهور أي أعراض أو عند ارتفاع إنزيمات الكبد في التحاليل.
+</div>
+                `,
+                relatedArticles: [2, 5, 7]
+            },
+            {
+                id: 10,
+                slug: 'premarital-screening-tests',
+                title: 'تحاليل ما قبل الزواج: كل ما تحتاج معرفته',
+                excerpt: 'تحاليل ما قبل الزواج إلزامية في السعودية. تعرّف على الفحوصات المطلوبة وأهميتها.',
+                category: 'premarital',
+                categoryName: 'فحوصات ما قبل الزواج',
+                date: '2024-03-11',
+                readTime: 8,
+                emoji: '💑',
+                image: 'blog-images/10-premarital-tests.png',
+                metaTitle: 'تحاليل ما قبل الزواج في السعودية | الدليل الشامل — مختبرات بريزما',
+                metaDescription: 'تحاليل ما قبل الزواج إلزامية في السعودية. تعرّف على الفحوصات المطلوبة، أهميتها، والعملية الكاملة. خدمة سرية ومريحة في بريزما.',
+                keywords: 'تحاليل ما قبل الزواج, الفحوصات الزوجية, الثلاسيميا, السيلان المنجلي, فحوصات الزواج',
+                content: `
+<h2>قانون التحاليل الطبية قبل الزواج في السعودية</h2>
+<p>في المملكة العربية السعودية، الفحوصات الطبية قبل الزواج إجراء إلزامي وقانوني. لا يمكن إتمام عقد الزواج بدون شهادة تؤكد إجراء هذه الفحوصات. هذا القانون الحكيم وُضع لحماية الزوجين والأطفال من الأمراض الوراثية والمعدية الخطيرة.</p>
+
+<p>الهدف من هذه التحاليل هو:</p>
+
+<ul>
+<li>حماية الزوجين من أمراض معدية خطيرة</li>
+<li>حماية الأطفال المستقبليين من الأمراض الوراثية</li>
+<li>إعطاء الزوجين معلومات كاملة عن صحتهما</li>
+<li>تقليل معدلات الأمراض الوراثية والمعدية</li>
+<li>توعية الزوجين عن أهمية الصحة الزوجية</li>
+</ul>
+
+<h2>الفحوصات الإلزامية في السعودية</h2>
+
+<h3>1. اختبار فيروس نقص المناعة (HIV)</h3>
+
+<p><strong>الأهمية:</strong> اكتشاف الإصابة بـ HIV والوقاية من انتقاله للشريك والأطفال</p>
+
+<p><strong>طريقة الفحص:</strong> عينة دم بسيطة</p>
+
+<p><strong>النتيجة:</strong> سالب = صحي، موجب = يتطلب علاج وإجراءات وقاية</p>
+
+<p><strong>الأهمية الطبية:</strong> مرض خطير يضعف المناعة ويمكن السيطرة عليه بالأدوية الحديثة</p>
+
+<h3>2. فحص التهاب الكبد B و C (Hepatitis B و Hepatitis C)</h3>
+
+<p><strong>Hepatitis B:</strong></p>
+
+<ul>
+<li>فيروس قد يسبب التهاب كبدي حاد أو مزمن</li>
+<li>ينتقل عن طريق الدم والسوائل الجسدية</li>
+<li>قد يسبب تليف الكبد وسرطان الكبد</li>
+<li>يوجد لقاح فعال جداً ضده</li>
+</ul>
+
+<p><strong>Hepatitis C:</strong></p>
+
+<ul>
+<li>فيروس ينتقل بشكل أساسي عن طريق الدم</li>
+<li>قد تكون العدوى مزمنة وتسبب تليف الكبد</li>
+<li>الكشف المبكر يسمح بعلاج فعال</li>
+</ul>
+
+<p><strong>طريقة الفحص:</strong> عينة دم بسيطة</p>
+
+<p><strong>النتائج:</strong> سالب = لا توجد عدوى، موجب = يتطلب علاج ومتابعة</p>
+
+<h3>3. اختبار الزهري (Syphilis)</h3>
+
+<p><strong>الأهمية:</strong> اكتشاف مرض الزهري وتجنب انتقاله</p>
+
+<p><strong>الأعراض:</strong></p>
+
+<ul>
+<li>المرحلة الأولى: قرحة في موقع العدوى</li>
+<li>المرحلة الثانية: طفح جلدي وحمى</li>
+<li>المرحلة الثالثة: قد تسبب مضاعفات خطيرة على الدماغ والقلب</li>
+</ul>
+
+<p><strong>طريقة الفحص:</strong> عينة دم</p>
+
+<p><strong>العلاج:</strong> سهل جداً بالمضادات الحيوية إذا تم اكتشافه مبكراً</p>
+
+<h3>4. فحص الثلاسيميا (Thalassemia) والأنيميا المنجلية (Sickle Cell)</h3>
+
+<p><strong>الثلاسيميا:</strong></p>
+
+<p>مرض وراثي يؤثر على تصنيع الهيموجلوبين. الشخص الذي يرث المرض من كلا الوالدين سيعاني من فقر دم شديد يتطلب نقل دم منتظم وعلاج مدى الحياة.</p>
+
+<p><strong>الأنيميا المنجلية:</strong></p>
+
+<p>مرض وراثي يسبب تشوه خلايا الدم الحمراء. يسبب ألماً شديداً وقد يؤدي إلى مضاعفات خطيرة.</p>
+
+<p><strong>أهمية الفحص:</strong></p>
+
+<ul>
+<li>إذا كان أحد الزوجين حاملاً للجين وليس مريضاً، فهناك احتمالية وراثة الأطفال للمرض</li>
+<li>إذا كان كلا الزوجين حاملاً، هناك 25% احتمالية أن يولد الطفل مريضاً</li>
+<li>هذا المعلومات تساعد الزوجين على اتخاذ قرارات مستنيرة</li>
+</ul>
+
+<p><strong>طريقة الفحص:</strong> عينة دم يتم تحليلها</p>
+
+<h2>الفحوصات الإضافية الموصى بها</h2>
+
+<p>بالإضافة للفحوصات الإلزامية، بعض المختبرات والأطباء يوصون بفحوصات إضافية:</p>
+
+<ul>
+<li><strong>فيروس الورم الحليمي البشري (HPV):</strong> خاصة للإناث (وقاية من سرطان عنق الرحم)</li>
+<li><strong>السكري (Glucose):</strong> لاكتشاف السكري أو الحالات السابقة للسكري</li>
+<li><strong>الدهون (Cholesterol):</strong> لتقييم صحة القلب والأوعية الدموية</li>
+<li><strong>الغدة الدرقية (TSH):</strong> مهمة للخصوبة والحمل</li>
+<li><strong>فحص الدم الكامل (CBC):</strong> للكشف عن الأنيميا والعدوى</li>
+<li><strong>وظائف الكبد والكلى:</strong> لتقييم الصحة العامة</li>
+</ul>
+
+<h2>متى يتم إجراء الفحوصات؟</h2>
+
+<p><strong>قبل الزواج:</strong> يفضل إجراء الفحوصات قبل بدء الإجراءات القانونية للزواج</p>
+
+<p><strong>المدة:</strong> يمكن إجراء جميع الفحوصات في زيارة واحدة (1-2 ساعة)</p>
+
+<p><strong>سرعة النتائج:</strong> معظم النتائج تأتي خلال 24-48 ساعة</p>
+
+<h2>التحضير للفحوصات</h2>
+
+<ul>
+<li><strong>الصيام:</strong> يفضل الصيام 8-12 ساعة قبل الفحص</li>
+<li><strong>الهدوء والراحة:</strong> حاول الاسترخاء قبل الفحص</li>
+<li><strong>الملابس المريحة:</strong> ارتدِ ملابس سهلة لتسهيل سحب الدم</li>
+<li><strong>الحضور معاً:</strong> يفضل أن يحضر الزوجان معاً</li>
+<li><strong>الوثائق:</strong> احضر بطاقة الهوية</li>
+<li><strong>الهدوء والسرية:</strong> جميع المعلومات سرية وآمنة</li>
+</ul>
+
+<h2>النتائج والخطوات التالية</h2>
+
+<h3>إذا كانت جميع النتائج سالبة (طبيعية):</h3>
+
+<ul>
+<li>تلقي شهادة صحية للقطاع العام للزواج</li>
+<li>معلومات مطمئنة عن صحة الزوجين</li>
+<li>يمكن المضي قدماً في الزواج بدون قلق</li>
+<li>يُنصح بمتابعة دورية بعد الزواج</li>
+</ul>
+
+<h3>إذا ظهرت نتائج موجبة:</h3>
+
+<ul>
+<li>استشارة الطبيب المختص فوراً</li>
+<li>تلقي شرح مفصل للمرض والعلاج والخيارات</li>
+<li>لا يعني منع الزواج، بل يعني التعامل مع الوضع بوعي وحكمة</li>
+<li>بعض الأمراض قابلة للعلاج أو السيطرة عليها</li>
+<li>قد يتطلب تأجيل الزواج قليلاً حتى يتم التعامل مع الوضع</li>
+<li><strong>الشفافية والصراحة مع الشريك ضرورية جداً</strong></li>
+</ul>
+
+<h2>الأسئلة الشائعة عن الفحوصات</h2>
+
+<p><strong>هل النتائج سرية؟</strong> نعم، جميع النتائج والمعلومات سرية تماماً ومحمية بالقانون</p>
+
+<p><strong>هل هناك ألم أثناء الفحص؟</strong> لا، مجرد إحساس خفيف عند سحب الدم</p>
+
+<p><strong>هل الفحص آمن؟</strong> نعم، تماماً آمن. لا توجد أي مضاعفات</p>
+
+<p><strong>كم التكلفة؟</strong> تختلف حسب المختبر، لكنها معقولة جداً (عادة 100-300 ريال)</p>
+
+<p><strong>هل يمكن رفض الفحص؟</strong> قانونياً لا، هو إجراء إلزامي</p>
+
+<h2>أهمية الوعي والتثقيف</h2>
+
+<p>الفحوصات الطبية قبل الزواج ليست للترهيب أو المنع، بل هي لحماية وتثقيف الزوجين. معرفة الحقائق الطبية تساعد على:</p>
+
+<ul>
+<li>اتخاذ قرارات مستنيرة وواعية</li>
+<li>الاستعداد لأي تحديات صحية</li>
+<li>حماية أطفال المستقبل من الأمراض</li>
+<li>بناء زواج صحي وسعيد</li>
+<li>الثقة والشفافية بين الزوجين</li>
+</ul>
+
+<div class="disclaimer">
+<strong>⚠️ هام:</strong> النتائج الموجبة لا تعني نهاية العالم. كثير من الأمراض قابلة للعلاج أو السيطرة عليها بفعالية. التواصل المفتوح والصراحة بين الزوجين مهمة جداً. يُنصح بمراجعة الطبيب المختص عند الحاجة للاستشارة والدعم النفسي.
+</div>
+                `,
+                relatedArticles: [1, 2, 7]
+            }
+        ];
+
+        // Initialize blog
+        let currentArticle = null;
+
+        function renderBlogListing() {
+            const listing = document.getElementById('blog-listing');
+            const view = document.getElementById('article-view');
+            listing.style.display = 'block';
+            view.style.display = 'none';
+            renderArticleCards();
+        }
+
+        function renderArticleCards() {
+            const grid = document.getElementById('blogGrid');
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const selectedCategory = document.querySelector('.category-btn.active').dataset.category;
+
+            const filteredArticles = articles.filter(article => {
+                const matchesSearch = article.title.toLowerCase().includes(searchTerm) || 
+                                    article.excerpt.toLowerCase().includes(searchTerm) ||
+                                    article.keywords.toLowerCase().includes(searchTerm);
+                const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
+                return matchesSearch && matchesCategory;
+            });
+
+            grid.innerHTML = filteredArticles.map(article => `
+                <div class="article-card" onclick="openArticle(${article.id})">
+                    <div class="article-thumbnail">${article.image ? `<img src="${article.image}" alt="${article.title}" loading="lazy">` : article.emoji}</div>
+                    <div class="article-content">
+                        <div class="article-category">${article.categoryName}</div>
+                        <h3 class="article-title">${article.title}</h3>
+                        <p class="article-excerpt">${article.excerpt}</p>
+                        <div class="article-meta">
+                            <span>📅 ${new Date(article.date).toLocaleDateString('ar-SA')}</span>
+                            <span>⏱️ ${article.readTime} دقائق</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openArticle(id) {
+            const article = articles.find(a => a.id === id);
+            if (!article) return;
+
+            currentArticle = article;
+            updateMetaTags(article);
+
+            const content = document.getElementById('articleContent');
+            const relatedArticles = article.relatedArticles.map(id => articles.find(a => a.id === id));
+
+            let relatedHTML = '';
+            if (relatedArticles.length > 0) {
+                relatedHTML = `
+                    <div class="related-articles">
+                        <h2>مقالات ذات صلة</h2>
+                        <div class="related-articles-grid">
+                            ${relatedArticles.map(rel => `
+                                <div class="related-card" onclick="openArticle(${rel.id})">
+                                    <div class="related-card-title">${rel.title}</div>
+                                    <div class="related-card-category">${rel.categoryName}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            content.innerHTML = `
+                <div class="article-header">
+                    <div class="breadcrumb">
+                        <a onclick="showBlogListing(event)">المدونة</a> / ${article.categoryName}
+                    </div>
+                    <h1 class="article-title-main">${article.title}</h1>
+                    <div class="article-meta-main">
+                        <span>📅 ${new Date(article.date).toLocaleDateString('ar-SA')}</span>
+                        <span>⏱️ ${article.readTime} دقائق</span>
+                        <span>📁 ${article.categoryName}</span>
+                    </div>
+                </div>
+
+                ${article.image ? `<div class="article-hero-image"><img src="${article.image}" alt="${article.title}"></div>` : ''}
+
+                <div class="article-body">
+                    ${article.content}
+                </div>
+
+                <div class="faq-section">
+                    <h2>الأسئلة الشائعة</h2>
+                    ${getFAQForArticle(article).map((faq, i) => `
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                ${faq.q}
+                                <span class="faq-toggle">▼</span>
+                            </div>
+                            <div class="faq-answer">${faq.a}</div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="cta-section">
+                    <h2>هل لديك أسئلة أو تحتاج استشارة طبية؟</h2>
+                    <p>فريق مختبرات بريزما الطبي هنا لمساعدتك. تواصل معنا عبر الطرق التالية:</p>
+                    <div class="cta-buttons">
+                        <a href="https://wa.me/966920031642" class="btn btn-primary" target="_blank">💬 تواصل عبر واتس آب</a>
+                        <a href="tel:+966920031642" class="btn btn-secondary">☎️ اتصل الآن</a>
+                    </div>
+                </div>
+
+                ${relatedHTML}
+
+                <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #1f2937;">
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">شارك هذا المقال:</p>
+                    <div class="share-buttons">
+                        <button class="share-btn" onclick="copyLink('${article.slug}')">🔗 نسخ الرابط</button>
+                        <a href="https://wa.me/?text=تحقق من هذا المقال: ${article.title} على مدونة بريزما" target="_blank" class="share-btn">💬 شارك على واتس</a>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('blog-listing').style.display = 'none';
+            document.getElementById('article-view').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showBlogListing(e) {
+            e.preventDefault();
+            // Clear hash/query so article doesn't reopen on refresh
+            if (window.location.hash) history.replaceState(null, '', window.location.pathname);
+            renderBlogListing();
+            window.scrollTo(0, 0);
+        }
+
+        function updateMetaTags(article) {
+            document.title = article.metaTitle;
+            document.querySelector('meta[name="description"]').content = article.metaDescription;
+            document.querySelector('meta[name="keywords"]').content = article.keywords;
+
+            // JSON-LD Schema
+            const schema = {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": article.title,
+                "description": article.metaDescription,
+                "image": "https://prismalabs.sa/logo.png",
+                "datePublished": article.date,
+                "author": {
+                    "@type": "Organization",
+                    "name": "Prisma Laboratories",
+                    "logo": "https://prismalabs.sa/logo.png"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Prisma Laboratories",
+                    "logo": "https://prismalabs.sa/logo.png"
+                }
+            };
+
+            let schemaScript = document.querySelector('script[type="application/ld+json"]');
+            if (!schemaScript) {
+                schemaScript = document.createElement('script');
+                schemaScript.type = 'application/ld+json';
+                document.head.appendChild(schemaScript);
+            }
+            schemaScript.textContent = JSON.stringify(schema);
+        }
+
+        function getFAQForArticle(article) {
+            const faqs = {
+                1: [
+                    { q: "هل يمكن إجراء فحص UBT في المنزل؟", a: "لا، يجب إجراء الفحص في مختبر معتمد لضمان الدقة والسلامة والنتائج الموثوقة." },
+                    { q: "كم تستغرق نتائج الفحص؟", a: "عادة تأتي النتائج خلال 24-48 ساعة من إجراء الفحص." },
+                    { q: "هل النتيجة الموجبة تعني تأكيد المرض؟", a: "نعم، النتيجة الموجبة تؤكد وجود جرثومة المعدة ويجب بدء العلاج فوراً." },
+                    { q: "متى يمكن إجراء الفحص بعد العلاج؟", a: "يفضل الانتظار 4 أسابيع على الأقل من انتهاء العلاج قبل إعادة الفحص." }
+                ],
+                2: [
+                    { q: "هل جميع الأمراض المنقولة جنسياً قابلة للشفاء؟", a: "البكتيريا قابلة للشفاء، الفيروسات قابلة للسيطرة لكن ليست قابلة للشفاء الكامل." },
+                    { q: "هل يمكن أن لا تظهر أعراض؟", a: "نعم، 50% من المصابين لا تظهر عليهم أعراض، لذا الفحص الدوري ضروري." },
+                    { q: "كم مرة يجب الفحص؟", a: "يُنصح بفحص دوري سنوي على الأقل للنشطين جنسياً." },
+                    { q: "هل الفحص سري؟", a: "نعم، تماماً سري وآمن. جميع المعلومات محمية بالسرية الطبية." }
+                ],
+                3: [
+                    { q: "كم يستغرق مفعول المكملات؟", a: "عادة يستغرق 4-8 أسابيع لرفع مستويات فيتامين د بشكل ملحوظ." },
+                    { q: "هل يمكن تناول مكملات بدون فحص؟", a: "من الأفضل إجراء فحص أولاً لتحديد الجرعة المناسبة." },
+                    { q: "هل هناك أعراض جانبية للمكملات؟", a: "الجرعات الموصى بها آمنة جداً، لكن الجرعات العالية جداً قد تسبب مشاكل." },
+                    { q: "متى أعيد الفحص؟", a: "يُنصح بفحص المتابعة بعد 8-12 أسبوع من بدء المكملات." }
+                ],
+                4: [
+                    { q: "هل TSH الوحيد كافٍ للتشخيص؟", a: "TSH كافٍ في الغالب، لكن قد يحتاج الطبيب لفحص T3 و T4 للتوضيح." },
+                    { q: "هل يؤثر الحيض على النتائج؟", a: "الحيض لا يؤثر على TSH بشكل مباشر، لكن يفضل الفحص في أيام معينة." },
+                    { q: "هل أحتاج علاج مدى الحياة؟", a: "قصور الغدة يحتاج علاج مدى الحياة، لكن فرط النشاط قد يُشفى." },
+                    { q: "كم التكلفة؟", a: "فحص TSH بسيط وغير مكلف (50-100 ريال تقريباً)." }
+                ],
+                5: [
+                    { q: "هل HbA1c أدق من الفحوصات الأخرى؟", a: "لا أدق بل تكاملي. يعطي صورة شاملة لكن الفحوصات الأخرى مهمة أيضاً." },
+                    { q: "هل يمكن خفض HbA1c بسرعة؟", a: "لا، يحتاج وقتاً (8-12 أسبوع) لأنه يقيس متوسط 3 أشهر." },
+                    { q: "ما الفرق بين prediabetes والسكري؟", a: "Prediabetes (5.7-6.4%) قابلة للعكس، السكري (6.5% فما فوق) يحتاج علاج." },
+                    { q: "هل النتيجة 6.5 تعني السكري؟", a: "نعم، قراءة واحدة 6.5% تكفي لتشخيص السكري، أو قراءتان إذا كانت أقل." }
+                ],
+                6: [
+                    { q: "كيف يختلف نقص الحديد عن فقر الدم؟", a: "نقص الحديد هو السبب الأساسي للفقر، وليس كل نقص حديد يسبب فقراً." },
+                    { q: "ماذا لو كانت النتائج طبيعية والأعراض مستمرة؟", a: "قد يكون السبب شيء آخر (نقص B12، مرض مزمن) يحتاج فحوصات إضافية." },
+                    { q: "هل يمكن علاج نقص الحديد بالغذاء وحده؟", a: "قد يكون كافياً في الحالات الخفيفة، لكن الحالات الشديدة تحتاج مكملات." },
+                    { q: "كم يستغرق العلاج؟", a: "عادة 2-3 أشهر لترجيع المستويات للطبيعي." }
+                ],
+                7: [
+                    { q: "كم مرة يجب الفحص الشامل؟", a: "سنوياً للأشخاص الأصحاء، وقد يكون أكثر مع الأمراض المزمنة." },
+                    { q: "ما الفارق بين الباقات؟", a: "تختلف بعدد الفحوصات المضمنة وشمولية التحليلات." },
+                    { q: "هل النتائج الطبيعية تعني أنني سليم تماماً؟", a: "نعم في الغالب، لكن الفحوصات لا تكشف 100% من الأمراض." },
+                    { q: "هل هناك تحضير خاص؟", a: "صيام 8-12 ساعة مهم جداً للحصول على نتائج دقيقة." }
+                ],
+                8: [
+                    { q: "هل نقص التستوستيرون يؤثر على الخصوبة؟", a: "نعم، قد يقلل من إنتاج الحيوانات المنوية ويؤثر على الخصوبة." },
+                    { q: "هل يمكن رفع التستوستيرون بدون أدوية؟", a: "نعم، بتعديلات في نمط الحياة (رياضة، نوم، تغذية، إدارة الضغط)." },
+                    { q: "هل العلاج الهرموني آمن؟", a: "آمن تحت إشراف طبي دقيق، لكن له مخاطر إذا لم يتم مراقبته." },
+                    { q: "كم سن مناسب لفحص التستوستيرون؟", a: "عادة من سن 18 فما فوق، أو من سن 40 كفحص روتيني." }
+                ],
+                9: [
+                    { q: "إذا ارتفع ALT و AST، هل معناه تليف الكبد؟", a: "لا، قد يكون سببه أمراض أخرى أقل خطورة. يحتاج تقييم أعمق." },
+                    { q: "ماذا لو انخفض الألبومين؟", a: "قد يشير لأمراض كبدية شديدة أو سوء تغذية أو أمراض كلوية." },
+                    { q: "هل الكحول يرفع أنزيمات الكبد؟", a: "نعم، شرب الكحول حتى بكميات معتدلة قد يرفع الأنزيمات." },
+                    { q: "متى أحتاج لفحص وظائف الكبد؟", a: "دورياً (سنوياً)، وعند الأعراض، أو عند تناول أدوية معينة." }
+                ],
+                10: [
+                    { q: "هل يمكن الزواج إذا كانت النتيجة موجبة؟", a: "قانونياً لا يمنع الزواج، لكن يجب الوعي الكامل واتخاذ احتياطات طبية." },
+                    { q: "كم يستغرق الفحص كاملاً؟", a: "عادة 30 دقيقة فقط لجميع الفحوصات والاستشارة." },
+                    { q: "هل النتائج سرية؟", a: "نعم، تماماً سرية ومحمية بالقانون." },
+                    { q: "ماذا لو كان أحدنا مصاباً والآخر سليماً؟", a: "يجب استشارة الطبيب المختص لاتخاذ الاحتياطات الطبية المناسبة." }
+                ]
+            };
+
+            return faqs[article.id] || [];
+        }
+
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            answer.classList.toggle('active');
+            toggle.style.transform = answer.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        function copyLink(slug) {
+            const url = window.location.href.split('?')[0] + `?article=${slug}`;
+            navigator.clipboard.writeText(url);
+            alert('تم نسخ الرابط بنجاح!');
+        }
+
+        // Event Listeners
+        document.getElementById('searchInput').addEventListener('input', renderArticleCards);
+
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderArticleCards();
+            });
+        });
+
+        // Check URL params AND hash for article deep linking
+        window.addEventListener('load', function() {
+            // Support ?article=slug format
+            const params = new URLSearchParams(window.location.search);
+            const articleSlug = params.get('article');
+            if (articleSlug) {
+                const article = articles.find(a => a.slug === articleSlug);
+                if (article) openArticle(article.id);
+                return;
+            }
+            // Support #slug format (used by homepage blog cards)
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                const article = articles.find(a => a.slug === hash);
+                if (article) openArticle(article.id);
+            }
+        });
+
+        // Also handle hash changes (e.g. user clicks back/forward)
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                const article = articles.find(a => a.slug === hash);
+                if (article) openArticle(article.id);
+            }
+        });
+
+        // Initial render
+        renderBlogListing();
+    </script>
+</body>
+</html>
