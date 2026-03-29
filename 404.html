@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:;">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex, nofollow">
+  <title>الصفحة غير موجودة — مختبرات بريزما الطبية</title>
+  <meta name="description" content="الصفحة المطلوبة غير موجودة. ارجع للصفحة الرئيسية لمختبرات بريزما الطبية.">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cyan: #00bfff;
+      --teal: #00a99d;
+      --purple: #6b4fbb;
+      --crimson: #9B2335;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+    body {
+      direction: rtl;
+      background: #ffffff;
+      color: #1a1f36;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .error-code {
+      font-size: clamp(80px, 15vw, 160px);
+      font-weight: 900;
+      background: linear-gradient(135deg, #00bfff 0%, #00a99d 30%, #6b4fbb 65%, #9B2335 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .error-title {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      color: #1a1f36;
+      margin-bottom: 12px;
+    }
+    .error-desc {
+      font-size: 15px;
+      color: #6b7280;
+      font-weight: 300;
+      max-width: 400px;
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .back-btn {
+      padding: 14px 36px;
+      border: none;
+      color: #fff;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, var(--crimson), var(--purple));
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 32px rgba(155,35,53,0.3);
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(155,35,53,0.4);
+    }
+    .back-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .logo-link {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+    }
+    .logo-link svg {
+      height: 32px;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+    .logo-link:hover svg { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="error-code">404</div>
+  <h1 class="error-title">الصفحة غير موجودة</h1>
+  <p class="error-desc">الصفحة اللي تبحث عنها ممكن تكون اتنقلت أو انحذفت. خلنا نرجعك للصفحة الرئيسية.</p>
+  <a href="/" class="back-btn">
+    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    الصفحة الرئيسية
+  </a>
+</body>
+</html>

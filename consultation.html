@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>احجز استشارتك الطبية المجانية — مختبرات بريزما الطبية</title>
+    <meta name="description" content="احجز استشارة طبية مجانية مع استشاريين متخصصين في مختبرات بريزما الطبية بالرياض. استشارة ما قبل التحليل أو شرح وقراءة نتائج التحاليل — بخصوصية تامة.">
+    <meta property="og:title" content="احجز استشارتك الطبية المجانية — مختبرات بريزما">
+    <meta property="og:description" content="استشارة طبية مجانية مع استشاريين متخصصين — شرح نتائج التحاليل أو استشارة ما قبل التحليل. احجز موعدك الآن.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_SA">
+    <link rel="canonical" href="https://prisma-lab.com/consultation.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shared.css">
+    <script src="shared.js" defer></script>
+    <style>
+        :root {
+            --cyan: #00bfff;
+            --teal: #00a99d;
+            --purple: #6b4fbb;
+            --crimson: #9B2335;
+            --navy: #1a3a6b;
+            --dark-bg: #0f1419;
+            --card-bg: #1a2332;
+            --light-text: #f0f4f8;
+            --muted-text: #a8b5c3;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --success-color: #10b981;
+            --error-color: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+            height: 68px;
+            padding-right: max(2rem, env(safe-area-inset-right));
+            padding-left: max(2rem, env(safe-area-inset-left));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 20, 25, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hdr-cta {
+            padding: 9px 22px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            background: linear-gradient(135deg, var(--crimson), var(--purple));
+            color: #fff;
+            border-radius: 6px;
+        }
+
+        .nav-dropdown-wrapper { position: relative; display: inline-block; cursor: pointer; }
+        .nav-dropdown-trigger { user-select: none; }
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            min-width: 200px;
+            padding: 8px 0;
+            margin-top: 8px;
+            z-index: 1001;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+        }
+        .nav-dropdown-wrapper:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-item {
+            display: block;
+            padding: 10px 18px;
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 400;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-dropdown-item:hover {
+            background: rgba(0, 191, 255, 0.1);
+            color: var(--cyan);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .mobile-menu-overlay { position: fixed; top: 0; right: -100%; width: 85%; max-width: 360px; height: 100vh; background: var(--card-bg); z-index: 10000; transition: right 0.3s ease; box-shadow: -4px 0 24px rgba(0,0,0,0.4); display: flex; flex-direction: column; direction: rtl; }
+        .mobile-menu-overlay.open { right: 0; }
+        .mobile-menu-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--border-color); }
+        .mobile-menu-nav { display: flex; flex-direction: column; padding: 16px 0; overflow-y: auto; flex: 1; }
+        .mobile-menu-nav a { padding: 14px 24px; color: var(--light-text); text-decoration: none; font-family: 'Tajawal', sans-serif; font-size: 15px; font-weight: 500; border-bottom: 1px solid var(--border-color); transition: background 0.2s; }
+        .mobile-menu-nav a:hover, .mobile-menu-nav a:active { background: rgba(0, 191, 255, 0.08); color: var(--cyan); }
+        .mobile-menu-nav a.mob-active { color: var(--cyan); font-weight: 700; background: rgba(0, 191, 255, 0.08); }
+        .mobile-menu-cta { margin: 16px 24px; padding: 14px; background: linear-gradient(135deg, #00bfff, #6b4fbb); color: #fff; text-align: center; border-radius: 12px; text-decoration: none; font-family: 'Tajawal', sans-serif; font-size: 15px; font-weight: 700; }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .hdr-cta { display: none !important; }
+            .nav-dropdown-wrapper { display: none !important; }
+            header > div:nth-child(2) { display: none !important; }
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            background-color: var(--dark-bg);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, var(--navy), var(--dark-bg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('consultation-banner.png') center/cover;
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(180deg, rgba(26, 35, 50, 0.3) 0%, rgba(26, 35, 50, 0.6) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--cyan), var(--teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--muted-text);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .trust-strip {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: var(--muted-text);
+        }
+
+        .trust-strip span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .trust-strip span::before {
+            content: '✓';
+            color: var(--teal);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* ===== BOOKING SECTION ===== */
+        .booking-section {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: -80px auto 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .booking-card {
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.8), rgba(26, 35, 50, 0.6));
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ===== STEP INDICATOR ===== */
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+            gap: 1.5rem;
+        }
+
+        .step-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--muted-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-dot.active {
+            background: linear-gradient(135deg, var(--cyan), var(--teal));
+            border-color: transparent;
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.4);
+        }
+
+        .step-dot.completed {
+            background: var(--teal);
+            border-color: transparent;
+            color: var(--dark-bg);
+        }
+
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .step-line.active {
+            background: linear-gradient(90deg, var(--cyan), var(--teal));
+        }
+
+        .step-label {
+            position: absolute;
+            top: 100%;
+            margin-top: 0.8rem;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            color: var(--muted-text);
+            transition: color 0.3s ease;
+        }
+
+        .step-dot.active .step-label,
+        .step-dot.completed .step-label {
+            color: var(--cyan);
+        }
+
+        /* ===== FORM STEPS ===== */
+        .form-step {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="date"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light-text);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(0, 191, 255, 0.05);
+            box-shadow: 0 0 12px rgba(0, 191, 255, 0.2);
+        }
+
+        .input-prefix {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        .input-prefix span {
+            padding: 0.75rem 1rem;
+            color: var(--muted-text);
+            font-weight: 500;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .input-prefix input {
+            border: none;
+            background: none;
+            flex: 1;
+            padding: 0.75rem 1rem;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* ===== CONSULTATION TYPE CARDS ===== */
+        .consultation-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .consultation-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .consultation-option input[type="radio"] {
+            display: none;
+        }
+
+        .consultation-label {
+            display: block;
+            padding: 1.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .consultation-option input[type="radio"]:checked + .consultation-label {
+            border-color: var(--teal);
+            background: rgba(0, 169, 157, 0.1);
+            box-shadow: 0 0 20px rgba(0, 169, 157, 0.2);
+        }
+
+        .consultation-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .consultation-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+        }
+
+        .consultation-description {
+            font-size: 0.85rem;
+            color: var(--muted-text);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .consultation-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== DATE & TIME SELECTION ===== */
+        .date-picker {
+            margin-bottom: 2rem;
+        }
+
+        .date-pills {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+            scroll-behavior: smooth;
+        }
+
+        .date-pills::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .date-pills::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+        }
+
+        .date-pills::-webkit-scrollbar-thumb {
+            background: rgba(0, 191, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .date-pill {
+            padding: 0.75rem 1.25rem;
+            border: 2px solid var(--border-color);
+            border-radius: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--muted-text);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .date-pill:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .date-pill.selected {
+            background: linear-gradient(135deg, var(--cyan), var(--teal));
+            border-color: transparent;
+            color: var(--dark-bg);
+            font-weight: 600;
+        }
+
+        .date-pill.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-slot {
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .time-slot:hover:not(.disabled) {
+            border-color: var(--teal);
+            background: rgba(0, 169, 157, 0.05);
+        }
+
+        .time-slot.selected {
+            border: 2px solid transparent;
+            background: linear-gradient(rgba(26, 35, 50, 0.8), rgba(26, 35, 50, 0.8)) padding-box,
+                        linear-gradient(135deg, var(--cyan), var(--teal)) border-box;
+            color: var(--cyan);
+        }
+
+        .time-slot.selected::before {
+            content: '✓';
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: linear-gradient(135deg, var(--cyan), var(--teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-bg);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .time-slot.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .time-text {
+            font-weight: 600;
+            color: var(--light-text);
+            margin-bottom: 0.4rem;
+        }
+
+        .time-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success-color);
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted-text);
+        }
+
+        .empty-state p {
+            margin-bottom: 1rem;
+        }
+
+        .refresh-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(0, 191, 255, 0.1);
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .refresh-btn:hover {
+            background: rgba(0, 191, 255, 0.2);
+        }
+
+        /* ===== CONFIRMATION ===== */
+        .summary-card {
+            background: rgba(0, 169, 157, 0.05);
+            border: 1px solid rgba(0, 169, 157, 0.2);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .success-state .summary-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            backdrop-filter: blur(8px);
+            position: relative;
+            z-index: 1;
+            animation: msgIn 0.5s ease 1.5s both;
+            text-align: right;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+        }
+
+        .summary-value {
+            color: var(--light-text);
+            font-weight: 600;
+        }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            margin-top: 0.1rem;
+            cursor: pointer;
+            accent-color: var(--teal);
+            /* Ensure 44px touch target via padding */
+            padding: 10px;
+            box-sizing: content-box;
+        }
+
+        .terms-text {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .terms-text a {
+            color: var(--cyan);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .terms-text a:hover {
+            color: var(--teal);
+        }
+
+        /* ===== SUCCESS STATE ===== */
+        .success-state {
+            display: none;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .success-state.active {
+            display: block;
+            animation: successFadeIn 0.5s ease;
+        }
+
+        @keyframes successFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === CONFETTI PARTICLES === */
+        .success-confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .confetti-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            top: -10px;
+            animation: confettiFall 3s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        .confetti-particle:nth-child(1) { left: 10%; background: #22c55e; animation-delay: 0.1s; width: 6px; height: 12px; }
+        .confetti-particle:nth-child(2) { left: 20%; background: var(--cyan); animation-delay: 0.3s; border-radius: 50%; }
+        .confetti-particle:nth-child(3) { left: 35%; background: #a78bfa; animation-delay: 0.15s; width: 10px; height: 6px; }
+        .confetti-particle:nth-child(4) { left: 50%; background: var(--teal); animation-delay: 0.4s; border-radius: 50%; width: 6px; height: 6px; }
+        .confetti-particle:nth-child(5) { left: 65%; background: #22c55e; animation-delay: 0.2s; width: 5px; height: 14px; }
+        .confetti-particle:nth-child(6) { left: 75%; background: var(--cyan); animation-delay: 0.35s; width: 12px; height: 5px; }
+        .confetti-particle:nth-child(7) { left: 85%; background: #a78bfa; animation-delay: 0.25s; border-radius: 50%; }
+        .confetti-particle:nth-child(8) { left: 45%; background: #34d399; animation-delay: 0.5s; width: 7px; height: 10px; }
+        .confetti-particle:nth-child(9) { left: 90%; background: var(--teal); animation-delay: 0.15s; }
+        .confetti-particle:nth-child(10) { left: 5%; background: #22c55e; animation-delay: 0.45s; border-radius: 50%; width: 10px; height: 10px; }
+        .confetti-particle:nth-child(11) { left: 55%; background: #a78bfa; animation-delay: 0.55s; width: 5px; height: 12px; }
+        .confetti-particle:nth-child(12) { left: 30%; background: var(--cyan); animation-delay: 0.6s; border-radius: 50%; width: 6px; height: 6px; }
+
+        @keyframes confettiFall {
+            0% { top: -10px; opacity: 0; transform: rotate(0deg) translateX(0); }
+            15% { opacity: 1; }
+            100% { top: 110%; opacity: 0; transform: rotate(720deg) translateX(30px); }
+        }
+
+        /* === ANIMATED CHECKMARK === */
+        .success-animation {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .success-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3px solid rgba(34, 197, 94, 0.15);
+            animation: ringExpand 0.8s ease-out forwards;
+        }
+
+        .success-ring-glow {
+            position: absolute;
+            inset: -15px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.12) 0%, transparent 70%);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes ringExpand {
+            0% { transform: scale(0.6); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+
+        .success-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: circleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s both;
+            box-shadow:
+                0 8px 32px rgba(34, 197, 94, 0.35),
+                0 2px 8px rgba(34, 197, 94, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes circleIn {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* SVG Animated Checkmark */
+        .success-check-svg {
+            width: 56px;
+            height: 56px;
+        }
+
+        .success-check-svg .check-path {
+            stroke: white;
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            stroke-dasharray: 60;
+            stroke-dashoffset: 60;
+            animation: drawCheck 0.5s ease 0.7s forwards;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+        }
+
+        @keyframes drawCheck {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* === BADGE === */
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            color: #22c55e;
+            padding: 6px 18px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            animation: badgeIn 0.5s ease 1s both;
+            z-index: 1;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        .success-badge .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: dotBlink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes dotBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @keyframes badgeIn {
+            from { opacity: 0; transform: translateY(10px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* === MESSAGES === */
+        .success-message {
+            font-size: 1.65rem;
+            font-weight: 800;
+            margin-bottom: 0.6rem;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            animation: msgIn 0.5s ease 1.1s both;
+            line-height: 1.4;
+        }
+
+        @keyframes msgIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-submessage {
+            color: var(--muted-text);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+            animation: msgIn 0.5s ease 1.25s both;
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* === REFERENCE NUMBER === */
+        .reference-number {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(0, 191, 255, 0.06));
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            color: #22c55e;
+            font-weight: 700;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 1;
+            animation: msgIn 0.5s ease 1.4s both;
+            backdrop-filter: blur(8px);
+            letter-spacing: 1px;
+        }
+
+        /* ===== BUTTONS ===== */
+        button {
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            min-height: 48px;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--crimson), var(--purple));
+            color: white;
+            width: 100%;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(155, 35, 53, 0.3);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-primary.loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .btn-primary.loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            margin-left: -8px;
+            margin-top: -8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .buttons-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .buttons-group .btn {
+            flex: 1;
+        }
+
+        .waitlist-btn {
+            background: rgba(0, 169, 157, 0.1);
+            border: 1px solid var(--teal);
+            color: var(--teal);
+        }
+
+        .waitlist-btn:hover {
+            background: rgba(0, 169, 157, 0.2);
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.5), rgba(26, 35, 50, 0.3));
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--light-text);
+        }
+
+        .feature-description {
+            color: var(--muted-text);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-header {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--muted-text);
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--cyan);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(180deg, rgba(26, 35, 50, 0.8), rgba(15, 20, 25, 0.95));
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--light-text);
+            font-weight: 600;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--muted-text);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--cyan);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--muted-text);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .booking-card {
+                padding: 1.5rem;
+            }
+
+            .booking-section {
+                padding: 2rem 1rem;
+            }
+
+            .consultation-options {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons-group {
+                flex-direction: column;
+            }
+
+            .step-indicator {
+                gap: 1rem;
+            }
+
+            .step-label {
+                font-size: 0.7rem;
+                white-space: normal;
+                width: 60px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .trust-strip {
+                gap: 1rem;
+                flex-direction: column;
+            }
+
+            .booking-card {
+                padding: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            input[type="text"],
+            input[type="tel"] {
+                font-size: 16px;
+            }
+        }
+
+        /* === iPhone SE / Galaxy A14 (360px) === */
+        @media (max-width: 375px) {
+            .hero h1 { font-size: 1.5rem; }
+            .hero p { font-size: 0.85rem; }
+            .booking-card { padding: 0.75rem; }
+            .step-dot { width: 36px; height: 36px; font-size: 0.85rem; }
+            .step-label { font-size: 0.7rem; }
+            .success-state { padding: 1.5rem 1rem; }
+            .success-animation { width: 100px; height: 100px; }
+            .success-message { font-size: 1.35rem; }
+            .success-submessage { font-size: 0.85rem; }
+            .reference-number { padding: 0.75rem 1rem; font-size: 0.9rem; }
+            .date-pill { padding: 0.6rem 1rem; font-size: 0.8rem; }
+            .time-slot { padding: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+    <div style="display:flex;align-items:flex-end;gap:0;">
+    <div><div style="font-family:'Tajawal',sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;line-height:1;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb,#9B2335);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PRISMA</div><div style="font-family:'Tajawal',sans-serif;font-size:7.5px;font-weight:300;color:#8892a4;letter-spacing:5px;margin-top:3px;">Laboratory</div><div style="font-family:'Tajawal',sans-serif;font-size:9px;font-weight:400;color:#a8b5c3;margin-top:2px;">مختبرات بريزما الطبية</div></div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 48" style="height:44px;width:auto;flex-shrink:0;margin-left:2px;margin-bottom:-2px;"><defs><linearGradient id="lnG" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00bfff"/><stop offset="40%" stop-color="#00a99d"/><stop offset="100%" stop-color="#6b4fbb"/></linearGradient></defs><line x1="54" y1="1" x2="1" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/><line x1="54" y1="9" x2="10" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/><line x1="54" y1="17" x2="19" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/><line x1="54" y1="25" x2="28" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/></svg>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;">
+    <a href="index.html" style="color:rgba(240,244,248,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#f0f4f8'" onmouseout="this.style.color='rgba(240,244,248,0.6)'">الرئيسية</a>
+    <div class="nav-dropdown-wrapper"><span class="nav-dropdown-trigger" style="color:rgba(240,244,248,0.6);font-size:12px;font-weight:500;transition:color 0.2s;">الباقات ▾</span><div class="nav-dropdown-menu"><a href="comprehensive.html" class="nav-dropdown-item">الباقات الشاملة</a><a href="specialized.html" class="nav-dropdown-item">الباقات المختصة</a><a href="sexual-health.html" class="nav-dropdown-item">الصحة الجنسية</a><a href="marriage.html" class="nav-dropdown-item">باقة الزواج</a><a href="offers.html" class="nav-dropdown-item">العروض</a><a href="individual-tests.html" class="nav-dropdown-item">التحاليل الفردية</a><a href="genetic-tests.html" class="nav-dropdown-item">التحاليل الجينية</a></div></div>
+    <a href="about.html" style="color:rgba(240,244,248,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#f0f4f8'" onmouseout="this.style.color='rgba(240,244,248,0.6)'">من نحن</a>
+    <a href="blog.html" style="color:rgba(240,244,248,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#f0f4f8'" onmouseout="this.style.color='rgba(240,244,248,0.6)'">المدونة</a>
+    <a href="home-visit.html" style="color:rgba(240,244,248,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#f0f4f8'" onmouseout="this.style.color='rgba(240,244,248,0.6)'">زيارة منزلية</a>
+    <a href="prisma-ai.html" style="color:rgba(240,244,248,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;background:linear-gradient(90deg,#00bfff,#6b4fbb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;">بريزما AI</a>
+    <a href="consultation.html" style="color:#f0f4f8;text-decoration:none;font-size:12px;font-weight:700;transition:all 0.2s;display:inline-flex;align-items:center;gap:4px;border-bottom:2px solid #00bfff;padding-bottom:2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>استشارة طبية</a>
+    <a href="#form-sec" class="hdr-cta">احجز الآن</a>
+    </div>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="القائمة">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0f4f8" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>احجز استشارتك الطبية</h1>
+                <p>تحدّث مع استشاريينا المتخصصين — نساعدك قبل التحليل أو نشرح لك نتائجك بدقة وعناية</p>
+                <div class="trust-strip">
+                    <span>مجانية</span>
+                    <span>خصوصية تامة</span>
+                    <span>استشاري متخصص</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKING SECTION -->
+        <section class="booking-section" id="form-sec">
+            <div class="booking-card">
+                <!-- STEP INDICATOR -->
+                <div class="step-indicator">
+                    <div class="step-dot active" data-step="1">
+                        <span>1</span>
+                        <span class="step-label">المعلومات</span>
+                    </div>
+                    <div class="step-line active" data-step="1-2"></div>
+                    <div class="step-dot" data-step="2">
+                        <span>2</span>
+                        <span class="step-label">الموعد</span>
+                    </div>
+                    <div class="step-line" data-step="2-3"></div>
+                    <div class="step-dot" data-step="3">
+                        <span>3</span>
+                        <span class="step-label">التأكيد</span>
+                    </div>
+                </div>
+
+                <!-- FORM STEPS -->
+                <form id="bookingForm">
+                    <!-- STEP 1: PATIENT INFO -->
+                    <div class="form-step active" data-step="1">
+                        <div class="form-group">
+                            <label for="fullName">الاسم الكامل *</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="أدخل اسمك الكامل" required>
+                            <div class="error-message" id="fullNameError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mobile">رقم الجوال *</label>
+                            <input type="tel" id="mobile" name="mobile" placeholder="05xxxxxxxx" maxlength="15" required dir="ltr" style="text-align:right;">
+                            <div class="error-message" id="mobileError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>نوع الاستشارة *</label>
+                            <div class="consultation-options">
+                                <div class="consultation-option">
+                                    <input type="radio" id="pre_analysis" name="consultationType" value="pre_analysis" required>
+                                    <label for="pre_analysis" class="consultation-label">
+                                        <div class="consultation-icon">🔍</div>
+                                        <div class="consultation-title">استشارة ما قبل التحليل</div>
+                                        <div class="consultation-description">نساعدك تختار التحاليل المناسبة لحالتك</div>
+                                    </label>
+                                </div>
+                                <div class="consultation-option">
+                                    <input type="radio" id="results_review" name="consultationType" value="results_review" required>
+                                    <label for="results_review" class="consultation-label">
+                                        <div class="consultation-icon">📊</div>
+                                        <div class="consultation-title">استشارة لشرح / قراءة نتائج التحاليل</div>
+                                        <div class="consultation-description">نشرح لك نتائجك بطريقة واضحة ومفصلة</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="buttons-group">
+                            <button type="button" class="btn btn-primary" id="step1Next">التالي</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: TIME SLOT SELECTION -->
+                    <div class="form-step" data-step="2">
+                        <div class="form-group">
+                            <label>اختر التاريخ *</label>
+                            <div class="date-pills" id="datePills"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>اختر الموعد *</label>
+                            <button type="button" class="refresh-btn" id="refreshSlots" style="float: left;">تحديث</button>
+                            <div id="timeSlotsContainer" style="clear: both;"></div>
+                        </div>
+
+                        <div class="buttons-group">
+                            <button type="button" class="btn btn-secondary" id="step2Prev">السابق</button>
+                            <button type="button" class="btn btn-primary" id="step2Next">التالي</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: CONFIRMATION -->
+                    <div class="form-step" data-step="3">
+                        <div class="summary-card" id="summaryCard"></div>
+
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="termsCheckbox" required>
+                            <label for="termsCheckbox" class="terms-text">
+                                أوافق على <a href="#privacy">سياسة الخصوصية</a> و<a href="#terms">شروط الخدمة</a>
+                            </label>
+                        </div>
+
+                        <div class="buttons-group">
+                            <button type="button" class="btn btn-secondary" id="step3Prev">السابق</button>
+                            <button type="submit" class="btn btn-primary" id="step3Submit">تأكيد الحجز</button>
+                        </div>
+                    </div>
+
+                    <!-- SUCCESS STATE -->
+                    <div class="success-state" id="successState">
+                        <!-- Confetti Particles -->
+                        <div class="success-confetti">
+                            <div class="confetti-particle"></div>
+                            <div class="confetti-particle"></div>
+                            <div class="confetti-particle"></div>
+                            <div class="confetti-particle"></div>
+                            <div class="confetti-particle"></div>
+                            <div class="confetti-particle"></div>
+                            <div class="confetti-particle"></div>
+                            <div class="confetti-particle"></div>
+                            <div class="confetti-particle"></div>
+                            <div class="confetti-particle"></div>
+                            <div class="confetti-particle"></div>
+                            <div class="confetti-particle"></div>
+                        </div>
+
+                        <!-- Animated Checkmark -->
+                        <div class="success-animation">
+                            <div class="success-ring-glow"></div>
+                            <div class="success-ring"></div>
+                            <div class="success-circle">
+                                <svg class="success-check-svg" viewBox="0 0 52 52">
+                                    <path class="check-path" d="M14 27l10 10 16-20"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Status Badge -->
+                        <div class="success-badge">
+                            <span class="badge-dot"></span>
+                            تم التأكيد
+                        </div>
+
+                        <!-- Messages -->
+                        <div class="success-message">تم حجز استشارتك بنجاح</div>
+                        <div class="success-submessage">
+                            سيتواصل معك الاستشاري في الموعد المحدد<br>لشرح النتائج ومتابعة حالتك الصحية
+                        </div>
+
+                        <!-- Reference & Summary -->
+                        <div class="reference-number" id="referenceNumber"></div>
+                        <div class="summary-card" id="successSummary"></div>
+
+                        <!-- Action Buttons -->
+                        <div class="buttons-group" style="flex-direction:column;gap:12px;animation:msgIn 0.5s ease 1.6s both;position:relative;z-index:1;">
+                            <a id="waConfirmBtn" href="#" target="_blank" class="btn btn-primary" style="background:linear-gradient(135deg,#25D366,#128C7E);text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border-radius:14px;padding:14px 24px;font-weight:700;box-shadow:0 4px 20px rgba(37,211,102,0.3);transition:all 0.3s ease;"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.624-1.214A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-2.168 0-4.18-.589-5.916-1.614l-.424-.252-4.398 1.154 1.174-4.293-.277-.44A9.798 9.798 0 012.182 12c0-5.414 4.404-9.818 9.818-9.818S21.818 6.586 21.818 12 17.414 21.818 12 21.818z"/></svg>استلم تأكيد الحجز عبر واتساب</a>
+                            <button type="button" class="btn btn-primary" style="background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));border:1px solid rgba(255,255,255,0.12);width:100%;border-radius:14px;padding:14px 24px;font-weight:600;color:rgba(255,255,255,0.8);backdrop-filter:blur(8px);transition:all 0.3s ease;" onclick="window.location.href='index.html'">العودة للرئيسية</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section class="features-section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <div class="feature-title">استشارة متخصصة</div>
+                    <div class="feature-description">
+                        استشاريون متخصصون لديهم خبرة عملية في المجال الطبي والتحاليل الطبية.
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-title">خصوصية تامة</div>
+                    <div class="feature-description">
+                        بيانات والخصوصيتك محمية وآمنة وفقاً لأعلى معايير الأمان الدولية.
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <div class="feature-title">مجانية بالكامل</div>
+                    <div class="feature-description">
+                        استشارتك الطبية مجانية تماماً بدون أي رسوم إضافية أو تكاليف خفية.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WAITLIST MODAL -->
+        <div class="modal" id="waitlistModal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="document.getElementById('waitlistModal').classList.remove('active')">×</button>
+                <div class="modal-header">انضم لقائمة الانتظار</div>
+                <form id="waitlistForm">
+                    <div class="form-group">
+                        <label for="wlName">الاسم الكامل</label>
+                        <input type="text" id="wlName" name="wlName" placeholder="أدخل اسمك الكامل" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="wlMobile">رقم الجوال</label>
+                        <input type="tel" id="wlMobile" name="wlMobile" placeholder="05xxxxxxxx" maxlength="15" required dir="ltr" style="text-align:right;">
+                    </div>
+                    <div class="form-group">
+                        <label for="wlDate">التاريخ المفضل</label>
+                        <input type="date" id="wlDate" name="wlDate" required>
+                    </div>
+                    <div class="buttons-group">
+                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('waitlistModal').classList.remove('active')">إلغاء</button>
+                        <button type="submit" class="btn btn-primary">تسجيل</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>مختبرات بريزما</h3>
+                <p style="color: var(--muted-text); font-size: 0.9rem;">مختبرات طبية رائدة بالرياض توفر تحاليل دقيقة وخدمات استشارية متخصصة.</p>
+            </div>
+            <div class="footer-section">
+                <h3>الخدمات</h3>
+                <a href="#packages">الباقات</a>
+                <a href="home-visit.html">زيارة منزلية</a>
+                <a href="consultation.html">استشارة طبية</a>
+                <a href="prisma-ai.html">بريزما AI</a>
+            </div>
+            <div class="footer-section">
+                <h3>الشركة</h3>
+                <a href="about.html">من نحن</a>
+                <a href="blog.html">المدونة</a>
+                <a href="#contact">تواصل معنا</a>
+                <a href="#privacy">سياسة الخصوصية</a>
+            </div>
+            <div class="footer-section">
+                <h3>التواصل</h3>
+                <a href="tel:+966920031642">920031642</a>
+                <a href="mailto:info@prismalab.sa">info@prismalab.sa</a>
+                <p style="color: var(--muted-text); font-size: 0.9rem; margin-top: 1rem;">الرياض، المملكة العربية السعودية</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 مختبرات بريزما. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== DATA LAYER =====
+        const DataStore = {
+            SLOTS_KEY: 'prisma_consultation_slots',
+            BOOKINGS_KEY: 'prisma_consultation_bookings',
+            WAITLIST_KEY: 'prisma_consultation_waitlist',
+
+            getSlots() {
+                try {
+                    const raw = localStorage.getItem(this.SLOTS_KEY);
+                    return raw ? JSON.parse(raw) : [];
+                } catch (e) {
+                    console.warn('[Prisma] Slots data corrupted, resetting');
+                    localStorage.removeItem(this.SLOTS_KEY);
+                    return [];
+                }
+            },
+
+            setSlots(slots) {
+                try {
+                    localStorage.setItem(this.SLOTS_KEY, JSON.stringify(slots));
+                } catch (e) {
+                    console.warn('[Prisma] Failed to save slots:', e.name);
+                }
+            },
+
+            getBookings() {
+                try {
+                    const raw = localStorage.getItem(this.BOOKINGS_KEY);
+                    return raw ? JSON.parse(raw) : [];
+                } catch (e) {
+                    console.warn('[Prisma] Bookings data corrupted, resetting');
+                    localStorage.removeItem(this.BOOKINGS_KEY);
+                    return [];
+                }
+            },
+
+            setBookings(bookings) {
+                try {
+                    localStorage.setItem(this.BOOKINGS_KEY, JSON.stringify(bookings));
+                } catch (e) {
+                    console.warn('[Prisma] Failed to save bookings:', e.name);
+                }
+            },
+
+            addBooking(booking) {
+                const bookings = this.getBookings();
+                bookings.push(booking);
+                this.setBookings(bookings);
+                return booking;
+            },
+
+            getWaitlist() {
+                try {
+                    const raw = localStorage.getItem(this.WAITLIST_KEY);
+                    return raw ? JSON.parse(raw) : [];
+                } catch (e) {
+                    console.warn('[Prisma] Waitlist data corrupted');
+                    localStorage.removeItem(this.WAITLIST_KEY);
+                    return [];
+                }
+            },
+
+            addWaitlistEntry(entry) {
+                const waitlist = this.getWaitlist();
+                waitlist.push(entry);
+                try {
+                    localStorage.setItem(this.WAITLIST_KEY, JSON.stringify(waitlist));
+                } catch (e) {
+                    console.warn('[Prisma] Failed to save waitlist:', e.name);
+                }
+            },
+
+            seedSlots() {
+                if (this.getSlots().length > 0) return;
+
+                const slots = [];
+                const startDate = new Date();
+                startDate.setHours(0, 0, 0, 0);
+
+                const timeSlots = [
+                    { start: '09:00', end: '11:00' },
+                    { start: '14:00', end: '16:00' },
+                    { start: '17:00', end: '19:00' }
+                ];
+
+                for (let day = 0; day < 7; day++) {
+                    const date = new Date(startDate);
+                    date.setDate(date.getDate() + day);
+                    const dateStr = date.toISOString().split('T')[0];
+
+                    timeSlots.forEach((time, idx) => {
+                        slots.push({
+                            id: 'slot_' + Date.now() + Math.random().toString(36).substr(2, 9),
+                            date: dateStr,
+                            startTime: time.start,
+                            endTime: time.end,
+                            status: 'open',
+                            maxCapacity: 1,
+                            currentBookings: 0,
+                            createdBy: 'admin',
+                            createdAt: new Date().toISOString(),
+                            updatedAt: new Date().toISOString()
+                        });
+                    });
+                }
+
+                this.setSlots(slots);
+            }
+        };
+
+        // ===== FORM STATE =====
+        const formState = {
+            fullName: '',
+            mobile: '',
+            consultationType: '',
+            selectedDate: '',
+            selectedSlotId: '',
+            termsAccepted: false
+        };
+
+        // ===== UTILITIES =====
+        function formatDate(dateStr) {
+            const date = new Date(dateStr + 'T00:00:00');
+            const days = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+            const months = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+
+            return `${days[date.getDay()]} ${date.getDate()} ${months[date.getMonth()]}`;
+        }
+
+        function formatTime(time24) {
+            const [hours, minutes] = time24.split(':');
+            const h = parseInt(hours);
+            const period = h >= 12 ? 'م' : 'ص';
+            const displayHours = h % 12 === 0 ? 12 : h % 12;
+            return `${displayHours}:${minutes} ${period}`;
+        }
+
+        function formatConsultationType(type) {
+            return type === 'pre_analysis' ? 'استشارة ما قبل التحليل' : 'استشارة لشرح / قراءة نتائج التحاليل';
+        }
+
+        function generateBookingReference() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let result = 'PRC-';
+            for (let i = 0; i < 6; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        function validateName(name) {
+            return name.trim().length >= 3;
+        }
+
+        function validateMobile(mobile) {
+            const cleaned = mobile.replace(/[\s\-\(\)\+]/g, '');
+            // Accept: 5XXXXXXXX, 05XXXXXXXX, 9665XXXXXXXX, 009665XXXXXXXX
+            return /^(00966|966)?0?5\d{8}$/.test(cleaned);
+        }
+
+        function normalizeMobile(mobile) {
+            let num = mobile.replace(/[\s\-\(\)\+]/g, '');
+            if (num.startsWith('00966')) num = num.slice(5);
+            else if (num.startsWith('966')) num = num.slice(3);
+            if (num.startsWith('5')) num = '0' + num;
+            return num; // always returns 05XXXXXXXX
+        }
+
+        // ===== VALIDATION =====
+        function validateStep1() {
+            let isValid = true;
+
+            const fullName = document.getElementById('fullName').value;
+            const fullNameError = document.getElementById('fullNameError');
+            if (!validateName(fullName)) {
+                fullNameError.textContent = 'الاسم يجب أن يكون 3 أحرف على الأقل';
+                fullNameError.classList.add('show');
+                isValid = false;
+            } else {
+                fullNameError.classList.remove('show');
+                formState.fullName = fullName;
+            }
+
+            const mobile = document.getElementById('mobile').value;
+            const mobileError = document.getElementById('mobileError');
+            if (!validateMobile(mobile)) {
+                mobileError.textContent = 'رقم الجوال غير صحيح — أدخل رقم سعودي يبدأ بـ 5';
+                mobileError.classList.add('show');
+                isValid = false;
+            } else {
+                mobileError.classList.remove('show');
+                formState.mobile = normalizeMobile(mobile);
+            }
+
+            const consultationType = document.querySelector('input[name="consultationType"]:checked');
+            if (!consultationType) {
+                isValid = false;
+            } else {
+                formState.consultationType = consultationType.value;
+            }
+
+            return isValid;
+        }
+
+        // ===== STEP NAVIGATION =====
+        function showStep(stepNum) {
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.querySelector(`.form-step[data-step="${stepNum}"]`).classList.add('active');
+
+            // Update step indicator
+            document.querySelectorAll('.step-dot').forEach((dot, idx) => {
+                const dotStep = parseInt(dot.getAttribute('data-step'));
+                if (dotStep < stepNum) {
+                    dot.classList.add('completed');
+                    dot.classList.remove('active');
+                } else if (dotStep === stepNum) {
+                    dot.classList.add('active');
+                    dot.classList.remove('completed');
+                } else {
+                    dot.classList.remove('active', 'completed');
+                }
+            });
+
+            document.querySelectorAll('.step-line').forEach(line => {
+                const lineSteps = line.getAttribute('data-step').split('-');
+                const line1 = parseInt(lineSteps[0]);
+                const line2 = parseInt(lineSteps[1]);
+                if (line2 <= stepNum) {
+                    line.classList.add('active');
+                } else {
+                    line.classList.remove('active');
+                }
+            });
+        }
+
+        // ===== DATE & TIME SELECTION =====
+        function initDatePicker() {
+            const container = document.getElementById('datePills');
+            const slots = DataStore.getSlots();
+            const availableDates = [...new Set(slots.filter(s => s.status === 'open' || s.currentBookings < s.maxCapacity).map(s => s.date))].sort();
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            container.innerHTML = '';
+            for (let day = 0; day < 14; day++) {
+                const date = new Date(today);
+                date.setDate(date.getDate() + day);
+                const dateStr = date.toISOString().split('T')[0];
+
+                const isAvailable = availableDates.includes(dateStr);
+                const pill = document.createElement('button');
+                pill.type = 'button';
+                pill.className = `date-pill ${!isAvailable ? 'disabled' : ''}`;
+                if (formState.selectedDate === dateStr) pill.classList.add('selected');
+
+                pill.textContent = formatDate(dateStr);
+                pill.disabled = !isAvailable;
+
+                if (isAvailable) {
+                    pill.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        document.querySelectorAll('.date-pill').forEach(p => p.classList.remove('selected'));
+                        pill.classList.add('selected');
+                        formState.selectedDate = dateStr;
+                        loadTimeSlots(dateStr);
+                    });
+                }
+
+                container.appendChild(pill);
+            }
+        }
+
+        function loadTimeSlots(date) {
+            const slots = DataStore.getSlots().filter(s => s.date === date && s.status === 'open');
+            const container = document.getElementById('timeSlotsContainer');
+
+            if (slots.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <p>لا توجد مواعيد متاحة لهذا اليوم</p>
+                        <button type="button" class="btn waitlist-btn" onclick="document.getElementById('waitlistModal').classList.add('active')">انضم لقائمة الانتظار</button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = '';
+            const timeGrid = document.createElement('div');
+            timeGrid.className = 'time-slots';
+
+            slots.forEach(slot => {
+                const isAvailable = slot.currentBookings < slot.maxCapacity;
+                const slotEl = document.createElement('button');
+                slotEl.type = 'button';
+                slotEl.className = `time-slot ${!isAvailable ? 'disabled' : ''}`;
+                if (formState.selectedSlotId === slot.id) slotEl.classList.add('selected');
+
+                const timeText = `${formatTime(slot.startTime)} — ${formatTime(slot.endTime)}`;
+                slotEl.innerHTML = `
+                    <div class="time-text">${timeText}</div>
+                    ${isAvailable ? '<div class="time-badge">متاح</div>' : '<div class="time-badge" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">مكتمل</div>'}
+                `;
+
+                if (isAvailable) {
+                    slotEl.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                        slotEl.classList.add('selected');
+                        formState.selectedSlotId = slot.id;
+                    });
+                }
+
+                timeGrid.appendChild(slotEl);
+            });
+
+            container.appendChild(timeGrid);
+        }
+
+        // ===== SUMMARY =====
+        function updateSummary() {
+            const slot = DataStore.getSlots().find(s => s.id === formState.selectedSlotId);
+            if (!slot) return;
+
+            const summaryCard = document.getElementById('summaryCard');
+            summaryCard.innerHTML = `
+                <div class="summary-item">
+                    <span class="summary-label">الاسم</span>
+                    <span class="summary-value">${formState.fullName}</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">رقم الجوال</span>
+                    <span class="summary-value">${formState.mobile}</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">نوع الاستشارة</span>
+                    <span class="summary-value">${formatConsultationType(formState.consultationType)}</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">التاريخ</span>
+                    <span class="summary-value">${formatDate(slot.date)}</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">الموعد</span>
+                    <span class="summary-value">${formatTime(slot.startTime)} — ${formatTime(slot.endTime)}</span>
+                </div>
+            `;
+        }
+
+        // ===== BOOKING SUBMISSION =====
+        document.getElementById('bookingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            if (!document.getElementById('termsCheckbox').checked) {
+                alert('يجب أن توافق على شروط الخدمة');
+                return;
+            }
+
+            const submitBtn = document.getElementById('step3Submit');
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                const slot = DataStore.getSlots().find(s => s.id === formState.selectedSlotId);
+                if (!slot || slot.currentBookings >= slot.maxCapacity) {
+                    alert('عذراً، هذا الموعد لم يعد متاحاً');
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                    return;
+                }
+
+                const refCode = generateBookingReference();
+                const booking = {
+                    id: 'booking_' + Date.now(),
+                    reference: refCode,
+                    patientName: formState.fullName,
+                    mobile: formState.mobile,
+                    consultationType: formState.consultationType,
+                    slotId: formState.selectedSlotId,
+                    date: slot.date,
+                    startTime: slot.startTime,
+                    endTime: slot.endTime,
+                    // Legacy aliases for backward compatibility
+                    slotDate: slot.date,
+                    slotStartTime: slot.startTime,
+                    slotEndTime: slot.endTime,
+                    status: 'pending',
+                    source: 'website',
+                    notes: '',
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+
+                slot.currentBookings++;
+                if (slot.currentBookings >= slot.maxCapacity) {
+                    slot.status = 'booked';
+                }
+                slot.updatedAt = new Date().toISOString();
+
+                DataStore.addBooking(booking);
+                DataStore.setSlots(DataStore.getSlots());
+
+                // Show success — hide form & step indicators
+                document.getElementById('bookingForm').style.display = 'none';
+                const stepIndicator = document.querySelector('.step-indicator');
+                if (stepIndicator) stepIndicator.style.display = 'none';
+                document.getElementById('successState').classList.add('active');
+                // Smooth scroll to top of success
+                document.getElementById('successState').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                document.getElementById('referenceNumber').textContent = `رقم الحجز: ${refCode}`;
+
+                const successSummary = document.getElementById('successSummary');
+                successSummary.innerHTML = `
+                    <div class="summary-item">
+                        <span class="summary-label">الاسم</span>
+                        <span class="summary-value">${booking.patientName}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">رقم الجوال</span>
+                        <span class="summary-value">${booking.mobile}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">نوع الاستشارة</span>
+                        <span class="summary-value">${formatConsultationType(booking.consultationType)}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">التاريخ والوقت</span>
+                        <span class="summary-value">${formatDate(booking.date)} • ${formatTime(booking.startTime)}</span>
+                    </div>
+                `;
+
+                // Send automatic notification (when API is connected)
+                NotificationService.sendNotification('confirmation', booking);
+
+                // Build WhatsApp confirmation message (manual fallback)
+                const waMsg = `عميلنا العزيز،\nتم تأكيد حجز استشارتكم الطبية ✅\n\n📋 نوع الاستشارة: ${formatConsultationType(booking.consultationType)}\n📅 التاريخ: ${formatDate(booking.date)}\n🕐 الوقت: ${formatTime(booking.startTime)} — ${formatTime(booking.endTime)}\n🔖 رقم الحجز: ${refCode}\n\nنود إفادتكم بأن الاستشاري سيتواصل معكم في الموعد المحدد لشرح النتائج ومتابعة حالتك الصحية.\n\nنتمنى لكم دوام الصحة والعافية 🦋\nفريق بريزما للرعاية المختبرية\n📞 920031642`;
+                const waUrl = 'https://wa.me/966920031642?text=' + encodeURIComponent(waMsg);
+                document.getElementById('waConfirmBtn').href = waUrl;
+
+                submitBtn.classList.remove('loading');
+            }, 800);
+        });
+
+        // ═══════════════════════════════════════════════════
+        // NOTIFICATION SERVICE — جاهز للربط مع API خارجي
+        // ═══════════════════════════════════════════════════
+        const NotificationService = {
+            // ── إعدادات API (تُعبّأ لاحقاً عند ربط الباك إند) ──
+            config: {
+                enabled: false, // غيّرها لـ true عند ربط الـ API
+                apiUrl: '', // مثال: 'https://your-backend.com/api/notifications'
+                apiKey: '', // مفتاح الـ API
+                whatsappProvider: 'manual', // 'manual' | 'twilio' | 'messagebird' | 'meta_cloud'
+                smsProvider: 'none', // 'none' | 'twilio' | 'unifonic' | 'msegat'
+                emailProvider: 'none', // 'none' | 'sendgrid' | 'mailgun' | 'resend'
+            },
+
+            // ── بناء رسالة واتساب التأكيد ──
+            buildConfirmationMessage(booking) {
+                return `عميلنا العزيز،\nتم تأكيد حجز استشارتكم الطبية ✅\n\n📋 نوع الاستشارة: ${formatConsultationType(booking.consultationType)}\n📅 التاريخ: ${formatDate(booking.date)}\n🕐 الوقت: ${formatTime(booking.startTime)} — ${formatTime(booking.endTime)}\n🔖 رقم الحجز: ${booking.reference}\n\nنود إفادتكم بأن الاستشاري سيتواصل معكم في الموعد المحدد لشرح النتائج ومتابعة حالتك الصحية.\n\nنتمنى لكم دوام الصحة والعافية 🦋\nفريق بريزما للرعاية المختبرية\n📞 920031642`;
+            },
+
+            // ── بناء رسالة التذكير (24 ساعة قبل) ──
+            buildReminderMessage(booking) {
+                return `تذكير بموعدك 📋\n\nأهلاً ${booking.patientName}،\nنذكّرك بموعد استشارتك الطبية غداً.\n\n📅 ${formatDate(booking.date)}\n🕐 ${formatTime(booking.startTime)}\n\nلتغيير أو إلغاء الموعد:\n📞 920031642\n\nمختبرات بريزما الطبية`;
+            },
+
+            // ── بناء رسالة التذكير (ساعة واحدة قبل) ──
+            buildFinalReminderMessage(booking) {
+                return `⏰ موعدك بعد ساعة\n\nأهلاً ${booking.patientName}،\nاستشارتك الطبية بعد ساعة واحدة.\nسيتواصل معك الاستشاري على الرقم: ${booking.mobile}\n\nمختبرات بريزما الطبية 💙`;
+            },
+
+            // ── بناء رسالة إشعار قائمة الانتظار ──
+            buildWaitlistNotification(entry) {
+                return `أبشر! موعد جديد متاح 🎉\n\nأهلاً ${entry.patientName}،\nانفتح موعد استشارة طبية جديد في التاريخ اللي طلبته.\n\nسارع بحجز موعدك الآن:\nhttps://www.prismalaboratory.com/consultation.html\n\nمختبرات بريزما الطبية`;
+            },
+
+            // ── إرسال الإشعار (يتفعّل تلقائياً عند ربط الـ API) ──
+            async sendNotification(type, booking) {
+                if (!this.config.enabled) {
+                    console.log(`[NotificationService] Notification queued (API not connected): ${type}`, booking.reference || booking.id);
+                    // Store in queue for when API is connected
+                    const queue = JSON.parse(localStorage.getItem('prisma_notification_queue') || '[]');
+                    queue.push({
+                        type: type,
+                        bookingId: booking.id,
+                        reference: booking.reference,
+                        mobile: booking.mobile,
+                        message: type === 'confirmation' ? this.buildConfirmationMessage(booking) :
+                                 type === 'reminder_24h' ? this.buildReminderMessage(booking) :
+                                 type === 'reminder_1h' ? this.buildFinalReminderMessage(booking) :
+                                 type === 'waitlist' ? this.buildWaitlistNotification(booking) : '',
+                        createdAt: new Date().toISOString(),
+                        status: 'queued'
+                    });
+                    localStorage.setItem('prisma_notification_queue', JSON.stringify(queue));
+                    return { success: false, reason: 'api_not_connected' };
+                }
+
+                try {
+                    const message = type === 'confirmation' ? this.buildConfirmationMessage(booking) :
+                                   type === 'reminder_24h' ? this.buildReminderMessage(booking) :
+                                   type === 'reminder_1h' ? this.buildFinalReminderMessage(booking) :
+                                   this.buildWaitlistNotification(booking);
+
+                    // ── هنا يتم الربط الفعلي مع الـ API ──
+                    const response = await fetch(this.config.apiUrl + '/send', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + this.config.apiKey
+                        },
+                        body: JSON.stringify({
+                            provider: this.config.whatsappProvider,
+                            to: booking.mobile.startsWith('0') ? '+966' + booking.mobile.slice(1) : booking.mobile,
+                            message: message,
+                            type: type,
+                            reference: booking.reference
+                        })
+                    });
+
+                    const result = await response.json();
+                    console.log(`[NotificationService] ${type} sent successfully:`, result);
+                    return { success: true, result };
+                } catch (error) {
+                    console.error(`[NotificationService] Failed to send ${type}:`, error);
+                    return { success: false, error: error.message };
+                }
+            }
+        };
+
+        // ===== WAITLIST =====
+        document.getElementById('waitlistForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const entry = {
+                id: 'wl_' + Date.now(),
+                patientName: document.getElementById('wlName').value,
+                mobile: '0' + document.getElementById('wlMobile').value,
+                preferredDate: document.getElementById('wlDate').value,
+                consultationType: '',
+                status: 'waiting',
+                createdAt: new Date().toISOString()
+            };
+
+            DataStore.addWaitlistEntry(entry);
+
+            alert('تم تسجيلك في قائمة الانتظار — سنبلّغك فور توفر موعد');
+            document.getElementById('waitlistModal').classList.remove('active');
+            document.getElementById('waitlistForm').reset();
+        });
+
+        // ===== BUTTON HANDLERS =====
+        document.getElementById('step1Next').addEventListener('click', () => {
+            if (validateStep1()) {
+                showStep(2);
+                initDatePicker();
+            }
+        });
+
+        document.getElementById('step2Prev').addEventListener('click', () => {
+            showStep(1);
+        });
+
+        document.getElementById('step2Next').addEventListener('click', () => {
+            if (!formState.selectedSlotId) {
+                alert('يجب أن تختار موعداً');
+                return;
+            }
+            updateSummary();
+            showStep(3);
+        });
+
+        document.getElementById('step3Prev').addEventListener('click', () => {
+            showStep(2);
+        });
+
+        document.getElementById('refreshSlots').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (formState.selectedDate) {
+                loadTimeSlots(formState.selectedDate);
+            }
+        });
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', () => {
+            DataStore.seedSlots();
+            document.getElementById('wlDate').min = new Date().toISOString().split('T')[0];
+        });
+
+        // Prevent double submission
+        document.getElementById('bookingForm').addEventListener('submit', (e) => {
+            const submitBtn = document.getElementById('step3Submit');
+            if (submitBtn.classList.contains('loading')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <span style="font-family:'Tajawal',sans-serif;font-size:18px;font-weight:900;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">PRISMA</span>
+    <button onclick="document.getElementById('mobileMenu').classList.remove('open')" style="background:none;border:none;font-size:28px;color:var(--light-text);cursor:pointer;">✕</button>
+  </div>
+  <nav class="mobile-menu-nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="comprehensive.html">الباقات الشاملة</a>
+    <a href="specialized.html">الباقات المختصة</a>
+    <a href="sexual-health.html">الصحة الجنسية</a>
+    <a href="marriage.html">باقة الزواج</a>
+    <a href="offers.html">العروض</a>
+    <a href="individual-tests.html">التحاليل الفردية</a>
+    <a href="genetic-tests.html">التحاليل الجينية</a>
+    <a href="about.html">من نحن</a>
+    <a href="blog.html">المدونة</a>
+    <a href="home-visit.html">زيارة منزلية</a>
+    <a href="prisma-ai.html">بريزما AI</a>
+    <a href="consultation.html" class="mob-active" style="display:flex;align-items:center;gap:8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>استشارة طبية مجانية</a>
+  </nav>
+  <a href="#form-sec" class="mobile-menu-cta" onclick="document.getElementById('mobileMenu').classList.remove('open')">احجز الآن</a>
+</div>
+</body>
+</html>
