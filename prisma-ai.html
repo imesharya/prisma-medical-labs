@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="ar">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K6M75DT4');</script>
+<!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><link rel="icon" type="image/png" href="favicon.png">
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://sheets.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob: file:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://sheets.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com;">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(self), payment=()">
   <title>بريزما AI - محرك الذكاء الاصطناعي الطبي</title>
@@ -34,17 +37,14 @@
       --sdaia-green-light: rgba(43, 182, 115, 0.15);
       --sdaia-navy-light: rgba(13, 39, 69, 0.08);
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     html {
       scroll-behavior: smooth;
     }
-
     body {
       font-family: 'Tajawal', sans-serif;
       background: #ffffff;
@@ -52,7 +52,6 @@
       line-height: 1.8;
       overflow-x: hidden;
     }
-
     /* Header Styles */
     header {
       position: fixed;
@@ -71,13 +70,11 @@
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     }
-
     header > div:first-child {
       display: flex;
       align-items: flex-end;
       gap: 0;
     }
-
     .hdr-logo-text {
       font-family: 'Tajawal', sans-serif;
       font-size: 22px;
@@ -89,7 +86,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .hdr-logo-subtitle {
       font-family: 'Tajawal', sans-serif;
       font-size: 7.5px;
@@ -98,7 +94,6 @@
       letter-spacing: 5px;
       margin-top: 3px;
     }
-
     .hdr-logo-ar {
       font-family: 'Tajawal', sans-serif;
       font-size: 9px;
@@ -106,7 +101,6 @@
       color: rgba(26, 31, 54, 0.4);
       margin-top: 2px;
     }
-
     .hdr-logo-svg {
       height: 44px;
       width: auto;
@@ -114,13 +108,11 @@
       margin-left: 2px;
       margin-bottom: -2px;
     }
-
     header nav {
       display: flex;
       gap: 14px;
       align-items: center;
     }
-
     header a {
       color: rgba(26, 31, 54, 0.6);
       text-decoration: none;
@@ -128,11 +120,9 @@
       font-weight: 500;
       transition: color 0.2s;
     }
-
     header a:hover {
       color: #1a1f36;
     }
-
     header a.hdr-cta {
       padding: 9px 22px;
       font-size: 12px;
@@ -146,17 +136,14 @@
       border-radius: 6px;
       transition: all 0.3s;
     }
-
     header a.hdr-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 30px rgba(155, 35, 53, 0.3);
     }
-
     /* Main content container */
     main {
       margin-top: 68px;
     }
-
     /* ===== HERO SECTION ===== */
     .hero {
       position: relative;
@@ -171,7 +158,6 @@
       background: url('ai-concept-hero.jpg') center 30% / cover no-repeat fixed;
       background-color: #020a18;
     }
-
     /* Layer 1: Overlay for text readability — darkens enough for text, portal still glows through */
     .hero::before {
       content: '';
@@ -189,7 +175,6 @@
       z-index: 0;
       pointer-events: none;
     }
-
     /* Layer 2: Removed — hero image is the visual */
     .hero::after {
       display: none;
@@ -197,7 +182,6 @@
     .hero-waves { display: none; }
     .hero-scene { display: none; }
     .hero-pixel { display: none; }
-
     /* Floating sparkle particles — SDAIA energy field */
     .hero-spark {
       position: absolute;
@@ -210,7 +194,6 @@
     .hero-spark:nth-child(3) { animation-duration: 7s; }
     .hero-spark:nth-child(5) { animation-duration: 6s; }
     .hero-spark:nth-child(7) { animation-duration: 8s; }
-
     .hero-content {
       position: relative;
       z-index: 2;
@@ -219,7 +202,6 @@
       padding: 3rem 2.5rem 2rem;
       border-radius: 32px;
     }
-
     .hero h1 {
       font-size: clamp(48px, 8vw, 100px);
       font-weight: 900;
@@ -230,7 +212,6 @@
       -webkit-text-fill-color: unset;
       text-shadow: 0 2px 16px rgba(0,0,0,0.5), 0 0 40px rgba(0,100,255,0.15);
     }
-
     /* Trendy editorial title — merged overlap */
     .hero-title-wrap {
       position: relative;
@@ -239,7 +220,6 @@
       margin-bottom: 1.5rem;
       animation: fadeUp 1s ease-out;
     }
-
     .title-ar {
       font-family: 'Amiri', serif;
       font-size: clamp(56px, 10vw, 130px);
@@ -256,7 +236,6 @@
       background-clip: text;
       filter: drop-shadow(0 0 20px rgba(43,182,115,0.5)) drop-shadow(0 2px 8px rgba(0,0,0,0.7));
     }
-
     .title-ai {
       font-family: 'Tajawal', sans-serif;
       font-size: clamp(90px, 16vw, 200px);
@@ -276,12 +255,10 @@
       filter: drop-shadow(0 0 40px rgba(43,182,115,0.3));
       overflow: visible;
     }
-
     .title-ai::after { display: none; }
     .ai-circuit-dot { display: none; }
     .ai-circuit-line { display: none; }
     .title-line { display: none; }
-
     .hero p {
       font-size: clamp(18px, 4vw, 28px);
       font-weight: 500;
@@ -291,7 +268,6 @@
       animation: fadeUp 1s ease-out 0.2s backwards;
       text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.3);
     }
-
     /* AI-styled hook subtitle */
     .hero-hook {
       font-size: clamp(20px, 4vw, 34px) !important;
@@ -306,7 +282,6 @@
       gap: 6px;
       text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.4);
     }
-
     .hook-dots {
       display: inline-block;
       color: #4ee8a0;
@@ -314,7 +289,6 @@
       animation: dotsFlicker 2s ease-in-out infinite;
       text-shadow: 0 0 10px rgba(43,182,115,0.6);
     }
-
     .hook-highlight {
       position: relative;
       display: inline-block;
@@ -329,12 +303,10 @@
       border-radius: 8px;
       text-shadow: 0 0 12px rgba(43,182,115,0.5);
     }
-
     .hook-highlight::before { display: none; }
     .hook-highlight::after { display: none; }
     .hook-scanline { display: none; }
     .hook-lines { display: none; }
-
     .hero-slogan {
       font-size: clamp(15px, 3vw, 20px) !important;
       font-weight: 400 !important;
@@ -351,7 +323,6 @@
       font-weight: 700;
       text-shadow: 0 0 10px rgba(43,182,115,0.4);
     }
-
     .hero-features {
       display: flex;
       flex-wrap: wrap;
@@ -360,7 +331,6 @@
       margin-bottom: 3rem;
       animation: fadeUp 1s ease-out 0.4s backwards;
     }
-
     /* === STORY CARDS — Editorial AI Intro === */
     .hero-story {
       position: relative;
@@ -370,7 +340,6 @@
       animation: fadeUp 1s ease-out 0.5s backwards;
       overflow: hidden;
     }
-
     .story-card {
       position: absolute;
       inset: 0;
@@ -378,7 +347,7 @@
       align-items: center;
       gap: 10px;
       padding: 10px 18px;
-      background: rgba(2,10,24,0.5);
+      background: rgba(2,10,24,0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(43,182,115,0.25);
@@ -388,21 +357,17 @@
       transition: opacity 0.5s ease, transform 0.5s ease;
       pointer-events: none;
     }
-
     .story-card.active {
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
     }
-
     .story-card.exit {
       opacity: 0;
       transform: translateY(-12px);
     }
-
     .story-card::before { display: none; }
     .story-pulse { display: none; }
-
     .story-icon {
       display: flex;
       align-items: center;
@@ -412,7 +377,6 @@
       border-radius: 50%;
       flex-shrink: 0;
     }
-
     .story-card:nth-child(1) .story-icon {
       background: rgba(43,182,115,0.15);
       border: 1px solid rgba(43,182,115,0.25);
@@ -425,35 +389,29 @@
       background: rgba(43,182,115,0.12);
       border: 1px solid rgba(43,182,115,0.2);
     }
-
     .story-icon svg {
       width: 16px;
       height: 16px;
     }
-
     .story-num { display: none; }
-
     .story-text {
       font-size: 12.5px;
       line-height: 1.5;
       color: rgba(255, 255, 255, 0.9);
       font-weight: 500;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-
     .story-text br { display: none; }
-
     .story-text strong {
       font-weight: 700;
       color: #fff;
     }
-
     .story-card:nth-child(1) .story-text strong { color: #4ee8a0; }
     .story-card:nth-child(2) .story-text strong { color: #5ec4e8; }
     .story-card:nth-child(3) .story-text strong { color: #4ee8a0; }
-
     .hero-story::after { display: none; }
-
     .story-dots {
       display: flex;
       justify-content: center;
@@ -464,7 +422,6 @@
       left: 50%;
       transform: translateX(-50%);
     }
-
     .story-dot {
       width: 8px;
       height: 8px;
@@ -477,48 +434,64 @@
       background-clip: content-box;
       box-sizing: content-box;
     }
-
     .story-dot.active {
       background: #2bb673;
       width: 20px;
       border-radius: 4px;
       background-clip: content-box;
     }
-
     @media (max-width: 768px) {
       .hero-story {
-        max-width: 90%;
-        height: 46px;
+        max-width: 88%;
+        height: auto;
+        min-height: auto;
         margin: 1rem auto 0.6rem;
+        overflow: visible;
       }
       .story-card {
-        padding: 8px 16px;
-        gap: 8px;
-        border-radius: 24px;
-        background: rgba(2,10,24,0.75);
-        border: 1px solid rgba(43,182,115,0.4);
-        box-shadow: 0 0 12px rgba(43,182,115,0.12);
+        position: relative;
+        inset: auto;
+        padding: 12px 16px;
+        gap: 10px;
+        border-radius: 20px;
+        background: rgba(2,10,24,0.94);
+        border: 1px solid rgba(43,182,115,0.3);
+        box-shadow: 0 2px 16px rgba(0,0,0,0.25), 0 0 8px rgba(43,182,115,0.08);
+        display: none;
+        align-items: center;
+      }
+      .story-card.active {
+        display: flex;
       }
       .story-text {
-        font-size: 11.5px;
+        font-size: 13px;
+        line-height: 1.8;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+      }
+      .story-text br { display: block; }
+      .story-text strong {
+        display: inline;
       }
       .story-icon {
-        width: 28px;
-        height: 28px;
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        margin-top: 0;
       }
       .story-icon svg {
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
       }
       .story-dots {
         position: relative;
         bottom: auto;
         left: auto;
         transform: none;
-        margin: 0 auto 0.8rem;
+        margin: 0.6rem auto 0.8rem;
       }
     }
-
     .feature-pill {
       padding: 12px 24px;
       background: rgba(2, 10, 24, 0.45);
@@ -531,14 +504,12 @@
       backdrop-filter: blur(14px);
       transition: all 0.3s;
     }
-
     .feature-pill:hover {
       background: rgba(43, 182, 115, 0.15);
       border-color: rgba(43, 182, 115, 0.5);
       transform: translateY(-4px);
       box-shadow: 0 10px 30px rgba(43, 182, 115, 0.2);
     }
-
     .hero-cta {
       padding: 16px 48px;
       font-size: 16px;
@@ -553,23 +524,19 @@
       box-shadow: 0 8px 24px rgba(43, 182, 115, 0.3);
       animation: fadeUp 1s ease-out 0.6s backwards;
     }
-
     .hero-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 12px 32px rgba(43, 182, 115, 0.4);
     }
-
     .hero-cta:active {
       transform: translateY(-1px);
     }
-
     /* ===== HOW IT WORKS SECTION ===== */
     .how-it-works {
       position: relative;
       padding: 8rem 2rem;
       background: #f7f8fc;
     }
-
     .how-it-works h2 {
       font-size: clamp(36px, 6vw, 64px);
       font-weight: 900;
@@ -580,7 +547,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .steps-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -589,7 +555,6 @@
       margin: 0 auto;
       position: relative;
     }
-
     .step-card {
       position: relative;
       padding: 2rem;
@@ -602,26 +567,21 @@
       animation: fadeUp 0.8s ease-out forwards;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
-
     .step-card:nth-child(1) {
       animation-delay: 0s;
     }
-
     .step-card:nth-child(2) {
       animation-delay: 0.2s;
     }
-
     .step-card:nth-child(3) {
       animation-delay: 0.4s;
     }
-
     .step-card:hover {
       background: #ffffff;
       border-color: rgba(0, 191, 255, 0.3);
       transform: translateY(-8px);
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
     }
-
     .step-number {
       width: 50px;
       height: 50px;
@@ -635,19 +595,16 @@
       color: #ffffff;
       margin-bottom: 1rem;
     }
-
     .step-card h3 {
       font-size: 20px;
       font-weight: 700;
       margin-bottom: 0.5rem;
     }
-
     .step-card p {
       font-size: 14px;
       color: rgba(26, 31, 54, 0.6);
       line-height: 1.6;
     }
-
     /* Connector line between steps */
     @media (min-width: 768px) {
       .steps-container::before {
@@ -661,7 +618,6 @@
         z-index: -1;
       }
     }
-
     /* ===== QUESTIONNAIRE SECTION ===== */
     .questionnaire-section {
       position: relative;
@@ -669,7 +625,6 @@
       background: linear-gradient(135deg, #f8fafb 0%, #f0f4f8 50%, #f5f7fa 100%);
       min-height: 100vh;
     }
-
     .questionnaire-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -677,7 +632,6 @@
       grid-template-columns: 280px 1fr;
       gap: 3rem;
     }
-
     @media (max-width: 768px) {
       .questionnaire-section {
         padding: 1.5rem 1rem;
@@ -690,7 +644,6 @@
         margin-bottom: 1rem;
       }
     }
-
     /* Encourage text above progress bar */
     .pai-encourage {
       text-align: center;
@@ -701,17 +654,14 @@
       min-height: 20px;
       transition: opacity 0.4s ease;
     }
-
     .pai-encourage:empty {
       display: none;
     }
-
     @media (max-width: 768px) {
       .pai-encourage {
         display: none;
       }
     }
-
     /* Progress bar */
     .progress-bar {
       position: sticky;
@@ -723,7 +673,6 @@
       margin-bottom: 2rem;
       overflow: hidden;
     }
-
     .progress-fill {
       height: 100%;
       background: linear-gradient(90deg, #2bb673, #1a9d5a, #255877);
@@ -732,7 +681,6 @@
       box-shadow: 0 0 12px rgba(43, 182, 115, 0.4);
       position: relative;
     }
-
     .progress-fill::after {
       content: '';
       position: absolute;
@@ -745,7 +693,6 @@
       border-radius: 50%;
       box-shadow: 0 0 12px rgba(43, 182, 115, 0.5), 0 0 4px rgba(43, 182, 115, 0.8);
     }
-
     .questionnaire-step-info {
       display: flex;
       justify-content: center;
@@ -755,32 +702,26 @@
       font-size: 13px;
       color: rgba(26, 31, 54, 0.5);
     }
-
     .questionnaire-step-info #prismAIStepCounter {
       font-weight: 600;
       color: var(--sdaia-green);
     }
-
     .questionnaire-step-info #prismAIStepName {
       color: rgba(26, 31, 54, 0.7);
     }
-
     @media (max-width: 768px) {
       .questionnaire-step-info {
         display: none;
       }
     }
-
     /* Compact mobile step dots — replaces old text step counter */
     .pai-mobile-progress {
       display: none;
     }
-
     @media (max-width: 768px) {
       .progress-bar {
         display: none;
       }
-
       .pai-mobile-progress {
         display: flex;
         flex-direction: column;
@@ -788,7 +729,6 @@
         gap: 6px;
         padding: 0 0.5rem 0.5rem;
       }
-
       .pai-mobile-dots {
         display: flex;
         align-items: center;
@@ -797,7 +737,6 @@
         width: 100%;
         max-width: 320px;
       }
-
       .pai-dot {
         width: 28px;
         height: 28px;
@@ -812,20 +751,17 @@
         position: relative;
         z-index: 1;
       }
-
       .pai-dot.future {
         background: rgba(43, 182, 115, 0.08);
         color: rgba(26, 31, 54, 0.3);
         border: 1.5px solid rgba(43, 182, 115, 0.12);
       }
-
       .pai-dot.done {
         background: linear-gradient(135deg, #2bb673, #1a9d5a);
         color: #fff;
         border: none;
         box-shadow: 0 2px 6px rgba(43, 182, 115, 0.25);
       }
-
       .pai-dot.active {
         background: linear-gradient(135deg, #2bb673, #00a99d);
         color: #fff;
@@ -835,25 +771,21 @@
         font-size: 12px;
         box-shadow: 0 0 0 4px rgba(43, 182, 115, 0.12), 0 3px 10px rgba(43, 182, 115, 0.3);
       }
-
       .pai-dot-line {
         flex: 1;
         height: 2px;
         background: rgba(43, 182, 115, 0.1);
         transition: background 0.4s ease;
       }
-
       .pai-dot-line.done {
         background: linear-gradient(90deg, #2bb673, #1a9d5a);
       }
-
       .pai-mobile-label {
         font-size: 13px;
         font-weight: 600;
         color: #1a1f36;
         text-align: center;
       }
-
       .pai-mobile-label span {
         color: rgba(26, 31, 54, 0.45);
         font-weight: 400;
@@ -861,20 +793,17 @@
         font-size: 12px;
       }
     }
-
     /* Left sidebar - step indicator */
     .step-indicator {
       position: sticky;
       top: 100px;
       height: fit-content;
     }
-
     @media (max-width: 768px) {
       .step-indicator {
         display: none;
       }
     }
-
     .step-item {
       padding: 1rem;
       margin-bottom: 0.5rem;
@@ -883,41 +812,34 @@
       transition: all 0.3s;
       border-radius: 8px;
     }
-
     .step-item.active {
       background: rgba(43, 182, 115, 0.1);
       border-left-color: #2bb673;
     }
-
     .step-item.completed {
       border-left-color: var(--teal);
       opacity: 0.7;
     }
-
     .step-item-number {
       font-size: 12px;
       font-weight: 700;
       color: #2bb673;
       margin-bottom: 0.25rem;
     }
-
     .step-item-title {
       font-size: 14px;
       font-weight: 600;
       color: #1a1f36;
     }
-
     .step-item-subtitle {
       font-size: 11px;
       color: rgba(26, 31, 54, 0.5);
       margin-top: 0.25rem;
     }
-
     /* Main content area */
     .pai-content-wrapper {
       position: relative;
     }
-
     .question-container {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(20px);
@@ -929,11 +851,9 @@
       animation: fadeUp 0.5s ease-out;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.8);
     }
-
     .question-header {
       margin-bottom: 2rem;
     }
-
     .question-title {
       font-size: 26px;
       font-weight: 700;
@@ -943,18 +863,15 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .question-hint {
       font-size: 14px;
       color: rgba(26, 31, 54, 0.6);
       font-weight: 300;
     }
-
     /* Form elements */
     .form-group {
       margin-bottom: 1.5rem;
     }
-
     .form-group label {
       display: block;
       font-size: 14px;
@@ -962,7 +879,6 @@
       margin-bottom: 0.75rem;
       color: rgba(26, 31, 54, 0.8);
     }
-
     .form-group input[type="text"],
     .form-group select {
       width: 100%;
@@ -976,7 +892,6 @@
       transition: all 0.3s;
       -webkit-appearance: none;
     }
-
     .form-group input[type="text"]:focus,
     .form-group select:focus {
       outline: none;
@@ -984,35 +899,29 @@
       border-color: #2bb673;
       box-shadow: 0 0 0 3px rgba(43, 182, 115, 0.1);
     }
-
     .form-group input::placeholder {
       color: rgba(26, 31, 54, 0.4);
     }
-
     /* Select options */
     .form-group select option {
       background: #ffffff;
       color: #1a1f36;
     }
-
     /* Radio/Checkbox groups */
     .options-group {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
     }
-
     .option-item {
       position: relative;
     }
-
     .option-item input[type="radio"],
     .option-item input[type="checkbox"] {
       position: absolute;
       opacity: 0;
       cursor: pointer;
     }
-
     .option-label {
       display: block;
       padding: 12px 16px;
@@ -1026,7 +935,6 @@
       text-align: center;
       color: #1a1f36;
     }
-
     .option-item input[type="radio"]:checked + .option-label,
     .option-item input[type="checkbox"]:checked + .option-label {
       background: linear-gradient(135deg, rgba(155, 35, 53, 0.25), rgba(107, 79, 187, 0.2));
@@ -1034,30 +942,25 @@
       color: var(--cyan);
       box-shadow: 0 0 20px rgba(155, 35, 53, 0.3);
     }
-
     .option-label:hover {
       background: rgba(0, 191, 255, 0.15);
       border-color: rgba(0, 191, 255, 0.4);
       transform: translateY(-2px);
     }
-
     /* Unit label next to input */
     .input-with-unit {
       display: flex;
       gap: 0.5rem;
       align-items: center;
     }
-
     .input-with-unit input {
       flex: 1;
     }
-
     .unit-label {
       font-size: 12px;
       color: rgba(26, 31, 54, 0.6);
       white-space: nowrap;
     }
-
     /* Navigation buttons */
     .questionnaire-footer {
       display: flex;
@@ -1067,7 +970,6 @@
       padding-top: 2rem;
       border-top: 1px solid rgba(0, 0, 0, 0.08);
     }
-
     .btn {
       padding: 12px 32px;
       border: none;
@@ -1080,7 +982,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .btn::after {
       content: '';
       position: absolute;
@@ -1095,52 +996,43 @@
       opacity: 0;
       pointer-events: none;
     }
-
     .btn:active::after {
       width: 120px;
       height: 120px;
       opacity: 0.6;
       transition: 0s;
     }
-
     .btn-secondary {
       background: rgba(43, 182, 115, 0.08);
       color: rgba(26, 31, 54, 0.8);
       border: 1px solid rgba(43, 182, 115, 0.3);
     }
-
     .btn-secondary:hover:not(:disabled) {
       background: rgba(43, 182, 115, 0.15);
       border-color: rgba(43, 182, 115, 0.6);
       transform: translateX(4px);
     }
-
     .btn-primary {
       background: linear-gradient(135deg, #0d2745, #255877, #2bb673);
       color: #ffffff;
       margin-left: auto;
     }
-
     .btn-primary:hover:not(:disabled) {
       transform: translateY(-2px);
       box-shadow: 0 10px 30px rgba(43, 182, 115, 0.4);
     }
-
     .btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
-
     /* Results section */
     .results-container {
       animation: fadeUp 0.8s ease-out;
     }
-
     .results-header {
       text-align: center;
       margin-bottom: 3rem;
     }
-
     .results-title {
       font-size: 36px;
       font-weight: 900;
@@ -1150,19 +1042,16 @@
       background-clip: text;
       margin-bottom: 1rem;
     }
-
     .results-subtitle {
       font-size: 16px;
       color: rgba(26, 31, 54, 0.7);
     }
-
     .package-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       margin-bottom: 3rem;
     }
-
     .package-card {
       position: relative;
       padding: 2rem;
@@ -1176,27 +1065,23 @@
       animation: fadeUp 0.8s ease-out;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
-
     .package-card:hover {
       background: #ffffff;
       border-color: var(--cyan);
       transform: translateY(-8px);
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
     }
-
     .package-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 1rem;
     }
-
     .package-name {
       font-size: 18px;
       font-weight: 700;
       color: #1a1f36;
     }
-
     .package-discount {
       background: linear-gradient(135deg, #2bb673, #255877);
       padding: 4px 12px;
@@ -1205,32 +1090,27 @@
       font-weight: 700;
       color: #ffffff;
     }
-
     .package-price {
       font-size: 28px;
       font-weight: 900;
       color: var(--cyan);
       margin-bottom: 0.5rem;
     }
-
     .package-old-price {
       text-decoration: line-through;
       color: rgba(26, 31, 54, 0.4);
       font-size: 14px;
       margin-left: 0.5rem;
     }
-
     .package-tests {
       font-size: 14px;
       color: rgba(26, 31, 54, 0.6);
       margin-bottom: 1.5rem;
     }
-
     .package-features {
       list-style: none;
       margin-bottom: 1.5rem;
     }
-
     .package-features li {
       font-size: 13px;
       color: rgba(26, 31, 54, 0.6);
@@ -1238,7 +1118,6 @@
       display: flex;
       align-items: center;
     }
-
     .package-features li::before {
       content: '✓';
       display: inline-block;
@@ -1246,7 +1125,6 @@
       color: var(--teal);
       font-weight: bold;
     }
-
     .package-cta {
       width: 100%;
       padding: 12px;
@@ -1259,12 +1137,10 @@
       transition: all 0.3s;
       font-family: 'Tajawal', sans-serif;
     }
-
     .package-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 30px rgba(43, 182, 115, 0.4);
     }
-
     /* Loading state */
     .loading-spinner {
       display: inline-block;
@@ -1275,11 +1151,9 @@
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
-
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-
     /* Lead capture */
     .lead-form {
       max-width: 500px;
@@ -1292,7 +1166,6 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
-
     .lead-form h3 {
       font-size: 20px;
       font-weight: 700;
@@ -1300,11 +1173,9 @@
       text-align: center;
       color: #1a1f36;
     }
-
     .lead-form-group {
       margin-bottom: 1rem;
     }
-
     .lead-form-group input {
       width: 100%;
       padding: 12px 16px;
@@ -1315,21 +1186,18 @@
       font-family: 'Tajawal', sans-serif;
       font-size: 14px;
     }
-
     .lead-form-group input:focus {
       outline: none;
       border-color: var(--cyan);
       background: #ffffff;
       box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
     }
-
     /* ===== TRUST SECTION ===== */
     .trust-section {
       position: relative;
       padding: 8rem 2rem;
       background: #f7f8fc;
     }
-
     .trust-section h2 {
       font-size: clamp(36px, 6vw, 64px);
       font-weight: 900;
@@ -1340,7 +1208,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .trust-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1348,7 +1215,6 @@
       max-width: 1000px;
       margin: 0 auto;
     }
-
     .trust-card {
       padding: 2rem;
       background: #ffffff;
@@ -1361,34 +1227,28 @@
       animation: fadeUp 0.8s ease-out forwards;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
-
     .trust-card:nth-child(1) { animation-delay: 0s; }
     .trust-card:nth-child(2) { animation-delay: 0.15s; }
     .trust-card:nth-child(3) { animation-delay: 0.3s; }
     .trust-card:nth-child(4) { animation-delay: 0.45s; }
-
     .trust-card:hover {
       background: #ffffff;
       border-color: var(--purple);
       transform: translateY(-8px);
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
     }
-
     .trust-card h3 {
       font-size: 18px;
       font-weight: 700;
       color: #1a1f36;
     }
-
     .trust-card p {
       font-size: 14px;
       color: rgba(26, 31, 54, 0.6);
       margin-top: 0.5rem;
       line-height: 1.6;
     }
-
     /* ===== ANIMATIONS ===== */
-
     @keyframes sparkFloat {
       0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
       25% { transform: translateY(-20px) translateX(10px) scale(1.2); opacity: 1; }
@@ -1396,17 +1256,14 @@
       75% { transform: translateY(-25px) translateX(5px) scale(1.1); opacity: 0.8; }
       100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
     }
-
     @keyframes dotsFlicker {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.3; }
     }
-
     @keyframes geometricSlide {
       0% { background-position: 0 0; }
       100% { background-position: 200px 0; }
     }
-
     @keyframes gradientShift {
       0%, 100% {
         filter: blur(50px) brightness(1);
@@ -1415,7 +1272,6 @@
         filter: blur(50px) brightness(1.2);
       }
     }
-
     @keyframes float {
       0%, 100% {
         transform: translateY(0px);
@@ -1424,7 +1280,6 @@
         transform: translateY(-30px);
       }
     }
-
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -1435,7 +1290,6 @@
         transform: translateY(0);
       }
     }
-
     @keyframes shimmer {
       0%, 100% {
         background-position: 200% center;
@@ -1444,7 +1298,6 @@
         background-position: -200% center;
       }
     }
-
     @keyframes stepPulse {
       0%, 100% {
         box-shadow: 0 0 10px rgba(43, 182, 115, 0.3);
@@ -1453,7 +1306,6 @@
         box-shadow: 0 0 30px rgba(43, 182, 115, 0.6);
       }
     }
-
     @keyframes progressGlow {
       0%, 100% {
         filter: drop-shadow(0 0 10px rgba(43, 182, 115, 0.5));
@@ -1462,7 +1314,6 @@
         filter: drop-shadow(0 0 20px rgba(43, 182, 115, 0.8));
       }
     }
-
     /* Selection celebration bounce */
     @keyframes selectBounce {
       0% { transform: scale(1); }
@@ -1470,7 +1321,6 @@
       60% { transform: scale(0.98); }
       100% { transform: scale(1); }
     }
-
     /* Question card entrance */
     @keyframes slideInQuestion {
       from {
@@ -1482,7 +1332,6 @@
         transform: translateY(0);
       }
     }
-
     /* Fade up animation */
     @keyframes fadeUp {
       from {
@@ -1494,79 +1343,64 @@
         transform: translateY(0);
       }
     }
-
     /* Scroll animations */
     .fade-in {
       opacity: 0;
       transform: translateY(40px);
     }
-
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
       transition: all 0.8s ease-out;
     }
-
     /* Mobile responsive */
     @media (max-width: 768px) {
       body {
         font-size: 16px;
       }
-
       header {
         padding: 0 1rem;
         height: 56px;
         flex-direction: row;
         gap: 0;
       }
-
       header nav {
         display: none;
       }
-
       .hero {
         padding: 2rem 1rem 5rem;
       }
-
       .hero-pixel {
         display: none;
       }
-
       .hero-scene svg {
         transform: scale(0.85);
       }
-
       .question-container {
         padding: 1.5rem;
       }
-
       .options-group {
         grid-template-columns: 1fr;
       }
-
       .questionnaire-footer {
         flex-direction: row-reverse;
         gap: 0.6rem;
         margin-top: 1.5rem;
         padding-top: 1rem;
       }
-
       .questionnaire-footer .btn {
         flex: 1;
         padding: 10px 0;
         font-size: 13px;
         border-radius: 10px;
       }
-
       .btn-primary {
         margin-left: 0;
       }
-
       .package-grid {
         grid-template-columns: 1fr;
       }
     }
-
     @media (max-width: 480px) {
       .title-ar { font-size: 40px; letter-spacing: 4px; }
       .title-ai { font-size: 70px; letter-spacing: -2px; }
@@ -1575,11 +1409,13 @@
       .hero p { font-size: 0.95rem; }
       .hero-features { gap: 6px; }
       .feature-pill { font-size: 12px; padding: 10px 16px; min-height: 44px; display: inline-flex; align-items: center; }
-      .hero-story { max-width: 100%; height: 42px; }
-      .story-card { padding: 7px 12px; }
-      .story-text { font-size: 11px; }
-      .story-icon { width: 26px; height: 26px; }
-      .story-icon svg { width: 13px; height: 13px; }
+      .hero-story { max-width: 94%; height: auto; min-height: auto; }
+      .story-card { padding: 10px 14px; gap: 8px; border-radius: 18px; }
+      .story-text { font-size: 12px; line-height: 1.8; white-space: normal; }
+      .story-text br { display: block; }
+      .story-text strong { display: inline; }
+      .story-icon { width: 30px; height: 30px; min-width: 30px; margin-top: 0; }
+      .story-icon svg { width: 14px; height: 14px; }
       .steps-container { gap: 12px; }
       .step-card { padding: 16px; }
       .step-card h3 { font-size: 14px; }
@@ -1593,11 +1429,9 @@
       .trust-card { padding: 16px; }
       .trust-card h3 { font-size: 15px; }
     }
-
     /* ═══════════════════════════════════════════════════════════ */
     /* Question & UI Component Styles */
     /* ═══════════════════════════════════════════════════════════ */
-
     .pai-qcard {
       position: relative;
       background: rgba(255, 255, 255, 0.88);
@@ -1613,7 +1447,6 @@
       opacity: 0;
       overflow: hidden;
     }
-
     .pai-qcard::after {
       content: '';
       position: absolute;
@@ -1623,9 +1456,7 @@
       pointer-events: none;
       z-index: 0;
     }
-
     .pai-qcard > * { position: relative; z-index: 1; }
-
     .pai-qcard-sub {
       position: relative;
       overflow: hidden;
@@ -1640,19 +1471,16 @@
       z-index: 0;
     }
     .pai-qcard-sub > * { position: relative; z-index: 1; }
-
     .pai-qcard:hover {
       background: rgba(255, 255, 255, 0.93);
       border-color: rgba(43, 182, 115, 0.2);
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
     }
-
     .pai-qcard:nth-child(1) { animation-delay: 0s; }
     .pai-qcard:nth-child(2) { animation-delay: 0.1s; }
     .pai-qcard:nth-child(3) { animation-delay: 0.15s; }
     .pai-qcard:nth-child(4) { animation-delay: 0.2s; }
     .pai-qcard:nth-child(5) { animation-delay: 0.25s; }
-
     /* Hero question card for primary questions */
     .pai-qcard-hero {
       background: rgba(255, 255, 255, 0.92);
@@ -1668,7 +1496,6 @@
       opacity: 0;
       overflow: hidden;
     }
-
     .pai-qcard-hero::before {
       content: '';
       position: absolute;
@@ -1680,7 +1507,6 @@
       border-radius: 20px 0 0 20px;
       z-index: 2;
     }
-
     .pai-qcard-hero::after {
       content: '';
       position: absolute;
@@ -1690,21 +1516,17 @@
       pointer-events: none;
       z-index: 0;
     }
-
     .pai-qcard-hero > * { position: relative; z-index: 1; }
-
     .pai-qcard-hero .pai-q-label {
       font-size: 22px;
       font-weight: 700;
       line-height: 1.9;
     }
-
     .pai-qcard-hero:hover {
       background: rgba(255, 255, 255, 0.95);
       border-color: rgba(43, 182, 115, 0.3);
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
     }
-
     .pai-q-label {
       font-size: 1.15rem;
       font-weight: 600;
@@ -1712,14 +1534,12 @@
       color: #1a1f36;
       line-height: 1.9;
     }
-
     .pai-q-hint {
       font-size: 0.9rem;
       color: rgba(26, 31, 54, 0.6);
       margin-bottom: 1rem;
       line-height: 1.8;
     }
-
     /* Pills (single select) */
     .pai-pills {
       display: flex;
@@ -1727,7 +1547,6 @@
       gap: 0.75rem;
       margin-bottom: 1rem;
     }
-
     .pai-pill {
       padding: 0.75rem 1.5rem;
       border: 2px solid rgba(43, 182, 115, 0.3);
@@ -1741,7 +1560,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .pai-pill::after {
       content: '';
       position: absolute;
@@ -1756,27 +1574,23 @@
       opacity: 0;
       pointer-events: none;
     }
-
     .pai-pill:active::after {
       width: 80px;
       height: 80px;
       opacity: 0.5;
       transition: 0s;
     }
-
     .pai-pill:hover {
       transform: translateY(-3px) scale(1.02);
       box-shadow: 0 8px 24px rgba(43, 182, 115, 0.15);
       color: #1a1f36;
     }
-
     .pai-pill.selected {
       background: linear-gradient(135deg, rgba(43, 182, 115, 0.4), rgba(37, 88, 119, 0.4));
       border-color: rgba(43, 182, 115, 0.8);
       box-shadow: 0 0 20px rgba(43, 182, 115, 0.3);
       animation: selectBounce 0.4s ease-out;
     }
-
     /* Chips (multi-select) */
     .pai-chips {
       display: flex;
@@ -1784,7 +1598,6 @@
       gap: 0.75rem;
       margin-bottom: 1rem;
     }
-
     .pai-chip {
       padding: 0.75rem 1.25rem;
       border: 2px solid rgba(107, 79, 187, 0.3);
@@ -1801,7 +1614,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .pai-chip::after {
       content: '';
       position: absolute;
@@ -1816,32 +1628,27 @@
       opacity: 0;
       pointer-events: none;
     }
-
     .pai-chip:active::after {
       width: 80px;
       height: 80px;
       opacity: 0.5;
       transition: 0s;
     }
-
     .pai-chip:hover {
       transform: translateY(-3px) scale(1.02);
       box-shadow: 0 8px 24px rgba(43, 182, 115, 0.15);
       color: #1a1f36;
     }
-
     .pai-chip.selected {
       background: linear-gradient(135deg, rgba(155, 35, 53, 0.25), rgba(107, 79, 187, 0.2));
       border-color: rgba(155, 35, 53, 0.8);
       box-shadow: 0 0 20px rgba(155, 35, 53, 0.2);
       animation: selectBounce 0.4s ease-out;
     }
-
     .chip-icon {
       font-size: 1rem;
       font-weight: bold;
     }
-
     /* Stepper (number input) */
     .pai-stepper-row {
       display: flex;
@@ -1849,7 +1656,6 @@
       gap: 1rem;
       margin-bottom: 1rem;
     }
-
     .pai-stepper-btn {
       width: 40px;
       height: 40px;
@@ -1864,7 +1670,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .pai-stepper-btn::after {
       content: '';
       position: absolute;
@@ -1878,14 +1683,12 @@
       transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
       opacity: 0;
     }
-
     .pai-stepper-btn:active::after {
       width: 100px;
       height: 100px;
       opacity: 1;
       transition: 0s;
     }
-
     .pai-stepper-btn:hover {
       background: rgba(43, 182, 115, 0.15);
       border-color: rgba(43, 182, 115, 0.6);
@@ -1893,14 +1696,12 @@
       color: #1a1f36;
       box-shadow: 0 4px 12px rgba(43, 182, 115, 0.15);
     }
-
     .pai-stepper-center {
       display: flex;
       align-items: center;
       gap: 1rem;
       flex: 1;
     }
-
     .pai-number-input {
       background: #ffffff;
       border: 2px solid rgba(0, 0, 0, 0.12);
@@ -1913,20 +1714,17 @@
       text-align: center;
       text-align-last: center;
     }
-
     .pai-number-input:focus {
       outline: none;
       background: #ffffff;
       border-color: #2bb673;
       box-shadow: 0 0 0 3px rgba(43, 182, 115, 0.1);
     }
-
     .pai-unit {
       font-size: 0.95rem;
       color: rgba(26, 31, 54, 0.7);
       font-weight: 500;
     }
-
     /* Text input */
     .pai-text-input {
       width: 100%;
@@ -1940,18 +1738,15 @@
       margin-bottom: 1rem;
       transition: all 0.3s ease;
     }
-
     .pai-text-input::placeholder {
       color: rgba(26, 31, 54, 0.4);
     }
-
     .pai-text-input:focus {
       outline: none;
       background: #ffffff;
       border-color: #2bb673;
       box-shadow: 0 0 0 3px rgba(43, 182, 115, 0.1);
     }
-
     /* ══════════════════════════════════════════════
        OTHER MED DETAIL — Text + Image Upload
        ══════════════════════════════════════════════ */
@@ -2104,7 +1899,6 @@
       font-weight: 600;
       margin-top: 0.4rem;
     }
-
     /* Step message */
     /* ══════════════════════════════════════════════
        AI BANNER — Premium Neural Intelligence Header
@@ -2131,7 +1925,6 @@
       justify-content: center;
       gap: 8px;
     }
-
     /* Animated gradient orbs — AI aesthetic */
     .pai-step-msg::before {
       content: '';
@@ -2145,7 +1938,6 @@
       animation: paiOrbFloat 6s ease-in-out infinite;
       pointer-events: none;
     }
-
     .pai-step-msg::after {
       content: '';
       position: absolute;
@@ -2158,13 +1950,11 @@
       animation: paiOrbFloat 8s ease-in-out infinite reverse;
       pointer-events: none;
     }
-
     @keyframes paiOrbFloat {
       0%, 100% { transform: translate(0, 0) scale(1); }
       33% { transform: translate(15px, -10px) scale(1.08); }
       66% { transform: translate(-10px, 8px) scale(0.95); }
     }
-
     /* Neural grid overlay — subtle tech pattern */
     .pai-banner-grid {
       position: absolute;
@@ -2177,7 +1967,6 @@
       pointer-events: none;
       opacity: 0.7;
     }
-
     /* AI Logo mark — Year of AI 2026 official logo */
     .pai-banner-logo {
       position: absolute;
@@ -2185,14 +1974,12 @@
       left: 16px;
       z-index: 3;
     }
-
     .pai-banner-logo img {
       height: 32px;
       width: auto;
       object-fit: contain;
       filter: drop-shadow(0 0 6px rgba(43, 182, 115, 0.2));
     }
-
     /* Step message text */
     .pai-banner-text {
       position: relative;
@@ -2205,7 +1992,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     /* Prisma AI badge */
     .pai-banner-badge {
       position: relative;
@@ -2219,7 +2005,6 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
-
     .pai-banner-badge::before {
       content: '';
       width: 5px;
@@ -2229,12 +2014,10 @@
       box-shadow: 0 0 8px rgba(43, 182, 115, 0.6);
       animation: paiBadgePulse 2s ease-in-out infinite;
     }
-
     @keyframes paiBadgePulse {
       0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(43, 182, 115, 0.6); }
       50% { opacity: 0.5; box-shadow: 0 0 16px rgba(43, 182, 115, 0.9); }
     }
-
     /* Animated accent line at bottom */
     .pai-banner-line {
       position: absolute;
@@ -2247,12 +2030,10 @@
       opacity: 0.6;
       animation: paiLineSweep 4s ease-in-out infinite;
     }
-
     @keyframes paiLineSweep {
       0%, 100% { opacity: 0.3; left: 10%; right: 10%; }
       50% { opacity: 0.7; left: 5%; right: 5%; }
     }
-
     @media (max-width: 768px) {
       .pai-step-msg {
         padding: 3rem 1.2rem 1.5rem;
@@ -2270,7 +2051,6 @@
         height: 26px;
       }
     }
-
     /* Reduce motion for accessibility & low-end devices */
     @media (prefers-reduced-motion: reduce) {
       .pai-step-msg::before,
@@ -2278,7 +2058,6 @@
       .pai-banner-line { animation: none; opacity: 0.5; }
       .pai-banner-badge::before { animation: none; }
     }
-
     /* BMI Badge */
     .pai-bmi-badge {
       display: inline-block;
@@ -2289,7 +2068,6 @@
       margin-top: 1rem;
       text-align: center;
     }
-
     .pai-bmi-value {
       font-size: 1.8rem;
       font-weight: 900;
@@ -2298,13 +2076,11 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .pai-bmi-label {
       font-size: 0.85rem;
       color: rgba(26, 31, 54, 0.7);
       margin-top: 0.25rem;
     }
-
     /* Loading state */
     .pai-loading {
       display: flex;
@@ -2314,11 +2090,9 @@
       padding: 3rem 2rem;
       min-height: 400px;
     }
-
     .pai-loading-spinner-wrap {
       margin-bottom: 2rem;
     }
-
     .pai-loading-spinner {
       width: 60px;
       height: 60px;
@@ -2328,23 +2102,19 @@
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
-
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-
     .pai-loading-title {
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
       color: #1a1f36;
     }
-
     .pai-loading-sub {
       font-size: 0.95rem;
       color: rgba(26, 31, 54, 0.6);
     }
-
     /* Lead Capture Form */
     .pai-lead-capture {
       background: #ffffff;
@@ -2368,33 +2138,27 @@
       z-index: 0;
     }
     .pai-lead-capture > * { position: relative; z-index: 1; }
-
     .pai-lead-icon {
       font-size: 3rem;
       margin-bottom: 1rem;
     }
-
     .pai-lead-title {
       font-size: 1.3rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
       color: #1a1f36;
     }
-
     .pai-lead-sub {
       font-size: 0.95rem;
       color: rgba(26, 31, 54, 0.6);
       margin-bottom: 1.5rem;
     }
-
     .pai-lead-form {
       margin-bottom: 1rem;
     }
-
     .pai-lead-field {
       margin-bottom: 1rem;
     }
-
     .pai-lead-field input {
       width: 100%;
       background: #ffffff;
@@ -2406,18 +2170,15 @@
       font-family: 'Tajawal', sans-serif;
       transition: all 0.3s ease;
     }
-
     .pai-lead-field input::placeholder {
       color: rgba(26, 31, 54, 0.4);
     }
-
     .pai-lead-field input:focus {
       outline: none;
       background: #ffffff;
       border-color: #2bb673;
       box-shadow: 0 0 0 3px rgba(43, 182, 115, 0.1);
     }
-
     .pai-lead-skip {
       display: inline-block;
       color: rgba(26, 31, 54, 0.5);
@@ -2426,29 +2187,24 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
-
     .pai-lead-skip:hover {
       color: rgba(26, 31, 54, 0.8);
     }
-
     .pai-lead-privacy {
       font-size: 0.8rem;
       color: rgba(26, 31, 54, 0.4);
       margin-top: 1rem;
     }
-
     /* Results Section */
     .pai-results-header {
       text-align: center;
       margin-bottom: 2rem;
     }
-
     .pai-results-pre {
       font-size: 0.95rem;
       color: rgba(26, 31, 54, 0.6);
       margin-bottom: 0.5rem;
     }
-
     .pai-results-title {
       font-size: 1.8rem;
       font-weight: 900;
@@ -2458,13 +2214,11 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .pai-results-summary {
       font-size: 0.95rem;
       color: rgba(26, 31, 54, 0.7);
       line-height: 1.6;
     }
-
     /* Recommendation Card */
     .pai-rec-card {
       background: #ffffff;
@@ -2487,14 +2241,12 @@
       z-index: 0;
     }
     .pai-rec-card > * { position: relative; z-index: 1; }
-
     .pai-rec-card:hover {
       background: #ffffff;
       border-color: rgba(0, 191, 255, 0.3);
       transform: translateY(-4px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
-
     .pai-rec-badge {
       display: inline-block;
       background: linear-gradient(135deg, #2bb673, #255877);
@@ -2506,39 +2258,33 @@
       margin-bottom: 0.75rem;
       color: #fff;
     }
-
     .pai-rec-label {
       font-size: 0.85rem;
       color: rgba(26, 31, 54, 0.5);
       margin-bottom: 0.25rem;
     }
-
     .pai-rec-name {
       font-size: 1.3rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
       color: #1a1f36;
     }
-
     .pai-rec-meta {
       font-size: 0.9rem;
       color: rgba(26, 31, 54, 0.6);
       margin-bottom: 0.75rem;
     }
-
     .pai-rec-desc {
       font-size: 0.95rem;
       color: rgba(26, 31, 54, 0.7);
       line-height: 1.6;
       margin-bottom: 1rem;
     }
-
     .pai-rec-btns {
       display: flex;
       gap: 0.75rem;
       margin-top: 1rem;
     }
-
     .pai-rec-btns button {
       flex: 1;
       padding: 0.75rem 1rem;
@@ -2549,29 +2295,24 @@
       font-size: 0.9rem;
       transition: all 0.2s ease;
     }
-
     .pai-rec-btns .pri {
       background: linear-gradient(135deg, #0d2745, #255877, #2bb673);
       color: #fff;
     }
-
     .pai-rec-btns .pri:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(43, 182, 115, 0.3);
     }
-
     .pai-rec-btns .sec {
       background: rgba(43, 182, 115, 0.08);
       border: 2px solid rgba(43, 182, 115, 0.3);
       color: rgba(26, 31, 54, 0.8);
     }
-
     .pai-rec-btns .sec:hover {
       background: rgba(43, 182, 115, 0.15);
       border-color: rgba(43, 182, 115, 0.6);
       color: #1a1f36;
     }
-
     /* Add-ons Section */
     .pai-addons-section {
       margin-top: 2rem;
@@ -2580,20 +2321,17 @@
       border: 2px solid rgba(155, 35, 53, 0.1);
       border-radius: 12px;
     }
-
     .pai-addons-title {
       font-size: 1.1rem;
       font-weight: 700;
       color: #1a1f36;
       margin-bottom: 0.25rem;
     }
-
     .pai-addons-subtitle {
       font-size: 0.85rem;
       color: rgba(26, 31, 54, 0.6);
       margin-bottom: 1rem;
     }
-
     .pai-addon-card {
       background: #ffffff;
       border: 1px solid rgba(0, 0, 0, 0.08);
@@ -2605,29 +2343,24 @@
       align-items: center;
       transition: all 0.2s ease;
     }
-
     .pai-addon-card:hover {
       background: #ffffff;
       border-color: rgba(155, 35, 53, 0.2);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
-
     .pai-addon-info {
       flex: 1;
     }
-
     .pai-addon-name {
       font-weight: 600;
       color: #1a1f36;
       font-size: 0.95rem;
       margin-bottom: 0.25rem;
     }
-
     .pai-addon-price {
       font-size: 0.85rem;
       color: rgba(26, 31, 54, 0.5);
     }
-
     .pai-addon-card button {
       background: linear-gradient(135deg, rgba(155, 35, 53, 0.2), rgba(107, 79, 187, 0.15));
       border: 1px solid rgba(155, 35, 53, 0.2);
@@ -2639,13 +2372,11 @@
       font-size: 0.8rem;
       transition: all 0.2s ease;
     }
-
     .pai-addon-card button:hover {
       background: linear-gradient(135deg, rgba(155, 35, 53, 0.3), rgba(107, 79, 187, 0.25));
       border-color: rgba(155, 35, 53, 0.35);
       color: #1a1f36;
     }
-
     /* Visit preference note */
     .pai-visit-note {
       background: rgba(43, 182, 115, 0.1);
@@ -2657,7 +2388,6 @@
       margin-top: 0.5rem;
       line-height: 1.5;
     }
-
     /* Disclaimer */
     .pai-disclaimer {
       background: rgba(0, 0, 0, 0.02);
@@ -2670,7 +2400,6 @@
       margin-top: 1.5rem;
       text-align: center;
     }
-
     /* General buttons */
     .prisma-ai-btn {
       padding: 0.75rem 1.5rem;
@@ -2682,44 +2411,36 @@
       transition: all 0.3s ease;
       font-family: 'Tajawal', sans-serif;
     }
-
     .prisma-ai-btn-primary {
       background: linear-gradient(135deg, #0d2745, #255877, #2bb673);
       color: #ffffff;
     }
-
     .prisma-ai-btn-primary:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 30px rgba(43, 182, 115, 0.3);
     }
-
     .prisma-ai-btn-primary:active {
       transform: translateY(0);
     }
-
     .prisma-ai-btn-secondary {
       background: rgba(43, 182, 115, 0.08);
       border: 2px solid rgba(43, 182, 115, 0.3);
       color: rgba(26, 31, 54, 0.8);
     }
-
     .prisma-ai-btn-secondary:hover {
       background: rgba(43, 182, 115, 0.15);
       border-color: rgba(43, 182, 115, 0.6);
       transform: translateY(-2px);
       color: #1a1f36;
     }
-
     .prisma-ai-btn-secondary:active {
       transform: translateY(0);
     }
-
     .prisma-ai-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
       transform: none;
     }
-
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -2728,19 +2449,16 @@
       }
       .hero-pixel, .hero-spark { animation: none; }
     }
-
   .nav-dropdown-wrapper {
     position: relative;
     display: inline-block;
   }
-
   .nav-dropdown-trigger {
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 4px;
   }
-
   .nav-dropdown-menu {
     position: absolute;
     top: 100%;
@@ -2757,13 +2475,11 @@
     margin-top: 8px;
     z-index: 1000;
   }
-
   .nav-dropdown-wrapper:hover .nav-dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
-
   .nav-dropdown-item {
     display: block;
     padding: 12px 16px;
@@ -2774,21 +2490,16 @@
     transition: all 0.2s;
     text-align: right;
   }
-
   .nav-dropdown-item:hover {
     background: rgba(43,182,115,0.08);
     color: #2bb673;
   }
-
   .nav-dropdown-item:first-child {
     border-radius: 8px 8px 0 0;
   }
-
   .nav-dropdown-item:last-child {
     border-radius: 0 0 8px 8px;
   }
-
-  
 /* ══════════════ MOBILE HAMBURGER MENU ══════════════ */
 .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
 .mobile-menu-overlay { position: fixed; top: 0; right: -100%; width: 85%; max-width: 360px; height: 100vh; background: #fff; z-index: 10000; transition: right 0.3s ease; box-shadow: -4px 0 24px rgba(0,0,0,0.15); display: flex; flex-direction: column; direction: rtl; }
@@ -2799,8 +2510,8 @@
 .mobile-menu-nav a:hover, .mobile-menu-nav a:active { background: #f0f7ff; color: #2bb673; }
 .mobile-menu-nav a.mob-active { color: #2bb673; font-weight: 700; background: #f0f7ff; }
 .mobile-menu-cta { margin: 16px 24px; padding: 14px; background: linear-gradient(135deg, #2bb673, #255877); color: #fff; text-align: center; border-radius: 12px; text-decoration: none; font-family: 'Tajawal', sans-serif; font-size: 15px; font-weight: 700; }
-
-@media(max-width:768px) {
+@media(max-width:768px) {.trust-inner{grid-template-columns:repeat(2,1fr);gap:20px;}
+  header { height: 60px; padding-right: 16px; padding-left: 16px; }
   .mobile-menu-btn { display: block; }
   .hdr-nav { display: none !important; }
   .hdr-cta { display: none !important; }
@@ -2808,9 +2519,9 @@
   .desktop-nav { display: none !important; }
 }
 .pkg-icon-wrap{width:48px;height:48px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:4px;flex-shrink:0;transition:transform 0.3s ease}.pkg-icon-wrap svg{width:24px;height:24px}.pkg-icon-wrap.teal{background:rgba(0,169,157,0.08);border:1px solid rgba(0,169,157,0.12)}.pkg-icon-wrap.cyan{background:rgba(0,191,255,0.08);border:1px solid rgba(0,191,255,0.12)}.pkg-icon-wrap.coral{background:rgba(155,35,53,0.06);border:1px solid rgba(155,35,53,0.1)}.pkg-icon-wrap.purple{background:rgba(107,79,187,0.08);border:1px solid rgba(107,79,187,0.12)}
+.trust{background:#f7f8fc;padding:60px 2rem;overflow:hidden;border-top:1px solid rgba(0,0,0,0.04);}.trust-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center;}.t-num{font-size:42px;font-weight:900;display:block;line-height:1;}.trust-inner>div:nth-child(1) .t-num{color:#00bfff;}.trust-inner>div:nth-child(2) .t-num{color:#00a99d;}.trust-inner>div:nth-child(3) .t-num{color:#6b4fbb;}.trust-inner>div:nth-child(4) .t-num{color:#9B2335;}.t-div{width:32px;height:2px;margin:10px auto;opacity:0.5;}.trust-inner>div:nth-child(1) .t-div{background:#00bfff;}.trust-inner>div:nth-child(2) .t-div{background:#00a99d;}.trust-inner>div:nth-child(3) .t-div{background:#6b4fbb;}.trust-inner>div:nth-child(4) .t-div{background:#9B2335;}.t-lbl{font-size:9px;color:#8892a4;letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
 </style>
   <meta name="robots" content="index, follow, max-image-preview:large">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -2827,46 +2538,10 @@
 </script>
 </head>
 <body>
-  <header>
-    <div>
-      <div>
-        <div class="hdr-logo-text">PRISMA</div>
-        <div class="hdr-logo-subtitle">Laboratory</div>
-        <div class="hdr-logo-ar">مختبرات بريزما الطبية</div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 48" class="hdr-logo-svg">
-        <defs>
-          <linearGradient id="lnG" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#00bfff"/>
-            <stop offset="40%" stop-color="#00a99d"/>
-            <stop offset="100%" stop-color="#6b4fbb"/>
-          </linearGradient>
-        </defs>
-        <line x1="54" y1="1" x2="1" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/>
-        <line x1="54" y1="9" x2="10" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/>
-        <line x1="54" y1="17" x2="19" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/>
-        <line x1="54" y1="25" x2="28" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <nav>
-      <a href="index.html">الرئيسية</a>
-      <div class="nav-dropdown-wrapper"><span class="nav-dropdown-trigger">الباقات ▾</span><div class="nav-dropdown-menu"><a href="comprehensive.html" class="nav-dropdown-item">الباقات الشاملة</a><a href="specialized.html" class="nav-dropdown-item">الباقات المختصة</a><a href="sexual-health.html" class="nav-dropdown-item">الصحة الجنسية</a><a href="marriage.html" class="nav-dropdown-item">باقة الزواج</a><a href="offers.html" class="nav-dropdown-item">العروض</a><a href="individual-tests.html" class="nav-dropdown-item">التحاليل الفردية</a><a href="genetic-tests.html" class="nav-dropdown-item">التحاليل الجينية</a></div></div>
-      <a href="about.html">من نحن</a>
-      <a href="blog.html">المدونة</a>
-      <a href="home-visit.html">زيارة منزلية</a>
-      <a href="prisma-ai.html" style="color:#2bb673;border-bottom:2px solid #2bb673;">بريزما AI</a>
-      <a href="consultation.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:600;transition:all 0.2s;display:inline-flex;align-items:center;gap:4px;" onmouseover="this.style.color='#9B2335'" onmouseout="this.style.color='rgba(26,31,54,0.6)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>استشارة طبية</a>
-      <a href="#questionnaire-section" class="hdr-cta">احجز الآن</a>
-    </nav>
-  <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="القائمة">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a1f36" stroke-width="2" stroke-linecap="round">
-    <line x1="3" y1="6" x2="21" y2="6"/>
-    <line x1="3" y1="12" x2="21" y2="12"/>
-    <line x1="3" y1="18" x2="21" y2="18"/>
-  </svg>
-</button>
-</header>
-
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6M75DT4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <header><a href="index.html" style="display:flex;align-items:center;text-decoration:none;"><img src="prisma-logo.png" alt="مختبرات بريزما الطبية - PRISMA Laboratory" style="height:38px;width:auto;"></a><div class="hdr-nav" style="display:flex;gap:14px;align-items:center;"><a href="index.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='rgba(26,31,54,0.6)'">الرئيسية</a><a href="comprehensive.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='rgba(26,31,54,0.6)'">الباقات الشاملة</a><a href="specialized.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='rgba(26,31,54,0.6)'">الباقات المختصة</a><a href="sexual-health.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='rgba(26,31,54,0.6)'">الصحة الجنسية</a><a href="offers.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='rgba(26,31,54,0.6)'">العروض</a><a href="individual-tests.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='rgba(26,31,54,0.6)'">التحاليل الفردية</a><a href="genetic-tests.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='rgba(26,31,54,0.6)'">التحاليل الجينية</a><a href="about.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='rgba(26,31,54,0.6)'">من نحن</a><a href="blog.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='rgba(26,31,54,0.6)'">المدونة</a><a href="home-visit.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='rgba(26,31,54,0.6)'">زيارة منزلية</a><a href="prisma-ai.html" style="color:#1a1f36;text-decoration:none;font-size:12px;font-weight:700;transition:color 0.2s;border-bottom:2px solid #00bfff;padding-bottom:2px;">بريزما AI</a><a href="consultation.html" style="color:rgba(26,31,54,0.6);text-decoration:none;font-size:12px;font-weight:600;transition:all 0.2s;display:inline-flex;align-items:center;gap:4px;" onmouseover="this.style.color='#9B2335'" onmouseout="this.style.color='rgba(26,31,54,0.6)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>استشارة طبية</a><a href="#form-sec" class="hdr-cta">احجز الآن</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="القائمة"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a1f36" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></header>
   <main>
     <!-- HERO SECTION -->
     <section class="hero">
@@ -2968,7 +2643,6 @@
           </path>
         </svg>
       </div>
-
       <!-- ============ Layer 2: Main Scene (DNA + Brain + Tube) ============ -->
       <div class="hero-scene">
         <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
@@ -3019,7 +2693,6 @@
               <stop offset="100%" stop-color="#00bfff" stop-opacity="0.8"/>
             </linearGradient>
           </defs>
-
           <!-- ===== DNA DOUBLE HELIX — Left Side ===== -->
           <g style="animation: helixFloat 9s ease-in-out infinite;" opacity="0.9">
             <g transform="translate(100, -20) rotate(-8)">
@@ -3089,7 +2762,6 @@
               </g>
             </g>
           </g>
-
           <!-- ===== BRAIN CIRCUIT — Right Side ===== -->
           <g transform="translate(830, 120)" style="animation: sceneFloat 10s ease-in-out infinite 1s;" opacity="0.85">
             <!-- Brain outline — circuit style -->
@@ -3129,7 +2801,6 @@
               <animate attributeName="opacity" dur="3s" values="0.3;0.7;0.3" repeatCount="indefinite"/>
             </line>
           </g>
-
           <!-- ===== TEST TUBE — Below Brain ===== -->
           <g transform="translate(900, 380)" style="animation: sceneFloat 8s ease-in-out infinite 0.5s;" opacity="0.8">
             <!-- Tube body -->
@@ -3147,7 +2818,6 @@
           </g>
         </svg>
       </div>
-
       <!-- ============ Layer 3: Pixel Scatter (top-right) ============ -->
       <div style="position:absolute;top:0;right:0;width:40%;height:45%;z-index:1;pointer-events:none;">
         <div class="hero-pixel" style="width:4px;height:4px;background:#6b4fbb;top:8%;right:12%;animation-delay:0s;box-shadow:0 0 6px #6b4fbb;"></div>
@@ -3163,7 +2833,6 @@
         <div class="hero-pixel" style="width:5px;height:5px;background:#6b4fbb;top:22%;right:30%;animation-delay:0.3s;box-shadow:0 0 8px #6b4fbb;"></div>
         <div class="hero-pixel" style="width:3px;height:3px;background:#00bfff;top:30%;right:5%;animation-delay:2s;box-shadow:0 0 5px #00bfff;"></div>
       </div>
-
       <!-- ============ Layer 4: Sparkle Particles — SDAIA Energy Field ============ -->
       <div style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;pointer-events:none;">
         <div class="hero-spark" style="width:4px;height:4px;background:#2bb673;top:12%;left:18%;animation-delay:0s;box-shadow:0 0 12px #2bb673,0 0 24px rgba(43,182,115,0.4);"></div>
@@ -3179,15 +2848,12 @@
         <div class="hero-spark" style="width:3px;height:3px;background:#2bb673;top:92%;right:45%;animation-delay:1s;box-shadow:0 0 10px #2bb673;"></div>
         <div class="hero-spark" style="width:2px;height:2px;background:#255877;top:8%;right:30%;animation-delay:2.8s;box-shadow:0 0 8px #255877;"></div>
       </div>
-
       <!-- ============ SDAIA Bottom Band — White Swoosh + Pattern Strip ============ -->
       <div style="position:absolute;bottom:0;left:0;right:0;height:60px;z-index:3;pointer-events:none;overflow:hidden;">
         <div style="position:absolute;inset:0;display:flex;align-items:center;animation:geometricSlide 80s linear infinite;">
           <img src="sdaia-pattern-strip.png" alt="" style="height:60px;width:auto;opacity:0.85;min-width:200%;object-fit:cover;" />
         </div>
       </div>
-
-
       <div class="hero-content">
         <div style="position:relative;z-index:2;margin-bottom:1rem;display:inline-flex;align-items:center;gap:10px;animation:fadeUp 0.8s ease-out;">
           <img src="ai-year-logo.png" alt="عام الذكاء الاصطناعي ٢٠٢٦" style="height:22px;width:auto;object-fit:contain;filter:drop-shadow(0 0 6px rgba(43,182,115,0.2));opacity:0.85;">
@@ -3197,9 +2863,7 @@
           <span class="title-ai">AI</span>
         </h1>
         <p class="hero-hook">غيرنا مفهوم التحاليل <span class="hook-dots">..</span> <span class="hook-highlight">لعيونك</span></p>
-
         <p class="hero-slogan">من أعراض ما تفهمها … إلى باقة تحاليل مصممة خصيصاً لعيونك <strong>في دقيقتين</strong></p>
-
         <div class="hero-story">
           <div class="story-card active">
             <span class="story-pulse"></span>
@@ -3207,7 +2871,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="#2bb673" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.25c-3.5 0-7 2.5-9.5 5.75 2.5 3.25 6 5.75 9.5 5.75s7-2.5 9.5-5.75C19 8.75 15.5 6.25 12 6.25z"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
             <div class="story-num">01</div>
-            <p class="story-text"><strong>صحتك قصة متكاملة</strong><br>ودنا نفهمها صح</p>
+            <p class="story-text"><strong>صحتك قصة متكاملة</strong> <br>ودنا نفهمها صح</p>
           </div>
           <div class="story-card">
             <span class="story-pulse"></span>
@@ -3215,7 +2879,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="#3a7ca5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4"/><path d="M14 9l-1 2h2l-1 2"/></svg>
             </div>
             <div class="story-num">02</div>
-            <p class="story-text">أسئلة بسيطة تبني لك <strong>خطة رعاية دقيقة</strong><br>مبنية على أحدث البراهين الطبية</p>
+            <p class="story-text">أسئلة بسيطة تبني لك <strong>خطة رعاية دقيقة</strong> <br>مبنية على أحدث البراهين الطبية</p>
           </div>
           <div class="story-card">
             <span class="story-pulse"></span>
@@ -3223,7 +2887,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="#2bb673" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
             </div>
             <div class="story-num">03</div>
-            <p class="story-text">كل تفصيلة تشاركها معنا<br><strong>تقربنا خطوة من صحتك المثالية</strong></p>
+            <p class="story-text">كل تفصيلة تشاركها معنا <br><strong>تقربنا خطوة من صحتك المثالية</strong></p>
           </div>
         </div>
         <div class="story-dots">
@@ -3231,31 +2895,25 @@
           <button class="story-dot" data-idx="1"></button>
           <button class="story-dot" data-idx="2"></button>
         </div>
-
         <button class="hero-cta" onclick="document.getElementById('questionnaire-section').scrollIntoView({behavior: 'smooth'})">
           ابدأ التقييم الذكي
         </button>
       </div>
     </section>
-
     <!-- QUESTIONNAIRE SECTION -->
     <section class="questionnaire-section" id="questionnaire-section">
       <div class="pai-encourage" id="paiEncourage"></div>
       <div class="progress-bar">
         <div class="progress-fill" id="prismAIProgressFill" style="width: 0%"></div>
       </div>
-
       <div class="questionnaire-step-info">
         <span id="prismAIStepCounter">الخطوة 1 من 7</span>
         <span id="prismAIStepName"></span>
       </div>
-
       <div class="pai-mobile-progress" id="paiMobileProgress"></div>
-
       <div class="questionnaire-container">
         <!-- Left sidebar - step indicator -->
         <div class="step-indicator" id="paiStepIndicator"></div>
-
         <!-- Main content area -->
         <div class="pai-content-wrapper">
           <div id="prismAIContent"></div>
@@ -3266,7 +2924,6 @@
         </div>
       </div>
     </section>
-
     <!-- HOW IT WORKS SECTION -->
     <section class="how-it-works">
       <h2>كيف طورنا بريزما AI؟</h2>
@@ -3288,7 +2945,6 @@
         </div>
       </div>
     </section>
-
     <!-- TRUST SECTION -->
     <section class="trust-section">
       <h2>لماذا تثق ببريزما AI؟</h2>
@@ -3311,10 +2967,10 @@
         </div>
       </div>
     </section>
+<section class="trust"><div class="trust-inner"><div><span class="t-num">+10,000</span><div class="t-div"></div><p class="t-lbl">قصة ثقة</p></div><div><span class="t-num">بسرعة</span><div class="t-div"></div><p class="t-lbl">نتائجك توصلك بأسرع وقت</p></div><div><span class="t-num">+500</span><div class="t-div"></div><p class="t-lbl">تحليل يغطي كل اللي تحتاجه</p></div><div><span class="t-num">100%</span><div class="t-div"></div><p class="t-lbl">نتائج موثوقة ومعتمدة</p></div></div></section>
   <footer style="background:#f8f9fb;padding:0 0 0;">
 <div style="height:3px;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb,#9B2335);"></div>
 <div style="max-width:1100px;margin:0 auto;padding:50px 2rem 30px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;">
-
 <div>
 <h4 style="font-size:14px;font-weight:800;color:#00a99d;margin-bottom:20px;letter-spacing:1px;">معلومات التواصل</h4>
 <div style="display:flex;flex-direction:column;gap:14px;">
@@ -3324,7 +2980,6 @@
 <a href="mailto:info@prismalaboratory.com" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#6b7280;font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#6b4fbb'" onmouseout="this.style.color='#6b7280'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b4fbb" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>info@prismalaboratory.com</a>
 </div>
 </div>
-
 <div>
 <h4 style="font-size:14px;font-weight:800;color:#00bfff;margin-bottom:20px;letter-spacing:1px;">روابط سريعة</h4>
 <div style="display:flex;flex-direction:column;gap:12px;">
@@ -3339,12 +2994,29 @@
 <p style="font-size:11px;color:#8892a4;line-height:1.9;text-align:justify;">تعد مختبرات بريزما (Prisma Laboratories) ثمرة تلاقي الخبرة الطبية العريقة مع التكنولوجيا التشخيصية المتقدمة. انطلقت رحلتنا في قلب المملكة العربية السعودية، بقيادة مجموعة من الاستشاريين السعوديين الذين وضعوا نصب أعينهم هدفاً واحداً: الارتقاء بالمعايير المخبرية لتتجاوز حدود الفحص التقليدي إلى تقديم تجربة صحية متكاملة. نستلهم اسمنا من "المنشور" (Prism) الذي يحلل الضوء ليكشف عن أطيافه الكامنة؛ فنحن نؤمن بأن كل عينة تحمل في طياتها مفاتيح الصحة والعافية، ودورنا هو فك رموزها بدقة علمية لا تساوم. في بريزما، نحن لا ندير مختبراً فحسب، بل نبني جسراً من الثقة بين العلم والإنسان، ملتزمين بأعلى معايير الجودة العالمية ومساهمين بفاعلية في تحقيق مستهدفات رؤية المملكة 2030 للتحول الصحي.</p>
 </div>
 </div>
-
 <div>
-<h4 style="font-size:14px;font-weight:800;color:#6b4fbb;margin-bottom:20px;letter-spacing:1px;">ساعات العمل</h4>
-<div style="display:flex;flex-direction:column;gap:14px;">
-<div style="display:flex;align-items:center;gap:10px;color:#6b7280;font-size:13px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b4fbb" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>24 ساعة</div>
-<div style="display:flex;align-items:center;gap:10px;color:#6b7280;font-size:12px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b4fbb" stroke-width="1.5" stroke-linecap="round" opacity="0.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>الجمعة - السبت: 4 مساءً - 12 منتصف الليل</div>
+<h4 style="font-size:14px;font-weight:800;color:#6b4fbb;margin-bottom:16px;letter-spacing:1px;">فروعنا وأوقات العمل</h4>
+<div style="display:flex;flex-direction:column;gap:12px;">
+<a href="https://maps.app.goo.gl/7thyVBCaKtArjii97" target="_blank" style="display:block;text-decoration:none;background:rgba(0,169,157,0.06);border-radius:12px;padding:14px 16px;border-right:3px solid #00a99d;transition:all 0.3s ease;" onmouseover="this.style.transform='translateX(-3px)';this.style.boxShadow='0 4px 15px rgba(0,169,157,0.12)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+<div style="display:flex;align-items:center;gap:8px;color:#00a99d;font-size:13px;font-weight:700;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00a99d" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>فرع النرجس</div>
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00a99d" stroke-width="2" stroke-linecap="round" opacity="0.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;">
+<div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#4a5568;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00a99d" stroke-width="1.5" opacity="0.7"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>يومياً: ٧ صباحاً — ١١ مساءً</span></div>
+<div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#4a5568;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00a99d" stroke-width="1.5" opacity="0.7"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>الجمعة: ٣ مساءً — ١١ مساءً</span></div>
+</div>
+</a>
+<a href="https://maps.app.goo.gl/yTpTy4EK1FCtwy2u9" target="_blank" style="display:block;text-decoration:none;background:rgba(0,191,255,0.06);border-radius:12px;padding:14px 16px;border-right:3px solid #00bfff;transition:all 0.3s ease;" onmouseover="this.style.transform='translateX(-3px)';this.style.boxShadow='0 4px 15px rgba(0,191,255,0.12)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+<div style="display:flex;align-items:center;gap:8px;color:#00bfff;font-size:13px;font-weight:700;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>فرع القادسية</div>
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="2" stroke-linecap="round" opacity="0.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;">
+<div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#4a5568;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.7"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>يومياً: ٧ صباحاً — ١١ مساءً</span></div>
+<div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#6b7280;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.4"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span style="opacity:0.7;">الجمعة: مغلق</span></div>
+</div>
+</a>
 </div>
 <div style="margin-top:24px;">
 <div style="display:flex;align-items:flex-end;gap:0;">
@@ -3352,7 +3024,6 @@
 </div>
 </div>
 </div>
-
 </div>
 <div style="border-top:1px solid rgba(0,0,0,0.06);max-width:1100px;margin:0 auto;padding:20px 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
 <p style="font-size:11px;color:#8892a4;">مختبر بريزما للتحاليل الطبية — خدمات تحليلية عالية الجودة في المملكة العربية السعودية</p>
@@ -3373,7 +3044,6 @@
 </style>
 </footer>
   </main>
-
   <script>
   var SVG_ICONS = {
     '💊': '<div class="pkg-icon-wrap purple"><svg viewBox="0 0 24 24" fill="none" stroke="#6b4fbb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-6 9h6m-6 4h6"/></svg></div>',
@@ -3388,11 +3058,9 @@
     '🏠': '<div class="pkg-icon-wrap teal"><svg viewBox="0 0 24 24" fill="none" stroke="#00a99d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>',
     '💡': '<div class="pkg-icon-wrap purple"><svg viewBox="0 0 24 24" fill="none" stroke="#6b4fbb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>'
   };
-
   function svgIcon(e) {
     return SVG_ICONS[e] || '<div class="pkg-icon-wrap teal"><svg viewBox="0 0 24 24" fill="none" stroke="#00a99d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>';
   }
-
   /* ── Story Cards Carousel ── */
   (function(){
     var cards = document.querySelectorAll('.story-card');
@@ -3400,22 +3068,19 @@
     var current = 0;
     var total = cards.length;
     if(total < 2) return;
-
     function goTo(idx){
       var prev = current;
       cards[prev].classList.remove('active');
       cards[prev].classList.add('exit');
       dots[prev].classList.remove('active');
-      setTimeout(function(){ cards[prev].classList.remove('exit'); }, 600);
+      var prevRef = prev;
+      setTimeout(function(){ cards[prevRef].classList.remove('exit'); }, 600);
       current = idx;
       cards[current].classList.add('active');
       dots[current].classList.add('active');
     }
-
     function next(){ goTo((current + 1) % total); }
-
     var timer = setInterval(next, 3000);
-
     dots.forEach(function(dot){
       dot.addEventListener('click', function(){
         clearInterval(timer);
@@ -3423,7 +3088,6 @@
         timer = setInterval(next, 3000);
       });
     });
-
     // Pause on hover
     var container = document.querySelector('.hero-story');
     if(container){
@@ -3434,7 +3098,6 @@
     }
   })();
   </script>
-
   <script>
 const prismAI = {
   // State
@@ -3445,7 +3108,6 @@ const prismAI = {
   isLoading: false,
   leadCaptureShown: false,
   addOns: [],
-
   // Steps definition — REDESIGNED flow order
   steps: [
     {id:1, ar:"وش السبب اللي خلاك تزورنا؟", sub:"نفهم احتياجك"},
@@ -3456,10 +3118,8 @@ const prismAI = {
     {id:6, ar:"تفضيلاتك", sub:"نخصص تجربتك"},
     {id:7, ar:"توصياتك", sub:""}
   ],
-
   // Yes/No options
   yn: [{value:"no",labelAr:"لا"},{value:"yes",labelAr:"نعم"}],
-
   // Time options
   timeOpts: [
     {value:"3m",labelAr:"خلال 3 أشهر"},
@@ -3468,22 +3128,17 @@ const prismAI = {
     {value:"over12m",labelAr:"أكثر من سنة"},
     {value:"never",labelAr:"لم أفحص / لا أتذكر"}
   ],
-
   // ═══════════════════════════════════════
   //  QUESTIONS — REDESIGNED & EXPANDED
   // ═══════════════════════════════════════
   questions: [
     // ── STEP 1: Intent (ليش جيت؟) ──
     {id:"intent",step:1,ar:"وش السبب اللي خلاك تزورنا؟",hint:"يساعدنا نخصص تجربتك من البداية",type:"select",optsKey:"intent_opts",cond:function(){return true;},primary:true},
-    {id:"depth_pref",step:1,ar:"كيف تفضل مستوى الفحص؟",hint:"كل خيار يعطيك مستوى مختلف من الشمولية",type:"select",optsKey:"depth_opts",cond:function(){return true;}},
-    {id:"for_whom",step:1,ar:"الفحص لمين؟",hint:"نقدر نساعدك تختار لأكثر من شخص",type:"select",optsKey:"for_whom_opts",cond:function(){return true;}},
-
     // ── STEP 2: Profile (ملفك الشخصي) ──
     {id:"age",step:2,ar:"كم عمرك؟",hint:"العمر يحدد الفحوصات المناسبة لمرحلتك العمرية",type:"number",ph:"مثال: 35",unit:"سنة",min:1,max:120,cond:function(){return true;}},
     {id:"sex",step:2,ar:"الجنس البيولوجي",hint:"بعض الفحوصات تختلف حسب الجنس",type:"select",optsKey:"sex_opts",cond:function(){return true;}},
     {id:"height",step:2,ar:"الطول (سم)",hint:"يُستخدم لحساب مؤشر كتلة الجسم",type:"number",ph:"مثال: 170",unit:"سم",min:50,max:250,cond:function(){return true;}},
     {id:"weight",step:2,ar:"الوزن (كجم)",hint:"يُستخدم لحساب مؤشر كتلة الجسم",type:"number",ph:"مثال: 75",unit:"كجم",min:10,max:350,cond:function(){return true;}},
-
     // ── STEP 3: Goals & Symptoms (أهدافك وأعراضك) ──
     {id:"goals",step:3,ar:"ما الأسباب الرئيسية لرغبتك في الفحص؟",hint:"اختر كل ما ينطبق — يمكنك اختيار أكثر من سبب",type:"multi",optsKey:"goals_opts",cond:function(){return true;},primary:true},
     {id:"followup_conditions",step:3,ar:"ما الحالة الصحية التي تتابعها؟",hint:"اختر كل ما ينطبق لتخصيص الفحوصات",type:"multi",optsKey:"followup_opts",cond:function(a){return prismAI._has(a.goals,"followup");}},
@@ -3499,31 +3154,22 @@ const prismAI = {
     {id:"thyroid_symptoms",step:3,ar:"هل تعاني من أعراض الغدة الدرقية التالية؟",hint:"قد تشير لاضطراب في الغدة",type:"multi",optsKey:"thyroid_symptoms_opts",cond:function(a){return prismAI._has(a.goals,"thyroid_concern");}},
     {id:"diabetes_symptoms",step:3,ar:"هل تعاني من أي من الأعراض التالية؟",hint:"أعراض شائعة مرتبطة بارتفاع السكر",type:"multi",optsKey:"diabetes_symptoms_opts",cond:function(a){return prismAI._has(a.goals,"sugar_concern");}},
     {id:"cv_risk",step:3,ar:"هل لديك أي من عوامل خطورة القلب التالية؟",hint:"عوامل مهمة في تقييم خطر أمراض القلب",type:"multi",optsKey:"cv_risk_opts",cond:function(a){return prismAI._has(a.goals,"cholesterol_concern")||prismAI._has(a.goals,"general")||prismAI._has(a.goals,"annual");}},
-
     // ── STEP 4: Lifestyle (نمط حياتك) ──
     {id:"activity",step:4,ar:"كيف نشاطك البدني؟",hint:"يحدد فحوصات اللياقة والعضلات والتعافي",type:"select",optsKey:"activity_opts",cond:function(){return true;},primary:true},
     {id:"sport_type",step:4,ar:"وش نوع رياضتك الرئيسية؟",hint:"يساعد في تخصيص فحوصات الأداء والتعافي",type:"multi",optsKey:"sport_type_opts",cond:function(a){return a.activity==="active_3plus" || a.activity==="athlete";}},
     {id:"sleep_stress",step:4,ar:"كيف نومك وتوترك؟",hint:"مرتبط بالكورتيزول والغدة والفيتامينات",type:"select",optsKey:"sleep_stress_opts",cond:function(){return true;}},
     {id:"smoking",step:4,ar:"هل تدخن أو تستخدم منتجات تبغ؟",hint:"عامل خطورة مهم في عدة فحوصات",type:"select",optsKey:"smoking_opts",cond:function(){return true;}},
-
     // ── STEP 5: Medical History (تاريخك الصحي) ──
-    {id:"has_chronic",step:5,ar:"هل تعاني من أي أمراض مزمنة؟",hint:"الأمراض المزمنة تحدد الفحوصات التي تحتاج متابعة",type:"select",optsKey:"yn",cond:function(){return true;},primary:true},
-    {id:"chronic_diseases",step:5,ar:"ما هي الأمراض المزمنة؟",hint:"اختر كل ما ينطبق عليك",type:"multi",optsKey:"chronic_opts",cond:function(a){return a.has_chronic==="yes";}},
+    {id:"chronic_diseases",step:5,ar:"هل تعاني من أي أمراض مزمنة؟",hint:"اختر كل ما ينطبق — أو اختر 'لا يوجد'",type:"multi",optsKey:"chronic_opts",cond:function(){return true;},primary:true},
     {id:"diabetes_control",step:5,ar:"كيف تصف التحكم في السكر حالياً؟",hint:"يحدد مدى الحاجة لفحوصات متقدمة",type:"select",optsKey:"diabetes_control_opts",cond:function(a){return prismAI._has(a.chronic_diseases,"diabetes");}},
     {id:"thyroid_type",step:5,ar:"ما نوع مشكلة الغدة الدرقية؟",hint:"نوع المشكلة يحدد الفحوصات المطلوبة",type:"select",optsKey:"thyroid_type_opts",cond:function(a){return prismAI._has(a.chronic_diseases,"thyroid");}},
-    {id:"has_medications",step:5,ar:"هل تتناول أي أدوية بشكل منتظم؟",hint:"بعض الأدوية تتطلب متابعة دورية",type:"select",optsKey:"yn",cond:function(a){return a.has_chronic==="yes";}},
-    {id:"medications",step:5,ar:"ما نوع الأدوية؟",hint:"اختر كل ما ينطبق",type:"multi",optsKey:"medications_opts",cond:function(a){return a.has_medications==="yes";}},
+    {id:"medications",step:5,ar:"هل تتناول أي أدوية بشكل منتظم؟",hint:"اختر كل ما ينطبق — أو اختر 'لا آخذ أدوية'",type:"multi",optsKey:"medications_opts",cond:function(a){return a.chronic_diseases && !prismAI._has(a.chronic_diseases,"no_chronic");}},
     {id:"has_family_history",step:5,ar:"هل يوجد تاريخ عائلي لأمراض مزمنة مهمة؟",hint:"التاريخ العائلي من أهم عوامل الخطورة",type:"select",optsKey:"family_yn",cond:function(){return true;}},
     {id:"family_diseases",step:5,ar:"ما هي الأمراض الموجودة في العائلة؟",hint:"اختر كل ما ينطبق — الأب، الأم، أو الإخوة",type:"multi",optsKey:"family_diseases_opts",cond:function(a){return a.has_family_history==="yes";}},
-
     // ── STEP 6: Preferences (تفضيلاتك) ──
     {id:"last_test",step:6,ar:"متى آخر مرة سويت تحاليل دم؟",hint:"يساعد في تحديد مدى شمولية التوصية",type:"select",optsKey:"timeOpts",cond:function(){return true;},primary:true},
-    {id:"preventive_interest",step:6,ar:"هل تهتم بالفحص الوقائي المبكر؟",hint:"الكشف المبكر يحمي من مضاعفات كثيرة",type:"select",optsKey:"preventive_opts",cond:function(){return true;}},
-    {id:"addon_consent",step:6,ar:"لو اكتشفنا شي مهم، تبينا نضيف التحليل المناسب؟",hint:"إضافات مبنية على إجاباتك فقط",type:"select",optsKey:"addon_consent_opts",cond:function(){return true;}},
-    {id:"visit_pref",step:6,ar:"كيف تفضل تفحص؟",hint:"الزيارة المنزلية متوفرة في الرياض",type:"select",optsKey:"visit_pref_opts",cond:function(){return true;}},
-    {id:"returning_customer",step:6,ar:"هل سبق تحللت عند بريزما؟",hint:"يساعدنا نخصص تجربتك أكثر",type:"select",optsKey:"returning_opts",cond:function(){return true;}}
+    {id:"visit_pref",step:6,ar:"كيف تفضل تفحص؟",hint:"الزيارة المنزلية متوفرة في الرياض",type:"select",optsKey:"visit_pref_opts",cond:function(){return true;}}
   ],
-
   // ═══════════════════════════════════════
   //  OPTIONS MAPS — EXPANDED
   // ═══════════════════════════════════════
@@ -3531,7 +3177,6 @@ const prismAI = {
     sex_opts: [{value:"male",labelAr:"ذكر"},{value:"female",labelAr:"أنثى"}],
     yn: [{value:"no",labelAr:"لا"},{value:"yes",labelAr:"نعم"}],
     family_yn: [{value:"no",labelAr:"لا"},{value:"yes",labelAr:"نعم"},{value:"unsure",labelAr:"لا أعرف"}],
-
     // NEW: Intent options
     intent_opts: [
       {value:"checkup",labelAr:"أبي أطمئن على صحتي"},
@@ -3541,22 +3186,6 @@ const prismAI = {
       {value:"fitness_intent",labelAr:"أبي أعرف مستوى لياقتي"},
       {value:"gift",labelAr:"أبي أفحص لشخص ثاني (هدية / عائلة)"}
     ],
-
-    // NEW: Depth preference
-    depth_opts: [
-      {value:"focused",labelAr:"فحص سريع ومركّز — أساسيات بس"},
-      {value:"balanced",labelAr:"فحص متوازن — أهم الأشياء"},
-      {value:"comprehensive",labelAr:"فحص شامل — ما أبي أطوّف شي"},
-      {value:"complete",labelAr:"أشمل فحص ممكن — راحة بال كاملة"}
-    ],
-
-    // NEW: For whom
-    for_whom_opts: [
-      {value:"myself",labelAr:"لي أنا"},
-      {value:"me_plus",labelAr:"لي + شخص ثاني"},
-      {value:"other",labelAr:"لشخص ثاني (هدية / والد / زوج)"}
-    ],
-
     // EXPANDED: Goals with new options
     goals_opts: [
       {value:"general",labelAr:"فحص عام للاطمئنان"},{value:"annual",labelAr:"فحص دوري / سنوي"},
@@ -3569,14 +3198,12 @@ const prismAI = {
       {value:"std_concern",labelAr:"صحة جنسية / أمراض منقولة"},{value:"premarriage",labelAr:"فحص ما قبل الزواج أو الحمل"},
       {value:"doctor_referral",labelAr:"بناءً على توصية طبيب"},{value:"other_goal",labelAr:"سبب آخر"}
     ],
-
     followup_opts: [
       {value:"fu_diabetes",labelAr:"السكري"},{value:"fu_hypertension",labelAr:"الضغط"},
       {value:"fu_cholesterol",labelAr:"الكوليسترول"},{value:"fu_thyroid",labelAr:"الغدة الدرقية"},
       {value:"fu_vitamins",labelAr:"نقص الفيتامينات"},{value:"fu_anemia",labelAr:"فقر الدم"},
       {value:"fu_hormones",labelAr:"الهرمونات"},{value:"fu_other",labelAr:"غير ذلك"}
     ],
-
     // EXPANDED: Fatigue details
     fatigue_opts: [
       {value:"morning_fatigue",labelAr:"أصحى تعبان رغم النوم الكافي"},
@@ -3590,7 +3217,6 @@ const prismAI = {
       {value:"period_fatigue",labelAr:"تعب مرتبط بالدورة الشهرية"},
       {value:"none",labelAr:"لا شيء مما سبق"}
     ],
-
     // NEW: Skin & Hair options
     skin_hair_opts: [
       {value:"hair_loss",labelAr:"تساقط شعر ملحوظ"},
@@ -3600,7 +3226,6 @@ const prismAI = {
       {value:"brittle_nails",labelAr:"أظافر هشة أو متكسرة"},
       {value:"sh_none",labelAr:"لا شيء محدد"}
     ],
-
     // NEW: Digestive options
     digestive_opts: [
       {value:"heartburn",labelAr:"حموضة أو ارتجاع"},
@@ -3611,7 +3236,6 @@ const prismAI = {
       {value:"food_allergy",labelAr:"حساسية طعام محتملة"},
       {value:"dig_none",labelAr:"لا شيء محدد"}
     ],
-
     // NEW: Women's health
     women_health_opts: [
       {value:"irregular_period",labelAr:"دورة غير منتظمة"},
@@ -3622,7 +3246,6 @@ const prismAI = {
       {value:"menopause_symptoms",labelAr:"أعراض سن اليأس (هبات حرارة، تقلب مزاج)"},
       {value:"wh_none",labelAr:"لا شيء مما سبق"}
     ],
-
     // NEW: Men's health
     men_health_opts: [
       {value:"low_libido",labelAr:"انخفاض الرغبة أو الطاقة الجنسية"},
@@ -3631,7 +3254,6 @@ const prismAI = {
       {value:"prostate_symptoms",labelAr:"أعراض بروستاتا (تبول ليلي متكرر)"},
       {value:"mh_none",labelAr:"لا شيء مما سبق"}
     ],
-
     // NEW: STI details options
     std_details_opts: [
       {value:"std_basic_check",labelAr:"فحص أساسي للاطمئنان"},
@@ -3641,7 +3263,6 @@ const prismAI = {
       {value:"std_partner_check",labelAr:"فحص قبل علاقة جديدة"},
       {value:"std_routine",labelAr:"فحص دوري روتيني"}
     ],
-
     // NEW: STI symptoms follow-up (appears when user selects "عندي أعراض تقلقني")
     std_symptoms_opts: [
       {value:"std_discharge",labelAr:"إفرازات غير طبيعية"},
@@ -3655,7 +3276,6 @@ const prismAI = {
       {value:"std_recent_contact",labelAr:"اتصال جنسي حديث بدون حماية"},
       {value:"std_no_specific",labelAr:"أعراض عامة وأبي أتأكد"}
     ],
-
     // EXPANDED: Thyroid symptoms
     thyroid_symptoms_opts: [
       {value:"cold_intolerance",labelAr:"عدم تحمل البرد"},{value:"heat_intolerance",labelAr:"عدم تحمل الحر"},
@@ -3663,21 +3283,18 @@ const prismAI = {
       {value:"hair_thin",labelAr:"ترقق الشعر"},{value:"mood_changes",labelAr:"تقلب مزاج أو اكتئاب"},
       {value:"weight_thyroid",labelAr:"تغير وزن غير مبرر"}
     ],
-
     // EXPANDED: Diabetes symptoms
     diabetes_symptoms_opts: [
       {value:"thirst",labelAr:"عطش زائد"},{value:"freq_urination",labelAr:"كثرة التبول"},
       {value:"prior_high_sugar",labelAr:"سبق ارتفاع السكر"},{value:"numbness",labelAr:"تنميل أو وخز في الأطراف"},
       {value:"slow_healing",labelAr:"بطء التئام الجروح"},{value:"excessive_hunger",labelAr:"جوع مفرط"}
     ],
-
     // EXPANDED: CV risk
     cv_risk_opts: [
       {value:"smoking_cv",labelAr:"تدخين حالي أو سابق"},{value:"early_heart_fh",labelAr:"تاريخ عائلي لأمراض قلب مبكرة"},
       {value:"sedentary",labelAr:"نمط حياة خامل"},{value:"high_stress",labelAr:"توتر مزمن"},
       {value:"none_cv",labelAr:"لا شيء مما سبق"}
     ],
-
     // NEW: Activity level
     activity_opts: [
       {value:"sedentary",labelAr:"ما أتمرن نهائياً"},
@@ -3687,7 +3304,6 @@ const prismAI = {
       {value:"athlete",labelAr:"رياضي جاد (كمال أجسام، كروسفت، إلخ)"},
       {value:"returning",labelAr:"راجع للتمارين بعد انقطاع"}
     ],
-
     // NEW: Sport type
     sport_type_opts: [
       {value:"weights",labelAr:"تمارين قوة / كمال أجسام"},
@@ -3699,7 +3315,6 @@ const prismAI = {
       {value:"martial",labelAr:"فنون قتالية"},
       {value:"other_sport",labelAr:"رياضة أخرى"}
     ],
-
     // NEW: Sleep & Stress
     sleep_stress_opts: [
       {value:"excellent",labelAr:"ممتاز — أصحى نشيط"},
@@ -3709,7 +3324,6 @@ const prismAI = {
       {value:"tired_despite_sleep",labelAr:"أحس بإرهاق حتى بعد نوم كافي"},
       {value:"chronic_stress",labelAr:"عندي توتر مزمن يأثر على يومي"}
     ],
-
     // NEW: Smoking
     smoking_opts: [
       {value:"no_smoke",labelAr:"لا"},
@@ -3719,14 +3333,14 @@ const prismAI = {
       {value:"quit",labelAr:"تركت سابقاً"},
       {value:"occasional",labelAr:"نادراً (مناسبات)"}
     ],
-
     // EXPANDED: Chronic diseases
     chronic_opts: [
       {value:"diabetes",labelAr:"السكري"},{value:"hypertension",labelAr:"ارتفاع ضغط الدم"},{value:"dyslipidemia",labelAr:"ارتفاع الكوليسترول"},
       {value:"thyroid",labelAr:"أمراض الغدة الدرقية"},{value:"obesity",labelAr:"السمنة"},{value:"kidney",labelAr:"أمراض الكلى"},
       {value:"liver",labelAr:"أمراض الكبد"},{value:"pcos",labelAr:"تكيس المبايض"},{value:"anemia",labelAr:"فقر الدم"},
       {value:"gout",labelAr:"النقرس"},{value:"heart_disease",labelAr:"أمراض القلب"},{value:"skin_allergy",labelAr:"أمراض وحساسية الجلد"},
-      {value:"other_chronic",labelAr:"أخرى"}
+      {value:"other_chronic",labelAr:"أخرى"},
+      {value:"no_chronic",labelAr:"لا يوجد أمراض مزمنة"}
     ],
     diabetes_control_opts: [
       {value:"controlled",labelAr:"مسيطر عليه"},{value:"partially",labelAr:"غير مستقر أحياناً"},
@@ -3747,7 +3361,8 @@ const prismAI = {
       {value:"cholesterol_med",labelAr:"أدوية الكوليسترول"},{value:"thyroid_med",labelAr:"أدوية الغدة الدرقية"},
       {value:"weight_med",labelAr:"أدوية إنقاص الوزن"},{value:"steroids",labelAr:"كورتيزون / ستيرويد"},
       {value:"antidepressant",labelAr:"مضادات اكتئاب أو قلق"},{value:"contraceptive",labelAr:"حبوب منع الحمل"},
-      {value:"supplements",labelAr:"مكملات غذائية أو فيتامينات"},{value:"other_med",labelAr:"أدوية أخرى"}
+      {value:"supplements",labelAr:"مكملات غذائية أو فيتامينات"},{value:"other_med",labelAr:"أدوية أخرى"},
+      {value:"no_med",labelAr:"لا آخذ أدوية"}
     ],
     // EXPANDED: Family diseases
     family_diseases_opts: [
@@ -3757,37 +3372,19 @@ const prismAI = {
       {value:"fh_cancer",labelAr:"السرطان"},{value:"fh_obesity",labelAr:"السمنة"},
       {value:"fh_autoimmune",labelAr:"أمراض مناعية"},{value:"fh_other",labelAr:"أخرى"}
     ],
-
-    // NEW: Preferences
-    preventive_opts: [
-      {value:"very_interested",labelAr:"أيوا كثير — أفضل أكتشف أي شي بدري"},
-      {value:"somewhat",labelAr:"شوي — إذا ما يكلف كثير"},
-      {value:"not_now",labelAr:"لا — أبي بس اللي أحتاجه الآن"}
-    ],
-    addon_consent_opts: [
-      {value:"yes_addon",labelAr:"أيوا، ضيفوا أي شي مهم طبياً"},
-      {value:"ask_first",labelAr:"أبي أعرف أولاً وأقرر"},
-      {value:"no_addon",labelAr:"لا، أبي بس اللي بالباقة"}
-    ],
     visit_pref_opts: [
       {value:"branch",labelAr:"زيارة الفرع"},
       {value:"home",labelAr:"زيارة منزلية"},
       {value:"no_pref",labelAr:"ما يفرق معي"}
-    ],
-    returning_opts: [
-      {value:"yes_returning",labelAr:"نعم"},
-      {value:"no_new",labelAr:"لا — أول مرة"},
-      {value:"first_heard",labelAr:"أول مرة أسمع عن بريزما"}
     ]
   },
-
   // ═══════════════════════════════════════
   //  PACKAGES — EXISTING + 7 NEW SPECIALTY
   // ═══════════════════════════════════════
   packages: {
     // Existing packages — test counts include derived lipid formulas + cheap fillers (ESR, Blood Group)
-    exploratory: { id: 'exploratory', name: 'الباقة الاستكشافية', price: 399, tests: 28, category: 'عامة' },
-    exploratory_plus: { id: 'exploratory_plus', name: 'الباقة الاستكشافية بلس', price: 499, tests: 36, category: 'عامة' },
+    exploratory: { id: 'exploratory', name: 'الباقة الاستكشافية', price: 299, tests: 28, category: 'عامة' },
+    exploratory_plus: { id: 'exploratory_plus', name: 'الباقة الاستكشافية بلس', price: 399, tests: 36, category: 'عامة' },
     advanced: { id: 'advanced', name: 'الباقة المتقدمة', price: 699, tests: 47, category: 'عامة' },
     advanced_plus: { id: 'advanced_plus', name: 'الباقة المتقدمة بلس', price: 899, tests: 60, category: 'عامة' },
     royal_men: { id: 'royal_men', name: 'باقة الرويال للرجال', price: 999, tests: 78, category: 'شاملة' },
@@ -3805,7 +3402,6 @@ const prismAI = {
     digestive: { id: 'digestive', name: 'باقة المعدة والهضم', price: 249, tests: 12, category: 'متخصصة', icon: '🫁' },
     skin_hair: { id: 'skin_hair', name: 'باقة البشرة والشعر', price: 399, tests: 13, category: 'متخصصة', icon: '✨' }
   },
-
   // Package descriptions (context-aware) — existing + new
   pkgDescriptions: {
     exploratory: { core: 'تغطي المؤشرات الحيوية الأساسية — الدهون الشاملة، السكر، وظائف الكلى والكبد، فيتامين د، ESR، وفصيلة الدم.', fit: 'خيار مثالي للشباب الأصحاء الراغبين في اطمئنان دوري سريع وعملي.', golden: 'للحصول على تغطية أوسع تشمل معادن إضافية وفحوصات دم متقدمة، ننصح بالترقية.' },
@@ -3827,7 +3423,6 @@ const prismAI = {
     digestive: { core: 'فحص متكامل للمعدة — جرثومة المعدة، فحص البراز الشامل، CRP، ESR، وظائف الكبد (ALT/AST/ALP/GGT)، إنزيمات البنكرياس، الأميليز.', fit: 'لمن يعاني من حموضة، انتفاخ، ألم معدة، أو يشتبه بجرثومة.', golden: 'باقة متكاملة تغطي أهم أسباب مشاكل المعدة والهضم.' },
     skin_hair: { core: 'فحص شامل للبشرة والشعر — الفيريتين، الحديد الشامل (Iron Profile)، الزنك، النحاس، فيتامين د و ب١٢، الغدة الدرقية، ESR، + نسبة Free/Total Testosterone.', fit: 'لمن يعاني من تساقط شعر، بشرة جافة، أو حبوب مستمرة.', golden: 'كل التحاليل المرتبطة بصحة الشعر والبشرة في باقة واحدة.' }
   },
-
   // ADD-ON catalog (CFO-approved high-margin tests)
   addOnCatalog: [
     {id:"ao_hpylori", name:"جرثومة المعدة (H.pylori)", price:65, triggerGoals:["digestive"], triggerSymptoms:["hpylori_suspect","stomach_pain","bloating"]},
@@ -3839,7 +3434,6 @@ const prismAI = {
     {id:"ao_b12", name:"فيتامين ب١٢", price:55, triggerGoals:["fatigue","vitamin_concern"], triggerSymptoms:["morning_fatigue","all_day_low"]},
     {id:"ao_folate", name:"حمض الفوليك (B9)", price:50, triggerGoals:["premarriage"], triggerSymptoms:["planning_pregnancy"]}
   ],
-
   // ── Utility ──
   _has: function(arr, v) { return Array.isArray(arr) && arr.includes(v); },
   _bmi: function(w, h) { return h > 0 ? +(w / (h / 100) ** 2).toFixed(1) : null; },
@@ -3857,7 +3451,6 @@ const prismAI = {
     var persianMap = {'۰':'0','۱':'1','۲':'2','۳':'3','۴':'4','۵':'5','۶':'6','۷':'7','۸':'8','۹':'9'};
     return String(str).replace(/[٠-٩]/g, function(c) { return arabicMap[c]; }).replace(/[۰-۹]/g, function(c) { return persianMap[c]; });
   },
-
   // ── Get visible questions for current step ──
   getVisibleQuestions: function() {
     var self = this;
@@ -3865,7 +3458,6 @@ const prismAI = {
       return q.step === self.currentStep && q.cond(self.answers);
     });
   },
-
   // ── Check if we can proceed ──
   canProceed: function() {
     var visQ = this.getVisibleQuestions();
@@ -3877,7 +3469,6 @@ const prismAI = {
       return val != null && val !== '';
     });
   },
-
   // ── Step transition message ──
   _getStepMessage: function(step) {
     var msgs = {
@@ -3890,7 +3481,6 @@ const prismAI = {
     };
     return msgs[step] || '';
   },
-
   // ── Calculate smart add-ons based on answers ──
   calculateAddOns: function() {
     var a = this.answers;
@@ -3900,9 +3490,7 @@ const prismAI = {
     var goals = a.goals || [];
     var chr = a.chronic_diseases || [];
     var fam = a.family_diseases || [];
-
-    if (a.addon_consent === 'no_addon') return [];
-
+    // addon_consent removed — always show relevant add-ons
     this.addOnCatalog.forEach(function(ao) {
       var match = false;
       // Check goal triggers
@@ -3928,22 +3516,18 @@ const prismAI = {
       }
       if (match) addons.push(ao);
     });
-
     // Limit to top 3 most relevant
     return addons.slice(0, 3);
   },
-
   // ── Scroll to questionnaire (standalone page — no modal) ──
   openQuestionnaire: function() {
     document.getElementById('questionnaire-section').scrollIntoView({behavior: 'smooth'});
     this.render();
   },
-
   // ── No-op close (standalone page — no modal) ──
   closeModal: function() {
     // No modal to close on standalone page
   },
-
   // ── Answer update (with cleanup logic from JSX) ──
   // ── Smart validation rules for number fields ──
   _numericLimits: {
@@ -3951,7 +3535,6 @@ const prismAI = {
     height: { min: 50, max: 250, label: 'الطول' },
     weight: { min: 10, max: 350, label: 'الوزن' }
   },
-
   updateAnswer: function(id, value) {
     // ═══ Smart numeric validation ═══
     var limits = this._numericLimits[id];
@@ -3967,19 +3550,19 @@ const prismAI = {
         this._showInputHint(id, limits.label + ' لا يقل عن ' + limits.min);
       }
     }
-
     this.answers[id] = value;
-
     // Cleanup logic from JSX
-    if (id === 'has_chronic' && value === 'no') {
-      delete this.answers.chronic_diseases;
+    // If user selects "no_chronic", clear related sub-answers
+    if (id === 'chronic_diseases' && prismAI._has(value, 'no_chronic')) {
+      this.answers.chronic_diseases = ['no_chronic'];
       delete this.answers.diabetes_control;
       delete this.answers.diabetes_last_hba1c;
       delete this.answers.thyroid_type;
       delete this.answers.other_chronic_text;
     }
-    if (id === 'has_medications' && value === 'no') {
-      delete this.answers.medications;
+    // If user selects "no_med", clear related sub-answers
+    if (id === 'medications' && prismAI._has(value, 'no_med')) {
+      this.answers.medications = ['no_med'];
       delete this.answers.other_med_text;
       delete this.answers.other_med_image;
     }
@@ -4013,10 +3596,8 @@ const prismAI = {
       if (value === 'male') delete this.answers.women_health;
       if (value === 'female') delete this.answers.men_health;
     }
-
     this.render();
   },
-
   // ── Subtle input hint (brief toast) ──
   _showInputHint: function(target, msg) {
     // target can be a DOM element or a string id
@@ -4044,7 +3625,6 @@ const prismAI = {
     container.appendChild(hint);
     setTimeout(function() { if (hint.parentNode) hint.remove(); }, 3000);
   },
-
   // ── Phone validation on blur ──
   _validatePhone: function(input) {
     var val = this._toWesternNum(input.value).replace(/[^0-9]/g, '');
@@ -4057,7 +3637,6 @@ const prismAI = {
       input.style.boxShadow = '0 0 0 3px rgba(43,182,115,0.12)';
     }
   },
-
   // ── Answer update silent (store only, no render) ──
   updateAnswerSilent: function(id, value) {
     // Clamp silently for number fields (while typing)
@@ -4069,7 +3648,6 @@ const prismAI = {
     }
     this.answers[id] = value;
   },
-
   // ── Step number +/- ──
   stepNumber: function(id, delta, min, max) {
     var current = parseInt(this._toWesternNum(this.answers[id])) || 0;
@@ -4078,7 +3656,6 @@ const prismAI = {
     if (newVal > max) newVal = max;
     this.updateAnswer(id, String(newVal));
   },
-
   // ── Toggle multi-select ──
   toggleMulti: function(id, value) {
     var current = Array.isArray(this.answers[id]) ? this.answers[id].slice() : [];
@@ -4091,7 +3668,6 @@ const prismAI = {
     }
     this.updateAnswer(id, current);
   },
-
   // ── Handle medication image upload ──
   handleMedImage: function(input) {
     if (!input.files || !input.files[0]) return;
@@ -4116,7 +3692,6 @@ const prismAI = {
     };
     reader.readAsDataURL(file);
   },
-
   // ── Remove uploaded medication image ──
   removeMedImage: function() {
     delete this.answers.other_med_image;
@@ -4124,13 +3699,11 @@ const prismAI = {
     if (fileInput) fileInput.value = '';
     this._render();
   },
-
   // ── Scroll to top of questionnaire ──
   _scrollToTop: function() {
     var el = document.getElementById('prismAIContent');
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   },
-
   // ── Navigation ──
   nextStep: function() {
     if (!this.canProceed()) return;
@@ -4145,20 +3718,17 @@ const prismAI = {
       this._scrollToTop();
     }
   },
-
   // ── Submit lead capture and show results ──
   submitLeadCapture: function() {
     var nameInput = document.getElementById('paiLeadName');
     var phoneInput = document.getElementById('paiLeadPhone');
     var name = nameInput ? nameInput.value.trim() : '';
     var phone = phoneInput ? phoneInput.value.trim() : '';
-
     // Validate name (required)
     if (!name || name.length < 2) {
       if (nameInput) { nameInput.style.borderColor = '#9B2335'; nameInput.focus(); }
       return;
     }
-
     // Validate phone: must be Saudi 05XXXXXXXX (10 digits)
     var cleanPhone = phone.replace(/[\s\-]/g, '');
     cleanPhone = this._toWesternNum(cleanPhone);
@@ -4171,14 +3741,11 @@ const prismAI = {
       return;
     }
     phone = cleanPhone;
-
     // Store lead info (sanitized)
     this.answers._lead_name = name.replace(/[<>"'&]/g, '');
     this.answers._lead_phone = phone;
-
     // Save to localStorage for dashboard
     this._saveLead(name, phone);
-
     // Now show loading → results
     this.leadCaptureShown = false;
     this.isLoading = true;
@@ -4192,13 +3759,11 @@ const prismAI = {
       self._scrollToTop();
     }, 2500);
   },
-
   // ── Skip lead capture (disabled — name+phone required) ──
   skipLeadCapture: function() {
     // Name and phone are now required — redirect to submit
     this.submitLeadCapture();
   },
-
   // ── Save lead to localStorage ──
   _saveLead: function(name, phone) {
     var rec = this.calculateRecommendations();
@@ -4216,17 +3781,15 @@ const prismAI = {
       recommended_specialty: rec.specialty ? this.packages[rec.specialty].name : '',
       addons: rec.addOns ? rec.addOns.map(function(a) { return a.name; }) : [],
       visit_pref: this.answers.visit_pref || '',
-      returning: this.answers.returning_customer || '',
+      returning: '',
       total_answers: Object.keys(this.answers).length
     };
-
     try {
       var leads = JSON.parse(localStorage.getItem('prisma_ai_leads') || '[]');
       leads.unshift(lead);
       localStorage.setItem('prisma_ai_leads', JSON.stringify(leads));
     } catch(e) { console.warn('Could not save lead:', e); }
   },
-
   // ── Render lead capture form ──
   _renderLeadCapture: function() {
     return '<div class="pai-lead-capture">' +
@@ -4247,7 +3810,6 @@ const prismAI = {
       '<div class="pai-lead-privacy">' + svgIcon('🔒') + ' بياناتك محمية ولن تُستخدم إلا للتواصل معك</div>' +
     '</div>';
   },
-
   prevStep: function() {
     if (this.leadCaptureShown) {
       this.leadCaptureShown = false;
@@ -4261,7 +3823,6 @@ const prismAI = {
     this.render();
     this._scrollToTop();
   },
-
   restartQuestionnaire: function() {
     this.answers = {};
     this.currentStep = 1;
@@ -4270,7 +3831,6 @@ const prismAI = {
     this.leadCaptureShown = false;
     this.render();
   },
-
   // ══════════════════════════════════════════════
   //  RECOMMENDATION ENGINE v2.0 — Enhanced with specialty paths
   // ══════════════════════════════════════════════
@@ -4278,10 +3838,8 @@ const prismAI = {
     var a = this.answers;
     var scores = {};
     var self = this;
-
     // Initialize all packages
     Object.keys(this.packages).forEach(function(k) { scores[k] = 0; });
-
     var age = parseInt(this._toWesternNum(a.age)) || 30;
     var sex = a.sex;
     var userBmi = this._bmi(parseFloat(this._toWesternNum(a.weight)) || 0, parseFloat(this._toWesternNum(a.height)) || 0);
@@ -4294,38 +3852,22 @@ const prismAI = {
     var fuC = a.followup_conditions || [];
     var longGap = ['over12m', 'never'].includes(a.last_test);
     var intent = a.intent || '';
-    var depth = a.depth_pref || '';
-
     var testCount = 11;
-
     // === Gender filtering ===
     if (sex === 'male') { scores.royal_women = -999; scores.royal_women_plus = -999; scores.women_hormones = -999; }
     else if (sex === 'female') { scores.royal_men = -999; scores.royal_men_plus = -999; scores.men_health = -999; }
-
-    // === NEW: Depth preference (strong commercial signal) ===
-    if (depth === 'focused') { scores.exploratory += 20; scores.energy_vitality += 15; scores.digestive += 15; }
-    else if (depth === 'balanced') { scores.exploratory_plus += 15; scores.advanced += 20; }
-    else if (depth === 'comprehensive') { scores.advanced += 10; scores.advanced_plus += 20; scores.royal_men += 8; scores.royal_women += 8; }
-    else if (depth === 'complete') { scores.royal_men += 25; scores.royal_women += 25; scores.royal_men_plus += 15; scores.royal_women_plus += 15; }
-
-    // === NEW: Preventive interest ===
-    if (a.preventive_interest === 'very_interested') { scores.advanced_plus += 12; scores.royal_men += 10; scores.royal_women += 10; scores.royal_men_plus += 8; scores.royal_women_plus += 8; }
-
     // === Age ===
     if (age < 30) { scores.exploratory += 15; scores.exploratory_plus += 10; }
     else if (age < 40) { scores.exploratory_plus += 15; scores.advanced += 10; testCount += 2; }
     else if (age < 50) { scores.advanced += 15; scores.advanced_plus += 12; testCount += 5; }
     else { scores.advanced_plus += 18; scores.royal_men += 12; scores.royal_women += 12; testCount += 8; }
-
     // === BMI ===
     if (userBmi && userBmi >= 30) { scores.advanced += 8; scores.advanced_plus += 10; testCount += 4; }
     else if (userBmi && userBmi >= 25) { scores.advanced += 5; testCount += 2; }
-
     // === Chronic diseases ===
     if (chr.length >= 3) { scores.royal_men += 20; scores.royal_women += 20; scores.royal_men_plus += 15; scores.royal_women_plus += 15; testCount += 15; }
     else if (chr.length >= 2) { scores.advanced_plus += 18; scores.royal_men += 10; scores.royal_women += 10; testCount += 10; }
     else if (chr.length >= 1) { scores.advanced += 15; scores.advanced_plus += 10; testCount += 6; }
-
     if (self._has(chr, 'diabetes')) { testCount += 5; scores.advanced += 8; scores.advanced_plus += 10; }
     if (self._has(chr, 'hypertension')) { testCount += 4; scores.advanced += 6; }
     if (self._has(chr, 'dyslipidemia')) { testCount += 3; scores.advanced += 5; }
@@ -4336,23 +3878,19 @@ const prismAI = {
     if (self._has(chr, 'anemia')) { testCount += 4; scores.energy_vitality += 20; }
     if (self._has(chr, 'gout')) { testCount += 2; }
     if (self._has(chr, 'skin_allergy')) { testCount += 4; scores.advanced += 5; }
-
     // === Medications ===
     if (meds.length >= 3) { scores.advanced_plus += 12; testCount += 4; }
     else if (meds.length >= 1) { scores.advanced += 8; testCount += 2; }
     if (self._has(meds, 'steroids')) { testCount += 3; scores.advanced_plus += 5; }
     if (self._has(meds, 'contraceptive')) { scores.women_hormones += 10; }
-
     // === Family history ===
     if (fam.length >= 3) { scores.advanced_plus += 15; scores.royal_men += 10; scores.royal_women += 10; testCount += 8; }
     else if (fam.length >= 1) { scores.advanced += 10; testCount += 4; }
     if (self._has(fam, 'fh_heart') || self._has(fam, 'fh_cholesterol')) { testCount += 4; scores.advanced_plus += 8; }
-
     // === Goals — EXPANDED with specialty routing ===
     if (goals.length >= 5) { scores.royal_men += 15; scores.royal_women += 15; testCount += 8; }
     else if (goals.length >= 3) { scores.advanced_plus += 12; testCount += 5; }
     else if (goals.length >= 1) { scores.advanced += 8; testCount += 2; }
-
     if (self._has(goals, 'fatigue')) { testCount += 5; scores.advanced += 8; scores.energy_vitality += 30; }
     if (self._has(goals, 'skin_hair')) { testCount += 4; scores.skin_hair += 35; scores.advanced += 5; }
     if (self._has(goals, 'weight_gain') || self._has(goals, 'weight_loss')) { testCount += 4; scores.advanced += 6; }
@@ -4391,36 +3929,27 @@ const prismAI = {
       if (stdD.length === 0) { scores.std_basic += 30; }
     }
     if (self._has(goals, 'premarriage')) { testCount += 5; scores.std_basic += 15; scores.women_hormones += 15; }
-
     // === NEW: Women-specific symptoms ===
     var wh = a.women_health || [];
     if (self._has(wh, 'irregular_period') || self._has(wh, 'pcos_symptoms')) { scores.women_hormones += 20; }
     if (self._has(wh, 'planning_pregnancy')) { scores.women_hormones += 25; scores.advanced += 10; }
     if (self._has(wh, 'menopause_symptoms')) { scores.women_hormones += 15; scores.royal_women += 10; }
-
     // === NEW: Men-specific symptoms ===
     var mh = a.men_health || [];
     if (self._has(mh, 'low_libido') || self._has(mh, 'muscle_difficulty')) { scores.men_health += 25; }
     if (self._has(mh, 'prostate_symptoms')) { scores.men_health += 20; scores.royal_men += 10; }
-
     // === NEW: Activity level ===
     if (a.activity === 'athlete' || a.activity === 'active_3plus') { scores.athlete += 20; }
-
     // === NEW: Sleep/Stress ===
     if (a.sleep_stress === 'tired_despite_sleep' || a.sleep_stress === 'chronic_stress') { scores.energy_vitality += 15; scores.advanced += 5; }
-
     // === NEW: Smoking ===
     if (a.smoking && a.smoking !== 'no_smoke') { testCount += 3; scores.advanced += 5; scores.advanced_plus += 8; }
-
     // === CV Risk ===
     if (self._has(cvR, 'smoking_cv') || self._has(cvR, 'early_heart_fh')) { testCount += 4; scores.advanced_plus += 10; }
-
     // === Follow-up conditions ===
     if (fuC.length >= 2) { scores.advanced_plus += 10; testCount += 4; }
-
     // === Long gap ===
     if (longGap) { testCount += 6; scores.advanced += 8; scores.advanced_plus += 6; }
-
     // === Test count based tier mapping ===
     if (testCount <= 20) { scores.exploratory += 25; scores.exploratory_plus += 15; }
     else if (testCount <= 30) { scores.exploratory_plus += 25; scores.advanced += 15; }
@@ -4428,20 +3957,16 @@ const prismAI = {
     else if (testCount <= 55) { scores.advanced_plus += 25; scores.royal_men += 8; scores.royal_women += 8; }
     else if (testCount <= 75) { scores.royal_men += 25; scores.royal_women += 25; }
     else { scores.royal_men_plus += 25; scores.royal_women_plus += 25; }
-
     return scores;
   },
-
   // ── Calculate final recommendations — v2 with specialty packages ──
   calculateRecommendations: function() {
     var scores = this.runEngine();
     var gender = this.answers.sex;
     var self = this;
-
     // Separate general vs specialty packages
     var generalPkgs = ['exploratory','exploratory_plus','advanced','advanced_plus','royal_men','royal_men_plus','royal_women','royal_women_plus'];
     var specialtyPkgs = ['energy_vitality','women_hormones','men_health','athlete','std_basic','std_pcr','std_comprehensive','digestive','skin_hair'];
-
     // Upgrade path for general packages
     var upgradePath = {
       exploratory: 'exploratory_plus',
@@ -4453,16 +3978,13 @@ const prismAI = {
       royal_men_plus: 'royal_men_plus',
       royal_women_plus: 'royal_women_plus'
     };
-
     // Filter valid packages
     var validGeneral = generalPkgs.filter(function(k) { return scores[k] > -500; });
     var validSpecialty = specialtyPkgs.filter(function(k) { return scores[k] > -500 && scores[k] >= 25; });
-
     // Find best general package
     var basicChoice = validGeneral.reduce(function(best, current) {
       return scores[current] > scores[best] ? current : best;
     });
-
     // Golden = one step up
     var goldenChoice = upgradePath[basicChoice] || basicChoice;
     if (scores[goldenChoice] <= -500) {
@@ -4471,7 +3993,6 @@ const prismAI = {
         .sort(function(a, b) { return scores[b] - scores[a]; });
       goldenChoice = fallback.length > 0 ? fallback[0] : basicChoice;
     }
-
     if (goldenChoice === basicChoice) {
       var reverseMap = {};
       Object.entries(upgradePath).forEach(function(entry) {
@@ -4482,22 +4003,17 @@ const prismAI = {
         basicChoice = downgrade;
       }
     }
-
     // Find best specialty package (if any scored high enough)
     var specialtyChoice = null;
     if (validSpecialty.length > 0) {
       specialtyChoice = validSpecialty.sort(function(a, b) { return scores[b] - scores[a]; })[0];
     }
-
     // Calculate add-ons
     var addOns = this.calculateAddOns();
-
     // ═══ BUILD DYNAMIC CUSTOM PACKAGE ═══
     var customPkg = this.buildCustomPackage();
-
     return { basic: basicChoice, golden: goldenChoice, specialty: specialtyChoice, customPackage: customPkg, addOns: addOns };
   },
-
   // ══════════════════════════════════════════════
   //  DYNAMIC CUSTOM PACKAGE BUILDER — بناء باقة مخصصة من الصفر
   //  تُبنى تحليل بتحليل بناءً على إجابات المريض
@@ -4512,13 +4028,11 @@ const prismAI = {
     var chr = a.chronic_diseases || [];
     var fam = a.family_diseases || [];
     var meds = a.medications || [];
-    var depth = a.depth_pref || '';
     var activity = a.activity || '';
     var wh = a.women_health || [];
     var mh = a.men_health || [];
     var patientName = this._esc((a._lead_name || '').trim().split(' ')[0]) || 'ضيفنا';
     var userBmi = this._bmi(parseFloat(this._toWesternNum(a.weight)) || 0, parseFloat(this._toWesternNum(a.height)) || 0);
-
     // ── Test Pool Definitions ──
     var CORE_ALWAYS = ['CBC', 'FBS', 'Lipid_Profile', 'Creatinine', 'ALT', 'AST', 'TSH', 'Vitamin_D'];
     var TIER2 = ['HbA1c', 'Vitamin_B12', 'Ferritin', 'Iron_Profile', 'CRP', 'Uric_Acid', 'Urinalysis'];
@@ -4533,20 +4047,16 @@ const prismAI = {
     var COND_THYROID = ['Free_T3', 'Free_T4', 'Anti_TPO', 'Anti_TG'];
     var COND_CANCER_M = ['PSA', 'Free_PSA', 'AFP', 'CEA'];
     var COND_CANCER_F = ['CA125', 'CA15_3', 'AFP', 'CEA'];
-
     // Derived formulas — zero cost, inflate test count
     var DERIVED_LIPID = ['LDL_Calculated', 'LDL_HDL_Ratio', 'TG_HDL_Ratio', 'Non_HDL_Cholesterol', 'TC_HDL_Ratio', 'VLDL_Calculated'];
     var DERIVED_RENAL = ['eGFR'];
     var DERIVED_LIVER = ['ALT_AST_Ratio'];
     var DERIVED_INSULIN = ['HOMA_IR_Calc'];
-
     // Cheap fillers — low cost, high perceived value
     var CHEAP_FILLERS = ['ESR', 'Blood_Group', 'RBC_Indices', 'RDW', 'MPV'];
-
     // ── Start building test list ──
     var tests = [];
     var reasons = [];
-
     // Helper: add tests without duplicates
     function addTests(pool, reason) {
       pool.forEach(function(t) {
@@ -4554,10 +4064,8 @@ const prismAI = {
       });
       if (reason && reasons.indexOf(reason) === -1) reasons.push(reason);
     }
-
     // ═══ STEP 1: Core Always — always included ═══
     addTests(CORE_ALWAYS);
-
     // ═══ STEP 2: Tier 2 — based on age, chronic, goals ═══
     // Age-based escalation
     if (age >= 30) {
@@ -4569,7 +4077,6 @@ const prismAI = {
     if (age >= 40) {
       addTests(TIER2, 'في هالمرحلة العمرية، الفحوصات الوقائية المتقدمة ضرورية');
     }
-
     // Chronic diseases escalation
     if (chr.length >= 1) {
       addTests(['HbA1c', 'CRP', 'Urinalysis'], 'تاريخك المرضي يتطلب متابعة دورية أدق');
@@ -4577,22 +4084,18 @@ const prismAI = {
     if (chr.length >= 2) {
       addTests(TIER2);
     }
-
     // Goal-based Tier 2
     if (self._has(goals, 'fatigue') || self._has(goals, 'vitamin_concern')) {
       addTests(['Vitamin_B12', 'Ferritin', 'Iron_Profile', 'CRP'], 'ذكرت إنك تعاني من تعب — التحاليل بتكشف السبب');
     }
-
     // Family history escalation
     if (fam.length >= 2) {
       addTests(TIER2, 'تاريخك العائلي يرفع أهمية الفحص الوقائي');
     }
-
     // Depth preference
     if (depth === 'comprehensive' || depth === 'complete') {
       addTests(TIER2);
     }
-
     // ═══ STEP 3: Tier 3 — advanced tests ═══
     if (chr.length >= 2 || fam.length >= 3 || depth === 'complete') {
       addTests(TIER3, 'الصورة الكاملة تتطلب فحوصات متقدمة للغدة والمعادن ومقاومة الأنسولين');
@@ -4600,7 +4103,6 @@ const prismAI = {
     if (age >= 50) {
       addTests(['Insulin', 'HOMA_IR', 'Calcium', 'Phosphorus', 'Magnesium'], 'الفحص الشامل المنتظم يحميك من مفاجآت صحية غير متوقعة');
     }
-
     // ═══ STEP 4: Conditional Pools ═══
     // Gender
     if (sex === 'male') {
@@ -4624,37 +4126,30 @@ const prismAI = {
         addTests(COND_FEMALE);
       }
     }
-
     // Digestive
     if (self._has(goals, 'digestive')) {
       addTests(COND_DIGESTIVE, 'مشاكل المعدة ممكن تكون جرثومة أو حساسية — الفحص يحدد');
     }
-
     // Fitness
     if (self._has(goals, 'fitness') || activity === 'athlete' || activity === 'active_3plus') {
       addTests(COND_FITNESS, 'كرياضي، فحوصات الأداء والتعافي تفرق في نتائجك');
     }
-
     // Skin & Hair
     if (self._has(goals, 'skin_hair')) {
       addTests(COND_SKIN_HAIR, 'تساقط الشعر أو مشاكل البشرة غالباً مرتبطة بنقص فيتامينات أو هرمونات');
     }
-
     // Cardiac
     if (self._has(goals, 'cholesterol_concern') || self._has(fam, 'fh_heart') || self._has(fam, 'fh_cholesterol')) {
       addTests(COND_CARDIAC, 'مؤشرات القلب المتقدمة تكشف عوامل خطر خفية');
     }
-
     // Diabetes risk
     if (self._has(goals, 'sugar_concern') || self._has(fam, 'fh_diabetes') || self._has(chr, 'diabetes')) {
       addTests(COND_DIABETES, 'مقاومة الأنسولين تُكتشف بدري قبل ما يرتفع السكر');
     }
-
     // Thyroid deep
     if (self._has(goals, 'thyroid_concern') || self._has(chr, 'thyroid')) {
       addTests(COND_THYROID, 'فحص الغدة المتقدم يكشف اضطرابات المناعة الذاتية');
     }
-
     // Cancer screening
     if (sex === 'male' && age >= 45) {
       addTests(COND_CANCER_M, 'دلالات الأورام مهمة كفحص وقائي في عمرك');
@@ -4662,14 +4157,12 @@ const prismAI = {
     if (sex === 'female' && age >= 40) {
       addTests(COND_CANCER_F, 'دلالات الأورام النسائية مهمة كفحص وقائي');
     }
-
     // ═══ STEP 5: BMI-based additions ═══
     if (userBmi && userBmi >= 30) {
       addTests(['Insulin', 'HOMA_IR', 'HbA1c', 'Uric_Acid', 'Cortisol']);
     } else if (userBmi && userBmi >= 25) {
       addTests(['HbA1c', 'Insulin']);
     }
-
     // ═══ STEP 6: Medication-based additions ═══
     if (meds.length >= 2) {
       addTests(['ALT', 'AST', 'Creatinine', 'Urinalysis', 'CBC']);
@@ -4677,17 +4170,14 @@ const prismAI = {
     if (self._has(meds, 'steroids')) {
       addTests(['Cortisol', 'HbA1c', 'Calcium']);
     }
-
     // ═══ STEP 7: Smoking-based ═══
     if (a.smoking && a.smoking !== 'no_smoke') {
       addTests(['CRP', 'CBC', 'Vitamin_D']);
     }
-
     // ═══ STEP 8: Long gap since last test ═══
     if (['over12m', 'never'].includes(a.last_test)) {
       addTests(['Urinalysis', 'Stool_Analysis', 'CRP']);
     }
-
     // ═══ STEP 9: Add ALL derived formulas (zero cost!) ═══
     addTests(DERIVED_LIPID); // Always — Lipid Profile is in core
     addTests(DERIVED_RENAL); // Always — Creatinine is in core
@@ -4695,10 +4185,8 @@ const prismAI = {
     if (tests.indexOf('Insulin') !== -1 && tests.indexOf('FBS') !== -1) {
       addTests(DERIVED_INSULIN); // Only if Insulin + FBS present
     }
-
     // ═══ STEP 10: Add cheap fillers ═══
     addTests(CHEAP_FILLERS);
-
     // ═══ STEP 11: Ensure minimum test count — "أعلى فاتورة ممكنة بس بعقل" ═══
     // If test count is low, escalate sensibly
     if (tests.length < 25 && depth !== 'focused') {
@@ -4712,7 +4200,6 @@ const prismAI = {
       if (sex === 'male') { addTests(COND_MALE); addTests(COND_CANCER_M); }
       if (sex === 'female') { addTests(COND_FEMALE); addTests(COND_CANCER_F); }
     }
-
     // ═══ PRICING — from pricing map ═══
     var totalTests = tests.length;
     var price;
@@ -4724,7 +4211,6 @@ const prismAI = {
     else if (totalTests <= 65) price = 999;
     else if (totalTests <= 80) price = 1299;
     else price = 1899;
-
     // ═══ BUILD DESCRIPTION ═══
     var descParts = [];
     descParts.push(totalTests + ' تحليلاً ومؤشراً');
@@ -4736,15 +4222,12 @@ const prismAI = {
     if (tests.indexOf('H_Pylori_Ag') !== -1) descParts.push('جرثومة المعدة');
     if (tests.indexOf('Anti_TPO') !== -1) descParts.push('مناعة الغدة');
     // النسب المحسوبة تظهر فقط داخل عرض التحاليل — مو في الوصف الخارجي
-
     var description = 'باقة فريدة تضم ' + descParts.join('، ') + '. مبنية خصيصاً من إجاباتك — مختلفة عن أي باقة في كتالوج بريزما.';
-
     // ═══ BUILD JUSTIFICATION ═══
     var justification = '';
     if (reasons.length > 0) {
       justification = '🔬 الصورة الكاملة: ' + reasons.slice(0, 4).join(' · ');
     }
-
     // ═══ RETURN CUSTOM PACKAGE OBJECT ═══
     return {
       id: 'custom_dynamic',
@@ -4759,7 +4242,6 @@ const prismAI = {
       icon: '🧬'
     };
   },
-
   // ══════════════════════════════════════════════
   //  RENDERING
   // ══════════════════════════════════════════════
@@ -4772,7 +4254,6 @@ const prismAI = {
     var prevBtn = document.getElementById('prismAIPrevBtn');
     var nextBtn = document.getElementById('prismAINextBtn');
     var stepIndicator = document.getElementById('paiStepIndicator');
-
     // Update step indicator sidebar (desktop)
     if (stepIndicator) {
       var stepsHtml = '';
@@ -4789,7 +4270,6 @@ const prismAI = {
       });
       stepIndicator.innerHTML = stepsHtml;
     }
-
     // Update mobile compact progress dots
     var mobileProgress = document.getElementById('paiMobileProgress');
     if (mobileProgress) {
@@ -4810,7 +4290,6 @@ const prismAI = {
       }
       mobileProgress.innerHTML = dotsHtml;
     }
-
     // Update encourage text above progress bar
     var encourageEl = document.getElementById('paiEncourage');
     if (encourageEl) {
@@ -4823,21 +4302,18 @@ const prismAI = {
         }, 200);
       }
     }
-
     // Update progress
     var pct = Math.min(((this.currentStep - 1) / this.totalSteps) * 100, 100);
     progressFill.style.width = pct + '%';
     var stepInfo = this.steps[Math.min(this.currentStep, this.totalSteps) - 1];
     stepCounter.textContent = 'الخطوة ' + Math.min(this.currentStep, this.totalSteps) + ' من ' + this.totalSteps;
     stepName.textContent = stepInfo ? stepInfo.ar : '';
-
     // Loading state
     if (this.isLoading) {
       content.innerHTML = this._renderLoading();
       footer.style.display = 'none';
       return;
     }
-
     // Lead capture state
     if (this.leadCaptureShown) {
       content.innerHTML = this._renderLeadCapture();
@@ -4851,7 +4327,6 @@ const prismAI = {
       nextBtn.style.display = 'none';
       return;
     }
-
     // Results state
     if (this.resultsShown) {
       content.innerHTML = this._renderResults();
@@ -4864,16 +4339,13 @@ const prismAI = {
       prevBtn.onclick = function() { prismAI.prevStep(); };
       return;
     }
-
     // Questions state
     var visQ = this.getVisibleQuestions();
     var html = '';
     var self = this;
-
     visQ.forEach(function(q) {
       html += self._renderQuestion(q);
     });
-
     // Step transition message — AI Banner
     var stepMsg = this._getStepMessage(this.currentStep);
     if (stepMsg) {
@@ -4889,12 +4361,10 @@ const prismAI = {
       bannerHtml += '</div>';
       html = bannerHtml + html;
     }
-
     // BMI badge after height/weight (step 2)
     if (this.currentStep === 2 && this.answers.weight && this.answers.height) {
       html += this._renderBmiBadge();
     }
-
     // Smooth transition effect
     content.style.opacity = '0';
     content.style.transform = 'translateY(12px)';
@@ -4904,7 +4374,6 @@ const prismAI = {
       content.style.opacity = '1';
       content.style.transform = 'translateY(0)';
     }, 50);
-
     // Footer
     footer.style.display = 'flex';
     prevBtn.style.display = this.currentStep > 1 ? 'inline-block' : 'none';
@@ -4914,18 +4383,15 @@ const prismAI = {
     nextBtn.disabled = !this.canProceed();
     nextBtn.onclick = function() { prismAI.nextStep(); };
   },
-
   // ── Render a single question card ──
   _renderQuestion: function(q) {
     var opts = q.optsKey ? this.optionsMap[q.optsKey] : [];
     var val = this.answers[q.id];
     var isSubCard = (q.type === 'text');
     var cardClass = isSubCard ? 'pai-qcard-sub' : (q.primary ? 'pai-qcard-hero' : 'pai-qcard');
-
     var html = '<div class="' + cardClass + '">';
     html += '<div class="pai-q-label">' + q.ar + '</div>';
     html += '<div class="pai-q-hint">' + q.hint + '</div>';
-
     if (q.type === 'number') {
       var step = (q.id === 'age') ? 1 : (q.id === 'weight') ? 1 : 1;
       html += '<div class="pai-stepper-row">';
@@ -4937,11 +4403,9 @@ const prismAI = {
       html += '<button class="pai-stepper-btn pai-stepper-plus" onclick="prismAI.stepNumber(\'' + q.id + '\', ' + step + ', ' + (q.min||0) + ', ' + (q.max||999) + ')">+</button>';
       html += '</div>';
     }
-
     else if (q.type === 'text') {
       html += '<input type="text" class="pai-text-input" placeholder="' + (q.ph||'') + '" value="' + (val||'') + '" oninput="prismAI.updateAnswer(\'' + q.id + '\', this.value)" onfocus="this.style.borderColor=\'#00a99d\';this.style.boxShadow=\'0 0 0 3px rgba(0,169,157,0.18)\'" onblur="this.style.borderColor=\'rgba(0,0,0,0.12)\';this.style.boxShadow=\'none\'">';
     }
-
     else if (q.type === 'select') {
       html += '<div class="pai-pills">';
       opts.forEach(function(o) {
@@ -4950,7 +4414,6 @@ const prismAI = {
       });
       html += '</div>';
     }
-
     else if (q.type === 'multi') {
       var sel = Array.isArray(val) ? val : [];
       html += '<div class="pai-chips">';
@@ -4961,7 +4424,6 @@ const prismAI = {
         html += '<span class="chip-icon">' + icon + '</span>' + o.labelAr + '</button>';
       });
       html += '</div>';
-
       // ── Conditional: "أدوية أخرى" detail input ──
       if (q.id === 'medications' && sel.includes('other_med')) {
         var medText = this.answers.other_med_text || '';
@@ -4991,29 +4453,24 @@ const prismAI = {
         html += '</div>';
       }
     }
-
     html += '</div>';
     return html;
   },
-
   // ── Render BMI badge ──
   _renderBmiBadge: function() {
     var w = parseFloat(this._toWesternNum(this.answers.weight));
     var h = parseFloat(this._toWesternNum(this.answers.height));
     var v = this._bmi(w, h);
     if (!v) return '';
-
     var label = 'طبيعي', color = '#5B8A72', bg = 'rgba(91,138,114,0.1)';
     if (v < 18.5) { label = 'نقص وزن'; color = '#C4883A'; bg = 'rgba(196,136,58,0.1)'; }
     else if (v >= 25 && v < 30) { label = 'وزن زائد'; color = '#C4883A'; bg = 'rgba(196,136,58,0.1)'; }
     else if (v >= 30) { label = 'سمنة'; color = '#C45B5B'; bg = 'rgba(196,91,91,0.1)'; }
-
     return '<div class="pai-bmi-badge" style="background:' + bg + ';border-color:' + color + '30">' +
       '<div class="pai-bmi-value" style="color:' + color + '">مؤشر كتلة الجسم: <span>' + v + '</span></div>' +
       '<div class="pai-bmi-label" style="background:' + color + '">' + label + '</div>' +
       '</div>';
   },
-
   // ── Render loading ──
   _renderLoading: function() {
     return '<div class="pai-loading">' +
@@ -5022,7 +4479,6 @@ const prismAI = {
       '<div class="pai-loading-sub">محرك Prisma AI يراجع ملفك الصحي ويحدد التحاليل الأنسب</div>' +
       '</div>';
   },
-
   // ── Render results — v2 with specialty + add-ons + summary ──
   _renderResults: function() {
     var rec = this.calculateRecommendations();
@@ -5033,18 +4489,15 @@ const prismAI = {
     var a = this.answers;
     var basicColor = (typeof PKG_COLORS !== 'undefined' && PKG_COLORS[rec.basic]) || '#00a99d';
     var goldenColor = (typeof PKG_COLORS !== 'undefined' && PKG_COLORS[rec.golden]) || '#9B2335';
-
     // Get patient first name for personalization
     var patientName = this._esc((a._lead_name || '').trim().split(' ')[0]) || '';
-
     // Build personalized summary
     var summaryParts = [];
     if (a.age) summaryParts.push(a.age + ' سنة');
     if (a.sex === 'male') summaryParts.push('ذكر');
     if (a.sex === 'female') summaryParts.push('أنثى');
-    if (a.has_chronic === 'yes') summaryParts.push('تاريخ مرضي');
+    if (a.chronic_diseases && a.chronic_diseases.length > 0 && !prismAI._has(a.chronic_diseases, 'no_chronic')) summaryParts.push('تاريخ مرضي');
     if (a.has_family_history === 'yes') summaryParts.push('تاريخ عائلي');
-
     // Build "reasons" for recommendation
     var reasons = [];
     var goals = a.goals || [];
@@ -5058,24 +4511,19 @@ const prismAI = {
     if (this._has(goals,'digestive')) reasons.push('صحة المعدة');
     if (this._has(goals,'std_concern')) reasons.push('الصحة الجنسية');
     if (this._has(goals,'cholesterol_concern')) reasons.push('الكوليسترول');
-
     var summaryText = patientName ? ('يا ' + patientName + '، ') : '';
     summaryText += summaryParts.length > 0 ? 'بناءً على بياناتك (' + summaryParts.join('، ') + ')' : '';
     if (reasons.length > 0) summaryText += (summaryParts.length > 0 ? ' و' : '') + 'اهتمامك بـ ' + reasons.slice(0,3).join('، ');
     summaryText += ' — هذه باقاتك المقترحة';
-
     var basicDesc = this.pkgDescriptions[rec.basic];
     var goldenDesc = this.pkgDescriptions[rec.golden];
-
     var html = '';
-
     // Header
     html += '<div class="pai-results-header">';
     html += '<div class="pai-results-pre">ANALYSIS COMPLETE</div>';
     html += '<div class="pai-results-title">' + (patientName ? ('نتائجك جاهزة يا ' + patientName) : 'تحليلك مكتمل') + '</div>';
     html += '<div class="pai-results-summary">' + summaryText + '</div>';
     html += '</div>';
-
     // ══════════════════════════════════════════════
     //  TIER 3: الباقة المخصصة الديناميكية — مصممة خصيصاً من الاستبيان
     //  هذي الباقة مبنية تحليل بتحليل — مختلفة عن أي باقة بالكتالوج
@@ -5091,14 +4539,12 @@ const prismAI = {
       html += '<div style="color:rgba(107,79,187,0.55);font-size:11px;margin-top:-2px;margin-bottom:10px">بناءً على تحليل Prisma AI لإجاباتك</div>';
       html += '<div class="pai-rec-meta"><span style="color:#6b4fbb;font-size:18px;font-weight:900">' + customPkg.price.toLocaleString() + '</span> ر.س · ' + customPkg.tests + ' تحليل ومؤشر</div>';
       html += '<div class="pai-rec-desc" style="line-height:1.8">' + customPkg.description + '</div>';
-
       // Justification box — why this package
       if (customPkg.justification) {
         html += '<div style="background:rgba(107,79,187,0.08);border:1px solid rgba(107,79,187,0.15);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:12px;color:#6b4fbb;line-height:1.7">';
         html += '<span style="color:#6b4fbb;font-weight:700">' + svgIcon('💡') + ' ليش هذي الباقة؟</span><br>' + customPkg.justification;
         html += '</div>';
       }
-
       // Test highlights — show key test categories as badges
       var highlights = [];
       if (customPkg.testList.indexOf('CBC') !== -1) highlights.push('صورة دم');
@@ -5110,7 +4556,6 @@ const prismAI = {
       if (customPkg.testList.indexOf('Homocysteine') !== -1) highlights.push('مؤشرات قلب');
       if (customPkg.testList.indexOf('PSA') !== -1 || customPkg.testList.indexOf('CA125') !== -1) highlights.push('دلالات أورام');
       if (customPkg.testList.indexOf('H_Pylori_Ag') !== -1) highlights.push('جرثومة المعدة');
-
       if (highlights.length > 0) {
         html += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0">';
         highlights.forEach(function(h) {
@@ -5118,13 +4563,11 @@ const prismAI = {
         });
         html += '</div>';
       }
-
       // ── Expandable test list — "عرض التحاليل" ──
       html += '<div id="paiCustomTestsWrap" style="margin:10px 0">';
       html += '<button onclick="prismAI.toggleCustomTests()" id="paiCustomTestsBtn" style="background:rgba(107,79,187,0.08);border:1px solid rgba(107,79,187,0.18);color:#6b4fbb;padding:8px 18px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;width:100%;transition:all 0.3s ease;display:flex;align-items:center;justify-content:center;gap:6px">';
       html += '<span id="paiCustomTestsArrow" style="transition:transform 0.3s ease;display:inline-block">◀</span> عرض التحاليل (' + customPkg.tests + ' تحليل)</button>';
       html += '<div id="paiCustomTestsList" style="display:none;margin-top:10px;background:#fafbfc;border:1px solid rgba(0,0,0,0.08);border-radius:14px;padding:18px 16px;max-height:500px;overflow-y:auto">';
-
       // Comprehensive test data: Arabic name, English code, description, group category
       var testData = {
         CBC:{ar:'صورة الدم الكاملة',en:'CBC',desc:'فحص صورة الدم الكاملة للاطمئنان على مستويات الهيموجلوبين والمناعة والصفائح.',grp:'تحاليل الدم'},
@@ -5201,7 +4644,6 @@ const prismAI = {
         RDW:{ar:'توزيع حجم الكريات',en:'RDW',desc:'يكشف تفاوت حجم كريات الدم.',grp:'تحاليل الدم'},
         MPV:{ar:'متوسط حجم الصفائح',en:'MPV',desc:'مؤشر لنشاط الصفائح الدموية.',grp:'تحاليل الدم'}
       };
-
       // Group tests by category (matching main site design)
       var groups = {};
       customPkg.testList.forEach(function(code) {
@@ -5211,10 +4653,8 @@ const prismAI = {
         if (!groups[g]) groups[g] = [];
         groups[g].push(code);
       });
-
       // Sort groups by Arabic name
       var sortedGroups = Object.keys(groups).sort(function(a,b){ return a.localeCompare(b, 'ar'); });
-
       // Render grouped test cards (matching comprehensive.html modal design)
       var gi = 1;
       sortedGroups.forEach(function(groupName) {
@@ -5252,14 +4692,11 @@ const prismAI = {
         html += '</div></div>';
         gi++;
       });
-
       html += '</div></div>';
-
       html += '<div class="pai-rec-btns" style="gap:8px">';
       html += '<button class="prisma-ai-btn prisma-ai-btn-primary" style="background:linear-gradient(135deg,#6b4fbb,#00a99d)" onclick="prismAI.openWhatsApp(\'' + customPkg.name + '\')">' + svgIcon('🧬') + ' احجز باقتك المخصصة</button>';
       html += '</div></div>';
     }
-
     // ══════════════════════════════════════════════
     //  TIER 2: الباقة المتقدمة — من كتالوج بريزما (Golden)
     // ══════════════════════════════════════════════
@@ -5273,7 +4710,6 @@ const prismAI = {
     html += '<button class="prisma-ai-btn prisma-ai-btn-primary" style="background:linear-gradient(135deg,' + goldenColor + ',var(--purple))" onclick="prismAI.openWhatsApp(\'' + goldenPkg.name + '\')">احجز هذه الباقة</button>';
     html += '<button class="prisma-ai-btn prisma-ai-btn-secondary" onclick="prismAI.viewPackageDetails(\'' + rec.golden + '\')">عرض التفاصيل</button>';
     html += '</div></div>';
-
     // ══════════════════════════════════════════════
     //  TIER 1: الباقة الأساسية — من كتالوج بريزما (Basic)
     // ══════════════════════════════════════════════
@@ -5286,9 +4722,8 @@ const prismAI = {
     html += '<button class="prisma-ai-btn prisma-ai-btn-primary" style="background:' + basicColor + '" onclick="prismAI.openWhatsApp(\'' + basicPkg.name + '\')">احجز هذه الباقة</button>';
     html += '<button class="prisma-ai-btn prisma-ai-btn-secondary" onclick="prismAI.viewPackageDetails(\'' + rec.basic + '\')">عرض التفاصيل</button>';
     html += '</div></div>';
-
-    // Add-ons section (if any and consent given)
-    if (addOns.length > 0 && a.addon_consent !== 'no_addon') {
+    // Add-ons section (if any relevant)
+    if (addOns.length > 0) {
       html += '<div class="pai-addons-section">';
       html += '<div class="pai-addons-title">تحاليل إضافية مقترحة بناءً على إجاباتك</div>';
       html += '<div class="pai-addons-subtitle">يمكنك إضافتها لأي باقة تختارها</div>';
@@ -5300,7 +4735,6 @@ const prismAI = {
       });
       html += '</div>';
     }
-
     // Visit preference note
     if (a.visit_pref === 'home') {
       html += '<div class="pai-visit-note" style="background:rgba(0,169,157,0.08);border:1px solid rgba(0,169,157,0.2);border-radius:12px;padding:14px 18px;margin-top:16px;text-align:center">';
@@ -5308,13 +4742,10 @@ const prismAI = {
       html += '<div style="font-size:12px;color:#00a99d">بنوفر لك الخدمة في بيتك — فريقنا جاهز في الرياض</div>';
       html += '</div>';
     }
-
     // Disclaimer
     html += '<div class="pai-disclaimer"><p>هذه الأداة تدعم الفحص المبدئي واقتراح الباقة المناسبة، ولا تغني عن تقييم الطبيب المختص.</p></div>';
-
     return html;
   },
-
   // ── Toggle custom package test list ──
   toggleCustomTests: function() {
     var list = document.getElementById('paiCustomTestsList');
@@ -5332,7 +4763,6 @@ const prismAI = {
       btn.style.background = 'rgba(107,79,187,0.14)';
     }
   },
-
   // ── View Package Details (close AI modal, open package modal) ──
   viewPackageDetails: function(pkgId) {
     // Close the AI modal first
@@ -5344,7 +4774,6 @@ const prismAI = {
       }
     }, 300);
   },
-
   // ── WhatsApp ──
   openWhatsApp: function(packageName) {
     var name = (this.answers._lead_name || '').trim();
@@ -5355,15 +4784,12 @@ const prismAI = {
     window.open(buildWaLink(msg), '_blank');
   }
 };
-
     // ── Global helper function for WhatsApp links ──
     function buildWaLink(msg) {
       return 'https://wa.me/966920031642?text=' + encodeURIComponent(msg);
     }
-
     // ── Initialize questionnaire on page load ──
     prismAI.render();
-
     // ── Scroll reveal animations ──
     var observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver(function(entries) {
@@ -5373,12 +4799,11 @@ const prismAI = {
         }
       });
     }, observerOptions);
-
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 <div class="mobile-menu-overlay" id="mobileMenu">
   <div class="mobile-menu-header">
-    <span style="font-family:'Tajawal',sans-serif;font-size:18px;font-weight:900;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">PRISMA</span>
+    <a href="index.html" style="text-decoration:none;"><img src="prisma-logo.png" alt="مختبرات بريزما الطبية - PRISMA Laboratory" style="height:34px;width:auto;"></a>
     <button onclick="document.getElementById('mobileMenu').classList.remove('open')" style="background:none;border:none;font-size:28px;color:#1a1f36;cursor:pointer;">✕</button>
   </div>
   <nav class="mobile-menu-nav">
@@ -5398,13 +4823,12 @@ const prismAI = {
   </nav>
   <a href="#form-sec" class="mobile-menu-cta" onclick="document.getElementById('mobileMenu').classList.remove('open')">احجز الآن</a>
 </div>
-
 <!-- ══════════════ FLOATING CTA BUTTONS ══════════════ -->
 <style>
-.float-cta-wrap{position:fixed;bottom:calc(28px + env(safe-area-inset-bottom, 0px));z-index:150;display:flex;flex-direction:column;gap:14px;animation:floatIn 0.6s ease forwards;opacity:0;}
+.float-cta-wrap{position:fixed;bottom:calc(28px + env(safe-area-inset-bottom, 0px));z-index: 9999;display:flex;flex-direction:column;gap:14px;opacity: 1;}
 .float-cta-right{right:24px;}
 .float-cta-left{left:24px;}
-.float-cta-btn{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,0.35);transition:transform 0.3s cubic-bezier(0.34,1.3,0.64,1),box-shadow 0.3s;text-decoration:none;position:relative;}
+.float-cta-btn{width:60px !important;height:60px !important;border-radius:50%;display:flex !important;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,0.35);transition:transform 0.3s cubic-bezier(0.34,1.3,0.64,1),box-shadow 0.3s;text-decoration:none;position:relative;opacity:1 !important;visibility:visible !important;}
 .float-cta-btn:hover{transform:scale(1.12) translateY(-3px);}
 .float-cta-btn:active{transform:scale(0.95);}
 .float-cta-wa{background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 6px 28px rgba(37,211,102,0.4);}
@@ -5415,13 +4839,15 @@ const prismAI = {
 .float-cta-wa::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.4);animation:floatPulse 2s ease-in-out infinite;}
 .float-cta-call::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(0,191,255,0.3);animation:floatPulse 2.5s ease-in-out infinite;}
 .float-cta-tooltip{position:absolute;white-space:nowrap;padding:6px 14px;background:rgba(0,0,0,0.85);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;border-radius:8px;pointer-events:none;opacity:0;transition:opacity 0.25s,transform 0.25s;backdrop-filter:blur(8px);}
-.float-cta-right .float-cta-tooltip{right:72px;top:50%;transform:translateY(-50%) translateX(6px);}
-.float-cta-left .float-cta-tooltip{left:72px;top:50%;transform:translateY(-50%) translateX(-6px);}
-.float-cta-btn:hover .float-cta-tooltip{opacity:1;transform:translateY(-50%) translateX(0);}
+.float-cta-right .float-cta-tooltip{right:72px;top:50%;transform:translateY(-50%) translateX(6px);animation:tooltipPeekR 5s ease 1.5s 1 both;}
+.float-cta-left .float-cta-tooltip{left:72px;top:50%;transform:translateY(-50%) translateX(-6px);animation:tooltipPeekL 5s ease 2s 1 both;}
+@keyframes tooltipPeekR{0%{opacity:0;transform:translateY(-50%) translateX(6px);}10%{opacity:1;transform:translateY(-50%) translateX(0);}80%{opacity:1;transform:translateY(-50%) translateX(0);}100%{opacity:0;transform:translateY(-50%) translateX(6px);}}
+@keyframes tooltipPeekL{0%{opacity:0;transform:translateY(-50%) translateX(-6px);}10%{opacity:1;transform:translateY(-50%) translateX(0);}80%{opacity:1;transform:translateY(-50%) translateX(0);}100%{opacity:0;transform:translateY(-50%) translateX(-6px);}}
+.float-cta-btn:hover .float-cta-tooltip{opacity:1 !important;animation:none !important;transform:translateY(-50%) translateX(0) !important;}
 @keyframes floatIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 @keyframes floatPulse{0%,100%{opacity:0.4;transform:scale(1);}50%{opacity:0;transform:scale(1.3);}}
 @media(max-width:480px){
-  .float-cta-btn{width:52px;height:52px;}
+  .float-cta-btn{width:52px !important;height:52px !important;}
   .float-cta-wrap{bottom:20px;}
   .float-cta-right{right:16px;}
   .float-cta-left{left:16px;}
@@ -5429,22 +4855,19 @@ const prismAI = {
 }
 @media(prefers-reduced-motion:reduce){.float-cta-wa::before,.float-cta-call::before{animation:none;}}
 </style>
-
 <!-- WhatsApp Float — Right -->
 <div class="float-cta-wrap float-cta-right">
   <a href="#" class="float-cta-btn float-cta-wa" target="_blank" aria-label="تواصل واتساب" onclick="this.href=buildWaLink('مرحباً، أبي أحجز موعد عن طريق بريزما AI');">
-    <span class="float-cta-tooltip">تواصل واتساب</span>
+    <span class="float-cta-tooltip">تواصل معنا عبر الواتساب</span>
     <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 </div>
-
 <!-- Call Float — Left -->
 <div class="float-cta-wrap float-cta-left">
   <a href="tel:+966920031642" class="float-cta-btn float-cta-call" aria-label="اتصال مباشر">
-    <span class="float-cta-tooltip">اتصل الآن</span>
+    <span class="float-cta-tooltip">اتصل بنا الآن</span>
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
   </a>
 </div>
-
 </body>
 </html>

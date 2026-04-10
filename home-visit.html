@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K6M75DT4');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <link rel="icon" type="image/png" href="favicon.png"><meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://sheets.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob: file:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://sheets.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com;">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(self), payment=()">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -34,7 +37,6 @@ body{
   min-height:100vh;
   direction:rtl;
 }
-
 /* ── HEADER ── */
 header{
   position:fixed;top:0;right:0;left:0;z-index:100;
@@ -59,7 +61,6 @@ header{
   display:flex;align-items:center;gap:6px;
 }
 .hdr-back:hover{background:rgba(0,191,255,0.14);border-color:var(--cyan);}
-
 /* ── CANVAS BG ── */
 canvas#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
 .page-ov{
@@ -67,7 +68,6 @@ canvas#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events
   background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(107,79,187,0.08) 0%,transparent 70%),
              radial-gradient(ellipse 40% 60% at 10% 80%,rgba(0,169,157,0.06) 0%,transparent 70%);
 }
-
 /* ── MAIN CONTENT ── */
 main{
   position:relative;z-index:2;
@@ -75,7 +75,6 @@ main{
   padding:60px 1.5rem 80px;
   display:flex;flex-direction:column;align-items:center;
 }
-
 /* ── PAGE HEADER ── */
 .page-badge{
   display:inline-flex;align-items:center;gap:8px;
@@ -96,7 +95,6 @@ main{
   0%,100%{opacity:1;transform:scale(1);}
   50%{opacity:0.4;transform:scale(0.7);}
 }
-
 .page-title{
   font-size:clamp(30px,4.5vw,52px);font-weight:900;
   text-align:center;line-height:1.2;margin-bottom:16px;
@@ -115,7 +113,6 @@ main{
   text-align:center;max-width:420px;line-height:1.8;
   font-weight:300;margin-bottom:52px;
 }
-
 /* ── FORM CARD ── */
 .form-card{
   width:100%;max-width:520px;
@@ -141,7 +138,6 @@ main{
   background:radial-gradient(ellipse,rgba(0,191,255,0.08),transparent 70%);
   pointer-events:none;
 }
-
 /* home visit icon */
 .card-icon{
   width:64px;height:64px;border-radius:18px;
@@ -152,7 +148,6 @@ main{
   position:relative;
 }
 .card-icon svg{width:28px;height:28px;}
-
 .card-title{
   font-size:22px;font-weight:800;text-align:center;
   margin-bottom:6px;color:#1a1f36;
@@ -161,7 +156,6 @@ main{
   font-size:13px;color:#8892a4;
   text-align:center;margin-bottom:32px;line-height:1.7;
 }
-
 /* ── FIELD ── */
 .field{margin-bottom:20px;}
 .field-label{
@@ -205,7 +199,6 @@ main{
   transition:opacity 0.2s,transform 0.2s;
 }
 .field-err.show{display:flex;opacity:1;transform:translateY(0);}
-
 /* ── SUBMIT BTN ── */
 .submit-btn{
   width:100%;padding:17px;border:none;border-radius:12px;
@@ -233,7 +226,6 @@ main{
 @keyframes shine{
   0%{left:-100%;}60%,100%{left:150%;}
 }
-
 /* ── SUCCESS STATE ── */
 .success-state{
   display:none;text-align:center;padding:20px 0;
@@ -280,7 +272,6 @@ main{
   transition:all 0.25s;cursor:pointer;
 }
 .success-back:hover{background:rgba(0,191,255,0.14);}
-
 /* ── FEATURES STRIP — Premium Icon Cards ── */
 .features{
   width:100%;max-width:580px;
@@ -319,7 +310,6 @@ main{
 .feat-icon-wrap.purple svg{stroke:#6b4fbb;}
 .feat-title{font-size:14px;font-weight:800;color:#1a1f36;margin-bottom:6px;}
 .feat-desc{font-size:12px;color:#8892a4;line-height:1.6;}
-
 /* ── HERO BANNER ── */
 .hv-hero{
   position:relative;z-index:2;
@@ -366,13 +356,11 @@ main{
   transform:translateY(-2px);
   box-shadow:0 8px 30px rgba(0,169,157,0.4);
 }
-
 /* ── FOOTER ── */
 footer{position:relative;z-index:2;}
 footer a{color:var(--teal);text-decoration:none;}
-
 /* ── RESPONSIVE ── */
-@media(max-width:600px){
+@media(max-width:600px){.trust-inner{grid-template-columns:repeat(2,1fr);gap:20px;}
   .form-card{padding:32px 22px 28px;border-radius:18px;}
   .features{grid-template-columns:1fr;gap:10px;}
   .feat-card{padding:16px;display:flex;align-items:center;gap:14px;text-align:right;}
@@ -387,19 +375,16 @@ footer a{color:var(--teal);text-decoration:none;}
 @media(min-width:900px){
   .form-card{padding:52px 52px 48px;}
 }
-
 .nav-dropdown-wrapper {
   position: relative;
   display: inline-block;
 }
-
 .nav-dropdown-trigger {
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 4px;
 }
-
 .nav-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -416,13 +401,11 @@ footer a{color:var(--teal);text-decoration:none;}
   margin-top: 8px;
   z-index: 1000;
 }
-
 .nav-dropdown-wrapper:hover .nav-dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
-
 .nav-dropdown-item {
   display: block;
   padding: 12px 16px;
@@ -433,20 +416,16 @@ footer a{color:var(--teal);text-decoration:none;}
   transition: all 0.2s;
   text-align: right;
 }
-
 .nav-dropdown-item:hover {
   background: rgba(0,191,255,0.08);
   color: #00bfff;
 }
-
 .nav-dropdown-item:first-child {
   border-radius: 8px 8px 0 0;
 }
-
 .nav-dropdown-item:last-child {
   border-radius: 0 0 8px 8px;
 }
-
 /* ══════════════ MOBILE HAMBURGER MENU ══════════════ */
 .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
 .mobile-menu-overlay { position: fixed; top: 0; right: -100%; width: 85%; max-width: 360px; height: 100vh; background: #fff; z-index: 10000; transition: right 0.3s ease; box-shadow: -4px 0 24px rgba(0,0,0,0.15); display: flex; flex-direction: column; direction: rtl; }
@@ -457,8 +436,8 @@ footer a{color:var(--teal);text-decoration:none;}
 .mobile-menu-nav a:hover, .mobile-menu-nav a:active { background: #f0f7ff; color: #00bfff; }
 .mobile-menu-nav a.mob-active { color: #00bfff; font-weight: 700; background: #f0f7ff; }
 .mobile-menu-cta { margin: 16px 24px; padding: 14px; background: linear-gradient(135deg, #00bfff, #6b4fbb); color: #fff; text-align: center; border-radius: 12px; text-decoration: none; font-family: 'Tajawal', sans-serif; font-size: 15px; font-weight: 700; }
-
-@media(max-width:768px) {
+@media(max-width:768px) {.trust-inner{grid-template-columns:repeat(2,1fr);gap:20px;}
+  header { height: 60px; padding-right: 16px; padding-left: 16px; }
   .mobile-menu-btn { display: block; }
   .hdr-nav { display: none !important; }
   .hdr-cta { display: none !important; }
@@ -467,7 +446,6 @@ footer a{color:var(--teal);text-decoration:none;}
 }
 @supports(padding: env(safe-area-inset-bottom)){body{padding-bottom:env(safe-area-inset-bottom)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}}</style>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -488,14 +466,13 @@ footer a{color:var(--teal);text-decoration:none;}
 </script>
 </head>
 <body>
-
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6M75DT4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <!-- HEADER -->
 <header>
-<div style="display:flex;align-items:flex-end;gap:0;">
-<div><div style="font-family:'Tajawal',sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;line-height:1;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb,#9B2335);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PRISMA</div><div style="font-family:'Tajawal',sans-serif;font-size:7.5px;font-weight:300;color:#8892a4;letter-spacing:5px;margin-top:3px;">Laboratory</div><div style="font-family:'Tajawal',sans-serif;font-size:9px;font-weight:400;color:#cbd5e1;margin-top:2px;">مختبرات بريزما الطبية</div></div>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 48" style="height:44px;width:auto;flex-shrink:0;margin-left:2px;margin-bottom:-2px;"><defs><linearGradient id="lnG" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00bfff"/><stop offset="40%" stop-color="#00a99d"/><stop offset="100%" stop-color="#6b4fbb"/></linearGradient></defs><line x1="54" y1="1" x2="1" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/><line x1="54" y1="9" x2="10" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/><line x1="54" y1="17" x2="19" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/><line x1="54" y1="25" x2="28" y2="47" stroke="url(#lnG)" stroke-width="2.8" stroke-linecap="round"/></svg>
-</div>
-<div style="display:flex;gap:14px;align-items:center;">
+<a href="index.html" style="display:flex;align-items:center;text-decoration:none;"><img src="prisma-logo.png" alt="مختبرات بريزما الطبية - PRISMA Laboratory" style="height:38px;width:auto;"></a>
+<div class="hdr-nav" style="display:flex;gap:14px;align-items:center;">
 <a href="index.html" style="color:#6b7280;text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='#6b7280'">الرئيسية</a>
 <div class="nav-dropdown-wrapper"><span class="nav-dropdown-trigger" style="color:#6b7280;font-size:12px;font-weight:500;transition:color 0.2s;">الباقات ▾</span><div class="nav-dropdown-menu"><a href="comprehensive.html" class="nav-dropdown-item">الباقات الشاملة</a><a href="specialized.html" class="nav-dropdown-item">الباقات المختصة</a><a href="sexual-health.html" class="nav-dropdown-item">الصحة الجنسية</a><a href="marriage.html" class="nav-dropdown-item">باقة الزواج</a><a href="offers.html" class="nav-dropdown-item">العروض</a><a href="individual-tests.html" class="nav-dropdown-item">التحاليل الفردية</a><a href="genetic-tests.html" class="nav-dropdown-item">التحاليل الجينية</a></div></div>
 <a href="about.html" style="color:#6b7280;text-decoration:none;font-size:12px;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#1a1f36'" onmouseout="this.style.color='#6b7280'">من نحن</a>
@@ -513,7 +490,6 @@ footer a{color:var(--teal);text-decoration:none;}
   </svg>
 </button>
 </header>
-
 <!-- HERO BANNER -->
 <section class="hv-hero">
   <img src="بنز الزيارة المنزلية.webp" alt="خدمة الزيارة المنزلية من مختبرات بريزما" class="hv-hero-img" loading="eager"/>
@@ -528,22 +504,17 @@ footer a{color:var(--teal);text-decoration:none;}
     </a>
   </div>
 </section>
-
 <!-- CANVAS BG -->
 <canvas id="bg"></canvas>
 <div class="page-ov"></div>
-
 <!-- MAIN -->
 <main>
-
   <!-- Page Header -->
   <div class="page-badge"><span></span>خدمة حصرية</div>
   <h2 class="page-title">احجز <em>زيارتك المنزلية</em></h2>
   <p class="page-sub">عبّئ بياناتك وسيتواصل معك فريقنا لتأكيد الزيارة المنزلية في أقرب وقت</p>
-
   <!-- Form Card -->
   <div class="form-card" id="formCard">
-
     <!-- Icon -->
     <div class="card-icon">
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -559,10 +530,8 @@ footer a{color:var(--teal);text-decoration:none;}
         </defs>
       </svg>
     </div>
-
     <h2 class="card-title">طلب زيارة منزلية</h2>
     <p class="card-sub">أدخل بياناتك وسنتواصل معك خلال أقل من ساعة</p>
-
     <!-- Form -->
     <form id="homeForm" novalidate>
       <!-- Name -->
@@ -579,7 +548,6 @@ footer a{color:var(--teal);text-decoration:none;}
           يرجى إدخال الاسم الكامل
         </div>
       </div>
-
       <!-- Phone -->
       <div class="field">
         <label class="field-label" for="fphone">رقم الجوال</label>
@@ -594,13 +562,11 @@ footer a{color:var(--teal);text-decoration:none;}
           <span id="fphone-err-msg">يرجى إدخال رقم الجوال</span>
         </div>
       </div>
-
       <button type="submit" class="submit-btn">
         <span class="btn-shine"></span>
         تأكيد الحجز
       </button>
     </form>
-
     <!-- Success State -->
     <div class="success-state" id="successState">
       <div class="success-icon">
@@ -620,9 +586,7 @@ footer a{color:var(--teal);text-decoration:none;}
         العودة للموقع
       </a>
     </div>
-
   </div><!-- /form-card -->
-
   <!-- Features Strip -->
   <div class="features" id="featsWrap">
     <div class="feat-card">
@@ -653,16 +617,12 @@ footer a{color:var(--teal);text-decoration:none;}
       </div>
     </div>
   </div>
-
 </main>
-
-<section class="trust"><div class="trust-inner"><div><span class="t-num">+5000</span><span class="t-lbl">قصة ثقة</span></div><span class="t-div"></span><div><span class="t-num">⚡</span><span class="t-lbl">بسرعة</span></div><span class="t-div"></span><div><span class="t-num">+200</span><span class="t-lbl">تحليل</span></div><span class="t-div"></span><div><span class="t-num">2</span><span class="t-lbl">فرعين</span></div></div></section>
-
+<section class="trust"><div class="trust-inner"><div><span class="t-num">+10,000</span><div class="t-div"></div><p class="t-lbl">قصة ثقة</p></div><div><span class="t-num">بسرعة</span><div class="t-div"></div><p class="t-lbl">نتائجك توصلك بأسرع وقت</p></div><div><span class="t-num">+500</span><div class="t-div"></div><p class="t-lbl">تحليل يغطي كل اللي تحتاجه</p></div><div><span class="t-num">100%</span><div class="t-div"></div><p class="t-lbl">نتائج موثوقة ومعتمدة</p></div></div></section>
 <!-- FOOTER -->
 <footer style="background:#ffffff;padding:0 0 0;margin-top:0;">
 <div style="height:2px;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb,#9B2335);"></div>
 <div style="max-width:1100px;margin:0 auto;padding:50px 2rem 30px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;background:#ffffff;">
-
 <div>
 <h4 style="font-size:14px;font-weight:800;color:#00a99d;margin-bottom:20px;letter-spacing:1px;">معلومات التواصل</h4>
 <div style="display:flex;flex-direction:column;gap:14px;">
@@ -672,7 +632,6 @@ footer a{color:var(--teal);text-decoration:none;}
 <a href="mailto:info@prismalaboratory.com" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#6b7280;font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#6b4fbb'" onmouseout="this.style.color='#6b7280'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b4fbb" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>info@prismalaboratory.com</a>
 </div>
 </div>
-
 <div>
 <h4 style="font-size:14px;font-weight:800;color:#00bfff;margin-bottom:20px;letter-spacing:1px;">روابط سريعة</h4>
 <div style="display:flex;flex-direction:column;gap:12px;">
@@ -687,20 +646,36 @@ footer a{color:var(--teal);text-decoration:none;}
 <p style="font-size:11px;color:#8892a4;line-height:1.9;text-align:justify;">تعد مختبرات بريزما (Prisma Laboratories) ثمرة تلاقي الخبرة الطبية العريقة مع التكنولوجيا التشخيصية المتقدمة. انطلقت رحلتنا في قلب المملكة العربية السعودية، بقيادة مجموعة من الاستشاريين السعوديين الذين وضعوا نصب أعينهم هدفاً واحداً: الارتقاء بالمعايير المخبرية لتتجاوز حدود الفحص التقليدي إلى تقديم تجربة صحية متكاملة.</p>
 </div>
 </div>
-
 <div>
-<h4 style="font-size:14px;font-weight:800;color:#6b4fbb;margin-bottom:20px;letter-spacing:1px;">ساعات العمل</h4>
-<div style="display:flex;flex-direction:column;gap:14px;">
-<div style="display:flex;align-items:center;gap:10px;color:#6b7280;font-size:13px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b4fbb" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>24 ساعة</div>
-<div style="display:flex;align-items:center;gap:10px;color:#8892a4;font-size:12px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b4fbb" stroke-width="1.5" stroke-linecap="round" opacity="0.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>الجمعة - السبت: 4 مساءً - 12 منتصف الليل</div>
+<h4 style="font-size:14px;font-weight:800;color:#6b4fbb;margin-bottom:16px;letter-spacing:1px;">فروعنا وأوقات العمل</h4>
+<div style="display:flex;flex-direction:column;gap:12px;">
+<a href="https://maps.app.goo.gl/7thyVBCaKtArjii97" target="_blank" style="display:block;text-decoration:none;background:rgba(0,169,157,0.06);border-radius:12px;padding:14px 16px;border-right:3px solid #00a99d;transition:all 0.3s ease;" onmouseover="this.style.transform='translateX(-3px)';this.style.boxShadow='0 4px 15px rgba(0,169,157,0.12)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+<div style="display:flex;align-items:center;gap:8px;color:#00a99d;font-size:13px;font-weight:700;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00a99d" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>فرع النرجس</div>
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00a99d" stroke-width="2" stroke-linecap="round" opacity="0.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;">
+<div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#4a5568;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00a99d" stroke-width="1.5" opacity="0.7"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>يومياً: ٧ صباحاً — ١١ مساءً</span></div>
+<div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#4a5568;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00a99d" stroke-width="1.5" opacity="0.7"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>الجمعة: ٣ مساءً — ١١ مساءً</span></div>
+</div>
+</a>
+<a href="https://maps.app.goo.gl/yTpTy4EK1FCtwy2u9" target="_blank" style="display:block;text-decoration:none;background:rgba(0,191,255,0.06);border-radius:12px;padding:14px 16px;border-right:3px solid #00bfff;transition:all 0.3s ease;" onmouseover="this.style.transform='translateX(-3px)';this.style.boxShadow='0 4px 15px rgba(0,191,255,0.12)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+<div style="display:flex;align-items:center;gap:8px;color:#00bfff;font-size:13px;font-weight:700;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>فرع القادسية</div>
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="2" stroke-linecap="round" opacity="0.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;">
+<div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#4a5568;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.7"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>يومياً: ٧ صباحاً — ١١ مساءً</span></div>
+<div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#6b7280;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.4"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span style="opacity:0.7;">الجمعة: مغلق</span></div>
+</div>
+</a>
 </div>
 <div style="margin-top:24px;">
 <div style="display:flex;align-items:flex-end;gap:0;">
-<div><div style="font-family:'Tajawal',sans-serif;font-size:16px;font-weight:900;letter-spacing:3px;line-height:1;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb,#9B2335);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PRISMA</div><div style="font-family:'Tajawal',sans-serif;font-size:6.5px;font-weight:300;color:#8892a4;letter-spacing:5px;margin-top:2px;">Laboratory</div><div style="font-family:'Tajawal',sans-serif;font-size:8px;color:#b0b8c4;margin-top:1px;">مختبرات بريزما الطبية</div></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 48" style="height:32px;width:auto;flex-shrink:0;margin-left:2px;margin-bottom:-2px;"><defs><linearGradient id="flG2h" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00bfff" stop-opacity="0.4"/><stop offset="50%" stop-color="#00a99d" stop-opacity="0.3"/><stop offset="100%" stop-color="#6b4fbb" stop-opacity="0.2"/></linearGradient></defs><line x1="54" y1="1" x2="1" y2="47" stroke="url(#flG2h)" stroke-width="2.5" stroke-linecap="round"/><line x1="54" y1="9" x2="10" y2="47" stroke="url(#flG2h)" stroke-width="2.5" stroke-linecap="round"/><line x1="54" y1="17" x2="19" y2="47" stroke="url(#flG2h)" stroke-width="2.5" stroke-linecap="round"/><line x1="54" y1="25" x2="28" y2="47" stroke="url(#flG2h)" stroke-width="2.5" stroke-linecap="round"/></svg>
+<div><div style="font-family:'Tajawal',sans-serif;font-size:16px;font-weight:900;letter-spacing:3px;line-height:1;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb,#9B2335);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PRISMA</div><div style="font-family:'Tajawal',sans-serif;font-size:6.5px;font-weight:300;color:#8892a4;letter-spacing:5px;margin-top:2px;">Laboratory</div><div style="font-family:'Tajawal',sans-serif;font-size:8px;color:#b0b8c4;margin-top:1px;">مختبرات بريزما الطبية</div></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 48" style="height:32px;width:auto;flex-shrink:0;margin-left:2px;margin-bottom:-2px;"><defs><linearGradient id="flG2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00bfff" stop-opacity="0.4"/><stop offset="50%" stop-color="#00a99d" stop-opacity="0.3"/><stop offset="100%" stop-color="#6b4fbb" stop-opacity="0.2"/></linearGradient></defs><line x1="54" y1="1" x2="1" y2="47" stroke="url(#flG2)" stroke-width="2.5" stroke-linecap="round"/><line x1="54" y1="9" x2="10" y2="47" stroke="url(#flG2)" stroke-width="2.5" stroke-linecap="round"/><line x1="54" y1="17" x2="19" y2="47" stroke="url(#flG2)" stroke-width="2.5" stroke-linecap="round"/><line x1="54" y1="25" x2="28" y2="47" stroke="url(#flG2)" stroke-width="2.5" stroke-linecap="round"/></svg>
 </div>
 </div>
 </div>
-
 </div>
 <div style="border-top:1px solid rgba(0,0,0,0.06);max-width:1100px;margin:0 auto;padding:20px 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
 <p style="font-size:11px;color:#cbd5e1;">مختبر بريزما للتحاليل الطبية — خدمات تحليلية عالية الجودة في المملكة العربية السعودية</p>
@@ -720,7 +695,6 @@ footer a{color:var(--teal);text-decoration:none;}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}}</style>
 </footer>
-
 <script>
 /* ── CANVAS BG — Prisma DNA Light Waves (Bold) ── */
 (function(){
@@ -728,7 +702,6 @@ footer a{color:var(--teal);text-decoration:none;}
   var W,H,t=0,dpr=window.devicePixelRatio||1;
   function rsz(){W=cv.offsetWidth;H=cv.offsetHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.scale(dpr,dpr);}
   rsz();window.addEventListener('resize',rsz);
-
   /* Sparkle particles */
   var sparks=[];
   function initSparks(){
@@ -744,23 +717,19 @@ footer a{color:var(--teal);text-decoration:none;}
     }
   }
   initSparks();
-
   function draw(time){
     ctx.clearRect(0,0,W,H);
     var s=time*0.007;
-
     /* Diagonal angle */
     var angle=Math.PI*0.22;
     var cosA=Math.cos(angle),sinA=Math.sin(angle);
     var diag=Math.sqrt(W*W+H*H);
-
     /* 3 ribbon strands — bold alpha for light bg */
     var strands=[
       {c1:'0,191,255',  c2:'0,169,157',  amp:0.16, freq:2.5, phase:0,   alpha:0.25, width:55},
       {c1:'107,79,187', c2:'155,35,53',   amp:0.13, freq:2.8, phase:2.1, alpha:0.2,  width:45},
       {c1:'0,169,157',  c2:'107,79,187',  amp:0.11, freq:2.2, phase:4.2, alpha:0.18, width:38}
     ];
-
     for(var si=0;si<strands.length;si++){
       var st=strands[si];
       var layers=10;
@@ -768,7 +737,6 @@ footer a{color:var(--teal);text-decoration:none;}
         var la=st.alpha*(1-layer/layers*0.7);
         var lw=st.width*(1-layer/layers*0.6);
         var lo=layer*0.25;
-
         ctx.beginPath();
         var steps=100;
         for(var i=0;i<=steps;i++){
@@ -779,7 +747,6 @@ footer a{color:var(--teal);text-decoration:none;}
           var py=along*sinA+wave*cosA+(si-1)*W*0.1*sinA;
           if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
         }
-
         var grad=ctx.createLinearGradient(0,0,W,H);
         grad.addColorStop(0,'rgba('+st.c1+',0)');
         grad.addColorStop(0.15,'rgba('+st.c1+','+la+')');
@@ -792,7 +759,6 @@ footer a{color:var(--teal);text-decoration:none;}
         ctx.stroke();
       }
     }
-
     /* ── Bright glow nodes where strands twist ── */
     for(var cp=0;cp<7;cp++){
       var cpPct=(cp+0.3)/7;
@@ -811,7 +777,6 @@ footer a{color:var(--teal);text-decoration:none;}
       ctx.arc(cpx,cpy,glowR,0,Math.PI*2);
       ctx.fill();
     }
-
     /* ── Sparkle particles flowing along waves ── */
     var sparkCols=['0,191,255','0,169,157','107,79,187','155,35,53'];
     for(var i=0;i<sparks.length;i++){
@@ -843,40 +808,38 @@ footer a{color:var(--teal);text-decoration:none;}
   }
   (function loop(){t++;draw(t);requestAnimationFrame(loop);})();
 })();
-
 /* ── VALIDATION & FORM ── */
 var form=document.getElementById('homeForm');
 var fnameEl=document.getElementById('fname');
 var fphoneEl=document.getElementById('fphone');
-
 function showErr(errId,show,msg){
   var el=document.getElementById(errId);
   if(show){el.classList.add('show');}
   else{el.classList.remove('show');}
   if(msg){var ms=document.getElementById(errId+'-msg');if(ms)ms.textContent=msg;}
 }
+function toLatinDigits(str){
+  return str.replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d);})
+            .replace(/[۰-۹]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d);});
+}
 function validatePhone(v){
   // Saudi formats: 05XXXXXXXX (10 digits) or 9665XXXXXXXX or 920XXXXXXX (special)
-  var cleaned=v.replace(/[\s\-]/g,'');
+  var cleaned=toLatinDigits(v).replace(/[\s\-]/g,'');
   return /^(05\d{8}|9665\d{8}|920\d{6}|9200\d{5}|\+9665\d{8})$/.test(cleaned);
 }
-
 fnameEl.addEventListener('input',function(){
   if(this.value.trim()){this.classList.remove('error-field');showErr('fname-err',false);}
 });
 fphoneEl.addEventListener('input',function(){
   if(this.value.trim()){this.classList.remove('error-field');showErr('fphone-err',false);}
 });
-
 form.addEventListener('submit',function(e){
   e.preventDefault();
   var name=fnameEl.value.trim();
   var phone=fphoneEl.value.trim();
   var ok=true;
-
   if(!name){fnameEl.classList.add('error-field');showErr('fname-err',true);ok=false;}
   else{fnameEl.classList.remove('error-field');showErr('fname-err',false);}
-
   if(!phone){
     fphoneEl.classList.add('error-field');
     showErr('fphone-err',true,'يرجى إدخال رقم الجوال');
@@ -888,8 +851,19 @@ form.addEventListener('submit',function(e){
   } else {
     fphoneEl.classList.remove('error-field');showErr('fphone-err',false);
   }
-
   if(ok){
+    // Save booking to localStorage for dashboard
+    var booking = {
+      id: Date.now().toString(36) + Math.random().toString(36).slice(2,6),
+      name: name,
+      phone: toLatinDigits(phone).replace(/[\s\-]/g,''),
+      date: new Date().toISOString(),
+      status: 'new'
+    };
+    var bookings = [];
+    try { bookings = JSON.parse(localStorage.getItem('prisma_hv_bookings') || '[]'); } catch(e){}
+    bookings.unshift(booking);
+    localStorage.setItem('prisma_hv_bookings', JSON.stringify(bookings));
     // Animate submit button
     var btn=form.querySelector('.submit-btn');
     btn.textContent='جاري الإرسال...';
@@ -902,10 +876,9 @@ form.addEventListener('submit',function(e){
   }
 });
 </script>
-
 <!-- Floating CTA Buttons -->
 <style>
-.float-cta-wrap{position:fixed;bottom:28px;z-index:150;display:flex;flex-direction:column;gap:14px;animation:floatIn 0.6s ease forwards;opacity:0;}
+.float-cta-wrap{position:fixed;bottom:28px;z-index: 9999;display:flex;flex-direction:column;gap:14px;opacity: 1;}
 .float-cta-right{right:24px;}
 .float-cta-left{left:24px;}
 .float-cta-btn{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,0.15);transition:transform 0.3s cubic-bezier(0.34,1.3,0.64,1),box-shadow 0.3s;text-decoration:none;position:relative;}
@@ -919,32 +892,31 @@ form.addEventListener('submit',function(e){
 .float-cta-wa::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.3);animation:floatPulse 2s ease-in-out infinite;}
 .float-cta-call::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(0,191,255,0.2);animation:floatPulse 2.5s ease-in-out infinite;}
 .float-cta-tooltip{position:absolute;white-space:nowrap;padding:6px 14px;background:rgba(0,0,0,0.90);color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:600;border-radius:8px;pointer-events:none;opacity:0;transition:opacity 0.25s,transform 0.25s;backdrop-filter:blur(8px);}
-.float-cta-right .float-cta-tooltip{right:72px;top:50%;transform:translateY(-50%) translateX(6px);}
-.float-cta-left .float-cta-tooltip{left:72px;top:50%;transform:translateY(-50%) translateX(-6px);}
-.float-cta-btn:hover .float-cta-tooltip{opacity:1;transform:translateY(-50%) translateX(0);}
+.float-cta-right .float-cta-tooltip{right:72px;top:50%;transform:translateY(-50%) translateX(6px);animation:tooltipPeekR 5s ease 1.5s 1 both;}
+.float-cta-left .float-cta-tooltip{left:72px;top:50%;transform:translateY(-50%) translateX(-6px);animation:tooltipPeekL 5s ease 2s 1 both;}
+@keyframes tooltipPeekR{0%{opacity:0;transform:translateY(-50%) translateX(6px);}10%{opacity:1;transform:translateY(-50%) translateX(0);}80%{opacity:1;transform:translateY(-50%) translateX(0);}100%{opacity:0;transform:translateY(-50%) translateX(6px);}}
+@keyframes tooltipPeekL{0%{opacity:0;transform:translateY(-50%) translateX(-6px);}10%{opacity:1;transform:translateY(-50%) translateX(0);}80%{opacity:1;transform:translateY(-50%) translateX(0);}100%{opacity:0;transform:translateY(-50%) translateX(-6px);}}
+.float-cta-btn:hover .float-cta-tooltip{opacity:1 !important;animation:none !important;transform:translateY(-50%) translateX(0) !important;}
 @keyframes floatIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 @keyframes floatPulse{0%,100%{opacity:0.4;transform:scale(1);}50%{opacity:0;transform:scale(1.3);}}
-@media(max-width:480px){.float-cta-btn{width:52px;height:52px;}.float-cta-wrap{bottom:20px;}.float-cta-right{right:16px;}.float-cta-left{left:16px;}.float-cta-tooltip{display:none;}}
-.trust{background:linear-gradient(135deg,#f8fdff 0%,#f0faf8 100%);padding:18px 0;border-top:1px solid rgba(0,191,255,.08);border-bottom:1px solid rgba(0,191,255,.08)}.trust-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}.t-num{font-size:22px;font-weight:800;background:linear-gradient(135deg,#00bfff,#00a99d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;text-align:center}.t-div{width:1px;height:28px;background:rgba(0,191,255,.13)}.t-lbl{font-size:11px;color:#888;display:block;text-align:center;margin-top:2px}@media(max-width:600px){.trust-inner{gap:12px}.t-num{font-size:18px}.t-lbl{font-size:10px}}
+@media(max-width:480px){.float-cta-btn{width:52px !important;height:52px !important;}.float-cta-wrap{bottom:20px;}.float-cta-right{right:16px;}.float-cta-left{left:16px;}.float-cta-tooltip{display:none;}}
+.trust{background:linear-gradient(135deg,#f8fdff 0%,#f0faf8 100%);padding:18px 0;overflow:hidden;border-top:1px solid rgba(0,191,255,.08);border-bottom:1px solid rgba(0,191,255,.08)}.trust-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center;}.t-num{font-size:22px;font-weight:800;background:linear-gradient(135deg,#00bfff,#00a99d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;text-align:center}.t-div{width:1px;height:28px;background:rgba(0,191,255,.13)}.t-lbl{font-size:11px;color:#888;display:block;text-align:center;margin-top:2px}@media(max-width:600px){.trust-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center;}.t-num{font-size:18px}.t-lbl{font-size:10px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}}</style>
-
 <div class="float-cta-wrap float-cta-right">
   <a href="https://wa.me/966920031642?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%A8%D9%8A%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF" class="float-cta-btn float-cta-wa" target="_blank" aria-label="تواصل واتساب">
-    <span class="float-cta-tooltip">تواصل واتساب</span>
+    <span class="float-cta-tooltip">تواصل معنا عبر الواتساب</span>
     <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 </div>
-
 <div class="float-cta-wrap float-cta-left">
   <a href="tel:+966920031642" class="float-cta-btn float-cta-call" aria-label="اتصال مباشر">
-    <span class="float-cta-tooltip">اتصل الآن</span>
+    <span class="float-cta-tooltip">اتصل بنا الآن</span>
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
   </a>
 </div>
-
 <div class="mobile-menu-overlay" id="mobileMenu">
   <div class="mobile-menu-header">
-    <span style="font-family:'Tajawal',sans-serif;font-size:18px;font-weight:900;background:linear-gradient(90deg,#00bfff,#00a99d,#6b4fbb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">PRISMA</span>
+    <a href="index.html" style="text-decoration:none;"><img src="prisma-logo.png" alt="مختبرات بريزما الطبية - PRISMA Laboratory" style="height:34px;width:auto;"></a>
     <button onclick="document.getElementById('mobileMenu').classList.remove('open')" style="background:none;border:none;font-size:28px;color:#1a1f36;cursor:pointer;">✕</button>
   </div>
   <nav class="mobile-menu-nav">
