@@ -96,7 +96,7 @@ export default function Footer() {
               {/* Phone */}
               <li>
                 <Link
-                  href="tel:920031642"
+                  href="tel:+966920031642"
                   className="group flex items-center gap-3 p-2 -m-2 rounded-lg hover:bg-background/5 transition-all duration-200"
                 >
                   <div className="w-9 h-9 rounded-lg gradient-bg flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-200">
