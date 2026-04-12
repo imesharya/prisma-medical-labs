@@ -47,6 +47,17 @@ const Navbar = () => {
   const pathname = usePathname()
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && mobileMenuOpen) {
+        setMobileMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [mobileMenuOpen])
+
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && mobileMenuOpen) {
         setMobileMenuOpen(false)
@@ -228,6 +239,7 @@ const Navbar = () => {
                       id={`mobile-accordion-${index}`}
                       className="peer hidden"
                       defaultChecked={shouldExpand}
+                      key={`mobile-accordion-${index}-${pathname}`}
                     />
                     <label
                       htmlFor={`mobile-accordion-${index}`}
