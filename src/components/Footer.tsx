@@ -107,8 +107,8 @@ export default function Footer() {
                       اتصل بنا
                     </p>
                     <p
-                      className="font-medium text-sm group-hover:text-background transition-colors"
-                      dir="rtl"
+                      className="text-end font-medium text-sm group-hover:text-background transition-colors"
+                      dir="ltr"
                     >
                       +966920031642
                     </p>
@@ -131,10 +131,10 @@ export default function Footer() {
                       واتساب
                     </p>
                     <p
-                      className="font-medium text-sm group-hover:text-background transition-colors"
-                      dir="rtl"
+                      className="text-end font-medium text-sm group-hover:text-background transition-colors"
+                      dir="ltr"
                     >
-                      966920031642
+                      +966920031642
                     </p>
                   </div>
                 </Link>
