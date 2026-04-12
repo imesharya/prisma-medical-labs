@@ -1,68 +1,76 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { Menu, X, ChevronDown } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 const navLinks = [
   {
-    label: "الرئيسية",
-    href: "/",
+    label: 'الرئيسية',
+    href: '/',
   },
   {
-    label: "الباقات",
-    href: "/packages",
+    label: 'الباقات',
+    href: '/packages',
     children: [
-      { label: "الباقات الشاملة", href: "/packages/comprehensive" },
-      { label: "الباقات المختصة", href: "/packages/specialized" },
-      { label: "الصحة الجنسية", href: "/packages/sexual-health" },
-      { label: "باقة الزواج", href: "/packages/marriage-package" },
-      { label: "العروض", href: "/offers" },
-      { label: "التحاليل الفردية", href: "/packages/individual-tests" },
-      { label: "التحاليل الجينية", href: "/packages/genetic-tests" },
+      { label: 'الباقات الشاملة', href: '/packages/comprehensive' },
+      { label: 'الباقات المختصة', href: '/packages/specialized' },
+      { label: 'الصحة الجنسية', href: '/packages/sexual-health' },
+      { label: 'باقة الزواج', href: '/packages/marriage-package' },
+      { label: 'العروض', href: '/packages/offers' },
+      { label: 'التحاليل الفردية', href: '/packages/individual-tests' },
+      { label: 'التحاليل الجينية', href: '/packages/genetic-tests' },
     ],
   },
   {
-    label: "من نحن",
-    href: "/about",
+    label: 'من نحن',
+    href: '/about',
   },
   {
-    label: "المدونة",
-    href: "/blog",
+    label: 'المدونة',
+    href: '/blog',
   },
   {
-    label: "زيارة منزلية",
-    href: "/home-visit",
+    label: 'زيارة منزلية',
+    href: '/home-visit',
   },
   {
-    label: "بريزما AI",
-    href: "/prisma-ai",
+    label: 'بريزما AI',
+    href: '/prisma-ai',
   },
-];
+]
 
 const Navbar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
-  // Disable body scroll when mobile menu is open (prevents background scrolling on mobile)
   useEffect(() => {
-    if (mobileMenuOpen) {
-      // Add overflow-hidden to body to completely disable scrolling
-      document.body.style.overflow = "hidden";
-      // Optional: also lock html element (helps on some iOS browsers)
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      // Restore scrolling
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false)
+      }
     }
 
-    // Cleanup function (in case component unmounts while menu is open)
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [mobileMenuOpen])
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
+    }
+
     return () => {
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-    };
-  }, [mobileMenuOpen]);
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
 
   return (
     <>
@@ -83,45 +91,69 @@ const Navbar = () => {
 
             {/* Desktop Navigation */}
             <ul className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) =>
-                link.children ? (
-                  <li key={link.label} className="relative group">
-                    <Link
-                      href={link.href}
-                      className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground rounded-lg hover:bg-muted transition-all duration-200"
-                    >
-                      {link.label}
-                      <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
-                    </Link>
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href
+                const shouldExpand =
+                  isActive || (link.children?.some((child) => pathname === child.href) ?? false)
 
-                    <div className="absolute inset-s-0 top-full pt-2 hidden group-hover:block">
-                      <div className="bg-card shadow-xl rounded-xl py-2 w-56 border border-border">
-                        <ul className="flex flex-col">
-                          {link.children.map((child) => (
-                            <li key={child.label}>
-                              <Link
-                                href={child.href}
-                                className="block px-4 py-2.5 text-sm text-foreground/80 hover:text-foreground hover:bg-muted transition-colors"
-                              >
-                                {child.label}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
+                if (link.children) {
+                  return (
+                    <li key={link.label} className="relative group">
+                      <Link
+                        href={link.href}
+                        className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                          shouldExpand
+                            ? 'bg-primary/10 text-primary'
+                            : 'text-foreground/80 hover:text-foreground hover:bg-muted'
+                        }`}
+                      >
+                        {link.label}
+                        <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                      </Link>
+
+                      <div className="absolute inset-s-0 top-full pt-2 hidden group-hover:block">
+                        <div className="bg-card shadow-xl rounded-xl py-2 w-56 border border-border">
+                          <ul className="flex flex-col">
+                            {link.children.map((child) => {
+                              const childIsActive = pathname === child.href
+                              return (
+                                <li key={child.label}>
+                                  <Link
+                                    href={child.href}
+                                    className={`block px-4 py-2.5 text-sm transition-colors ${
+                                      childIsActive
+                                        ? 'bg-primary/10 text-primary'
+                                        : 'text-foreground/80 hover:text-foreground hover:bg-muted'
+                                    }`}
+                                  >
+                                    {child.label}
+                                  </Link>
+                                </li>
+                              )
+                            })}
+                          </ul>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                ) : (
+                    </li>
+                  )
+                }
+
+                // Simple link (no children)
+                return (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground rounded-lg hover:bg-muted transition-all duration-200"
+                      className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                        isActive
+                          ? 'bg-primary/10 text-primary'
+                          : 'text-foreground/80 hover:text-foreground hover:bg-muted'
+                      }`}
                     >
                       {link.label}
                     </Link>
                   </li>
-                ),
-              )}
+                )
+              })}
             </ul>
 
             {/* Desktop CTA Buttons */}
@@ -157,7 +189,7 @@ const Navbar = () => {
       {/* Mobile Menu Panel */}
       <div
         className={`fixed top-0 inset-s-0 h-full w-[85%] max-w-sm bg-card shadow-2xl z-50 flex flex-col transition-transform duration-300 ease-out lg:hidden ${
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Mobile Header */}
@@ -181,31 +213,83 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         <div className="flex-1 overflow-y-auto py-4">
           <ul className="flex flex-col">
-            {navLinks.map((link) => (
-              <div key={link.label}>
-                <li>
+            {navLinks.map((link, index) => {
+              const isActive = pathname === link.href
+
+              if (link.children) {
+                const shouldExpand =
+                  pathname === link.href || link.children.some((child) => pathname === child.href)
+
+                return (
+                  <li key={link.label} className="border-b border-gray-100">
+                    {/* Accordion header */}
+                    <input
+                      type="checkbox"
+                      id={`mobile-accordion-${index}`}
+                      className="peer hidden"
+                      defaultChecked={shouldExpand}
+                    />
+                    <label
+                      htmlFor={`mobile-accordion-${index}`}
+                      className={`group flex items-center justify-between px-6 py-3 text-base font-medium cursor-pointer hover:bg-muted transition-colors`}
+                    >
+                      <span>{link.label}</span>
+                      <ChevronDown className="h-5 w-5 transition-transform duration-300 group-[.peer:checked+&]:rotate-180" />
+                    </label>
+
+                    {/* Expandable content */}
+                    <div className="max-h-0 overflow-hidden peer-checked:max-h-[500px] transition-all duration-300 ease-out">
+                      <ul className="flex flex-col py-1">
+                        {/* Parent page link inside accordion */}
+                        <li>
+                          <Link
+                            href={link.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className={`block px-10 py-2.5 text-sm text-foreground/70 hover:text-foreground hover:bg-muted transition-colors ${
+                              isActive ? 'bg-primary/10 text-primary' : ''
+                            }`}
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+
+                        {/* Child links */}
+                        {link.children.map((child) => {
+                          const childIsActive = pathname === child.href
+                          return (
+                            <li key={child.label}>
+                              <Link
+                                href={child.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className={`block px-10 py-2.5 text-sm text-foreground/70 hover:text-foreground hover:bg-muted transition-colors ${
+                                  childIsActive ? 'bg-primary/10 text-primary' : ''
+                                }`}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
+                  </li>
+                )
+              }
+
+              return (
+                <li key={link.label} className="border-b border-gray-100">
                   <Link
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-6 py-3 text-base font-medium text-foreground hover:bg-muted transition-colors"
+                    className={`block px-6 py-3 text-base font-medium text-foreground hover:bg-muted transition-colors ${
+                      isActive ? 'bg-primary/10 text-primary' : ''
+                    }`}
                   >
                     {link.label}
                   </Link>
                 </li>
-                {link.children &&
-                  link.children.map((child) => (
-                    <li key={child.label}>
-                      <Link
-                        href={child.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block px-10 py-2.5 text-sm text-foreground/70 hover:text-foreground hover:bg-muted transition-colors"
-                      >
-                        {child.label}
-                      </Link>
-                    </li>
-                  ))}
-              </div>
-            ))}
+              )
+            })}
           </ul>
         </div>
 
@@ -226,7 +310,7 @@ const Navbar = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
