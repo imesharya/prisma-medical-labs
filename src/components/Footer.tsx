@@ -1,44 +1,38 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Phone, Mail, MapPin, Clock, ExternalLink } from "lucide-react";
-import {
-  BsFacebook,
-  BsInstagram,
-  BsLinkedin,
-  BsTwitter,
-  BsWhatsapp,
-} from "react-icons/bs";
+import Link from 'next/link'
+import Image from 'next/image'
+import { Phone, Mail, MapPin, Clock, ExternalLink } from 'lucide-react'
+import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter, BsWhatsapp } from 'react-icons/bs'
 
 const quickLinks = [
-  { label: "الرئيسية", href: "/" },
-  { label: "الباقات", href: "/packages" },
-  { label: "من نحن", href: "/about" },
-  { label: "المدونة", href: "/blog" },
-  { label: "زيارة منزلية", href: "/home-visit" },
-  { label: "بريزما AI", href: "/prisma-ai" },
-];
+  { label: 'الرئيسية', href: '/' },
+  { label: 'الباقات', href: '/packages' },
+  { label: 'من نحن', href: '/about' },
+  { label: 'المدونة', href: '/blog' },
+  { label: 'زيارة منزلية', href: '/home-visit' },
+  { label: 'بريزما AI', href: '/prisma-ai' },
+]
 
 const branches = [
   {
-    name: "فرع النرجس",
-    dailyHours: "يومياً: ٧ صباحاً — ١١ مساءً",
-    fridayHours: "الجمعة: ٣ مساءً — ١١ مساءً",
-    mapUrl: "https://maps.app.goo.gl/7thyVBCaKtArjii97",
+    name: 'فرع النرجس',
+    dailyHours: 'يومياً: ٧ صباحاً — ١١ مساءً',
+    fridayHours: 'الجمعة: ٣ مساءً — ١١ مساءً',
+    mapUrl: 'https://maps.app.goo.gl/7thyVBCaKtArjii97',
   },
   {
-    name: "فرع القادسية",
-    dailyHours: "يومياً: ٧ صباحاً — ١١ مساءً",
-    fridayHours: "الجمعة: مغلق",
-    mapUrl: "https://maps.app.goo.gl/yTpTy4EK1FCtwy2u9",
+    name: 'فرع القادسية',
+    dailyHours: 'يومياً: ٧ صباحاً — ١١ مساءً',
+    fridayHours: 'الجمعة: مغلق',
+    mapUrl: 'https://maps.app.goo.gl/yTpTy4EK1FCtwy2u9',
   },
-];
+]
 
 const socialLinks = [
-  { icon: BsFacebook, href: "#", label: "Facebook" },
-  { icon: BsTwitter, href: "#", label: "Twitter" },
-  { icon: BsInstagram, href: "#", label: "Instagram" },
-  { icon: BsLinkedin, href: "#", label: "LinkedIn" },
-];
+  { icon: BsFacebook, href: '#', label: 'Facebook' },
+  { icon: BsTwitter, href: '#', label: 'Twitter' },
+  { icon: BsInstagram, href: '#', label: 'Instagram' },
+  { icon: BsLinkedin, href: '#', label: 'LinkedIn' },
+]
 
 export default function Footer() {
   return (
@@ -56,8 +50,8 @@ export default function Footer() {
               className="h-12 w-auto brightness-0 invert mb-5"
             />
             <p className="text-background/70 text-sm leading-relaxed mb-6">
-              مختبرات بريزما الطبية - شريكك الموثوق في الرعاية الصحية. نقدم أدق
-              التحاليل بأحدث التقنيات وأسرع النتائج.
+              مختبرات بريزما الطبية - شريكك الموثوق في الرعاية الصحية. نقدم أدق التحاليل بأحدث
+              التقنيات وأسرع النتائج.
             </p>
             {/* Social Links */}
             <div className="flex items-center gap-3">
@@ -76,9 +70,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-5 gradient-text">
-              معلومات التواصل
-            </h3>
+            <h3 className="text-lg font-semibold mb-5 gradient-text">معلومات التواصل</h3>
             <ul className="space-y-3">
               {/* Address */}
               <li>
@@ -116,9 +108,9 @@ export default function Footer() {
                     </p>
                     <p
                       className="font-medium text-sm group-hover:text-background transition-colors"
-                      dir="ltr"
+                      dir="rtl"
                     >
-                      920031642
+                      +966920031642
                     </p>
                   </div>
                 </Link>
@@ -126,7 +118,7 @@ export default function Footer() {
               {/* WhatsApp */}
               <li>
                 <Link
-                  href="https://wa.me/966920031642"
+                  href="https://wa.me/+966920031642"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-3 p-2 -m-2 rounded-lg hover:bg-background/5 transition-all duration-200"
@@ -140,7 +132,7 @@ export default function Footer() {
                     </p>
                     <p
                       className="font-medium text-sm group-hover:text-background transition-colors"
-                      dir="ltr"
+                      dir="rtl"
                     >
                       966920031642
                     </p>
@@ -171,9 +163,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-5 gradient-text">
-              روابط سريعة
-            </h3>
+            <h3 className="text-lg font-semibold mb-5 gradient-text">روابط سريعة</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
@@ -191,9 +181,7 @@ export default function Footer() {
 
           {/* Branches */}
           <div>
-            <h3 className="text-lg font-semibold mb-5 gradient-text">
-              فروعنا وأوقات العمل
-            </h3>
+            <h3 className="text-lg font-semibold mb-5 gradient-text">فروعنا وأوقات العمل</h3>
             <div className="space-y-4">
               {branches.map((branch) => (
                 <Link
@@ -233,12 +221,10 @@ export default function Footer() {
       <div className="border-t border-background/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-background/60">
-            <p>
-              جميع الحقوق محفوظة © {new Date().getFullYear()} مختبرات بريزما
-            </p>
+            <p>جميع الحقوق محفوظة © {new Date().getFullYear()} مختبرات بريزما</p>
           </div>
         </div>
       </div>
     </footer>
-  );
+  )
 }
