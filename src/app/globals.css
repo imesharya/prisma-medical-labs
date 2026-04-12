@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -77,8 +77,9 @@
 }
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback";
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-tajawal: var(--font-tajawal);
+  --font-sans: var(--font-tajawal), system-ui, sans-serif;
+  --default-font-family: var(--font-tajawal);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -128,30 +129,21 @@
 
 /* Gradient utilities */
 .gradient-text {
-  background: linear-gradient(
-    135deg,
-    var(--gradient-start),
-    var(--gradient-end)
-  );
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+
+  padding-top: 0.15em;
+  padding-bottom: 0.15em;
 }
 
 .gradient-bg {
-  background: linear-gradient(
-    135deg,
-    var(--gradient-start),
-    var(--gradient-end)
-  );
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
 }
 
 .gradient-bg-hover {
-  background: linear-gradient(
-    135deg,
-    var(--gradient-start),
-    var(--gradient-end)
-  );
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
   transition: all 0.3s ease;
 }
 
@@ -167,16 +159,12 @@
 }
 
 .gradient-border::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(
-    135deg,
-    var(--gradient-start),
-    var(--gradient-end)
-  );
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
   mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
