@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- الصفحة الرئيسية -->
+  <url>
+    <loc>https://www.prismalaboratory.com/</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- من نحن -->
+  <url>
+    <loc>https://www.prismalaboratory.com/about.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- الباقات الشاملة -->
+  <url>
+    <loc>https://www.prismalaboratory.com/comprehensive.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- التحاليل الفردية -->
+  <url>
+    <loc>https://www.prismalaboratory.com/individual-tests.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- التحاليل المتخصصة -->
+  <url>
+    <loc>https://www.prismalaboratory.com/specialized.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- تحاليل الصحة الجنسية -->
+  <url>
+    <loc>https://www.prismalaboratory.com/sexual-health.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- تحاليل ما قبل الزواج -->
+  <url>
+    <loc>https://www.prismalaboratory.com/marriage.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- التحاليل الجينية -->
+  <url>
+    <loc>https://www.prismalaboratory.com/genetic-tests.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- الزيارة المنزلية -->
+  <url>
+    <loc>https://www.prismalaboratory.com/home-visit.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- العروض -->
+  <url>
+    <loc>https://www.prismalaboratory.com/offers.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- المدونة -->
+  <url>
+    <loc>https://www.prismalaboratory.com/blog.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Prisma AI - المستشار الذكي -->
+  <url>
+    <loc>https://www.prismalaboratory.com/prisma-ai.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

@@ -1,0 +1,86 @@
+# ============================================
+# Prisma Laboratory - robots.txt
+# https://www.prismalaboratory.com
+# Last Updated: 2026-03-26
+# ============================================
+
+# السماح لمحركات البحث الرئيسية
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 5
+
+# حظر البوتات المشبوهة والسيئة المعروفة
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: SearchmetricsBot
+Disallow: /
+
+User-agent: MegaIndex.ru
+Disallow: /
+
+User-agent: BaiduSpider
+Disallow: /
+
+User-agent: YisouSpider
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+User-agent: serpstatbot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+# حظر الوصول للملفات الحساسة
+User-agent: *
+Disallow: /dashboard.html
+Disallow: /SITE-AUDIT*
+Disallow: /*.json$
+Disallow: /prisma-tracking.js
+
+# خريطة الموقع
+Sitemap: https://www.prismalaboratory.com/sitemap.xml

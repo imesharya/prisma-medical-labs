@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" fill="none">
+  <!-- عام الذكاء الاصطناعي — Year of AI 2026 Official Logo -->
+
+  <!-- Palm Tree + AI Icon (Right Side) -->
+  <g transform="translate(310, 10)">
+    <!-- Palm fronds -->
+    <path d="M40 45 L40 8 L36 2 L32 8 L32 30" stroke="#2bb673" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M40 45 L40 15 L48 4 L52 12 L48 30" stroke="#2bb673" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M40 35 L28 12 L24 6 L22 14 L30 32" stroke="#2bb673" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M40 35 L52 12 L56 6 L58 14 L50 32" stroke="#2bb673" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M40 30 L20 18 L16 14 L18 22 L28 30" stroke="#2bb673" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M40 30 L60 18 L64 14 L62 22 L52 30" stroke="#2bb673" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- Trunk -->
+    <line x1="40" y1="45" x2="40" y2="70" stroke="#2bb673" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- "A" letter -->
+    <text x="12" y="100" font-family="Arial, sans-serif" font-size="42" font-weight="800" fill="#1a5c3a" letter-spacing="-1">A</text>
+    <!-- "i" with dot -->
+    <text x="42" y="100" font-family="Arial, sans-serif" font-size="42" font-weight="800" fill="#1a5c3a" letter-spacing="-1">i</text>
+  </g>
+
+  <!-- Arabic Calligraphy: عام الذكاء الاصطناعي -->
+  <g transform="translate(80, 15)">
+    <!-- عام -->
+    <text x="160" y="30" font-family="Tajawal, Arial" font-size="22" font-weight="800" fill="#1a3a5c" text-anchor="end" direction="rtl">عام</text>
+    <!-- الذكاء -->
+    <text x="160" y="55" font-family="Tajawal, Arial" font-size="22" font-weight="800" fill="#1a3a5c" text-anchor="end" direction="rtl">الذكـاء</text>
+    <!-- الاصطناعي -->
+    <text x="160" y="80" font-family="Tajawal, Arial" font-size="22" font-weight="800" fill="#1a3a5c" text-anchor="end" direction="rtl">الاصطناعي</text>
+  </g>
+
+  <!-- English subtitle -->
+  <text x="185" y="105" font-family="Tajawal, Arial" font-size="8" font-weight="600" fill="#1a3a5c" text-anchor="middle" letter-spacing="1.5">THE YEAR OF ARTIFICIAL INTELLIGENCE 2026</text>
+
+  <!-- Decorative line separator between Arabic and icon -->
+  <line x1="290" y1="20" x2="290" y2="95" stroke="#e0e4e8" stroke-width="1"/>
+</svg>
