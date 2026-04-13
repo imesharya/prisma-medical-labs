@@ -47,7 +47,7 @@ export default function Footer() {
               alt="Prisma Logo"
               width={180}
               height={48}
-              className="h-12 w-auto brightness-0 invert mb-5"
+              className="h-12 brightness-0 invert mb-5"
             />
             <p className="text-background/70 text-sm leading-relaxed mb-6">
               مختبرات بريزما الطبية - شريكك الموثوق في الرعاية الصحية. نقدم أدق التحاليل بأحدث
