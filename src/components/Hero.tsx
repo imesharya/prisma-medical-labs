@@ -1,18 +1,12 @@
-import Image from "next/image";
-import { ArrowLeft, Bot, Phone, Sparkles } from "lucide-react";
+import Image from 'next/image'
+import { ArrowLeft, Bot, Phone, Sparkles } from 'lucide-react'
 
 const Hero = () => {
   return (
     <section className="relative w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 -z-20">
-        <Image
-          src="/hero-banner.jpg"
-          alt=""
-          fill
-          className="object-cover object-center"
-          priority
-        />
+        <Image src="/hero-banner.jpg" alt="" fill className="object-cover object-center" priority />
         <div className="absolute inset-0 bg-background/60" />
       </div>
 
@@ -29,9 +23,7 @@ const Hero = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 w-fit px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full mb-6">
               <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary">
-                تقنيات طبية متقدمة
-              </span>
+              <span className="text-sm font-medium text-primary">تقنيات طبية متقدمة</span>
             </div>
 
             {/* Heading */}
@@ -41,8 +33,8 @@ const Hero = () => {
 
             {/* Description */}
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              باقات فحص متكاملة مدعومة بأحدث التقنيات الطبية — نتائج دقيقة في 3
-              ساعات، خدمة منزلية، واستشارة طبية مجانية
+              باقات فحص متكاملة مدعومة بأحدث التقنيات الطبية — نتائج دقيقة في 3 ساعات، خدمة منزلية،
+              واستشارة طبية مجانية
             </p>
 
             {/* CTA Buttons */}
@@ -64,9 +56,7 @@ const Hero = () => {
                     <Bot className="h-8 w-8 text-primary-foreground" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold gradient-text">
-                      بريزما AI
-                    </h3>
+                    <h3 className="text-xl font-bold gradient-text">بريزما AI</h3>
                     <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                       اكتشف باقتك المثالية بالذكاء الاصطناعي
                     </p>
@@ -86,9 +76,7 @@ const Hero = () => {
                     <Phone className="h-8 w-8 text-secondary-foreground" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold gradient-text">
-                      استشارة طبية
-                    </h3>
+                    <h3 className="text-xl font-bold gradient-text">استشارة طبية</h3>
                     <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                       تحدّث مع استشاريينا المتخصصين
                     </p>
@@ -103,7 +91,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
