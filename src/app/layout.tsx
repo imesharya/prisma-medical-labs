@@ -3,6 +3,8 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { tajawal } from './config/fonts'
+import WhatsappButton from '@/components/WhatsappButton'
+import PhoneButton from '@/components/PhoneButton'
 
 export const metadata: Metadata = {
   title: 'مختبرات بريزما الطبية',
@@ -51,6 +53,8 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <WhatsappButton />
+        <PhoneButton />
       </body>
     </html>
   )
