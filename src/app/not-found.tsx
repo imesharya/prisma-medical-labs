@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Home, Search, ArrowRight } from "lucide-react";
+import Link from 'next/link'
+import { Home, ArrowLeft } from 'lucide-react'
 
 export default function NotFound() {
   return (
@@ -35,10 +35,10 @@ export default function NotFound() {
           >
             <Home className="w-5 h-5" />
             <span>العودة للرئيسية</span>
-            <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+            <ArrowLeft className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
           </Link>
         </div>
       </div>
     </div>
-  );
+  )
 }
