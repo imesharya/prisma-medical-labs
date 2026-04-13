@@ -88,7 +88,7 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
             </div>
 
             {/* Headline */}
-            <h2 className="text-xl md:text-3xl font-bold tracking-tight leading-tight text-balance">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-balance">
               احجز موعدك الآن
             </h2>
 
@@ -202,7 +202,7 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
                   value={formData.fullName}
                   onChange={handleChange}
                   required
-                  className="px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
                   placeholder="أدخل اسمك الكامل"
                 />
               </div>
@@ -214,12 +214,13 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
                 </label>
                 <input
                   id="phoneNumber"
+                  dir="rtl"
                   type="tel"
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={handleChange}
                   required
-                  className="px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
                   placeholder="أدخل رقم جوالك"
                 />
               </div>
@@ -229,20 +230,22 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
                 <label htmlFor="package" className="text-sm font-semibold text-foreground">
                   الباقة
                 </label>
-                <select
-                  id="package"
-                  name="package"
-                  value={formData.package}
-                  onChange={handleChange}
-                  className="px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200 cursor-pointer"
-                >
-                  <option value="">اختر الباقة</option>
-                  <option value="comprehensive">الباقات الشاملة</option>
-                  <option value="specialized">الباقات المختصة</option>
-                  <option value="sexual-health">الصحة الجنسية</option>
-                  <option value="marriage">باقة الزواج</option>
-                  <option value="offers">العروض</option>
-                </select>
+                <div className="border border-input rounded-xl">
+                  <select
+                    id="package"
+                    name="package"
+                    value={formData.package}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border-e-16 border-e-transparent bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200 cursor-pointer"
+                  >
+                    <option value="">اختر الباقة</option>
+                    <option value="comprehensive">الباقات الشاملة</option>
+                    <option value="specialized">الباقات المختصة</option>
+                    <option value="sexual-health">الصحة الجنسية</option>
+                    <option value="marriage">باقة الزواج</option>
+                    <option value="offers">العروض</option>
+                  </select>
+                </div>
               </div>
 
               {/* Service Select */}
@@ -250,18 +253,20 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
                 <label htmlFor="service" className="text-sm font-semibold text-foreground">
                   الخدمة
                 </label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200 cursor-pointer"
-                >
-                  <option value="">اختر الخدمة</option>
-                  <option value="home-visit">زيارة منزلية</option>
-                  <option value="clinic">عيادة</option>
-                  <option value="online">استشارة أونلاين</option>
-                </select>
+                <div className="border border-input rounded-xl">
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border-e-16 border-e-transparent bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200 cursor-pointer"
+                  >
+                    <option value="">اختر الخدمة</option>
+                    <option value="home-visit">زيارة منزلية</option>
+                    <option value="clinic">عيادة</option>
+                    <option value="online">استشارة أونلاين</option>
+                  </select>
+                </div>
               </div>
 
               {/* Date */}
@@ -276,14 +281,14 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
                   value={formData.date}
                   onChange={handleChange}
                   required
-                  className="px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
                 />
               </div>
 
               {/* Submit Message */}
               {submitMessage && (
                 <div
-                  className={`px-4 py-3 rounded-xl text-sm font-medium ${
+                  className={`w-full px-4 py-3 rounded-xl text-sm font-medium ${
                     submitMessage.type === 'success'
                       ? 'bg-green-500/10 text-green-700 border border-green-500/20'
                       : 'bg-destructive/10 text-destructive border border-destructive/20'
