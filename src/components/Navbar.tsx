@@ -18,10 +18,10 @@ const navLinks = [
       { label: 'الباقات الشاملة', href: '/packages/comprehensive' },
       { label: 'الباقات المختصة', href: '/packages/specialized' },
       { label: 'الصحة الجنسية', href: '/packages/sexual-health' },
-      { label: 'باقة الزواج', href: '/packages/marriage-package' },
+      { label: 'باقة الزواج', href: '/packages/marriage' },
+      { label: 'التحاليل الجينية', href: '/packages/genetic' },
       { label: 'العروض', href: '/packages/offers' },
-      { label: 'التحاليل الجينية', href: '/packages/genetic-tests' },
-      { label: 'التحاليل الفردية', href: '/packages/individual-tests' },
+      { label: 'التحاليل الفردية', href: '/individual-tests' },
     ],
   },
   {
@@ -44,6 +44,9 @@ const navLinks = [
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+
+  const close = () => setOpenDropdown(null)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -109,7 +112,12 @@ const Navbar = () => {
 
                 if (link.children) {
                   return (
-                    <li key={link.label} className="relative group">
+                    <li
+                      key={link.label}
+                      className="relative"
+                      onMouseEnter={() => setOpenDropdown(link.label)}
+                      onMouseLeave={close}
+                    >
                       <Link
                         href={link.href}
                         className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
@@ -119,20 +127,21 @@ const Navbar = () => {
                         }`}
                       >
                         {link.label}
-                        <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                        <ChevronDown className="h-4 w-4 transition-transform duration-200" />
                       </Link>
 
-                      <div className="absolute inset-s-0 top-full pt-2 hidden group-hover:block">
-                        <div className="bg-card shadow-xl rounded-xl py-2 w-56 border border-border">
-                          <ul className="flex flex-col">
-                            {link.children.map((child) => {
-                              const childIsActive = pathname === child.href
-                              return (
+                      {/* dropdown */}
+                      {openDropdown === link.label && (
+                        <div className="absolute inset-s-0 top-full pt-2">
+                          <div className="bg-card shadow-xl rounded-xl py-2 w-56 border border-border">
+                            <ul className="flex flex-col">
+                              {link.children.map((child: any) => (
                                 <li key={child.label}>
                                   <Link
                                     href={child.href}
+                                    onClick={close}
                                     className={`block px-4 py-2.5 text-sm transition-colors ${
-                                      childIsActive
+                                      pathname === child.href
                                         ? 'bg-primary/10 text-primary'
                                         : 'text-foreground/80 hover:text-foreground hover:bg-muted'
                                     }`}
@@ -140,11 +149,11 @@ const Navbar = () => {
                                     {child.label}
                                   </Link>
                                 </li>
-                              )
-                            })}
-                          </ul>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </li>
                   )
                 }
