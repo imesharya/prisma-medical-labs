@@ -48,10 +48,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html dir="rtl" lang="ar" className={`${tajawal.variable}  h-full antialiased`}>
-      <body className="font-tajawal min-h-full flex flex-col">
+    <html dir="rtl" lang="ar">
+      <body className={`${tajawal.variable} font-tajawal flex flex-col w-full antialiased`}>
         <Navbar />
-        {children}
+        <main className="flex flex-col min-h-screen bg-background">{children}</main>
         <Footer />
         <WhatsappButton />
         <PhoneButton />
