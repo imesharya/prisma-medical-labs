@@ -1,94 +1,10 @@
 'use client'
 
+import { PACKAGE_TYPES } from '@/app/config/data'
 import { Icon } from '@/lib/icon'
 import { Sparkles, ArrowLeft } from 'lucide-react'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
-
-const packageTypesData = {
-  badge: 'اكتشف أقسامنا',
-  headline: 'الأقسام الرئيسية',
-  subheadline: 'اختر القسم المناسب لاحتياجك — كل قسم يضم باقات مصممة بعناية لتغطية جوانب صحتك',
-  packageTypes: [
-    {
-      id: 1,
-      name: 'الباقات الشاملة',
-      slug: 'comprehensive',
-      description: 'فحوصات متكاملة تغطي جميع الجوانب الصحية الأساسية',
-      packageCount: '8 باقات',
-      badgeColor: 'blue',
-      icon: 'activity',
-      displayOrder: 1,
-      isActive: true,
-    },
-    {
-      id: 2,
-      name: 'الباقات المختصة',
-      slug: 'specialized',
-      description: 'تحاليل مركّزة لحالات صحية محددة — هرمونات، حساسية، سكري',
-      packageCount: '30 باقة',
-      badgeColor: 'violet',
-      icon: 'microscope',
-      displayOrder: 2,
-      isActive: true,
-    },
-    {
-      id: 3,
-      name: 'الصحة الجنسية',
-      slug: 'sexual-health',
-      description: 'فحوصات سرية وآمنة للأمراض المنقولة — خصوصية تامة',
-      packageCount: '3 باقات',
-      badgeColor: 'pink',
-      icon: 'heart-pulse',
-      displayOrder: 3,
-      isActive: true,
-    },
-    {
-      id: 4,
-      name: 'باقة الزواج',
-      slug: 'marriage',
-      description: 'فحوصات ما قبل الزواج معتمدة في صحتي — زيارة منزلية مجانية',
-      packageCount: 'باقتين',
-      badgeColor: 'teal',
-      icon: 'heart-handshake',
-      displayOrder: 4,
-      isActive: true,
-    },
-    {
-      id: 5,
-      name: 'التحاليل الجينية',
-      slug: 'genetic',
-      description: 'اطمئني على صحة جنينك من الأسبوع العاشر بفحص دم بسيط — آمن 100% ودقة تتجاوز 99%',
-      packageCount: 'باقتين',
-      badgeColor: 'teal',
-      icon: 'dna',
-      displayOrder: 5,
-      isActive: true,
-    },
-    // {
-    //   id: 6,
-    //   name: 'التحاليل الفردية',
-    //   slug: 'individual',
-    //   description:
-    //     'تصفح جميع التحاليل الطبية الفردية المتاحة في مختبرات بريزما — نتائج دقيقة وسريعة بأسعار تنافسية',
-    //   packageCount: '85 تحليل',
-    //   badgeColor: 'teal',
-    //   icon: 'scan-search',
-    //   displayOrder: 6,
-    //   isActive: true,
-    // },
-    {
-      id: 6,
-      name: 'العروض',
-      slug: 'offers',
-      description: 'أسعار حصرية لفترة محدودة — اغتنم الفرصة',
-      packageCount: '5 باقات',
-      badgeColor: 'amber',
-      icon: 'badge-percent',
-      displayOrder: 6,
-      isActive: true,
-    },
-  ],
-}
+import Link from 'next/link'
 
 const colorMap: Record<string, string> = {
   blue: '#2563EB',
@@ -108,7 +24,7 @@ const PackageTypeCard = ({ package: pkg }: PackageTypeCardProps) => {
   const iconName = (pkg.icon || 'help-circle') as keyof typeof dynamicIconImports
 
   return (
-    <div className="group h-full">
+    <Link href={`/packages/${pkg.slug}`} className="group h-full">
       <div
         className="relative rounded-3xl p-6 md:p-8 shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col justify-between border border-gray-100"
         style={{
@@ -164,16 +80,14 @@ const PackageTypeCard = ({ package: pkg }: PackageTypeCardProps) => {
           }}
         />
       </div>
-    </div>
+    </Link>
   )
 }
 
 const PackageTypes = () => {
-  const { badge, headline, subheadline, packageTypes } = packageTypesData
-
-  const activePackages = packageTypes
-    .filter((pkg) => pkg.isActive)
-    .sort((a, b) => a.displayOrder - b.displayOrder)
+  const activePackages = PACKAGE_TYPES.filter((pkg) => pkg.isActive).sort(
+    (a, b) => (a.displayOrder ?? 999) - (b.displayOrder ?? 999),
+  )
 
   return (
     <section className="relative w-full overflow-hidden py-16 md:py-20 lg:py-28">
@@ -183,24 +97,27 @@ const PackageTypes = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 w-fit px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full mb-6">
             <Sparkles className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">{badge}</span>
+            <span className="text-sm font-medium text-primary">اكتشف أقسامنا</span>
           </div>
 
           {/* Headline */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-balance max-w-3xl">
-            {headline}
+            الأقسام الرئيسية
           </h2>
 
           {/* Subheadline */}
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            {subheadline}
+            اختر القسم المناسب لاحتياجك — كل قسم يضم باقات مصممة بعناية لتغطية جوانب صحتك
           </p>
         </div>
 
         {/* Package Types Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4">
           {activePackages.map((packageType) => (
-            <PackageTypeCard key={packageType.id} package={packageType} />
+            <PackageTypeCard
+              key={packageType.id}
+              package={{ ...packageType, packageCount: '10 باقات' }}
+            />
           ))}
         </div>
       </div>
