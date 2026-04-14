@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import { tajawal } from './config/fonts'
 import WhatsappButton from '@/components/WhatsappButton'
 import PhoneButton from '@/components/PhoneButton'
+import NextTopLoader from 'nextjs-toploader'
 
 export const metadata: Metadata = {
   title: 'مختبرات بريزما الطبية',
@@ -50,6 +51,7 @@ export default function RootLayout({
   return (
     <html dir="rtl" lang="ar">
       <body className={`${tajawal.variable} font-tajawal flex flex-col w-full antialiased`}>
+        <NextTopLoader color="#006bfa" showSpinner={false} />
         <Navbar />
         <main className="flex flex-col min-h-screen bg-background">{children}</main>
         <Footer />
