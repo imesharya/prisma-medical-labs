@@ -221,7 +221,7 @@ export default function Footer() {
       <div className="border-t border-background/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-background/60">
-            <p>جميع الحقوق محفوظة © {new Date().getFullYear()} مختبرات بريزما</p>
+            <p>جميع الحقوق محفوظة © 2026 مختبرات بريزما</p>
           </div>
         </div>
       </div>

@@ -174,7 +174,7 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
 const BlogTeaser = ({ posts = defaultPosts, onViewAllClick }: BlogTeaserProps) => {
   const [api, setApi] = React.useState<CarouselApi | null>(null)
   const [canScrollPrev, setCanScrollPrev] = React.useState(false)
-  const [canScrollNext, setCanScrollNext] = React.useState(false)
+  const [canScrollNext, setCanScrollNext] = React.useState(true)
   const [isRtl, setIsRtl] = React.useState(false)
 
   // Detect RTL/LTR from the document direction (respects html dir="rtl" or dir="ltr")

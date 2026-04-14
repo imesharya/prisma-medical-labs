@@ -20,8 +20,8 @@ const navLinks = [
       { label: 'الصحة الجنسية', href: '/packages/sexual-health' },
       { label: 'باقة الزواج', href: '/packages/marriage-package' },
       { label: 'العروض', href: '/packages/offers' },
-      { label: 'التحاليل الفردية', href: '/packages/individual-tests' },
       { label: 'التحاليل الجينية', href: '/packages/genetic-tests' },
+      { label: 'التحاليل الفردية', href: '/packages/individual-tests' },
     ],
   },
   {
@@ -91,7 +91,7 @@ const Navbar = () => {
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
               <Image
-                className="h-10 lg:h-12 w-auto"
+                className="h-10 lg:h-12"
                 src="/prisma-logo.png"
                 alt="Prisma Logo"
                 height={48}
@@ -206,7 +206,7 @@ const Navbar = () => {
         {/* Mobile Header */}
         <div className="flex items-center justify-between p-4 border-b border-border">
           <Image
-            className="h-10 w-auto"
+            className="h-10"
             src="/prisma-logo.png"
             alt="Prisma Logo"
             height={40}
