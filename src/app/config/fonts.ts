@@ -40,4 +40,9 @@ export const tajawal = localFont({
     },
   ],
   display: 'swap',
+  declarations: [
+    { prop: 'ascent-override', value: '95%' },
+    { prop: 'descent-override', value: '35%' },
+    { prop: 'line-gap-override', value: '0%' },
+  ],
 })
