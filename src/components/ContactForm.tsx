@@ -71,7 +71,7 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
   }
 
   return (
-    <section className="md:p-4">
+    <section className="md:p-4" id="contact">
       <div
         className="relative w-full overflow-hidden py-16 md:py-20 lg:py-28 rounded-3xl shadow-md border border-gray-100"
         style={{

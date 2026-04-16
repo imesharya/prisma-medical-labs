@@ -12,6 +12,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 const HERO_SLIDES = [
   {
@@ -24,6 +25,7 @@ const HERO_SLIDES = [
     description:
       'باقات فحص شاملة مدعومة بأحدث التقنيات الطبية — نتائج دقيقة في 3 ساعات، خدمة منزلية فورية، واستشارة طبية مجانية مع كل باقة',
     ctaText: 'اكتشف الباقات',
+    ctaLink: '/packages',
     badgeBgClass: 'bg-primary/10',
     badgeTextClass: 'text-primary',
   },
@@ -37,6 +39,7 @@ const HERO_SLIDES = [
     description:
       'دع الذكاء الاصطناعي يختار لك الباقة المثالية بناءً على احتياجاتك الصحية في ثوانٍ — تحليل دقيق وتوصيات شخصية',
     ctaText: 'ابدأ التقييم الذكي',
+    ctaLink: '/prisma-ai',
     badgeBgClass: 'bg-emerald-500/10',
     badgeTextClass: 'text-emerald-500',
   },
@@ -50,6 +53,7 @@ const HERO_SLIDES = [
     description:
       'تحدث مباشرة مع استشاريينا المتخصصين عبر الهاتف أو الفيديو — استشارة فورية، سرية تامة، وخطة علاجية مخصصة',
     ctaText: 'احجز موعدك الآن',
+    ctaLink: '/#contact',
     badgeBgClass: 'bg-violet-500/10',
     badgeTextClass: 'text-violet-500',
   },
@@ -133,10 +137,12 @@ const Hero = () => {
 
                       {/* CTA */}
                       <div className="mt-10">
-                        <Button className="text-base font-semibold px-8">
-                          {slide.ctaText}
-                          <ArrowLeft className="h-5 w-5" />
-                        </Button>
+                        <Link href={slide.ctaLink}>
+                          <Button className="text-base font-semibold px-8">
+                            {slide.ctaText}
+                            <ArrowLeft className="h-5 w-5" />
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </div>

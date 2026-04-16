@@ -1,6 +1,7 @@
 'use client'
 
 import { Sparkles, ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 
 interface HomeVisitCTAProps {
   onBookClick?: () => void
@@ -41,13 +42,15 @@ const HomeVisitCTA = ({ onBookClick }: HomeVisitCTAProps) => {
 
             {/* Right CTA */}
             <div className="flex-shrink-0">
-              <button
-                onClick={onBookClick}
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-600 rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                احجز زيارة منزلية الآن
-                <ArrowLeft className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
+              <Link href={'/#contact'}>
+                <button
+                  onClick={onBookClick}
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-600 rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                >
+                  احجز زيارة منزلية الآن
+                  <ArrowLeft className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
+              </Link>
             </div>
           </div>
         </div>
