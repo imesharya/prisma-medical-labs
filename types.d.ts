@@ -35,6 +35,7 @@ type TestCategory = {
   id: string
   name: string
   slug: string
+  displayOrder?: number
 }
 
 type Test = {
@@ -45,6 +46,7 @@ type Test = {
   description?: string
   price: double
   badge?: string
+  individualSale: boolean
   thumbnailUrl?: string
   isActive?: boolean
 }

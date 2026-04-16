@@ -1,8 +1,16 @@
 import { Button } from '@/components/ui/button'
-import { ArrowLeft } from 'lucide-react'
-import { PACKAGE_TYPES, PACKAGES } from '@/app/config/data'
+import { ArrowLeft, Check, Phone, X } from 'lucide-react'
+import { PACKAGE_TESTS, PACKAGE_TYPES, PACKAGES, TEST_CATEGORIES, TESTS } from '@/app/config/data'
 import { Skeleton } from '@/components/ui/skeleton'
 import Image from 'next/image'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
+import { BsWhatsapp } from 'react-icons/bs'
 
 interface PackagesListProps {
   packageTypeId: string
@@ -37,67 +45,246 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {packages.map((pkg) => (
-        <div
-          key={pkg.id}
-          className="group h-full bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
-        >
-          {/* Thumbnail */}
-          {pkg.thumbnailUrl && (
-            <div className="relative w-full aspect-square overflow-hidden bg-muted">
-              <Image
-                src={pkg.thumbnailUrl}
-                alt={pkg.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                height={400}
-                width={400}
-              />
-            </div>
-          )}
+      {packages.map((pkg) => {
+        const testIds = new Set(
+          PACKAGE_TESTS.filter((t) => t.packageId === pkg.id).map((t) => t.testId),
+        )
+        const tests: Test[] = TESTS.filter((test) => testIds.has(test.id))
+        const hasDiscount = pkg.discountedPrice !== undefined && pkg.discountedPrice < pkg.price
 
-          {/* Content */}
-          <div className="p-6 flex flex-col gap-4">
-            {/* Title */}
-            <div className="flex items-center justify-between">
-              <h3 className="text-xl font-bold text-foreground line-clamp-2">{pkg.name}</h3>
-              <Button className="bg-primary/20 text-primary" size={'sm'} variant={'outline'}>
-                {pkg.badge}
-              </Button>
-            </div>
+        // Group tests by category
+        const groupedTests = tests.reduce(
+          (acc, test) => {
+            const categoryName = TEST_CATEGORIES.find((c) => c.id == test.testCategoryId)
+            const category = categoryName?.name || 'أخرى'
+            if (!acc[category]) {
+              acc[category] = []
+            }
+            acc[category].push(test)
+            return acc
+          },
+          {} as Record<string, Test[]>,
+        )
 
-            {/* Description */}
-            {pkg.description && (
-              <p className="text-sm text-muted-foreground line-clamp-2">{pkg.description}</p>
+        const categoryEntries = Object.entries(groupedTests)
+
+        return (
+          <div
+            key={pkg.id}
+            className="group h-full bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+          >
+            {/* Thumbnail */}
+            {pkg.thumbnailUrl && (
+              <div className="relative w-full aspect-square overflow-hidden bg-muted">
+                <Image
+                  src={pkg.thumbnailUrl}
+                  alt={pkg.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  height={400}
+                  width={400}
+                />
+              </div>
             )}
 
-            {/* Price Section */}
-            <div className="flex flex-col justify-center">
-              {pkg.discountedPrice ? (
-                <>
-                  <span className="text-sm text-muted-foreground line-through">
-                    {pkg.price.toFixed(2)} ⃁
-                  </span>
-                  <span className="text-2xl font-bold text-primary">
-                    {pkg.discountedPrice.toFixed(2)} ⃁
-                  </span>
-                </>
-              ) : (
-                <span className="text-2xl font-bold text-foreground">{pkg.price.toFixed(2)} ⃁</span>
-              )}
-            </div>
+            {/* Content */}
+            <div className="p-6 flex flex-col gap-4">
+              {/* Title */}
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="text-xl font-bold text-foreground line-clamp-2">{pkg.name}</h3>
+                <Button className="bg-primary/20 text-primary" size={'sm'} variant={'outline'}>
+                  {pkg.badge}
+                </Button>
+              </div>
 
-            {/* CTA Button */}
-            <Button className="w-full mt-auto gap-2 rounded-lg">
-              اختر الباقة
-              <ArrowLeft className="h-4 w-4" />
-            </Button>
-            <Button variant={'outline'} className="w-full mt-auto gap-2 rounded-lg">
-              عرض التحاليل
-              <ArrowLeft className="h-4 w-4" />
-            </Button>
+              {/* Description */}
+              {pkg.description && (
+                <p className="text-sm text-muted-foreground line-clamp-2">{pkg.description}</p>
+              )}
+
+              <div className="flex items-center justify-between gap-2">
+                {/* Price Section (unchanged - matches your card design) */}
+                <div className="flex flex-col justify-center">
+                  {hasDiscount ? (
+                    <>
+                      <span className="text-sm riyal-symbol text-muted-foreground line-through">
+                        {pkg.price.toFixed(2)} ⃁
+                      </span>
+                      <span className="text-2xl riyal-symbol font-bold text-primary">
+                        {pkg.discountedPrice.toFixed(2)} ⃁
+                      </span>
+                    </>
+                  ) : (
+                    <span className="text-2xl riyal-symbol font-bold text-foreground">
+                      {pkg.price.toFixed(2)} ⃁
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <div className="rounded-md p-1 bg-primary/10">
+                    <Check className="text-primary" size={24} />
+                  </div>
+                  <div className="flex flex-col gap-0">
+                    <p className="font-bold text-lg">{tests.length}</p>
+                    <p className="text-sm">تحليل</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <Button className="w-full mt-auto gap-2 rounded-lg">
+                اختر الباقة
+                <ArrowLeft className="h-4 w-4" />
+              </Button>
+
+              {tests.length > 0 ? (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant={'outline'} className="w-full mt-auto gap-2 rounded-lg">
+                      عرض التحاليل ({tests.length})
+                    </Button>
+                  </DialogTrigger>
+
+                  <DialogContent className="sm:max-w-2xl max-h-[90vh] flex flex-col p-0 gap-0 overflow-hidden">
+                    {/* Header */}
+                    <div className="p-6 pb-4 border-b border-border">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1 text-right">
+                          <DialogTitle className="text-xl font-bold text-foreground">
+                            {pkg.name}
+                          </DialogTitle>
+                          {pkg.badge && (
+                            <span className="inline-block mt-2 px-3 py-1 text-xs font-medium rounded-full bg-[#00B5AD] text-white">
+                              {pkg.badge}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-start gap-3 mt-4">
+                        {/* Price */}
+                        <div className="px-4 py-2 border border-border rounded-full flex justify-center gap-2">
+                          {hasDiscount ? (
+                            <>
+                              <span className="text-sm riyal-symbol text-muted-foreground line-through">
+                                {pkg.price.toFixed(2)}
+                              </span>
+                              <span className="text-xl font-bold riyal-symbol text-primary">
+                                {pkg.discountedPrice.toFixed(2)} ⃁
+                              </span>
+                            </>
+                          ) : (
+                            <span className="text-xl font-bold riyal-symbol text-foreground">
+                              {pkg.price.toFixed(2)} ⃁
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Tests count pill */}
+                        <div className="flex items-center gap-2 px-4 py-2 border border-border rounded-full">
+                          <span className="text-xl font-bold text-foreground">{tests.length}</span>
+                          <span className="text-sm text-muted-foreground">تحليل</span>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      {pkg.description && (
+                        <DialogDescription className="text-sm text-muted-foreground mt-3 text-right">
+                          {pkg.description}
+                        </DialogDescription>
+                      )}
+                    </div>
+
+                    <div className="flex-1 overflow-y-scroll">
+                      <div className="p-6 space-y-6">
+                        {categoryEntries.map(([category, categoryTests], categoryIndex) => (
+                          <div key={category}>
+                            {/* Category header */}
+                            <div className="flex items-center justify-start gap-3 mb-4">
+                              <span className="size-7 rounded-full bg-[#00B5AD] text-white text-sm font-medium flex items-center justify-center">
+                                {categoryIndex + 1}
+                              </span>
+                              <span className="font-bold text-foreground">{category}</span>
+                            </div>
+
+                            {/* Tests grid */}
+                            <div
+                              className={`grid gap-4 ${categoryTests.length === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}
+                            >
+                              {categoryTests.map((test) => (
+                                <div
+                                  key={test.id}
+                                  className="border border-border rounded-xl p-4 bg-background"
+                                >
+                                  <div className="flex items-start gap-3">
+                                    <div className="size-6 rounded-full bg-[#00B5AD] flex items-center justify-center shrink-0 mt-0.5">
+                                      <Check className="size-4 text-white" strokeWidth={3} />
+                                    </div>
+                                    <div className="flex-1 text-right">
+                                      <h3 className="font-bold text-foreground">{test.name}</h3>
+                                      <div className="flex items-center justify-start gap-2 mt-2 flex-wrap">
+                                        {test.badge && (
+                                          <span className="px-3 py-1 text-xs font-medium rounded-full border border-[#00B5AD] text-[#00B5AD]">
+                                            {test.badge}
+                                          </span>
+                                        )}
+                                      </div>
+                                      {test.description && (
+                                        <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+                                          {test.description}
+                                        </p>
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+
+                        {tests.length === 0 && (
+                          <div className="text-center py-8 text-muted-foreground text-sm">
+                            لا توجد تحاليل متاحة لهذه الباقة.
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Footer */}
+                    <div className="p-6 pt-4 border-t border-border">
+                      <div className="flex gap-4">
+                        {/* Call Button */}
+                        <a href="tel:+966920031642" className="flex-1">
+                          <Button
+                            variant="outline"
+                            className="w-full h-12 rounded-full border-[#00B5AD] text-[#00B5AD] hover:bg-[#00B5AD]/10 gap-2 text-base font-medium"
+                          >
+                            <Phone className="size-5" />
+                            اتصال مباشر
+                          </Button>
+                        </a>
+
+                        {/* WhatsApp Button */}
+                        <a
+                          href="https://wa.me/+966920031642"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1"
+                        >
+                          <Button className="w-full h-12 rounded-full bg-[#00B5AD] hover:bg-[#00B5AD]/90 text-white gap-2 text-base font-medium">
+                            <BsWhatsapp className="size-5" />
+                            احجز عبر واتساب
+                          </Button>
+                        </a>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              ) : null}
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
 }
@@ -105,7 +292,6 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
 export default async function PackageTypePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const packageType = PACKAGE_TYPES.find((p) => p.slug === slug)
-
   const packages = PACKAGES.filter((p) => p.packageTypeId === packageType?.id)
 
   if (!packageType) {
@@ -133,13 +319,11 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
           />
           <div className="absolute inset-0 bg-background/60" />
         </div>
-
         {/* Background decoration */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
         </div>
-
         {/* Content */}
         <div className="relative h-full flex flex-col items-center justify-center px-4 md:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-balance">
