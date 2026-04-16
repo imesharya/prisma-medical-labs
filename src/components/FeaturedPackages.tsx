@@ -1,6 +1,6 @@
 'use client'
 
-import { PACKAGE_TYPES } from '@/app/config/data'
+import { PACKAGE_TYPES, PACKAGES } from '@/app/config/data'
 import { Icon } from '@/lib/icon'
 import { Sparkles, ArrowLeft } from 'lucide-react'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
@@ -15,10 +15,31 @@ const colorMap: Record<string, string> = {
 }
 
 interface PackageTypeCardProps {
-  package: PackageType & { packageCount: string }
+  package: PackageType
+  packageCount: number
 }
 
-const PackageTypeCard = ({ package: pkg }: PackageTypeCardProps) => {
+const getPackageLabel = (count: number) => {
+  if (count === 0) return '0 باقة'
+
+  if (count === 1) return 'باقة واحدة'
+
+  if (count === 2) return 'باقتين'
+
+  const lastTwoDigits = count % 100
+
+  if (lastTwoDigits >= 3 && lastTwoDigits <= 10) {
+    return `${count} باقات`
+  }
+
+  if (lastTwoDigits >= 11 && lastTwoDigits <= 99) {
+    return `${count} باقة`
+  }
+
+  return `${count} باقة`
+}
+
+const PackageTypeCard = ({ package: pkg, packageCount }: PackageTypeCardProps) => {
   const accentColor = colorMap[pkg.badgeColor || 'primary'] || colorMap.primary
 
   const iconName = (pkg.icon || 'help-circle') as keyof typeof dynamicIconImports
@@ -62,8 +83,11 @@ const PackageTypeCard = ({ package: pkg }: PackageTypeCardProps) => {
 
         {/* Bottom Section */}
         <div className="relative flex items-end justify-between gap-4 mt-6 pt-4">
-          <span className="text-sm font-semibold" style={{ color: accentColor }}>
-            {pkg.packageCount}
+          <span
+            className={`text-sm font-semibold ${packageCount == 0 ? 'invisible' : ''}`}
+            style={{ color: accentColor }}
+          >
+            {getPackageLabel(packageCount)}
           </span>
 
           <ArrowLeft
@@ -113,12 +137,16 @@ const PackageTypes = () => {
 
         {/* Package Types Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4">
-          {activePackages.map((packageType) => (
-            <PackageTypeCard
-              key={packageType.id}
-              package={{ ...packageType, packageCount: '10 باقات' }}
-            />
-          ))}
+          {activePackages.map((packageType) => {
+            const packageCount = PACKAGES.filter((p) => p.packageTypeId === packageType.id)
+            return (
+              <PackageTypeCard
+                key={packageType.id}
+                package={packageType}
+                packageCount={packageCount.length ?? 0}
+              />
+            )
+          })}
         </div>
       </div>
     </section>
