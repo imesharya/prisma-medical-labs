@@ -107,15 +107,15 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                   {hasDiscount ? (
                     <>
                       <span className="text-sm riyal-symbol text-muted-foreground line-through">
-                        {pkg.price.toFixed(2)} ⃁
+                        {pkg.price.toFixed(2)} ﷼
                       </span>
                       <span className="text-2xl riyal-symbol font-bold text-primary">
-                        {pkg.discountedPrice.toFixed(2)} ⃁
+                        {pkg.discountedPrice.toFixed(2)} ﷼
                       </span>
                     </>
                   ) : (
                     <span className="text-2xl riyal-symbol font-bold text-foreground">
-                      {pkg.price.toFixed(2)} ⃁
+                      {pkg.price.toFixed(2)} ﷼
                     </span>
                   )}
                 </div>
@@ -170,12 +170,12 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                                 {pkg.price.toFixed(2)}
                               </span>
                               <span className="text-xl font-bold riyal-symbol text-primary">
-                                {pkg.discountedPrice.toFixed(2)} ⃁
+                                {pkg.discountedPrice.toFixed(2)} ﷼
                               </span>
                             </>
                           ) : (
                             <span className="text-xl font-bold riyal-symbol text-foreground">
-                              {pkg.price.toFixed(2)} ⃁
+                              {pkg.price.toFixed(2)} ﷼
                             </span>
                           )}
                         </div>

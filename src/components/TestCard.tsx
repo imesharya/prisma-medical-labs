@@ -7,7 +7,7 @@ const TestCard = ({ test }: { test: Test }) => {
       <div className="flex gap-2 items-center justify-between flex-none">
         <p className="font-bold">{test.name}</p>
         <Button className="bg-primary/20 text-primary riyal-symbol" size={'sm'} variant={'outline'}>
-          {test.price} ⃁
+          {test.price} ﷼
         </Button>
       </div>
 
