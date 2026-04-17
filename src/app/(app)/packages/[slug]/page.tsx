@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, Check, Phone, X } from 'lucide-react'
-import { PACKAGE_TESTS, PACKAGE_TYPES, PACKAGES, TEST_CATEGORIES, TESTS } from '@/scripts/data'
+import { ArrowLeft, Check, Phone } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
 import Image from 'next/image'
 import {
@@ -11,6 +10,11 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { BsWhatsapp } from 'react-icons/bs'
+import { Media, Package, Test, TestCategory } from '@/payload-types'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
+import SaudiPrice from '@/components/SaudiPrice'
+// import { PACKAGE_TESTS, TEST_CATEGORIES, TESTS } from '@/scripts/data'
 
 interface PackagesListProps {
   packageTypeId: string
@@ -46,27 +50,20 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {packages.map((pkg) => {
-        const testIds = new Set(
-          PACKAGE_TESTS.filter((t) => t.packageId === pkg.id).map((t) => t.testId),
-        )
-        const tests: Test[] = TESTS.filter((test) => testIds.has(test.id))
-        const hasDiscount = pkg.discountedPrice !== undefined && pkg.discountedPrice < pkg.price
-
         // Group tests by category
-        const groupedTests = tests.reduce(
+        const groupedTests = pkg.tests?.reduce(
           (acc, test) => {
-            const categoryName = TEST_CATEGORIES.find((c) => c.id == test.testCategoryId)
-            const category = categoryName?.name || 'أخرى'
+            const category = ((test as Test).testCategory as TestCategory)?.name || 'أخرى'
             if (!acc[category]) {
               acc[category] = []
             }
-            acc[category].push(test)
+            acc[category].push(test as Test)
             return acc
           },
           {} as Record<string, Test[]>,
         )
 
-        const categoryEntries = Object.entries(groupedTests)
+        const categoryEntries = Object.entries(groupedTests || {})
 
         return (
           <div
@@ -74,10 +71,10 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
             className="group h-full bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
           >
             {/* Thumbnail */}
-            {pkg.thumbnailUrl && (
+            {pkg.thumbnail && (
               <div className="relative w-full aspect-square overflow-hidden bg-muted">
                 <Image
-                  src={pkg.thumbnailUrl}
+                  src={(pkg.thumbnail as Media).url ?? '/'}
                   alt={pkg.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   height={400}
@@ -104,18 +101,18 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
               <div className="flex items-center justify-between gap-2">
                 {/* Price Section (unchanged - matches your card design) */}
                 <div className="flex flex-col justify-center">
-                  {hasDiscount ? (
+                  {pkg.discountedPrice ? (
                     <>
-                      <span className="text-sm riyal-symbol text-muted-foreground line-through">
-                        {pkg.price.toFixed(2)} ﷼
+                      <span className="text-sm text-muted-foreground line-through">
+                        {pkg.price.toFixed(2)}
                       </span>
-                      <span className="text-2xl riyal-symbol font-bold text-primary">
-                        {pkg.discountedPrice.toFixed(2)} ﷼
+                      <span className="text-2xl font-bold text-primary">
+                        <SaudiPrice amount={pkg.discountedPrice.toFixed(2)} />
                       </span>
                     </>
                   ) : (
-                    <span className="text-2xl riyal-symbol font-bold text-foreground">
-                      {pkg.price.toFixed(2)} ﷼
+                    <span className="text-2xl font-bold text-primary">
+                      <SaudiPrice amount={pkg.price.toFixed(2)} />
                     </span>
                   )}
                 </div>
@@ -124,10 +121,12 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                   <div className="rounded-md p-1 bg-primary/10">
                     <Check className="text-primary" size={24} />
                   </div>
-                  <div className="flex flex-col gap-0">
-                    <p className="font-bold text-lg">{tests.length}</p>
-                    <p className="text-sm">تحليل</p>
-                  </div>
+                  {pkg.tests && pkg.tests.length > 0 ? (
+                    <div className="flex flex-col gap-0">
+                      <p className="font-bold text-lg">{pkg.tests.length}</p>
+                      <p className="text-sm">تحليل</p>
+                    </div>
+                  ) : null}
                 </div>
               </div>
 
@@ -137,11 +136,11 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                 <ArrowLeft className="h-4 w-4" />
               </Button>
 
-              {tests.length > 0 ? (
+              {pkg.tests && pkg.tests.length > 0 ? (
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button variant={'outline'} className="w-full mt-auto gap-2 rounded-lg">
-                      عرض التحاليل ({tests.length})
+                      عرض التحاليل ({pkg.tests.length})
                     </Button>
                   </DialogTrigger>
 
@@ -164,25 +163,27 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                       <div className="flex items-center justify-start gap-3 mt-4">
                         {/* Price */}
                         <div className="px-4 py-2 border border-border rounded-full flex justify-center gap-2">
-                          {hasDiscount ? (
+                          {pkg.discountedPrice ? (
                             <>
-                              <span className="text-sm riyal-symbol text-muted-foreground line-through">
+                              <span className="text-sm text-muted-foreground line-through">
                                 {pkg.price.toFixed(2)}
                               </span>
-                              <span className="text-xl font-bold riyal-symbol text-primary">
-                                {pkg.discountedPrice.toFixed(2)} ﷼
+                              <span className="text-xl font-bold text-primary">
+                                <SaudiPrice amount={pkg.discountedPrice.toFixed(2)} />
                               </span>
                             </>
                           ) : (
-                            <span className="text-xl font-bold riyal-symbol text-foreground">
-                              {pkg.price.toFixed(2)} ﷼
+                            <span className="text-xl font-bold text-foreground">
+                              <SaudiPrice amount={pkg.price.toFixed(2)} />
                             </span>
                           )}
                         </div>
 
                         {/* Tests count pill */}
                         <div className="flex items-center gap-2 px-4 py-2 border border-border rounded-full">
-                          <span className="text-xl font-bold text-foreground">{tests.length}</span>
+                          <span className="text-xl font-bold text-foreground">
+                            {pkg.tests.length}
+                          </span>
                           <span className="text-sm text-muted-foreground">تحليل</span>
                         </div>
                       </div>
@@ -242,7 +243,7 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                           </div>
                         ))}
 
-                        {tests.length === 0 && (
+                        {pkg.tests.length === 0 && (
                           <div className="text-center py-8 text-muted-foreground text-sm">
                             لا توجد تحاليل متاحة لهذه الباقة.
                           </div>
@@ -291,8 +292,20 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
 
 export default async function PackageTypePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const packageType = PACKAGE_TYPES.find((p) => p.slug === slug)
-  const packages = PACKAGES.filter((p) => p.packageTypeId === packageType?.id)
+  const payload = await getPayload({ config })
+  const {
+    docs: [packageType],
+  } = await payload.find({
+    collection: 'package-types',
+    where: { slug: { equals: slug } },
+    limit: 1,
+  })
+
+  const { docs: packages } = await payload.find({
+    collection: 'packages',
+    where: { packageType: { equals: packageType.id } },
+    depth: 2,
+  })
 
   if (!packageType) {
     return (
@@ -310,13 +323,15 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
       <div className="relative w-full h-80 md:h-96 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <Image
-            src={packageType.thumbnailUrl ?? '/'}
-            alt=""
-            fill
-            className="object-cover object-center"
-            priority
-          />
+          {packageType.thumbnail && (
+            <Image
+              src={(packageType.thumbnail as Media).url ?? '/'}
+              alt=""
+              fill
+              className="object-cover object-center"
+              priority
+            />
+          )}
           <div className="absolute inset-0 bg-background/60" />
         </div>
         {/* Background decoration */}

@@ -1,10 +1,10 @@
-'use client'
-
-import { PACKAGE_TYPES, PACKAGES } from '@/scripts/data'
 import { Icon } from '@/lib/icon'
 import { Sparkles, ArrowLeft } from 'lucide-react'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
 import Link from 'next/link'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
+import { PackageType } from '@/payload-types'
 
 const colorMap: Record<string, string> = {
   blue: '#2563EB',
@@ -108,10 +108,21 @@ const PackageTypeCard = ({ package: pkg, packageCount }: PackageTypeCardProps) =
   )
 }
 
-const PackageTypes = () => {
-  const activePackages = PACKAGE_TYPES.filter((pkg) => pkg.isActive).sort(
-    (a, b) => (a.displayOrder ?? 999) - (b.displayOrder ?? 999),
-  )
+const PackageTypes = async () => {
+  const payload = await getPayload({ config })
+  const { docs: activePackages } = await payload.find({
+    collection: 'package-types',
+    where: {
+      isActive: { equals: true },
+    },
+    sort: 'displayOrder',
+    limit: 0,
+  })
+  const { docs: packages } = await payload.find({
+    collection: 'packages',
+    limit: 0,
+    depth: 0,
+  })
 
   return (
     <section className="relative w-full overflow-hidden py-16 md:py-20 lg:py-28">
@@ -138,7 +149,7 @@ const PackageTypes = () => {
         {/* Package Types Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4">
           {activePackages.map((packageType) => {
-            const packageCount = PACKAGES.filter((p) => p.packageTypeId === packageType.id)
+            const packageCount = packages.filter((p) => p.packageType === packageType.id)
             return (
               <PackageTypeCard
                 key={packageType.id}

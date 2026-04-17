@@ -1,3 +1,60 @@
+type PackageType = {
+  id: string
+  name: string
+  slug: string
+  description?: string
+  icon?: string
+  badgeColor?: 'blue' | 'violet' | 'pink' | 'teal' | 'amber'
+  thumbnailUrl?: string
+  displayOrder?: number
+  isActive?: boolean
+}
+
+type PackageCategory = {
+  id: string
+  name: string
+  slug: string
+}
+
+type Package = {
+  id: string
+  packageTypeId: string
+  packageCategoryId?: string
+  name: string
+  slug: string
+  description?: string
+  price: number
+  discountedPrice?: number
+  badge?: string
+  thumbnailUrl?: string
+  displayOrder?: number
+  isActive?: boolean
+}
+
+type TestCategory = {
+  id: string
+  name: string
+  slug: string
+  displayOrder?: number
+}
+
+type Test = {
+  id: string
+  testCategoryId: string
+  name: string
+  slug: string
+  description?: string
+  price: number
+  badge?: string
+  individualSale: boolean
+  isActive?: boolean
+}
+
+type PackageTest = {
+  packageId: string
+  testId: string
+}
+
 export const PACKAGE_TYPES: PackageType[] = [
   {
     id: 'af6e391f-6bcb-427a-8ec2-da602dc72e2f',

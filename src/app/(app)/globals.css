@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @custom-variant dark (&:is(.dark *));
+@import '@abdulrysr/saudi-riyal-new-symbol-font/style.css';
 
 :root {
   --background: oklch(0.99 0.002 240);

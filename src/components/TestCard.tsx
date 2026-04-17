@@ -1,5 +1,7 @@
 import { Separator } from './ui/separator'
 import { Button } from './ui/button'
+import { Test } from '@/payload-types'
+import SaudiPrice from './SaudiPrice'
 
 const TestCard = ({ test }: { test: Test }) => {
   return (
@@ -7,7 +9,7 @@ const TestCard = ({ test }: { test: Test }) => {
       <div className="flex gap-2 items-center justify-between flex-none">
         <p className="font-bold">{test.name}</p>
         <Button className="bg-primary/20 text-primary riyal-symbol" size={'sm'} variant={'outline'}>
-          {test.price} ﷼
+          <SaudiPrice amount={test.price.toFixed(2)} />
         </Button>
       </div>
 

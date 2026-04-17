@@ -1,9 +1,22 @@
 import TestCard from '@/components/TestCard'
-import { TEST_CATEGORIES, TESTS } from '../../../scripts/data'
 import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
 
-const page = () => {
+const page = async () => {
+  const payload = await getPayload({ config })
+  const { docs: testCategories } = await payload.find({
+    collection: 'test-categories',
+    limit: 0,
+    sort: 'displayOrder',
+  })
+  const { docs: tests } = await payload.find({
+    collection: 'tests',
+    where: { individualSale: { equals: true } },
+    limit: 0,
+  })
+
   return (
     <div className="w-full">
       <div className="relative w-full h-80 md:h-96 overflow-hidden">
@@ -34,27 +47,27 @@ const page = () => {
 
       <div className="w-full bg-background">
         <div className="max-w-7xl mx-auto flex flex-col gap-4 md:gap-8 px-4 md:px-6 lg:px-8 py-12 md:py-16">
-          {TEST_CATEGORIES.sort((a, b) => (a.displayOrder ?? 999) - (b.displayOrder ?? 999)).map(
-            (c) => {
-              const categoryTests = TESTS.filter(
-                (t) => t.testCategoryId === c.id && t.individualSale === true,
-              )
-              if (categoryTests.length === 0) return
+          {testCategories.map((c) => {
+            const categoryTests = tests.filter(
+              (t) =>
+                t.testCategory &&
+                (typeof t.testCategory === 'object' ? t.testCategory.id : t.testCategory) === c.id,
+            )
+            if (categoryTests.length === 0) return
 
-              return (
-                <div key={c.id} className="flex flex-col gap-4 bg-muted p-4 rounded-2xl border">
-                  <p className="text-2xl font-bold">{c.name}</p>
+            return (
+              <div key={c.id} className="flex flex-col gap-4 bg-muted p-4 rounded-2xl border">
+                <p className="text-2xl font-bold">{c.name}</p>
 
-                  <Separator className="h-[1px]" />
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-                    {categoryTests.map((t) => (
-                      <TestCard key={t.id} test={t} />
-                    ))}
-                  </div>
+                <Separator className="h-[1px]" />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+                  {categoryTests.map((t) => (
+                    <TestCard key={t.id} test={t} />
+                  ))}
                 </div>
-              )
-            },
-          )}
+              </div>
+            )
+          })}
         </div>
       </div>
     </div>

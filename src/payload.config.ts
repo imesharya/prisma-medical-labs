@@ -3,7 +3,8 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { buildConfig } from 'payload'
 import { en } from '@payloadcms/translations/languages/en'
 import { ar } from '@payloadcms/translations/languages/ar'
-import imagekitPlugin from 'payloadcms-plugin-imagekit'
+// import imagekitPlugin from 'payloadcms-plugin-imagekit'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 import { TestCategories } from './collections/TestCategories'
 import { Tests } from './collections/Tests'
@@ -68,6 +69,25 @@ export default buildConfig({
     //     },
     //   },
     // }),
+    vercelBlobStorage({
+      enabled: true, // defaults to true
+      token: process.env.BLOB_READ_WRITE_TOKEN, // Required
+
+      // Specify which upload collections use Vercel Blob
+      collections: {
+        media: true, // 'media' must match your collection slug
+        // You can add more:
+        // documents: true,
+        // videos: {
+        //   prefix: 'videos/',         // Optional: organize files in folders
+        // },
+      },
+
+      // Optional but recommended settings
+      addRandomSuffix: true, // Prevents filename collisions
+      cacheControlMaxAge: 31536000, // 1 year (default)
+      clientUploads: true, // Highly recommended on Vercel (see below)
+    }),
   ],
   bin: [
     {

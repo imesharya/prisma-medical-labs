@@ -14,8 +14,10 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@abdulrysr/saudi-riyal-new-symbol-font": "^1.0.8",
     "@payloadcms/db-mongodb": "^3.83.0",
     "@payloadcms/next": "^3.83.0",
+    "@payloadcms/storage-vercel-blob": "^3.83.0",
     "@payloadcms/translations": "^3.83.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -25,7 +27,6 @@
     "next": "16.2.3",
     "nextjs-toploader": "^3.9.17",
     "payload": "^3.83.0",
-    "payloadcms-plugin-imagekit": "^0.5.0",
     "radix-ui": "^1.4.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
