@@ -13,11 +13,6 @@ export const Media: CollectionConfig = {
   },
   upload: {
     disableLocalStorage: true,
-    imageSizes: [
-      { name: 'thumbnail', width: 400, height: 300 },
-      { name: 'card', width: 768, height: 480 },
-      { name: 'hero', width: 1920, height: 1080 },
-    ],
     mimeTypes: ['image/*'],
     adminThumbnail: 'thumbnail',
   },
