@@ -4,7 +4,7 @@ type PackageType = {
   slug: string
   description?: string
   icon?: string
-  badgeColor?: string
+  badgeColor?: 'blue' | 'violet' | 'pink' | 'teal' | 'amber'
   thumbnailUrl?: string
   displayOrder?: number
   isActive?: boolean
@@ -18,7 +18,7 @@ type PackageCategory = {
 
 type Package = {
   id: string
-  packageTypeId?: string
+  packageTypeId: string
   packageCategoryId?: string
   name: string
   slug: string
@@ -40,14 +40,13 @@ type TestCategory = {
 
 type Test = {
   id: string
-  testCategoryId?: string
+  testCategoryId: string
   name: string
   slug: string
   description?: string
   price: double
   badge?: string
   individualSale: boolean
-  thumbnailUrl?: string
   isActive?: boolean
 }
 

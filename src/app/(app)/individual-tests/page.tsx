@@ -1,5 +1,5 @@
 import TestCard from '@/components/TestCard'
-import { TEST_CATEGORIES, TESTS } from '../config/data'
+import { TEST_CATEGORIES, TESTS } from '../../../scripts/data'
 import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
 

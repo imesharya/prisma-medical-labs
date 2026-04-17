@@ -1,6 +1,6 @@
 'use client'
 
-import { PACKAGE_TYPES, PACKAGES } from '@/app/config/data'
+import { PACKAGE_TYPES, PACKAGES } from '@/scripts/data'
 import { Icon } from '@/lib/icon'
 import { Sparkles, ArrowLeft } from 'lucide-react'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'

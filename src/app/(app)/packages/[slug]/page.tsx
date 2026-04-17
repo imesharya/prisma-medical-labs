@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, Check, Phone, X } from 'lucide-react'
-import { PACKAGE_TESTS, PACKAGE_TYPES, PACKAGES, TEST_CATEGORIES, TESTS } from '@/app/config/data'
+import { PACKAGE_TESTS, PACKAGE_TYPES, PACKAGES, TEST_CATEGORIES, TESTS } from '@/scripts/data'
 import { Skeleton } from '@/components/ui/skeleton'
 import Image from 'next/image'
 import {
