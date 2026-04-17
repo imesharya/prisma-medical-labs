@@ -4,6 +4,9 @@ import slugify from 'slugify'
 
 export const TestCategories: CollectionConfig = {
   slug: 'test-categories',
+  access: {
+    read: () => true,
+  },
   labels: {
     singular: 'فئة تحليل',
     plural: 'فئات التحاليل',

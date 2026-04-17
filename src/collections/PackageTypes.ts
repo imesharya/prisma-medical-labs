@@ -4,6 +4,9 @@ import slugify from 'slugify'
 
 export const PackageTypes: CollectionConfig = {
   slug: 'package-types',
+  access: {
+    read: () => true,
+  },
   labels: {
     singular: 'نوع باقة',
     plural: 'أنواع الباقات',
