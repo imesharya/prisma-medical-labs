@@ -14,7 +14,6 @@ import { Media, Package, Test, TestCategory } from '@/payload-types'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import SaudiPrice from '@/components/SaudiPrice'
-// import { PACKAGE_TESTS, TEST_CATEGORIES, TESTS } from '@/scripts/data'
 
 interface PackagesListProps {
   packageTypeId: string
@@ -79,6 +78,7 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   height={400}
                   width={400}
+                  unoptimized
                 />
               </div>
             )}
@@ -334,6 +334,7 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
               fill
               className="object-cover object-center"
               priority
+              unoptimized
             />
           )}
           <div className="absolute inset-0 bg-background/60" />
