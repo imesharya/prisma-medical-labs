@@ -184,6 +184,7 @@ export interface TestCategory {
    */
   generateSlug?: boolean | null;
   slug: string;
+  displayOrder?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -450,6 +451,7 @@ export interface TestCategoriesSelect<T extends boolean = true> {
   name?: T;
   generateSlug?: T;
   slug?: T;
+  displayOrder?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -299,7 +299,8 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
     collection: 'package-types',
     where: { slug: { equals: slug }, isActive: { equals: true } },
     sort: 'displayOrder',
-    limit: 1,
+    depth: 1,
+    limit: 0,
   })
 
   const { docs: packages } = await payload.find({
@@ -307,6 +308,7 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
     where: { packageType: { equals: packageType.id }, isActive: { equals: true } },
     sort: 'displayOrder',
     depth: 2,
+    limit: 0,
   })
 
   if (!packageType) {

@@ -30,6 +30,14 @@ export const TestCategories: CollectionConfig = {
         }),
       overrides: makeUniqueSlug,
     }),
+    {
+      name: 'displayOrder',
+      type: 'number',
+      required: false,
+      defaultValue: 1,
+      label: 'ترتيب العرض',
+      admin: { position: 'sidebar' },
+    },
   ],
   timestamps: true,
 }
