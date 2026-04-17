@@ -297,13 +297,15 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
     docs: [packageType],
   } = await payload.find({
     collection: 'package-types',
-    where: { slug: { equals: slug } },
+    where: { slug: { equals: slug }, isActive: { equals: true } },
+    sort: 'displayOrder',
     limit: 1,
   })
 
   const { docs: packages } = await payload.find({
     collection: 'packages',
-    where: { packageType: { equals: packageType.id } },
+    where: { packageType: { equals: packageType.id }, isActive: { equals: true } },
+    sort: 'displayOrder',
     depth: 2,
   })
 

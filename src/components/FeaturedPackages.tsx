@@ -120,6 +120,9 @@ const PackageTypes = async () => {
   })
   const { docs: packages } = await payload.find({
     collection: 'packages',
+    where: {
+      isActive: { equals: true },
+    },
     limit: 0,
     depth: 0,
   })
