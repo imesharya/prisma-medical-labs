@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     collection: 'blog-posts',
     where: {
       category: { equals: post.category },
-      id: { not_equals: post.id },
+      // id: { not_equals: post.id },
     },
     limit: 3,
   })) as { docs: PopulatedBlogPost[] }
@@ -192,7 +192,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* FAQ Section */}
         {post.faq && post.faq.length > 0 && (
-          <div className="mt-16 pt-12 border-t border-border px-4 sm:px-6 lg:px-8">
+          <div className="mt-12 pt-12 pb-12 border-t border-border px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold mb-8 text-foreground">الأسئلة الشائعة</h2>
             <div className="space-y-4">
               {post.faq.map((item, index) => (
@@ -213,7 +213,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </div>
       {/* Related Posts Section */}
       {relatedPosts.length > 0 && (
-        <div className="mt-16 py-16 border-t border-border px-4 sm:px-6 lg:px-8">
+        <div className="py-12 border-t border-border px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-12 text-foreground">مقالات ذات صلة</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedPosts.map((relatedPost) => {
