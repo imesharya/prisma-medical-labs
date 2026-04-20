@@ -14,15 +14,6 @@ const BlogTeaser = ({ posts }: { posts: PopulatedBlogPost[] }) => {
   const [api, setApi] = useState<CarouselApi | null>(null)
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(true)
-  const [isRtl, setIsRtl] = useState(false)
-
-  // Detect RTL/LTR from the document direction (respects html dir="rtl" or dir="ltr")
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const dir = document.documentElement.getAttribute('dir') || 'ltr'
-      setIsRtl(dir === 'rtl')
-    }
-  }, [])
 
   // Hook carousel API and update navigation state
   useEffect(() => {
@@ -73,7 +64,7 @@ const BlogTeaser = ({ posts }: { posts: PopulatedBlogPost[] }) => {
           <Carousel
             opts={{
               align: 'start',
-              direction: isRtl ? 'rtl' : 'ltr',
+              direction: 'rtl',
               loop: false,
             }}
             setApi={setApi}
@@ -97,14 +88,14 @@ const BlogTeaser = ({ posts }: { posts: PopulatedBlogPost[] }) => {
                 disabled={!canScrollPrev}
                 className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isRtl ? <ChevronRight className="h-5 w-5" /> : <ChevronLeft className="h-5 w-5" />}
+                <ChevronRight className="h-5 w-5" />
               </button>
               <button
                 onClick={() => api?.scrollNext()}
                 disabled={!canScrollNext}
                 className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isRtl ? <ChevronLeft className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
+                <ChevronLeft className="h-5 w-5" />
               </button>
             </div>
 

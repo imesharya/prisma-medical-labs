@@ -52,9 +52,8 @@ export default async function Page({ searchParams }: PageProps) {
           </p>
 
           {/* Filter/Category Buttons */}
-          <div className="flex flex-wrap justify-center gap-3">
-            <BlogFilters blogCategories={categoryFilters} />
-          </div>
+
+          <BlogFilters blogCategories={categoryFilters} />
         </div>
       </section>
 

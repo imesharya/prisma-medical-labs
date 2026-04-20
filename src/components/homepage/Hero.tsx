@@ -62,14 +62,6 @@ const HERO_SLIDES = [
 const Hero = () => {
   const [api, setApi] = useState<CarouselApi | null>(null)
   const [current, setCurrent] = useState(0)
-  const [isRtl, setIsRtl] = useState(false)
-
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const dir = document.documentElement.getAttribute('dir') || 'ltr'
-      setIsRtl(dir === 'rtl')
-    }
-  }, [])
 
   useEffect(() => {
     if (!api) return
@@ -81,7 +73,7 @@ const Hero = () => {
     <section className="relative w-full overflow-hidden">
       <Carousel
         setApi={setApi}
-        opts={{ align: 'start', direction: isRtl ? 'rtl' : 'ltr', loop: true }}
+        opts={{ align: 'start', direction: 'rtl', loop: true }}
         className="w-full"
       >
         <CarouselContent>
@@ -172,18 +164,8 @@ const Hero = () => {
         </CarouselContent>
 
         {/* Navigation */}
-        <CarouselPrevious
-          className={cn(
-            'absolute left-6 top-1/2 -translate-y-1/2 size-8 bg-background/80 backdrop-blur-md border shadow-sm max-md:hidden',
-            isRtl && 'left-auto right-6 rotate-180',
-          )}
-        />
-        <CarouselNext
-          className={cn(
-            'absolute right-6 top-1/2 -translate-y-1/2 size-8 bg-background/80 backdrop-blur-md border shadow-sm max-md:hidden',
-            isRtl && 'right-auto left-6 rotate-180',
-          )}
-        />
+        <CarouselPrevious className="absolute left-auto right-6 rotate-180 top-1/2 -translate-y-1/2 size-8 bg-background/80 backdrop-blur-md border shadow-sm max-md:hidden" />
+        <CarouselNext className="absolute right-auto left-6 rotate-180 top-1/2 -translate-y-1/2 size-8 bg-background/80 backdrop-blur-md border shadow-sm max-md:hidden" />
       </Carousel>
 
       {/* Dots */}

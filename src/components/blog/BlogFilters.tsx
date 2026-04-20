@@ -36,14 +36,48 @@ const BlogFilters = ({ blogCategories }: { blogCategories: BlogCategory[] }) => 
 
   return (
     <>
+      {/* Desktop: static flex-wrap (no carousel) */}
+      <div className="hidden md:flex flex-wrap justify-center gap-3">
+        <button
+          onClick={() => handleCategoryParams(undefined)}
+          className={cn(
+            buttonVariants({
+              variant: selectedCategory === null ? 'default' : 'outline',
+            }),
+          )}
+        >
+          عرض الكل
+        </button>
+
+        {blogCategories.map((category) => {
+          const isActive = selectedCategory === category.name
+
+          return (
+            <button
+              key={category.id}
+              onClick={() => handleCategoryParams(category.name)}
+              className={cn(
+                buttonVariants({
+                  variant: isActive ? 'default' : 'outline',
+                }),
+              )}
+            >
+              {category.name}
+            </button>
+          )
+        })}
+      </div>
+
+      {/* Mobile only: carousel with fixed edge visibility */}
       <Carousel
         opts={{
           align: 'start',
           skipSnaps: true,
+          direction: 'rtl',
         }}
-        className="w-full block"
+        className="w-full md:hidden"
       >
-        <CarouselContent className="flex justify-center gap-4 w-full pl-4 select-none items-center h-12">
+        <CarouselContent className="flex gap-4 pl-4 select-none items-center h-12">
           <CarouselItem
             className={cn(
               buttonVariants({
