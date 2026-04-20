@@ -2,7 +2,7 @@ import type { CollectionConfig } from 'payload'
 import type { Block } from 'payload'
 import { slugField } from 'payload'
 import { makeUniqueSlug } from '@/lib/makeUniqueSlug'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { lexicalEditor, EXPERIMENTAL_TableFeature } from '@payloadcms/richtext-lexical'
 import { BlocksFeature } from '@payloadcms/richtext-lexical'
 
 const DisclaimerBlock: Block = {
@@ -110,6 +110,7 @@ export const BlogPosts: CollectionConfig = {
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
+          EXPERIMENTAL_TableFeature(),
           BlocksFeature({
             blocks: [DisclaimerBlock],
           }),
