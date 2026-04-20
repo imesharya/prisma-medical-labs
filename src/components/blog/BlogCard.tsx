@@ -69,10 +69,12 @@ const BlogCard = ({ post }: { post: PopulatedBlogPost }) => {
 
           {/* Metadata */}
           <div className="flex items-center gap-4 pt-4 border-t border-border/50 text-xs text-muted-foreground">
-            <div className="flex items-center gap-1.5">
-              <User className="w-3.5 h-3.5" />
-              <span>{post.author}</span>
-            </div>
+            {post.author ? (
+              <div className="flex items-center gap-1.5">
+                <User className="w-3.5 h-3.5" />
+                <span>{post.author}</span>
+              </div>
+            ) : null}
             <div className="flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5" />
               <time dateTime={post.publishedAt ?? undefined}>{formattedDate}</time>
