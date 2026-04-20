@@ -18,16 +18,16 @@ interface PageProps {
   searchParams: Promise<{
     page?: string
     title?: string
-    categories?: string[]
+    category?: string[]
   }>
 }
 
 export default async function Page({ searchParams }: PageProps) {
-  const { categories, title } = await searchParams
+  const { category } = await searchParams
   const payload = await getPayload({ config })
   const result = await payload.find({
     collection: 'blog-posts',
-    where: { status: { equals: 'published' }, ...(categories && { category: { in: categories } }) },
+    where: { status: { equals: 'published' }, ...(category && { category: { in: category } }) },
     sort: '-publishedAt',
     limit: 20,
     depth: 1,
@@ -123,9 +123,13 @@ export default async function Page({ searchParams }: PageProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post) => (
-              <BlogCard key={post.id} post={post} />
-            ))}
+            {posts.length > 0 ? (
+              posts.map((post) => <BlogCard key={post.id} post={post} />)
+            ) : (
+              <p className="col-span-full text-xl md:text-2xl text-muted-foreground text-center">
+                لا توجد مقالات
+              </p>
+            )}
           </div>
         </div>
       </section>

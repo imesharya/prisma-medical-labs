@@ -1,26 +1,18 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { BlogCategory } from '@/payload-types'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '../ui/button'
+import { useRouter } from 'nextjs-toploader/app'
 
 const BlogFilters = ({ blogCategories }: { blogCategories: BlogCategory[] }) => {
-  const [_, setIsLoading] = useState<boolean>(false)
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  useEffect(() => {
-    setIsLoading(false)
-  }, [searchParams])
-
   function handleCategoryParams(selected: string | undefined) {
-    if (selected !== searchParams.get('category')) {
-      setIsLoading(true)
-    }
     const urlParams = new URLSearchParams(window.location.search)
 
     if (selected) {

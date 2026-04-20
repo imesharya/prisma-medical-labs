@@ -83,6 +83,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     collection: 'blog-posts',
     where: {
       category: { equals: post.category },
+      id: { not_equals: post.id },
     },
     limit: 3,
   })) as { docs: PopulatedBlogPost[] }
