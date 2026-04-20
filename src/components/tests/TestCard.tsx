@@ -1,7 +1,7 @@
-import { Separator } from './ui/separator'
-import { Button } from './ui/button'
+import { Separator } from '@/components/ui/separator'
+import { Button } from '@/components/ui/button'
 import { Test } from '@/payload-types'
-import SaudiPrice from './shared/SaudiPrice'
+import SaudiPrice from '@/components/shared/SaudiPrice'
 
 const TestCard = ({ test }: { test: Test }) => {
   return (

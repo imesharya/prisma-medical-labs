@@ -1,4 +1,4 @@
-import TestCard from '@/components/TestCard'
+import TestCard from '@/components/tests/TestCard'
 import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
 import { getPayload } from 'payload'
