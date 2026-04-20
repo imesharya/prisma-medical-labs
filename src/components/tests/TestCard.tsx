@@ -1,7 +1,7 @@
 import { Separator } from './ui/separator'
 import { Button } from './ui/button'
 import { Test } from '@/payload-types'
-import SaudiPrice from './SaudiPrice'
+import SaudiPrice from './shared/SaudiPrice'
 
 const TestCard = ({ test }: { test: Test }) => {
   return (

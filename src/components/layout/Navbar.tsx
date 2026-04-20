@@ -135,7 +135,7 @@ const Navbar = () => {
                         <div className="absolute inset-s-0 top-full pt-2">
                           <div className="bg-card shadow-xl rounded-xl py-2 w-56 border border-border">
                             <ul className="flex flex-col">
-                              {link.children.map((child: any) => (
+                              {link.children.map((child) => (
                                 <li key={child.label}>
                                   <Link
                                     href={child.href}

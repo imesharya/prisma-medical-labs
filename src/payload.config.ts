@@ -14,13 +14,25 @@ import { PackageTypes } from './collections/PackageTypes'
 import { Media } from './collections/media'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { BlogCategories } from './collections/BlogCategories'
+import { BlogPosts } from './collections/BlogPost'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
   // Define and configure your collections in this array
-  collections: [Media, TestCategories, Tests, PackageTypes, PackageCategories, Packages],
+  collections: [
+    Media,
+    TestCategories,
+    Tests,
+    PackageTypes,
+    PackageCategories,
+    Packages,
+    BlogCategories,
+    BlogPosts,
+  ],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',
@@ -41,6 +53,7 @@ export default buildConfig({
     supportedLanguages: { ar, en },
   },
   sharp,
+  editor: lexicalEditor({}),
   plugins: [
     // imagekitPlugin({
     //   config: {

@@ -1,27 +1,23 @@
 import { makeUniqueSlug } from '@/lib/makeUniqueSlug'
-import { slugField, type CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload'
+import { slugField } from 'payload'
 
-export const TestCategories: CollectionConfig = {
-  slug: 'test-categories',
-  access: {
-    read: () => true,
-  },
+export const BlogCategories: CollectionConfig = {
+  slug: 'blog-categories',
   labels: {
-    singular: 'فئة تحليل',
-    plural: 'فئات التحاليل',
+    singular: 'تصنيف',
+    plural: 'تصنيفات المدونة',
   },
   admin: {
     useAsTitle: 'name',
-    group: 'التحاليل',
-    defaultColumns: ['name', 'slug'],
-    listSearchableFields: ['name', 'slug'],
+    group: 'المدونة',
   },
   fields: [
     {
       name: 'name',
       type: 'text',
       required: true,
-      label: 'اسم الفئة',
+      label: 'الاسم',
     },
     slugField({
       name: 'slug',
@@ -43,13 +39,9 @@ export const TestCategories: CollectionConfig = {
       overrides: makeUniqueSlug,
     }),
     {
-      name: 'displayOrder',
-      type: 'number',
-      required: false,
-      defaultValue: 1,
-      label: 'ترتيب العرض',
-      admin: { position: 'sidebar' },
+      name: 'description',
+      type: 'textarea',
+      label: 'الوصف',
     },
   ],
-  timestamps: true,
 }

@@ -1,4 +1,4 @@
-import PackageTypes from '@/components/FeaturedPackages'
+import PackageTypes from '@/components/homepage/FeaturedPackages'
 
 const page = () => {
   return <PackageTypes />

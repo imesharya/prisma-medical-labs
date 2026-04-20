@@ -13,7 +13,7 @@ import { BsWhatsapp } from 'react-icons/bs'
 import { Media, Package, Test, TestCategory } from '@/payload-types'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
-import SaudiPrice from '@/components/SaudiPrice'
+import SaudiPrice from '@/components/shared/SaudiPrice'
 
 interface PackagesListProps {
   packageTypeId: string

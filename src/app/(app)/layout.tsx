@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
 import { tajawal } from './config/fonts'
-import WhatsappButton from '@/components/WhatsappButton'
-import PhoneButton from '@/components/PhoneButton'
+import WhatsappButton from '@/components/shared/WhatsappButton'
+import PhoneButton from '@/components/shared/PhoneButton'
 import NextTopLoader from 'nextjs-toploader'
+import { ReactNode } from 'react'
 
 export const metadata: Metadata = {
   title: 'مختبرات بريزما الطبية',
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode
 }>) {
   return (
     <html dir="rtl" lang="ar">
