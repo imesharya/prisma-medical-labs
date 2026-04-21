@@ -181,9 +181,11 @@ const Navbar = () => {
               <button className="px-5 py-2.5 text-sm font-medium gradient-bg text-primary-foreground rounded-xl gradient-bg-hover shadow-md">
                 استشارة طبية
               </button>
-              <button className="px-5 py-2.5 text-sm font-medium bg-card text-foreground border border-border rounded-xl hover:bg-muted transition-all duration-200">
-                احجز الآن
-              </button>
+              <Link href="/#contact">
+                <button className="px-5 py-2.5 text-sm font-medium bg-card text-foreground border border-border rounded-xl hover:bg-muted transition-all duration-200">
+                  احجز الآن
+                </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
