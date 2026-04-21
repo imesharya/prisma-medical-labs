@@ -27,23 +27,31 @@ export default async function Page({ searchParams }: PageProps) {
   const payload = await getPayload({ config })
   const result = await payload.find({
     collection: 'blog-posts',
-    where: { status: { equals: 'published' }, ...(category && { category: { in: category } }) },
+    where: {
+      status: { equals: 'published' },
+      ...(category && { 'category.name': { equals: category } }),
+    },
     sort: '-publishedAt',
-    limit: 20,
+    limit: 100,
     depth: 1,
   })
 
   const posts: PopulatedBlogPost[] = result.docs as PopulatedBlogPost[]
   const { docs: categoryFilters } = await payload.find({
     collection: 'blog-categories',
-    limit: 20,
+    limit: 100,
   })
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Hero Section */}
-      <section className="relative py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+    <div className="w-full">
+      <section className="relative w-full h-80 md:h-96 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+        </div>
+        {/* Hero Section */}
+        <div className="relative h-full flex flex-col items-center justify-center px-4 md:px-6 lg:px-8 text-center">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-balance">
             مدونة مختبرات بريزما
           </h1>
