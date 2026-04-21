@@ -1,3 +1,4 @@
+import DnaCanvas from '@/components/background/DnaCanvas'
 import HomeVisitForm from '@/components/home-visit/HomeVisitForm'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/lib/icon'
@@ -62,7 +63,9 @@ const page = () => {
       </section>
 
       {/* Form Section */}
-      <section className="relative w-full overflow-hidden px-4 py-16">
+      <section className="relative w-full overflow-hidden px-4 py-16 border-t border-border">
+        <DnaCanvas />
+
         <div className="relative h-full flex flex-col items-center justify-center px-4 md:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 w-fit px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full mb-6">
             <Sparkles className="h-4 w-4 text-primary" />
