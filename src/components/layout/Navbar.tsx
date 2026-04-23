@@ -94,7 +94,7 @@ const Navbar = () => {
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
               <Image
-                className="h-10 lg:h-12"
+                className="h-10 lg:h-12 w-auto"
                 src="/prisma-logo.png"
                 alt="Prisma Logo"
                 height={48}
@@ -217,7 +217,7 @@ const Navbar = () => {
         {/* Mobile Header */}
         <div className="flex items-center justify-between p-4 border-b border-border">
           <Image
-            className="h-10"
+            className="h-10 w-auto"
             src="/prisma-logo.png"
             alt="Prisma Logo"
             height={40}
