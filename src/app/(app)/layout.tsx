@@ -54,7 +54,7 @@ export default function RootLayout({
       <body className={`${tajawal.variable} font-tajawal flex flex-col w-full antialiased`}>
         <NextTopLoader color="#006bfa" showSpinner={false} />
         <Navbar />
-        <main className="flex flex-col min-h-screen bg-background">{children}</main>
+        <main className="flex flex-col min-h-[calc(100vh-80px)] bg-background">{children}</main>
         <Footer />
         <WhatsappButton />
         <PhoneButton />
