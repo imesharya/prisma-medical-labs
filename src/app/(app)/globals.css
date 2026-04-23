@@ -324,3 +324,19 @@
 .animate-spark-float {
   animation: spark 5s ease-in-out infinite;
 }
+
+@keyframes floatPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+
+.animate-floatPulse {
+  animation: floatPulse 2.5s ease-in-out infinite;
+}
