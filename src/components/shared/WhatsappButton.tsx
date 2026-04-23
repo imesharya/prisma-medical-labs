@@ -16,7 +16,7 @@ const WhatsappButton = () => {
       <span
         className="
           absolute h-full w-full rounded-full
-          border-2 border-sky-300/40
+          border-2 border-b-emerald-300/40
           animate-[floatPulse_2.5s_ease-in-out_infinite]
         "
       />
