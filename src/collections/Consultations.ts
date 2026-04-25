@@ -38,6 +38,7 @@ export const Consultations: CollectionConfig = {
       name: 'date',
       type: 'date',
       required: true,
+      timezone: true,
       label: 'التاريخ',
       admin: {
         date: {
@@ -50,6 +51,7 @@ export const Consultations: CollectionConfig = {
       name: 'time',
       type: 'date',
       required: true,
+      timezone: true,
       label: 'الوقت',
       admin: {
         date: {
@@ -80,13 +82,11 @@ export const Consultations: CollectionConfig = {
   ],
   hooks: {
     beforeValidate: [
-      // Prevent double-booking (critical for single consultant)
       async ({ data, req, operation }) => {
-        if (operation === 'create' && data && data.date && data.time) {
+        if (operation === 'create' && data?.time) {
           const existing = await req.payload.find({
             collection: 'consultations',
             where: {
-              date: { equals: data.date },
               time: { equals: data.time },
               status: { not_equals: 'cancelled' },
             },
@@ -98,19 +98,6 @@ export const Consultations: CollectionConfig = {
           }
         }
       },
-    ],
-    beforeChange: [
-      // Auto-generate reference number
-      async ({ data, operation }) => {
-        if (operation === 'create') {
-          data.referenceNumber = `REF-${Date.now().toString().slice(-8)}`
-        }
-        return data
-      },
-    ],
-    afterChange: [
-      // Optional: Queue a job to send WhatsApp confirmation
-      // Example using Payload Jobs (v3)
     ],
   },
 }

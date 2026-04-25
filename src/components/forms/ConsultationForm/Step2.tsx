@@ -5,6 +5,7 @@ import { TConsultationScheme } from '@/lib/validators/consultation-validator'
 import { Consultation } from '@/payload-types'
 import { useMemo, useEffect } from 'react'
 import { Controller, UseFormReturn, useWatch } from 'react-hook-form'
+import { toClinicISO, fromClinicISO } from '@/lib/utils'
 
 type Props = {
   form: UseFormReturn<TConsultationScheme>
@@ -12,51 +13,48 @@ type Props = {
 }
 
 const Step2 = ({ form, activeConsultations }: Props) => {
-  const { control, setValue, trigger } = form
+  const { control } = form
 
   /* -------------------------------------------------- */
-  /* 1.  buildSlotsFor – unchanged                      */
+  /* 1.  buildSlotsFor     */
   /* -------------------------------------------------- */
   const buildSlotsFor = (day: Date) => {
-    const selectedDay = new Date(day)
-    selectedDay.setHours(0, 0, 0, 0)
+    // day arrives as a Date representing midnight in clinic time
+    const startHour = 9
+    const slots: { startTime: Date; endTime: Date; iso: string }[] = []
 
-    const now = new Date()
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-    const isToday = selectedDay.getTime() === today.getTime()
-
-    let startHour = 9
-    if (isToday) {
-      const nextHour = new Date(now)
-      nextHour.setHours(nextHour.getHours() + 1, 0, 0, 0)
-      startHour = Math.max(9, nextHour.getHours())
-    }
-
-    const slots: { startTime: Date; endTime: Date }[] = []
     for (let h = startHour; h < 17; h++) {
-      const start = new Date(selectedDay)
+      const start = new Date(day)
       start.setHours(h, 0, 0, 0)
-      const end = new Date(selectedDay)
+      const end = new Date(day)
       end.setHours(h + 1, 0, 0, 0)
-      slots.push({ startTime: start, endTime: end })
+      slots.push({
+        startTime: start,
+        endTime: end,
+        iso: toClinicISO(start), // ← explicit +03:00 offset
+      })
     }
     return slots
   }
 
   /* -------------------------------------------------- */
-  /* 2.  isSlotBooked  –  NEW                           */
+  /* 2.  isSlotBooked – FIXED                           */
   /* -------------------------------------------------- */
-  const isSlotBooked = (start: Date, end: Date) =>
+  const isSlotBooked = (slotStart: Date, slotEnd: Date) =>
     activeConsultations.some((c) => {
       if (c.status === 'cancelled') return false
-      const cStart = new Date(c.date) // already a full date string
-      const cEnd = new Date(c.time) // already a full date string (end-time)
-      return cStart < end && cEnd > start // overlap
+
+      // c.date = dayOnly value, c.time = actual appointment start (both ISO strings)
+      const apptStart = fromClinicISO(c.time as string) // appointment start datetime
+      const apptEnd = new Date(apptStart)
+      apptEnd.setHours(apptStart.getHours() + 1) // assume 1-hour slots
+
+      // standard interval overlap: [apptStart, apptEnd) vs [slotStart, slotEnd)
+      return apptStart < slotEnd && apptEnd > slotStart
     })
 
   /* -------------------------------------------------- */
-  /* 3.  isDayFullyBooked  –  NEW                       */
+  /* 3.  isDayFullyBooked                               */
   /* -------------------------------------------------- */
   const isDayFullyBooked = (day: Date) => {
     const slots = buildSlotsFor(day)
@@ -65,7 +63,7 @@ const Step2 = ({ form, activeConsultations }: Props) => {
   }
 
   /* -------------------------------------------------- */
-  /* 4.  validDates – unchanged                         */
+  /* 4.  validDates                                     */
   /* -------------------------------------------------- */
   const validDates = useMemo(() => {
     const dates = Array.from({ length: 7 }, (_, i) => {
@@ -74,34 +72,37 @@ const Step2 = ({ form, activeConsultations }: Props) => {
       d.setHours(0, 0, 0, 0)
       return d
     })
+    // Filter out today if it's past 4 PM (no slots left)
     return dates.filter((d) => buildSlotsFor(d).length > 0)
   }, [])
 
   /* -------------------------------------------------- */
-  /* 5.  requestedDate + timeSlots – unchanged          */
+  /* 5.  requestedDate + timeSlots                      */
   /* -------------------------------------------------- */
   const requestedDate = useWatch({ control, name: 'step2.requestedDate' })
 
   const timeSlots = useMemo(() => {
     if (!requestedDate) return []
-    return buildSlotsFor(new Date(requestedDate))
+    // Parse back from the offset string to a Date for display logic
+    return buildSlotsFor(fromClinicISO(requestedDate))
   }, [requestedDate])
 
   /* -------------------------------------------------- */
-  /* 6.  clear slot on day change – unchanged           */
+  /* 6.  clear slot on day change                       */
   /* -------------------------------------------------- */
   useEffect(() => {
     form.resetField('step2.requestedTimeSlot', { defaultValue: '' })
   }, [requestedDate])
 
   /* -------------------------------------------------- */
-  /* 7.  formatters – unchanged                         */
+  /* 7.  formatters                                     */
   /* -------------------------------------------------- */
   const formatDate = (d: Date) =>
     new Intl.DateTimeFormat('ar-EG', {
       weekday: 'long',
       day: 'numeric',
       month: 'long',
+      timeZone: 'Asia/Riyadh',
     }).format(d)
 
   const formatTime = (d: Date) =>
@@ -109,6 +110,7 @@ const Step2 = ({ form, activeConsultations }: Props) => {
       hour: '2-digit',
       minute: '2-digit',
       hour12: true,
+      timeZone: 'Asia/Riyadh',
     }).format(d)
 
   const badgeText = (booked: boolean) => (booked ? 'محجوز' : 'متاح')
@@ -130,7 +132,7 @@ const Step2 = ({ form, activeConsultations }: Props) => {
 
               <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-cyan-500/30">
                 {validDates.map((d) => {
-                  const iso = d.toISOString()
+                  const iso = toClinicISO(d) // ← explicit offset
                   const fullyBooked = isDayFullyBooked(d)
                   return (
                     <label
@@ -152,7 +154,6 @@ const Step2 = ({ form, activeConsultations }: Props) => {
                         className={`whitespace-nowrap peer-checked:border-teal-500 peer-checked:bg-teal-500/10 border-2 border-white/10 bg-white/5 px-6 py-4 rounded-3xl transition-all`}
                       >
                         <div className="text-center font-semibold mb-2">{formatDate(d)}</div>
-                        {/* badge */}
                         <div className="text-[10px] text-center px-2 py-0.5 rounded-full bg-white/10">
                           {badgeText(fullyBooked)}
                         </div>
@@ -178,7 +179,7 @@ const Step2 = ({ form, activeConsultations }: Props) => {
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {timeSlots.map((slot) => {
-                  const iso = slot.startTime.toISOString()
+                  const iso = slot.iso // ← already formatted with offset
                   const booked = isSlotBooked(slot.startTime, slot.endTime)
                   return (
                     <label
@@ -200,7 +201,6 @@ const Step2 = ({ form, activeConsultations }: Props) => {
                         <div className="text-lg text-center font-semibold">
                           {formatTime(slot.startTime)}
                         </div>
-                        {/* badge */}
                         <div className="text-[10px] text-center mt-1 px-2 py-0.5 rounded-full bg-white/10">
                           {badgeText(booked)}
                         </div>

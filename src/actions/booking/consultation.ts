@@ -3,8 +3,29 @@
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { consultationSchema, TConsultationScheme } from '@/lib/validators/consultation-validator'
-import { generateRef } from '@/lib/utils'
+import { CLINIC_TZ_OFFSET, generateRef } from '@/lib/utils'
 import { APIError } from 'payload'
+
+function normalizeToClinicISO(isoString: string): string {
+  // If the frontend already sends +03:00, this is a no-op.
+  // If it sends a Z string, we convert it to the required offset.
+  const d = new Date(isoString)
+  const pad = (n: number) => String(n).padStart(2, '0')
+  // Use Intl to get clinic-time parts
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: CLINIC_TZ_OFFSET,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).formatToParts(d)
+
+  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? '00'
+  return `${get('year')}-${get('month')}-${get('day')}T${get('hour')}:${get('minute')}:${get('second')}+03:00`
+}
 
 const payload = await getPayload({ config: configPromise })
 
@@ -42,8 +63,10 @@ export const submitConsultationForm = async (
         fullName,
         phoneNumber,
         consultationType,
-        date: requestedDate,
-        time: requestedTimeSlot,
+        date: normalizeToClinicISO(requestedDate),
+        time: normalizeToClinicISO(requestedTimeSlot),
+        date_tz: 'Asia/Riyadh',
+        time_tz: 'Asia/Riyadh',
         referenceNumber,
         status: 'pending',
       },

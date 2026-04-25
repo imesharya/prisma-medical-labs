@@ -35,6 +35,12 @@ export default buildConfig({
     BlogPosts,
     Consultations,
   ],
+  admin: {
+    timezones: {
+      defaultTimezone: 'Asia/Riyadh',
+      supportedTimezones: [{ label: 'Riyadh', value: 'Asia/Riyadh' }],
+    },
+  },
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',
