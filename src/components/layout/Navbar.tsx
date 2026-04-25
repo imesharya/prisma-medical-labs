@@ -342,7 +342,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile CTA Buttons */}
-        <div className="p-6 space-y-3 border-t border-border">
+        <div className="flex flex-col gap-2 p-6 border-t border-border">
           <Link href="/consultation">
             <button
               onClick={() => setMobileMenuOpen(false)}

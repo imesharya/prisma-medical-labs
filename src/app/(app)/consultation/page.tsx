@@ -25,14 +25,14 @@ export default async function Page() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a2332]/30 to-[#1a2332]/70" />
 
-        <div className="relative z-10 text-center max-w-2xl px-6">
+        <div className="relative z-10 text-center max-w-2xl pb-4 px-6">
           <h1 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-[#00bfff] to-[#00a99d] bg-clip-text text-transparent">
             احجز استشارتك الطبية
           </h1>
-          <p className="text-lg md:text-xl text-[#a8b5c3] mb-8 leading-relaxed">
+          <p className="text-lg md:text-xl text-[#a8b5c3] mb-4 leading-relaxed">
             تحدّث مع استشاريينا المتخصصين — نساعدك قبل التحليل أو نشرح لك نتائجك بدقة وعناية
           </p>
-          <div className="flex flex-wrap justify-center gap-6 text-[#a8b5c3]">
+          <div className="flex flex-wrap justify-center gap-2 text-[#a8b5c3]">
             <span className="flex items-center gap-2">
               <span className="text-primary">✓</span> مجانية
             </span>
