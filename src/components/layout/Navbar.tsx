@@ -343,18 +343,22 @@ const Navbar = () => {
 
         {/* Mobile CTA Buttons */}
         <div className="p-6 space-y-3 border-t border-border">
-          <button
-            onClick={() => setMobileMenuOpen(false)}
-            className="w-full py-3.5 text-base font-medium gradient-bg text-primary-foreground rounded-xl shadow-md"
-          >
-            استشارة طبية
-          </button>
-          <button
-            onClick={() => setMobileMenuOpen(false)}
-            className="w-full py-3.5 text-base font-medium bg-muted text-foreground rounded-xl hover:bg-muted/80 transition-colors"
-          >
-            احجز الآن
-          </button>
+          <Link href="/consultation">
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-3.5 text-base font-medium gradient-bg text-primary-foreground rounded-xl shadow-md"
+            >
+              استشارة طبية
+            </button>
+          </Link>
+          <Link href="/#contact">
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-3.5 text-base font-medium bg-muted text-foreground rounded-xl hover:bg-muted/80 transition-colors"
+            >
+              احجز الآن
+            </button>
+          </Link>
         </div>
       </div>
     </>

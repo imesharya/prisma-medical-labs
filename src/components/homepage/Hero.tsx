@@ -55,7 +55,7 @@ const HERO_SLIDES = [
     description:
       'تحدث مباشرة مع استشاريينا المتخصصين عبر الهاتف أو الفيديو — استشارة فورية، سرية تامة، وخطة علاجية مخصصة',
     ctaText: 'احجز موعدك الآن',
-    ctaLink: '/#contact',
+    ctaLink: '/consultation',
     badgeBgClass: 'bg-violet-500/10',
     badgeTextClass: 'text-violet-500',
     variant: 'secondary',
