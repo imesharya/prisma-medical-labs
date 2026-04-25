@@ -32,7 +32,6 @@ import { Field, FieldLabel, FieldError, FieldGroup } from '@/components/ui/field
 const bookingSchema = z.object({
   patientName: z.string().min(1, 'الرجاء إدخال الاسم'),
   patientPhone: z.string().regex(/05\d{8}/, 'رقم الجوال يجب أن يكون 05xxxxxxxx'),
-  collectionMethod: z.enum(['زيارة الفرع', 'سحب منزلي']),
   clinicBranch: z.string().optional(),
   requestedDate: z.string().min(1, 'الرجاء اختيار التاريخ'),
   requestedTimeSlot: z.string().min(1, 'الرجاء اختيار الموعد'),
@@ -56,7 +55,6 @@ export default function PackageBookingDialog({ pkg, activeConsultations = [] }: 
     defaultValues: {
       patientName: '',
       patientPhone: '',
-      collectionMethod: 'زيارة الفرع',
       clinicBranch: '',
       requestedDate: '',
       requestedTimeSlot: '',
@@ -64,7 +62,6 @@ export default function PackageBookingDialog({ pkg, activeConsultations = [] }: 
   })
 
   const { control, setValue, trigger, resetField, handleSubmit, formState, watch } = form
-  const collectionMethod = watch('collectionMethod')
 
   /* -------------------------------------------------- */
   /* 3.  same helpers as Step2                          */
@@ -225,27 +222,22 @@ export default function PackageBookingDialog({ pkg, activeConsultations = [] }: 
                 />
               </Field>
 
-              {/*  collection method  */}
+              {/*  branch selector  */}
               <Field>
-                <FieldLabel className="block mb-2 font-medium">طريقة جمع العينة *</FieldLabel>
+                <FieldLabel className="block mb-2 font-medium">فرع العيادة *</FieldLabel>
                 <Controller
-                  name="collectionMethod"
+                  name="clinicBranch"
                   control={control}
+                  rules={{ required: 'الرجاء اختيار الفرع' }}
                   render={({ field, fieldState }) => (
                     <>
-                      <Select
-                        value={field.value}
-                        onValueChange={(v) => {
-                          field.onChange(v)
-                          if (v === 'سحب منزلي') setValue('clinicBranch', '')
-                        }}
-                      >
+                      <Select value={field.value} onValueChange={field.onChange} required>
                         <SelectTrigger>
-                          <SelectValue />
+                          <SelectValue placeholder="اختر الفرع" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="زيارة الفرع">زيارة الفرع</SelectItem>
-                          <SelectItem value="سحب منزلي">سحب منزلي</SelectItem>
+                          <SelectItem value="النرجس">فرع النرجس</SelectItem>
+                          <SelectItem value="القادسية">فرع القادسية</SelectItem>
                         </SelectContent>
                       </Select>
                       {fieldState.error && <FieldError errors={[fieldState.error]} />}
@@ -253,32 +245,6 @@ export default function PackageBookingDialog({ pkg, activeConsultations = [] }: 
                   )}
                 />
               </Field>
-
-              {/*  branch selector  */}
-              {collectionMethod === 'زيارة الفرع' && (
-                <Field>
-                  <FieldLabel className="block mb-2 font-medium">فرع العيادة *</FieldLabel>
-                  <Controller
-                    name="clinicBranch"
-                    control={control}
-                    rules={{ required: 'الرجاء اختيار الفرع' }}
-                    render={({ field, fieldState }) => (
-                      <>
-                        <Select value={field.value} onValueChange={field.onChange} required>
-                          <SelectTrigger>
-                            <SelectValue placeholder="اختر الفرع" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="النرجس">فرع النرجس</SelectItem>
-                            <SelectItem value="القادسية">فرع القادسية</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        {fieldState.error && <FieldError errors={[fieldState.error]} />}
-                      </>
-                    )}
-                  />
-                </Field>
-              )}
 
               {/*  date (same cards as Step2)  */}
               <Field>
