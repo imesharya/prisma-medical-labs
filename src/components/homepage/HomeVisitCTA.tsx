@@ -2,6 +2,7 @@
 
 import { Sparkles, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
+import { Button } from '../ui/button'
 
 interface HomeVisitCTAProps {
   onBookClick?: () => void
@@ -16,7 +17,7 @@ const HomeVisitCTA = ({ onBookClick }: HomeVisitCTAProps) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="relative bg-gradient-to-r from-blue-600 to-blue-700 rounded-3xl overflow-hidden shadow-2xl">
+        <div className="relative gradient-bg-secondary rounded-3xl overflow-hidden shadow-2xl">
           {/* Gradient overlay for depth */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/15 to-transparent" />
 
@@ -42,14 +43,15 @@ const HomeVisitCTA = ({ onBookClick }: HomeVisitCTAProps) => {
 
             {/* Right CTA */}
             <div className="flex-shrink-0">
-              <Link href={'/#contact'}>
-                <button
+              <Link href={'/home-visit'}>
+                <Button
+                  variant={'outline'}
                   onClick={onBookClick}
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-600 rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-3 px-8 py-4  transition-all duration-300 hover:scale-105"
                 >
                   احجز زيارة منزلية الآن
                   <ArrowLeft className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
+                </Button>
               </Link>
             </div>
           </div>

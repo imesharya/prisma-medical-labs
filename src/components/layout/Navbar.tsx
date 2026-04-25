@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import { Button } from '../ui/button'
 
 const navLinks = [
   {
@@ -120,13 +121,22 @@ const Navbar = () => {
                     >
                       <Link
                         href={link.href}
-                        className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                        className={`group flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-all duration-200 ${
                           shouldExpand
-                            ? 'bg-primary/10 text-primary'
-                            : 'text-foreground/80 hover:text-foreground hover:bg-muted'
+                            ? 'text-foreground'
+                            : 'text-foreground/80 hover:text-foreground'
                         }`}
                       >
-                        {link.label}
+                        <span
+                          className={`relative inline-block ${
+                            shouldExpand
+                              ? "after:content-[''] after:absolute after:inset-x-0 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-[linear-gradient(135deg,var(--gradient-start),var(--gradient-end))]"
+                              : "after:content-[''] after:absolute after:inset-x-0 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-[linear-gradient(135deg,var(--gradient-start),var(--gradient-end))] after:scale-x-0 after:origin-right after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100"
+                          }`}
+                        >
+                          {link.label}
+                        </span>
+
                         <ChevronDown className="h-4 w-4 transition-transform duration-200" />
                       </Link>
 
@@ -163,13 +173,19 @@ const Navbar = () => {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                        isActive
-                          ? 'bg-primary/10 text-primary'
-                          : 'text-foreground/80 hover:text-foreground hover:bg-muted'
+                      className={`group flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                        isActive ? 'text-foreground' : 'text-foreground/80 hover:text-foreground'
                       }`}
                     >
-                      {link.label}
+                      <span
+                        className={`relative inline-block ${
+                          isActive
+                            ? "after:content-[''] after:absolute after:inset-x-0 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-[linear-gradient(135deg,var(--gradient-start),var(--gradient-end))]"
+                            : "after:content-[''] after:absolute after:inset-x-0 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-[linear-gradient(135deg,var(--gradient-start),var(--gradient-end))] after:scale-x-0 after:origin-right after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100"
+                        }`}
+                      >
+                        {link.label}
+                      </span>
                     </Link>
                   </li>
                 )
@@ -178,13 +194,22 @@ const Navbar = () => {
 
             {/* Desktop CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
-              <button className="px-5 py-2.5 text-sm font-medium gradient-bg text-primary-foreground rounded-xl gradient-bg-hover shadow-md">
-                استشارة طبية
-              </button>
+              <Link href="/consultation">
+                <Button
+                  size={'sm'}
+                  className="px-5 py-2.5 text-sm font-medium gradient-bg text-primary-foreground gradient-bg-hover shadow-md"
+                >
+                  استشارة طبية
+                </Button>
+              </Link>
               <Link href="/#contact">
-                <button className="px-5 py-2.5 text-sm font-medium bg-card text-foreground border border-border rounded-xl hover:bg-muted transition-all duration-200">
+                <Button
+                  size={'sm'}
+                  variant={'outline'}
+                  className="px-5 py-2.5 text-sm font-medium bg-card text-foreground transition-all duration-200"
+                >
                   احجز الآن
-                </button>
+                </Button>
               </Link>
             </div>
 

@@ -7,6 +7,7 @@ import WhatsappButton from '@/components/shared/WhatsappButton'
 import PhoneButton from '@/components/shared/PhoneButton'
 import NextTopLoader from 'nextjs-toploader'
 import { ReactNode } from 'react'
+import { Toaster } from '@/components/ui/sonner'
 
 export const metadata: Metadata = {
   title: 'مختبرات بريزما الطبية',
@@ -58,6 +59,7 @@ export default function RootLayout({
         <Footer />
         <WhatsappButton />
         <PhoneButton />
+        <Toaster />
       </body>
     </html>
   )

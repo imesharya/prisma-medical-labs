@@ -2,6 +2,7 @@ import { Separator } from '@/components/ui/separator'
 import { Button } from '@/components/ui/button'
 import { Test } from '@/payload-types'
 import SaudiPrice from '@/components/shared/SaudiPrice'
+import { Calendar } from 'lucide-react'
 
 const TestCard = ({ test }: { test: Test }) => {
   return (
@@ -23,7 +24,10 @@ const TestCard = ({ test }: { test: Test }) => {
 
       <Separator className="h-[1px] flex-none" />
 
-      <Button className="flex-none">احجز مجاناً الآن</Button>
+      <Button variant={'secondary'} className="flex-none flex items-center gap-2">
+        <p>احجز مجاناً الآن</p>
+        <Calendar />
+      </Button>
     </div>
   )
 }

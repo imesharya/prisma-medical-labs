@@ -1,27 +1,27 @@
-import { Clock, FlaskConical, ShieldCheck, Users } from "lucide-react";
+import { Clock, FlaskConical, ShieldCheck, Users } from 'lucide-react'
 
 const metrics = [
   {
     icon: Users,
-    value: "+10,000",
-    label: "قصة ثقة",
+    value: '+10,000',
+    label: 'قصة ثقة',
   },
   {
     icon: Clock,
-    value: "بسرعة",
-    label: "نتائجك توصلك بأسرع وقت",
+    value: 'بسرعة',
+    label: 'نتائجك توصلك بأسرع وقت',
   },
   {
     icon: FlaskConical,
-    value: "+500",
-    label: "تحليل يغطي كل اللي تحتاجه",
+    value: '+500',
+    label: 'تحليل يغطي كل اللي تحتاجه',
   },
   {
     icon: ShieldCheck,
-    value: "100%",
-    label: "نتائج موثوقة ومعتمدة",
+    value: '100%',
+    label: 'نتائج موثوقة ومعتمدة',
   },
-];
+]
 
 const Metrics = () => {
   return (
@@ -32,9 +32,9 @@ const Metrics = () => {
             <div
               key={index}
               className={`flex flex-col items-center text-center px-3 py-4 md:px-6 md:py-5 ${
-                index < metrics.length - 1 ? "lg:border-l lg:border-border" : ""
-              } ${index % 2 === 0 ? "border-l border-border" : ""} ${
-                index < 2 ? "border-b border-border lg:border-b-0" : ""
+                index < metrics.length - 1 ? 'lg:border-l lg:border-border' : ''
+              } ${index % 2 === 0 ? 'border-l border-border' : ''} ${
+                index < 2 ? 'border-b border-border lg:border-b-0' : ''
               }`}
             >
               {/* Top row: Icon + Value */}
@@ -52,8 +52,9 @@ const Metrics = () => {
           ))}
         </div>
       </div>
+      <div className="w-full h-1 gradient-bg"></div>
     </section>
-  );
-};
+  )
+}
 
-export default Metrics;
+export default Metrics

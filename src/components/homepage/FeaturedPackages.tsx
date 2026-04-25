@@ -139,7 +139,7 @@ const PackageTypes = async () => {
           </div>
 
           {/* Headline */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-balance max-w-3xl">
+          <h2 className="text-4xl gradient-text md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-balance max-w-3xl">
             الأقسام الرئيسية
           </h2>
 

@@ -50,7 +50,7 @@ const BlogTeaser = ({ posts }: { posts: PopulatedBlogPost[] }) => {
             <span className="text-sm font-medium text-primary">المدونة الطبية</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-balance max-w-3xl">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl gradient-text font-bold tracking-tight leading-tight text-balance max-w-3xl">
             مقالات صحية موثوقة
           </h2>
 

@@ -28,6 +28,7 @@ const HERO_SLIDES = [
     ctaLink: '/packages',
     badgeBgClass: 'bg-primary/10',
     badgeTextClass: 'text-primary',
+    variant: 'default',
   },
   {
     id: 'slide-2',
@@ -42,6 +43,7 @@ const HERO_SLIDES = [
     ctaLink: '/prisma-ai',
     badgeBgClass: 'bg-emerald-500/10',
     badgeTextClass: 'text-emerald-500',
+    variant: 'secondary',
   },
   {
     id: 'slide-3',
@@ -56,6 +58,7 @@ const HERO_SLIDES = [
     ctaLink: '/#contact',
     badgeBgClass: 'bg-violet-500/10',
     badgeTextClass: 'text-violet-500',
+    variant: 'secondary',
   },
 ]
 
@@ -119,7 +122,11 @@ const Hero = () => {
                       {/* Heading */}
                       <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-balance leading-none">
                         {slide.headingStart}{' '}
-                        <span className="gradient-text">{slide.headingGradient}</span>
+                        <span
+                          className={`${slide.variant === 'default' ? 'gradient-text' : 'gradient-text-secondary'}`}
+                        >
+                          {slide.headingGradient}
+                        </span>
                       </h1>
 
                       {/* Description */}
@@ -130,7 +137,10 @@ const Hero = () => {
                       {/* CTA */}
                       <div className="mt-10">
                         <Link href={slide.ctaLink}>
-                          <Button className="text-base font-semibold px-8">
+                          <Button
+                            variant={slide.variant as 'default' | 'secondary'}
+                            className="text-base font-semibold px-8"
+                          >
                             {slide.ctaText}
                             <ArrowLeft className="h-5 w-5" />
                           </Button>

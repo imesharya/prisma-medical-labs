@@ -46,7 +46,7 @@ const page = () => {
             <Sparkles className="h-4 w-4 text-primary" />
             <span className="text-sm font-medium text-primary">مختبرات بريزما الطبية</span>
           </div>
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-balance">
+          <h2 className="gradient-text text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-balance">
             من نحن
           </h2>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed text-balance">
@@ -84,7 +84,7 @@ const page = () => {
             <Sparkles className="h-4 w-4 text-primary" />
             <span className="text-sm font-medium text-primary">مختبرات بريزما الطبية</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
+          <h1 className="gradient-text-secondary text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
             قيمنا الأساسية
           </h1>
 

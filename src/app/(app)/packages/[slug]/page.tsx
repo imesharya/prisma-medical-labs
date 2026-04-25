@@ -14,6 +14,7 @@ import { Media, Package, Test, TestCategory } from '@/payload-types'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import SaudiPrice from '@/components/shared/SaudiPrice'
+import PackageBookingDialog from '@/components/PackageBookingDialog'
 
 interface PackagesListProps {
   packageTypeId: string
@@ -98,7 +99,7 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
               )}
 
               <div className="flex items-center justify-between gap-2">
-                {/* Price Section (unchanged - matches your card design) */}
+                {/* Price Section */}
                 <div className="flex flex-col justify-center">
                   {pkg.discountedPrice ? (
                     <>
@@ -129,12 +130,10 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                 </div>
               </div>
 
-              {/* CTA Button */}
-              <Button className="w-full mt-auto gap-2 rounded-lg">
-                اختر الباقة
-                <ArrowLeft className="h-4 w-4" />
-              </Button>
+              {/* CTA: "اختر الباقة" now triggers the abstracted client dialog */}
+              <PackageBookingDialog pkg={pkg} />
 
+              {/* Existing tests dialog (unchanged) */}
               {pkg.tests && pkg.tests.length > 0 ? (
                 <Dialog>
                   <DialogTrigger asChild>
@@ -144,7 +143,7 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                   </DialogTrigger>
 
                   <DialogContent className="sm:max-w-2xl max-h-[90vh] flex flex-col p-0 gap-0 overflow-hidden">
-                    {/* Header */}
+                    {/* ... (your existing tests dialog content - unchanged) ... */}
                     <div className="p-6 pb-4 border-b border-border">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 text-right">
@@ -160,7 +159,6 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                       </div>
 
                       <div className="flex items-center justify-start gap-3 mt-4">
-                        {/* Price */}
                         <div className="px-4 py-2 border border-border rounded-full flex justify-center gap-2">
                           {pkg.discountedPrice ? (
                             <>
@@ -178,7 +176,6 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                           )}
                         </div>
 
-                        {/* Tests count pill */}
                         <div className="flex items-center gap-2 px-4 py-2 border border-border rounded-full">
                           <span className="text-xl font-bold text-foreground">
                             {pkg.tests.length}
@@ -187,7 +184,6 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                         </div>
                       </div>
 
-                      {/* Description */}
                       {pkg.description && (
                         <DialogDescription className="text-sm text-muted-foreground mt-3 text-right">
                           {pkg.description}
@@ -199,7 +195,6 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                       <div className="p-6 space-y-6">
                         {categoryEntries.map(([category, categoryTests], categoryIndex) => (
                           <div key={category}>
-                            {/* Category header */}
                             <div className="flex items-center justify-start gap-3 mb-4">
                               <span className="size-7 rounded-full bg-[#00B5AD] text-white text-sm font-medium flex items-center justify-center">
                                 {categoryIndex + 1}
@@ -207,7 +202,6 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                               <span className="font-bold text-foreground">{category}</span>
                             </div>
 
-                            {/* Tests grid */}
                             <div
                               className={`grid gap-4 ${categoryTests.length === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}
                             >
@@ -222,13 +216,11 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                                     </div>
                                     <div className="flex-1 text-right">
                                       <h3 className="font-bold text-foreground">{test.name}</h3>
-                                      <div className="flex items-center justify-start gap-2 mt-2 flex-wrap">
-                                        {test.badge && (
-                                          <span className="px-3 py-1 text-xs font-medium rounded-full border border-[#00B5AD] text-[#00B5AD]">
-                                            {test.badge}
-                                          </span>
-                                        )}
-                                      </div>
+                                      {test.badge && (
+                                        <span className="px-3 py-1 text-xs font-medium rounded-full border border-[#00B5AD] text-[#00B5AD] mt-2 inline-block">
+                                          {test.badge}
+                                        </span>
+                                      )}
                                       {test.description && (
                                         <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
                                           {test.description}
@@ -241,19 +233,11 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                             </div>
                           </div>
                         ))}
-
-                        {pkg.tests.length === 0 && (
-                          <div className="text-center py-8 text-muted-foreground text-sm">
-                            لا توجد تحاليل متاحة لهذه الباقة.
-                          </div>
-                        )}
                       </div>
                     </div>
 
-                    {/* Footer */}
                     <div className="p-6 pt-4 border-t border-border">
                       <div className="flex gap-4">
-                        {/* Call Button */}
                         <a href="tel:+966920031642" className="flex-1">
                           <Button
                             variant="outline"
@@ -263,8 +247,6 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                             اتصال مباشر
                           </Button>
                         </a>
-
-                        {/* WhatsApp Button */}
                         <a
                           href="https://wa.me/+966920031642"
                           target="_blank"
@@ -322,9 +304,8 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
 
   return (
     <div className="w-full">
-      {/* Hero Section */}
+      {/* Hero Section (unchanged) */}
       <div className="relative w-full h-80 md:h-96 overflow-hidden">
-        {/* Background Image */}
         <div className="absolute inset-0">
           {packageType.thumbnail && (
             <Image
@@ -337,12 +318,10 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
           )}
           <div className="absolute inset-0 bg-background/60" />
         </div>
-        {/* Background decoration */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
         </div>
-        {/* Content */}
         <div className="relative h-full flex flex-col items-center justify-center px-4 md:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-balance">
             {packageType.name}
@@ -352,27 +331,6 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
           )}
         </div>
       </div>
-
-      {/* Category Tabs */}
-      {/* {categories.length > 0 && (
-        <div className="w-full bg-background border-b border-border sticky top-0 z-40">
-          <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-            <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
-              <TabsList className="w-full justify-start bg-transparent border-0 rounded-none h-auto p-0 gap-2">
-                {categories.map((category) => (
-                  <TabsTrigger
-                    key={category.id}
-                    value={category.id}
-                    className="rounded-lg border border-border bg-background text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-primary px-4 py-2"
-                  >
-                    {category.name}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
-          </div>
-        </div>
-      )} */}
 
       {/* Packages List */}
       <div className="w-full bg-background">

@@ -75,6 +75,7 @@ export interface Config {
     packages: Package;
     'blog-categories': BlogCategory;
     'blog-posts': BlogPost;
+    consultations: Consultation;
     'payload-kv': PayloadKv;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
@@ -91,6 +92,7 @@ export interface Config {
     packages: PackagesSelect<false> | PackagesSelect<true>;
     'blog-categories': BlogCategoriesSelect<false> | BlogCategoriesSelect<true>;
     'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
+    consultations: ConsultationsSelect<false> | ConsultationsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -322,6 +324,22 @@ export interface BlogPost {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "consultations".
+ */
+export interface Consultation {
+  id: string;
+  fullName: string;
+  phoneNumber: string;
+  consultationType: 'pre_analysis' | 'results_review';
+  date: string;
+  time: string;
+  status?: ('pending' | 'confirmed' | 'cancelled' | 'completed') | null;
+  referenceNumber?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -400,6 +418,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'blog-posts';
         value: string | BlogPost;
+      } | null)
+    | ({
+        relationTo: 'consultations';
+        value: string | Consultation;
       } | null)
     | ({
         relationTo: 'users';
@@ -589,6 +611,21 @@ export interface BlogPostsSelect<T extends boolean = true> {
         metaDescription?: T;
         metaImage?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "consultations_select".
+ */
+export interface ConsultationsSelect<T extends boolean = true> {
+  fullName?: T;
+  phoneNumber?: T;
+  consultationType?: T;
+  date?: T;
+  time?: T;
+  status?: T;
+  referenceNumber?: T;
   updatedAt?: T;
   createdAt?: T;
 }
