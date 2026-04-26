@@ -1,127 +1,124 @@
 'use client'
 
+import { useMemo } from 'react'
 import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { TConsultationScheme } from '@/lib/validators/consultation-validator'
-import { ConsultationRequest } from '@/payload-types'
-import { useMemo, useEffect } from 'react'
+import { ConsultationTimeSlot } from '@/payload-types'
 import { Controller, UseFormReturn, useWatch } from 'react-hook-form'
-import { toClinicISO, fromClinicISO } from '@/lib/utils'
+
+const TIMEZONE = 'Asia/Riyadh'
 
 type Props = {
   form: UseFormReturn<TConsultationScheme>
-  activeConsultations: ConsultationRequest[]
+  availableSlots: ConsultationTimeSlot[]
 }
 
-const Step2 = ({ form, activeConsultations }: Props) => {
-  const { control } = form
+/** Extract YYYY-MM-DD for a given timezone */
+const getDateKey = (d: Date | string, tz: string): string => {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: tz,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date(d))
+}
 
-  /* -------------------------------------------------- */
-  /* 1.  buildSlotsFor     */
-  /* -------------------------------------------------- */
-  const buildSlotsFor = (day: Date) => {
-    // day arrives as a Date representing midnight in clinic time
-    const startHour = 9
-    const slots: { startTime: Date; endTime: Date; iso: string }[] = []
+/** Build 7 date strings starting from "today" in the target timezone */
+const generateWeekDates = (tz: string): string[] => {
+  const dates: string[] = []
+  const now = new Date()
+  const todayKey = getDateKey(now, tz)
+  const [y, m, d] = todayKey.split('-').map(Number)
 
-    for (let h = startHour; h < 17; h++) {
-      const start = new Date(day)
-      start.setHours(h, 0, 0, 0)
-      const end = new Date(day)
-      end.setHours(h + 1, 0, 0, 0)
-      slots.push({
-        startTime: start,
-        endTime: end,
-        iso: toClinicISO(start), // ← explicit +03:00 offset
-      })
-    }
-    return slots
+  for (let i = 0; i < 7; i++) {
+    // Use noon UTC to avoid midnight-boundary drift
+    const candidate = new Date(Date.UTC(y, m - 1, d + i, 12, 0, 0))
+    dates.push(getDateKey(candidate, tz))
   }
 
-  /* -------------------------------------------------- */
-  /* 2.  isSlotBooked – FIXED                           */
-  /* -------------------------------------------------- */
-  const isSlotBooked = (slotStart: Date, slotEnd: Date) =>
-    activeConsultations.some((c) => {
-      if (c.status === 'cancelled') return false
+  return dates
+}
 
-      // c.date = dayOnly value, c.time = actual appointment start (both ISO strings)
-      const apptStart = fromClinicISO(c.time as string) // appointment start datetime
-      const apptEnd = new Date(apptStart)
-      apptEnd.setHours(apptStart.getHours() + 1) // assume 1-hour slots
-
-      // standard interval overlap: [apptStart, apptEnd) vs [slotStart, slotEnd)
-      return apptStart < slotEnd && apptEnd > slotStart
-    })
-
-  /* -------------------------------------------------- */
-  /* 3.  isDayFullyBooked                               */
-  /* -------------------------------------------------- */
-  const isDayFullyBooked = (day: Date) => {
-    const slots = buildSlotsFor(day)
-    if (!slots.length) return true
-    return slots.every((s) => isSlotBooked(s.startTime, s.endTime))
-  }
-
-  /* -------------------------------------------------- */
-  /* 4.  validDates                                     */
-  /* -------------------------------------------------- */
-  const validDates = useMemo(() => {
-    const dates = Array.from({ length: 7 }, (_, i) => {
-      const d = new Date()
-      d.setDate(d.getDate() + i)
-      d.setHours(0, 0, 0, 0)
-      return d
-    })
-    // Filter out today if it's past 4 PM (no slots left)
-    return dates.filter((d) => buildSlotsFor(d).length > 0)
-  }, [])
-
-  /* -------------------------------------------------- */
-  /* 5.  requestedDate + timeSlots                      */
-  /* -------------------------------------------------- */
+const Step2 = ({ form, availableSlots }: Props) => {
+  const { control, setValue } = form
   const requestedDate = useWatch({ control, name: 'step2.requestedDate' })
 
-  const timeSlots = useMemo(() => {
+  // Snapshot "now" once so the 1-hour gate is stable across renders
+  const now = useMemo(() => new Date(), [])
+
+  const weekDates = useMemo(() => generateWeekDates(TIMEZONE), [])
+
+  // Group API slots by their calendar date
+  const slotsByDate = useMemo(() => {
+    const map = new Map<string, ConsultationTimeSlot[]>()
+
+    availableSlots.forEach((slot) => {
+      const key = getDateKey(slot.date, TIMEZONE)
+      if (!map.has(key)) map.set(key, [])
+      map.get(key)!.push(slot)
+    })
+
+    map.forEach((slots) =>
+      slots.sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime()),
+    )
+
+    return map
+  }, [availableSlots])
+
+  const getSlotMeta = (slot: ConsultationTimeSlot) => {
+    const slotStart = new Date(slot.startTime)
+    const oneHourAhead = new Date(now.getTime() + 60 * 60 * 1000)
+
+    if (slotStart.getTime() <= oneHourAhead.getTime()) {
+      return { available: false, badge: 'انتهى', style: 'bg-gray-500/10 text-gray-500' }
+    }
+    if (slot.availabilityStatus === 'manually_closed') {
+      return { available: false, badge: 'مغلق', style: 'bg-red-500/10 text-red-600' }
+    }
+    if (slot.availabilityStatus === 'full' || (slot.remainingCapacity ?? 0) <= 0) {
+      return { available: false, badge: 'ممتلئ', style: 'bg-orange-500/10 text-orange-600' }
+    }
+    return {
+      available: true,
+      badge: `${slot.remainingCapacity} متبقية`,
+      style: 'bg-teal-500/10 text-teal-600',
+    }
+  }
+
+  const isDateEnabled = (dateKey: string): boolean => {
+    const daySlots = slotsByDate.get(dateKey) ?? []
+    if (daySlots.length === 0) return false
+    return daySlots.some((s) => getSlotMeta(s).available)
+  }
+
+  const currentSlots = useMemo(() => {
     if (!requestedDate) return []
-    // Parse back from the offset string to a Date for display logic
-    return buildSlotsFor(fromClinicISO(requestedDate))
-  }, [requestedDate])
+    return slotsByDate.get(requestedDate) ?? []
+  }, [requestedDate, slotsByDate])
 
-  /* -------------------------------------------------- */
-  /* 6.  clear slot on day change                       */
-  /* -------------------------------------------------- */
-  useEffect(() => {
-    form.resetField('step2.requestedTimeSlot', { defaultValue: '' })
-  }, [requestedDate])
-
-  /* -------------------------------------------------- */
-  /* 7.  formatters                                     */
-  /* -------------------------------------------------- */
-  const formatDate = (d: Date) =>
-    new Intl.DateTimeFormat('ar-EG', {
+  const formatDateLabel = (dateKey: string) => {
+    const [y, m, d] = dateKey.split('-').map(Number)
+    const safeDate = new Date(Date.UTC(y, m - 1, d, 12, 0, 0))
+    return new Intl.DateTimeFormat('ar-EG', {
       weekday: 'long',
       day: 'numeric',
       month: 'long',
-      timeZone: 'Asia/Riyadh',
-    }).format(d)
+      timeZone: TIMEZONE,
+    }).format(safeDate)
+  }
 
-  const formatTime = (d: Date) =>
+  const formatTime = (iso: string) =>
     new Intl.DateTimeFormat('ar-EG', {
       hour: '2-digit',
       minute: '2-digit',
       hour12: true,
-      timeZone: 'Asia/Riyadh',
-    }).format(d)
+      timeZone: TIMEZONE,
+    }).format(new Date(iso))
 
-  const badgeText = (booked: boolean) => (booked ? 'محجوز' : 'متاح')
-
-  /* -------------------------------------------------- */
-  /* 8.  render                                         */
-  /* -------------------------------------------------- */
   return (
     <div className="space-y-8">
       <FieldGroup>
-        {/* -----------------  DATE  ----------------- */}
+        {/* ----------------- DATE ----------------- */}
         <Controller
           control={control}
           name="step2.requestedDate"
@@ -131,31 +128,51 @@ const Step2 = ({ form, activeConsultations }: Props) => {
               <FieldLabel className="block mb-2 font-medium">اختر التاريخ *</FieldLabel>
 
               <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-cyan-500/30">
-                {validDates.map((d) => {
-                  const iso = toClinicISO(d) // ← explicit offset
-                  const fullyBooked = isDayFullyBooked(d)
+                {weekDates.map((dateKey) => {
+                  const enabled = isDateEnabled(dateKey)
+                  const hasSlots = (slotsByDate.get(dateKey) ?? []).length > 0
+
                   return (
                     <label
-                      key={iso}
-                      className={`cursor-pointer relative ${
-                        fullyBooked ? 'opacity-40 cursor-not-allowed' : ''
-                      }`}
+                      key={dateKey}
+                      className={enabled ? 'cursor-pointer' : 'cursor-not-allowed'}
                     >
                       <input
-                        {...field}
                         type="radio"
-                        value={iso}
-                        checked={field.value === iso}
-                        disabled={fullyBooked}
-                        required
+                        name={field.name}
+                        value={dateKey}
+                        checked={field.value === dateKey}
+                        disabled={!enabled}
+                        onChange={() => {
+                          field.onChange(dateKey)
+                          // Clear time slot when date changes
+                          setValue('step2.requestedTimeSlot', '')
+                        }}
                         className="peer hidden"
                       />
                       <div
-                        className={`whitespace-nowrap peer-checked:border-teal-500 peer-checked:bg-teal-500/10 border-2 border-white/10 bg-white/5 px-6 py-4 rounded-3xl transition-all`}
+                        className={[
+                          'whitespace-nowrap border-2 px-6 py-4 rounded-3xl transition-all select-none',
+                          'border-white/10 bg-white/5',
+                          enabled
+                            ? 'peer-checked:border-teal-500 peer-checked:bg-teal-500/10'
+                            : 'opacity-50',
+                        ].join(' ')}
                       >
-                        <div className="text-center font-semibold mb-2">{formatDate(d)}</div>
-                        <div className="text-[10px] text-center px-2 py-0.5 rounded-full bg-white/10">
-                          {badgeText(fullyBooked)}
+                        <div className="text-center font-semibold mb-2">
+                          {formatDateLabel(dateKey)}
+                        </div>
+                        <div
+                          className={[
+                            'text-[10px] text-center px-2 py-0.5 rounded-full',
+                            enabled
+                              ? 'bg-teal-500/10 text-teal-600'
+                              : hasSlots
+                                ? 'bg-red-500/10 text-red-600'
+                                : 'bg-gray-500/10 text-gray-500',
+                          ].join(' ')}
+                        >
+                          {enabled ? 'متاح' : hasSlots ? 'غير متاح' : 'لا يوجد مواعيد'}
                         </div>
                       </div>
                     </label>
@@ -168,52 +185,71 @@ const Step2 = ({ form, activeConsultations }: Props) => {
           )}
         />
 
-        {/* -----------------  TIME  ----------------- */}
-        <Controller
-          control={control}
-          name="step2.requestedTimeSlot"
-          rules={{ required: 'الرجاء اختيار الموعد' }}
-          render={({ field, fieldState }) => (
-            <Field data-invalid={fieldState.invalid}>
-              <FieldLabel className="block mb-2 font-medium">اختر الموعد *</FieldLabel>
+        {/* ----------------- TIME ----------------- */}
+        {requestedDate && (
+          <Controller
+            control={control}
+            name="step2.requestedTimeSlot"
+            rules={{ required: 'الرجاء اختيار الموعد' }}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel className="block mb-2 font-medium">اختر الموعد *</FieldLabel>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {timeSlots.map((slot) => {
-                  const iso = slot.iso // ← already formatted with offset
-                  const booked = isSlotBooked(slot.startTime, slot.endTime)
-                  return (
-                    <label
-                      key={iso}
-                      className={`cursor-pointer ${booked ? 'opacity-40 cursor-not-allowed' : ''}`}
-                    >
-                      <input
-                        {...field}
-                        type="radio"
-                        value={iso}
-                        checked={field.value === iso}
-                        disabled={booked}
-                        required
-                        className="peer hidden"
-                      />
-                      <div
-                        className={`relative whitespace-nowrap peer-checked:border-teal-500 peer-checked:bg-teal-500/10 border-2 border-white/10 bg-white/5 p-4 rounded-3xl transition-all`}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {currentSlots.length === 0 && (
+                    <div className="col-span-full text-center text-white/50 py-8">
+                      لا توجد مواعيد لهذا اليوم
+                    </div>
+                  )}
+
+                  {currentSlots.map((slot) => {
+                    const meta = getSlotMeta(slot)
+
+                    return (
+                      <label
+                        key={slot.id}
+                        className={meta.available ? 'cursor-pointer' : 'cursor-not-allowed'}
                       >
-                        <div className="text-lg text-center font-semibold">
-                          {formatTime(slot.startTime)}
+                        <input
+                          type="radio"
+                          name={field.name}
+                          value={slot.id}
+                          checked={field.value === slot.id}
+                          disabled={!meta.available}
+                          onChange={() => field.onChange(slot.id)}
+                          className="peer hidden"
+                        />
+                        <div
+                          className={[
+                            'relative whitespace-nowrap border-2 p-4 rounded-3xl transition-all select-none',
+                            'border-white/10 bg-white/5',
+                            meta.available
+                              ? 'peer-checked:border-teal-500 peer-checked:bg-teal-500/10'
+                              : 'opacity-50 grayscale',
+                          ].join(' ')}
+                        >
+                          <div className="text-lg text-center font-semibold">
+                            {formatTime(slot.startTime)} – {formatTime(slot.endTime)}
+                          </div>
+                          <div
+                            className={[
+                              'text-[10px] text-center mt-2 px-3 py-1 rounded-full font-medium',
+                              meta.style,
+                            ].join(' ')}
+                          >
+                            {meta.badge}
+                          </div>
                         </div>
-                        <div className="text-[10px] text-center mt-1 px-2 py-0.5 rounded-full bg-white/10">
-                          {badgeText(booked)}
-                        </div>
-                      </div>
-                    </label>
-                  )
-                })}
-              </div>
+                      </label>
+                    )
+                  })}
+                </div>
 
-              {fieldState.error && <FieldError errors={[fieldState.error]} />}
-            </Field>
-          )}
-        />
+                {fieldState.error && <FieldError errors={[fieldState.error]} />}
+              </Field>
+            )}
+          />
+        )}
       </FieldGroup>
     </div>
   )

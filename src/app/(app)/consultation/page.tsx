@@ -5,12 +5,15 @@ import config from '@payload-config'
 
 export default async function Page() {
   const payload = await getPayload({ config })
-  const { docs: activeConsultations } = await payload.find({
-    collection: 'consultation-requests',
+  const todayStr = new Date().toISOString().split('T')[0]
+
+  const { docs: availableSlots } = await payload.find({
+    collection: 'consultation-time-slots',
     where: {
-      status: { not_equals: 'cancelled' },
+      date: { greater_than_equal: todayStr },
     },
-    limit: 100,
+    limit: 500,
+    sort: 'date,startTime',
   })
 
   return (
@@ -47,7 +50,7 @@ export default async function Page() {
       </section>
 
       {/* BOOKING SECTION */}
-      <ConsultationForm activeConsultations={activeConsultations} />
+      <ConsultationForm availableSlots={availableSlots} />
 
       {/* Features Section */}
       <section className="max-w-5xl mx-auto px-6 py-20">

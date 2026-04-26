@@ -1,8 +1,8 @@
 'use client'
 
 import { consultationSchema, TConsultationScheme } from '@/lib/validators/consultation-validator'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useMemo, useState } from 'react'
+import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Step1 from '@/components/forms/ConsultationForm/Step1'
 import Step2 from '@/components/forms/ConsultationForm/Step2'
@@ -11,13 +11,11 @@ import { Button } from '@/components/ui/button'
 import { AlertCircle, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { submitConsultationForm } from '@/actions/booking/consultation'
-import { ConsultationRequest } from '@/payload-types'
+import { ConsultationTimeSlot } from '@/payload-types'
 
-const ConsultationForm = ({
-  activeConsultations,
-}: {
-  activeConsultations: ConsultationRequest[]
-}) => {
+const TIMEZONE = 'Asia/Riyadh'
+
+const ConsultationForm = ({ availableSlots }: { availableSlots: ConsultationTimeSlot[] }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -41,6 +39,12 @@ const ConsultationForm = ({
       },
     },
   })
+  const requestedTimeSlot = useWatch({ control: form.control, name: 'step2.requestedTimeSlot' })
+
+  const selectedSlot = useMemo(
+    () => availableSlots.find((s) => s.id === requestedTimeSlot),
+    [availableSlots, requestedTimeSlot],
+  )
 
   const nextStep = async () => {
     let fieldsToValidate: keyof TConsultationScheme
@@ -100,9 +104,9 @@ const ConsultationForm = ({
       case 1:
         return <Step1 form={form} />
       case 2:
-        return <Step2 form={form} activeConsultations={activeConsultations} />
+        return <Step2 form={form} availableSlots={availableSlots} />
       case 3:
-        return <Step3 form={form} />
+        return <Step3 form={form} availableSlots={availableSlots} />
       default:
         return null
     }
@@ -119,6 +123,16 @@ const ConsultationForm = ({
     }
   }
 
+  const formatTime = (iso: string | undefined | null) => {
+    if (!iso) return '—'
+    return new Intl.DateTimeFormat('ar-EG', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+      timeZone: TIMEZONE,
+    }).format(new Date(iso))
+  }
+
   // Build WhatsApp message and link
   const buildWhatsAppLink = () => {
     const fullName = form.getValues('step1.fullName') || ''
@@ -130,12 +144,9 @@ const ConsultationForm = ({
         day: 'numeric',
         month: 'long',
       }).format(new Date(form.getValues('step2.requestedDate'))) || ''
-    const time =
-      new Intl.DateTimeFormat('ar-EG', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true,
-      }).format(new Date(form.getValues('step2.requestedTimeSlot'))) || ''
+    const time = selectedSlot
+      ? `${formatTime(selectedSlot.startTime)} – ${formatTime(selectedSlot.endTime)}`
+      : ''
 
     const message = `السلام عليكم ورحمة الله وبركاته
 

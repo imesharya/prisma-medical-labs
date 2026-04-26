@@ -51,7 +51,7 @@ export const submitConsultationForm = async (
 
     const {
       step1: { fullName, phoneNumber, consultationType },
-      step2: { requestedDate, requestedTimeSlot },
+      step2: { requestedTimeSlot },
     } = validated.data
 
     const referenceNumber = generateRef()
@@ -63,10 +63,7 @@ export const submitConsultationForm = async (
         fullName,
         phoneNumber,
         consultationType,
-        date: normalizeToClinicISO(requestedDate),
-        time: normalizeToClinicISO(requestedTimeSlot),
-        date_tz: 'Asia/Riyadh',
-        time_tz: 'Asia/Riyadh',
+        slot: requestedTimeSlot,
         referenceNumber,
         status: 'pending',
       },

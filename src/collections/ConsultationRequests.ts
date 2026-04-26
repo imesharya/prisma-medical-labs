@@ -8,8 +8,8 @@ export const ConsultationRequests: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'referenceNumber',
-    defaultColumns: ['fullName', 'phoneNumber', 'date', 'time', 'consultationType', 'status'],
-    group: 'الحجوزات',
+    defaultColumns: ['fullName', 'phoneNumber', 'date', 'slot', 'consultationType', 'status'],
+    group: 'الإستشارات',
   },
   fields: [
     {
@@ -35,29 +35,11 @@ export const ConsultationRequests: CollectionConfig = {
       ],
     },
     {
-      name: 'date',
-      type: 'date',
+      name: 'slot',
+      type: 'relationship',
+      relationTo: 'consultation-time-slots',
       required: true,
-      timezone: true,
-      label: 'التاريخ',
-      admin: {
-        date: {
-          pickerAppearance: 'dayOnly',
-          displayFormat: 'yyyy-MM-dd',
-        },
-      },
-    },
-    {
-      name: 'time',
-      type: 'date',
-      required: true,
-      timezone: true,
-      label: 'الوقت',
-      admin: {
-        date: {
-          pickerAppearance: 'timeOnly',
-        },
-      },
+      label: 'الفترة الزمنية',
     },
     {
       name: 'status',
@@ -78,24 +60,107 @@ export const ConsultationRequests: CollectionConfig = {
       type: 'text',
       unique: true,
       admin: { readOnly: true, position: 'sidebar' },
+      hooks: {
+        beforeChange: [
+          ({ operation, data }) => {
+            if (operation === 'create' && data && !data.referenceNumber) {
+              const rand = Math.random().toString(36).substring(2, 5).toUpperCase()
+              const ts = Date.now().toString(36).toUpperCase()
+              return `CONS-${rand}${ts}`
+            }
+            return data?.referenceNumber
+          },
+        ],
+      },
     },
   ],
   hooks: {
-    beforeValidate: [
-      async ({ data, req, operation }) => {
-        if (operation === 'create' && data?.time) {
+    beforeChange: [
+      async ({ data, req, operation, originalDoc }) => {
+        if (!data?.slot) return data
+
+        const slotId = typeof data.slot === 'string' ? data.slot : data.slot.id
+        if (!slotId) return data
+
+        const slot = await req.payload.findByID({
+          collection: 'consultation-time-slots',
+          id: slotId,
+        })
+
+        if (!slot) {
+          throw new Error('الموعد المحدد غير موجود')
+        }
+
+        // Sync date from slot
+        data.date = slot.date
+
+        const slotChanged =
+          operation === 'create' ||
+          (operation === 'update' && originalDoc?.slot?.toString() !== slotId)
+
+        if (slotChanged) {
+          if (slot.availabilityStatus !== 'available') {
+            throw new Error('هذا الموعد غير متاح للحجز حالياً')
+          }
+
           const existing = await req.payload.find({
             collection: 'consultation-requests',
             where: {
-              time: { equals: data.time },
+              slot: { equals: slotId },
               status: { not_equals: 'cancelled' },
             },
-            limit: 1,
+            limit: 1000,
           })
 
-          if (existing.docs.length > 0) {
-            throw new Error('هذا الموعد محجوز بالفعل. يرجى اختيار موعد آخر.')
+          if (existing.docs.length >= slot.maxCapacity) {
+            throw new Error('هذا الموعد ممتلئ. يرجى اختيار موعد آخر.')
           }
+        }
+
+        return data
+      },
+    ],
+    afterChange: [
+      // Auto-close when full / reopen when space frees up
+      async ({ doc, req }) => {
+        if (!doc.slot) return
+
+        const slotId = typeof doc.slot === 'string' ? doc.slot : doc.slot.id
+        if (!slotId) return
+
+        const slot = await req.payload.findByID({
+          collection: 'consultation-time-slots',
+          id: slotId,
+        })
+
+        if (!slot) return
+
+        const bookings = await req.payload.find({
+          collection: 'consultation-requests',
+          where: {
+            slot: { equals: slotId },
+            status: { not_equals: 'cancelled' },
+          },
+          limit: 1000,
+          depth: 0,
+        })
+
+        const isFull = bookings.docs.length >= slot.maxCapacity
+
+        if (isFull && slot.autoCloseWhenFull && slot.availabilityStatus === 'available') {
+          await req.payload.update({
+            collection: 'consultation-time-slots',
+            id: slotId,
+            data: { availabilityStatus: 'full' },
+            user: req.user,
+          })
+        } else if (!isFull && slot.availabilityStatus === 'full') {
+          await req.payload.update({
+            collection: 'consultation-time-slots',
+            id: slotId,
+            data: { availabilityStatus: 'available' },
+            user: req.user,
+          })
         }
       },
     ],

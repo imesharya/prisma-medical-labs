@@ -18,6 +18,9 @@ import { BlogCategories } from './collections/BlogCategories'
 import { BlogPosts } from './collections/BlogPost'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { ConsultationRequests } from './collections/ConsultationRequests'
+import { ConsultationTimeSlots } from './collections/ConsultationTimeSlots'
+import { Consultations } from './collections/Consultations'
+import { ConsultationScheduleTemplates } from './collections/ConsultationScheduleTemplates'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,6 +37,9 @@ export default buildConfig({
     BlogCategories,
     BlogPosts,
     ConsultationRequests,
+    ConsultationTimeSlots,
+    ConsultationScheduleTemplates,
+    Consultations,
   ],
   admin: {
     timezones: {

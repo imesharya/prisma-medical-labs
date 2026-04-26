@@ -29,13 +29,20 @@ export interface Config {
     'blog-categories': BlogCategory;
     'blog-posts': BlogPost;
     'consultation-requests': ConsultationRequest;
+    'consultation-time-slots': ConsultationTimeSlot;
+    'consultation-schedule-templates': ConsultationScheduleTemplate;
+    consultations: Consultation;
     'payload-kv': PayloadKv;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    'consultation-time-slots': {
+      bookings: 'consultation-requests';
+    };
+  };
   collectionsSelect: {
     media: MediaSelect<false> | MediaSelect<true>;
     'test-categories': TestCategoriesSelect<false> | TestCategoriesSelect<true>;
@@ -46,6 +53,9 @@ export interface Config {
     'blog-categories': BlogCategoriesSelect<false> | BlogCategoriesSelect<true>;
     'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
     'consultation-requests': ConsultationRequestsSelect<false> | ConsultationRequestsSelect<true>;
+    'consultation-time-slots': ConsultationTimeSlotsSelect<false> | ConsultationTimeSlotsSelect<true>;
+    'consultation-schedule-templates': ConsultationScheduleTemplatesSelect<false> | ConsultationScheduleTemplatesSelect<true>;
+    consultations: ConsultationsSelect<false> | ConsultationsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -284,12 +294,111 @@ export interface ConsultationRequest {
   fullName: string;
   phoneNumber: string;
   consultationType: 'pre_analysis' | 'results_review';
-  date: string;
-  date_tz: SupportedTimezones;
-  time: string;
-  time_tz: SupportedTimezones;
+  slot: string | ConsultationTimeSlot;
   status?: ('pending' | 'confirmed' | 'cancelled' | 'completed') | null;
   referenceNumber?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "consultation-time-slots".
+ */
+export interface ConsultationTimeSlot {
+  id: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  maxCapacity: number;
+  /**
+   * عند الوصول للسعة القصوى، سيتم تغيير الحالة إلى "ممتلئ" تلقائياً
+   */
+  autoCloseWhenFull?: boolean | null;
+  availabilityStatus?: ('available' | 'full' | 'manually_closed') | null;
+  bookedCount?: number | null;
+  remainingCapacity?: number | null;
+  displayTitle?: string | null;
+  bookings?: {
+    docs?: (string | ConsultationRequest)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * قم بإنشاء نموذج أسبوعي للمواعيد ثم توليده تلقائياً
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "consultation-schedule-templates".
+ */
+export interface ConsultationScheduleTemplate {
+  id: string;
+  /**
+   * مثال: جدول العيادة الصباحي - رمضان 2026
+   */
+  name: string;
+  /**
+   * أول يوم يبدأ فيه تطبيق النموذج
+   */
+  startDate: string;
+  /**
+   * آخر يوم ينتهي فيه تطبيق النموذج
+   */
+  endDate: string;
+  /**
+   * حدد أيام الأسبوع وفترات الوقت المتاحة لكل يوم
+   */
+  schedule: {
+    dayOfWeek: '0' | '1' | '2' | '3' | '4' | '5' | '6';
+    timeSlots: {
+      startTime: string;
+      endTime: string;
+      maxCapacity: number;
+      autoCloseWhenFull?: boolean | null;
+      id?: string | null;
+    }[];
+    id?: string | null;
+  }[];
+  /**
+   * يتم تحديثه تلقائياً بعد كل عملية توليد ناجحة
+   */
+  lastGeneratedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "consultations".
+ */
+export interface Consultation {
+  id: string;
+  consultationRequest: string | ConsultationRequest;
+  status?: ('scheduled' | 'in_progress' | 'completed' | 'no_show' | 'cancelled') | null;
+  chiefComplaint?: string | null;
+  notes?: string | null;
+  diagnosis?: string | null;
+  treatmentPlan?: string | null;
+  prescriptions?:
+    | {
+        medicationName: string;
+        dosage?: string | null;
+        frequency?: string | null;
+        duration?: string | null;
+        instructions?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  attachments?:
+    | {
+        file?: (string | null) | Media;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  followUpRequired?: boolean | null;
+  followUpDate?: string | null;
+  completedAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -377,6 +486,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'consultation-requests';
         value: string | ConsultationRequest;
+      } | null)
+    | ({
+        relationTo: 'consultation-time-slots';
+        value: string | ConsultationTimeSlot;
+      } | null)
+    | ({
+        relationTo: 'consultation-schedule-templates';
+        value: string | ConsultationScheduleTemplate;
+      } | null)
+    | ({
+        relationTo: 'consultations';
+        value: string | Consultation;
       } | null)
     | ({
         relationTo: 'users';
@@ -577,12 +698,88 @@ export interface ConsultationRequestsSelect<T extends boolean = true> {
   fullName?: T;
   phoneNumber?: T;
   consultationType?: T;
-  date?: T;
-  date_tz?: T;
-  time?: T;
-  time_tz?: T;
+  slot?: T;
   status?: T;
   referenceNumber?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "consultation-time-slots_select".
+ */
+export interface ConsultationTimeSlotsSelect<T extends boolean = true> {
+  date?: T;
+  startTime?: T;
+  endTime?: T;
+  maxCapacity?: T;
+  autoCloseWhenFull?: T;
+  availabilityStatus?: T;
+  bookedCount?: T;
+  remainingCapacity?: T;
+  displayTitle?: T;
+  bookings?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "consultation-schedule-templates_select".
+ */
+export interface ConsultationScheduleTemplatesSelect<T extends boolean = true> {
+  name?: T;
+  startDate?: T;
+  endDate?: T;
+  schedule?:
+    | T
+    | {
+        dayOfWeek?: T;
+        timeSlots?:
+          | T
+          | {
+              startTime?: T;
+              endTime?: T;
+              maxCapacity?: T;
+              autoCloseWhenFull?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  lastGeneratedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "consultations_select".
+ */
+export interface ConsultationsSelect<T extends boolean = true> {
+  consultationRequest?: T;
+  status?: T;
+  chiefComplaint?: T;
+  notes?: T;
+  diagnosis?: T;
+  treatmentPlan?: T;
+  prescriptions?:
+    | T
+    | {
+        medicationName?: T;
+        dosage?: T;
+        frequency?: T;
+        duration?: T;
+        instructions?: T;
+        id?: T;
+      };
+  attachments?:
+    | T
+    | {
+        file?: T;
+        description?: T;
+        id?: T;
+      };
+  followUpRequired?: T;
+  followUpDate?: T;
+  completedAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }
