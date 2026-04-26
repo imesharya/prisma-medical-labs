@@ -17,7 +17,7 @@ import { fileURLToPath } from 'url'
 import { BlogCategories } from './collections/BlogCategories'
 import { BlogPosts } from './collections/BlogPost'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { Consultations } from './collections/Consultations'
+import { ConsultationRequests } from './collections/ConsultationRequests'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -33,7 +33,7 @@ export default buildConfig({
     Packages,
     BlogCategories,
     BlogPosts,
-    Consultations,
+    ConsultationRequests,
   ],
   admin: {
     timezones: {

@@ -2,14 +2,14 @@
 
 import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { TConsultationScheme } from '@/lib/validators/consultation-validator'
-import { Consultation } from '@/payload-types'
+import { ConsultationRequest } from '@/payload-types'
 import { useMemo, useEffect } from 'react'
 import { Controller, UseFormReturn, useWatch } from 'react-hook-form'
 import { toClinicISO, fromClinicISO } from '@/lib/utils'
 
 type Props = {
   form: UseFormReturn<TConsultationScheme>
-  activeConsultations: Consultation[]
+  activeConsultations: ConsultationRequest[]
 }
 
 const Step2 = ({ form, activeConsultations }: Props) => {

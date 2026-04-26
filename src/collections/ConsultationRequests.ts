@@ -1,10 +1,10 @@
 import type { CollectionConfig } from 'payload'
 
-export const Consultations: CollectionConfig = {
-  slug: 'consultations',
+export const ConsultationRequests: CollectionConfig = {
+  slug: 'consultation-requests',
   labels: {
-    singular: 'إستشارة طبيية',
-    plural: 'الإستشارات الطبية',
+    singular: 'طلب إستشارة طبيية',
+    plural: 'طلبات الإستشارات الطبية',
   },
   admin: {
     useAsTitle: 'referenceNumber',
@@ -85,7 +85,7 @@ export const Consultations: CollectionConfig = {
       async ({ data, req, operation }) => {
         if (operation === 'create' && data?.time) {
           const existing = await req.payload.find({
-            collection: 'consultations',
+            collection: 'consultation-requests',
             where: {
               time: { equals: data.time },
               status: { not_equals: 'cancelled' },

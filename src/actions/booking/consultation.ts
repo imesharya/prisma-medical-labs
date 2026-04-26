@@ -58,7 +58,7 @@ export const submitConsultationForm = async (
 
     // Create booking via Payload Local API
     await payload.create({
-      collection: 'consultations',
+      collection: 'consultation-requests',
       data: {
         fullName,
         phoneNumber,

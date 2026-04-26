@@ -6,7 +6,7 @@ import config from '@payload-config'
 export default async function Page() {
   const payload = await getPayload({ config })
   const { docs: activeConsultations } = await payload.find({
-    collection: 'consultations',
+    collection: 'consultation-requests',
     where: {
       status: { not_equals: 'cancelled' },
     },

@@ -28,7 +28,7 @@ export interface Config {
     packages: Package;
     'blog-categories': BlogCategory;
     'blog-posts': BlogPost;
-    consultations: Consultation;
+    'consultation-requests': ConsultationRequest;
     'payload-kv': PayloadKv;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
@@ -45,7 +45,7 @@ export interface Config {
     packages: PackagesSelect<false> | PackagesSelect<true>;
     'blog-categories': BlogCategoriesSelect<false> | BlogCategoriesSelect<true>;
     'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
-    consultations: ConsultationsSelect<false> | ConsultationsSelect<true>;
+    'consultation-requests': ConsultationRequestsSelect<false> | ConsultationRequestsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -277,9 +277,9 @@ export interface BlogPost {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "consultations".
+ * via the `definition` "consultation-requests".
  */
-export interface Consultation {
+export interface ConsultationRequest {
   id: string;
   fullName: string;
   phoneNumber: string;
@@ -375,8 +375,8 @@ export interface PayloadLockedDocument {
         value: string | BlogPost;
       } | null)
     | ({
-        relationTo: 'consultations';
-        value: string | Consultation;
+        relationTo: 'consultation-requests';
+        value: string | ConsultationRequest;
       } | null)
     | ({
         relationTo: 'users';
@@ -571,9 +571,9 @@ export interface BlogPostsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "consultations_select".
+ * via the `definition` "consultation-requests_select".
  */
-export interface ConsultationsSelect<T extends boolean = true> {
+export interface ConsultationRequestsSelect<T extends boolean = true> {
   fullName?: T;
   phoneNumber?: T;
   consultationType?: T;

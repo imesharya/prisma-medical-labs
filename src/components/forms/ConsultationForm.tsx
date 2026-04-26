@@ -11,9 +11,13 @@ import { Button } from '@/components/ui/button'
 import { AlertCircle, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { submitConsultationForm } from '@/actions/booking/consultation'
-import { Consultation } from '@/payload-types'
+import { ConsultationRequest } from '@/payload-types'
 
-const ConsultationForm = ({ activeConsultations }: { activeConsultations: Consultation[] }) => {
+const ConsultationForm = ({
+  activeConsultations,
+}: {
+  activeConsultations: ConsultationRequest[]
+}) => {
   const [isLoading, setIsLoading] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   const [isSuccess, setIsSuccess] = useState(false)

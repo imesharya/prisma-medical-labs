@@ -23,7 +23,7 @@ import {
 import { ArrowLeft } from 'lucide-react'
 import SaudiPrice from '@/components/shared/SaudiPrice'
 import { Package } from '@/payload-types'
-import { Consultation } from '@/payload-types'
+import { ConsultationRequest } from '@/payload-types'
 import { Field, FieldLabel, FieldError, FieldGroup } from '@/components/ui/field'
 
 /* -------------------------------------------------- */
@@ -44,7 +44,7 @@ type TForm = z.infer<typeof bookingSchema>
 /* -------------------------------------------------- */
 interface Props {
   pkg: Package
-  activeConsultations?: Consultation[] // <-- same as Step2
+  activeConsultations?: ConsultationRequest[] // <-- same as Step2
 }
 
 export default function PackageBookingDialog({ pkg, activeConsultations = [] }: Props) {
