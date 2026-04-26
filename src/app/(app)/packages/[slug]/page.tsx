@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, Check, Phone } from 'lucide-react'
+import { Check, Phone } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
 import Image from 'next/image'
 import {
@@ -14,7 +14,6 @@ import { Media, Package, Test, TestCategory } from '@/payload-types'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import SaudiPrice from '@/components/shared/SaudiPrice'
-import PackageBookingDialog from '@/components/PackageBookingDialog'
 
 interface PackagesListProps {
   packageTypeId: string
@@ -45,6 +44,17 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
         <p className="text-muted-foreground">يرجى المحاولة لاحقاً أو اختيار فئة أخرى</p>
       </div>
     )
+  }
+  const buildWhatsAppLink = (packageName: string) => {
+    const whatsappMessage = `السلام عليكم ورحمة الله وبركاته
+
+أريد حجز ${packageName}
+
+أرجو التكرم بالتواصل معي للتأكيد النهائي.`
+
+    const encodedMessage = encodeURIComponent(whatsappMessage)
+
+    return `https://wa.me/+966920031642?text=${encodedMessage}`
   }
 
   return (
@@ -129,9 +139,6 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                   ) : null}
                 </div>
               </div>
-
-              {/* CTA: "اختر الباقة" now triggers the abstracted client dialog */}
-              <PackageBookingDialog pkg={pkg} />
 
               {/* Existing tests dialog (unchanged) */}
               {pkg.tests && pkg.tests.length > 0 ? (
@@ -263,6 +270,14 @@ function PackagesList({ packages, isLoading = false }: PackagesListProps) {
                   </DialogContent>
                 </Dialog>
               ) : null}
+
+              {/* CTA: "اختر الباقة" now triggers the abstracted client dialog */}
+              <a href={buildWhatsAppLink(pkg.name)} target="_blank" rel="noopener noreferrer">
+                <Button className="flex items-center w-full mt-auto gap-2 rounded-lg">
+                  احجز مجاناً الآن
+                  <BsWhatsapp className="h-4 w-4" />
+                </Button>
+              </a>
             </div>
           </div>
         )
