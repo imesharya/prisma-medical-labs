@@ -87,11 +87,6 @@ const HomeVisitCTA = () => {
                 احجز زيارة منزلية
               </Button>
             </Link>
-            <a>
-              <Button variant={'outline'} className="rounded-3xl px-4">
-                تواصل واتساب
-              </Button>
-            </a>
           </div>
         </div>
       </div>

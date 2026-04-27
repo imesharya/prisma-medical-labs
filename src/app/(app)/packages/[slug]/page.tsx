@@ -74,21 +74,28 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             priority
           />
         )}
+        {/* Mobile: always solid opaque background */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 md:hidden"
+          style={{ backgroundColor: `rgba(${baseColor},0.85)` }}
+        />
+
+        {/* Desktop: gradient when image exists, solid fallback when no image */}
+        <div
+          className="absolute inset-0 hidden md:block"
           style={{
             background: packageType.thumbnail
               ? `linear-gradient(
-                  to left,
-                  rgba(${baseColor},0.85) 0%,
-                  rgba(${baseColor},0.7) 30%,
-                  transparent 70%
-                ),
-                radial-gradient(
-                  ellipse at 70% 30%,
-                  rgba(${baseColor},0.15) 0%,
-                  transparent 55%
-                )`
+            to left,
+            rgba(${baseColor},0.85) 0%,
+            rgba(${baseColor},0.7) 30%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse at 70% 30%,
+            rgba(${baseColor},0.15) 0%,
+            transparent 55%
+          )`
               : `rgba(${baseColor},0.85)`,
           }}
         />
