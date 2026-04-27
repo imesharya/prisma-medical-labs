@@ -40,7 +40,7 @@ const getPackageLabel = (count: number) => {
 }
 
 const PackageTypeCard = ({ package: pkg, packageCount }: PackageTypeCardProps) => {
-  const accentColor = colorMap[pkg.badgeColor || 'primary'] || colorMap.primary
+  const accentColor = pkg.color || '#2563EB'
 
   const iconName = (pkg.icon || 'help-circle') as keyof typeof dynamicIconImports
 

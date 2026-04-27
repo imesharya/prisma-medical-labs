@@ -360,21 +360,21 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
         <div
           className="absolute inset-0"
           style={{
-            background: `
-      linear-gradient(
-        to left,
-        rgba(${baseColor},0.85) 0%,
-        rgba(${baseColor},0.7) 30%,
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse at 70% 30%,
-        rgba(${baseColor},0.15) 0%,
-        transparent 55%
-      )
-    `,
+            background: packageType.thumbnail
+              ? `linear-gradient(
+            to left,
+            rgba(${baseColor},0.85) 0%,
+            rgba(${baseColor},0.7) 30%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse at 70% 30%,
+            rgba(${baseColor},0.15) 0%,
+            transparent 55%
+          )`
+              : `rgb(${baseColor},0.85)`,
           }}
-        ></div>
+        />
         <div className="relative max-w-[700px] z-10">
           {packageType.certified && (
             <div className="inline-flex items-center gap-2 border text-xs text-white mb-4 px-4 py-2 rounded-[50px] border-solid border-[rgba(255,255,255,0.2)]">
@@ -406,7 +406,8 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
           <div className="flex gap-3 flex-wrap">
             <a
               href={buildWhatsAppLink()}
-              className={`text-white text-[13px] font-bold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 transition-all duration-[0.3s] px-9 py-3.5 rounded-[10px] border-[none] bg-[${backgroundColor}]`}
+              className={`text-white text-[13px] font-bold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 transition-all duration-[0.3s] px-9 py-3.5 rounded-[10px] border-[none]`}
+              style={{ backgroundColor: backgroundColor }}
             >
               <svg
                 width={18}
