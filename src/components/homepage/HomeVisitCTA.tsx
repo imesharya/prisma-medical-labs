@@ -82,7 +82,7 @@ const HomeVisitCTA = () => {
             جوالك بعد ساعات.
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <Link href={'/consultation'}>
+            <Link href={'/home-visit'}>
               <Button variant={'gradient'} className="rounded-3xl px-4">
                 احجز زيارة منزلية
               </Button>
