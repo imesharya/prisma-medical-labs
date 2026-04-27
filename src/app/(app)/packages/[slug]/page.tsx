@@ -113,10 +113,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               {packageType.badge}
             </p>
           )}
-          <h1 className="font-extrabold text-[clamp(32px,5vw,52px)] leading-[1.3] text-white mb-4">
+          <h1 className="font-extrabold text-[clamp(32px,5vw,52px)] leading-[1.3] text-white mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
             {packageType.headline ? packageType.headline : packageType.name}
           </h1>
-          <p className="text-[15px] text-[rgba(255,255,255,0.8)] font-light leading-[1.9] mb-6">
+          <p className="text-[15px] text-[rgba(255,255,255,0.8)] font-light leading-[1.9] mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
             {packageType.subheadline ? packageType.subheadline : packageType.description}
           </p>
           <div className="flex gap-3 flex-wrap">
