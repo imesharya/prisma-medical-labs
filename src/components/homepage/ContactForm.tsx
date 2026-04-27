@@ -6,7 +6,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
+import { Field, FieldError, FieldLabel } from '@/components/ui/field'
 import { AlertCircle, Loader2, Sparkles, Phone, Mail, MapPin } from 'lucide-react'
 import { BsWhatsapp } from 'react-icons/bs'
 import Link from 'next/link'
@@ -22,10 +22,7 @@ const ContactForm = () => {
     defaultValues: {
       fullName: '',
       phoneNumber: '',
-      email: '',
-      subject: undefined,
       message: '',
-      preferredContactMethod: undefined,
     },
   })
 
@@ -53,20 +50,6 @@ const ContactForm = () => {
       setIsLoading(false)
     }
   }
-
-  const subjectOptions = [
-    { value: 'general', label: 'استفسار عام' },
-    { value: 'complaint', label: 'شكوى' },
-    { value: 'suggestion', label: 'اقتراح' },
-    { value: 'partnership', label: 'شراكة / تعاون' },
-    { value: 'other', label: 'أخرى' },
-  ] as const
-
-  const contactMethods = [
-    { value: 'phone', label: 'جوال', icon: Phone },
-    { value: 'email', label: 'بريد إلكتروني', icon: Mail },
-    { value: 'whatsapp', label: 'واتساب', icon: BsWhatsapp },
-  ] as const
 
   return (
     <section className="md:p-4" id="contact">
@@ -239,61 +222,6 @@ const ContactForm = () => {
                   )}
                 />
 
-                {/* Email */}
-                <Controller
-                  control={control}
-                  name="email"
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel htmlFor="email" className="text-sm font-semibold text-foreground">
-                        البريد الإلكتروني{' '}
-                        <span className="text-muted-foreground font-normal">(اختياري)</span>
-                      </FieldLabel>
-                      <Input
-                        {...field}
-                        id="email"
-                        type="email"
-                        aria-invalid={fieldState.invalid}
-                        placeholder="example@email.com"
-                        autoComplete="email"
-                        className="h-12 w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
-                      />
-                      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-                    </Field>
-                  )}
-                />
-
-                {/* Subject */}
-                <Controller
-                  control={control}
-                  name="subject"
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel className="text-sm font-semibold text-foreground block mb-2">
-                        الموضوع *
-                      </FieldLabel>
-                      <div className="grid grid-cols-2 gap-3">
-                        {subjectOptions.map((option) => (
-                          <label key={option.value} className="cursor-pointer">
-                            <input
-                              type="radio"
-                              name={field.name}
-                              value={option.value}
-                              checked={field.value === option.value}
-                              onChange={() => field.onChange(option.value)}
-                              className="peer hidden"
-                            />
-                            <div className="peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary border-2 border-input bg-background rounded-xl p-4 transition-all hover:border-primary/30 text-center text-foreground font-medium text-sm">
-                              {option.label}
-                            </div>
-                          </label>
-                        ))}
-                      </div>
-                      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-                    </Field>
-                  )}
-                />
-
                 {/* Message */}
                 <Controller
                   control={control}
@@ -304,7 +232,7 @@ const ContactForm = () => {
                         htmlFor="message"
                         className="text-sm font-semibold text-foreground"
                       >
-                        الرسالة *
+                        الرسالة <span className="text-muted-foreground font-normal">(اختياري)</span>
                       </FieldLabel>
                       <textarea
                         {...field}
@@ -314,41 +242,6 @@ const ContactForm = () => {
                         placeholder="اكتب رسالتك هنا..."
                         className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200 resize-none text-right"
                       />
-                      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-                    </Field>
-                  )}
-                />
-
-                {/* Preferred Contact Method */}
-                <Controller
-                  control={control}
-                  name="preferredContactMethod"
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel className="text-sm font-semibold text-foreground block mb-2">
-                        طريقة التواصل المفضلة *
-                      </FieldLabel>
-                      <div className="grid grid-cols-3 gap-3">
-                        {contactMethods.map((method) => {
-                          const Icon = method.icon
-                          return (
-                            <label key={method.value} className="cursor-pointer">
-                              <input
-                                type="radio"
-                                name={field.name}
-                                value={method.value}
-                                checked={field.value === method.value}
-                                onChange={() => field.onChange(method.value)}
-                                className="peer hidden"
-                              />
-                              <div className="peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary border-2 border-input bg-background rounded-xl p-3 transition-all hover:border-primary/30 flex flex-col items-center gap-2 text-foreground">
-                                <Icon className="w-5 h-5" />
-                                <span className="text-xs font-medium">{method.label}</span>
-                              </div>
-                            </label>
-                          )
-                        })}
-                      </div>
                       {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                     </Field>
                   )}
@@ -402,7 +295,7 @@ const ContactForm = () => {
 
                 <h3 className="text-2xl font-bold mb-2 text-foreground">شكراً لتواصلك معنا</h3>
                 <p className="text-muted-foreground max-w-sm mx-auto mb-8">
-                  تم استلام رسالتك وسيقوم فريقنا بالرد عليك عبر طريقة التواصل المفضلة في أقرب وقت
+                  تم استلام رسالتك وسيقوم فريقنا بالرد عليك في أقرب وقت
                 </p>
 
                 <Button

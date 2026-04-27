@@ -539,10 +539,7 @@ export interface ContactMessage {
   id: string;
   fullName: string;
   phoneNumber: string;
-  email?: string | null;
-  subject: 'general' | 'complaint' | 'suggestion' | 'partnership' | 'other';
-  message: string;
-  preferredContactMethod: 'phone' | 'email' | 'whatsapp';
+  message?: string | null;
   status?: ('new' | 'read' | 'replied' | 'archived') | null;
   notes?: string | null;
   updatedAt: string;
@@ -1048,10 +1045,7 @@ export interface HomeVisitsSelect<T extends boolean = true> {
 export interface ContactMessagesSelect<T extends boolean = true> {
   fullName?: T;
   phoneNumber?: T;
-  email?: T;
-  subject?: T;
   message?: T;
-  preferredContactMethod?: T;
   status?: T;
   notes?: T;
   updatedAt?: T;

@@ -20,18 +20,14 @@ export const submitContactForm = async (data: TContactScheme): Promise<SubmitCon
       return { success: false, code: 'ERROR_INVALID_INPUT' }
     }
 
-    const { fullName, phoneNumber, email, subject, message, preferredContactMethod } =
-      validated.data
+    const { fullName, phoneNumber, message } = validated.data
 
     await payload.create({
       collection: 'contact-messages',
       data: {
         fullName,
         phoneNumber,
-        email: email || undefined,
-        subject,
         message,
-        preferredContactMethod,
         status: 'new',
       },
     })

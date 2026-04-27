@@ -25,39 +25,9 @@ export const ContactMessages: CollectionConfig = {
       label: 'رقم الجوال',
     },
     {
-      name: 'email',
-      type: 'email',
-      label: 'البريد الإلكتروني',
-    },
-    {
-      name: 'subject',
-      type: 'select',
-      required: true,
-      label: 'الموضوع',
-      options: [
-        { label: 'استفسار عام', value: 'general' },
-        { label: 'شكوى', value: 'complaint' },
-        { label: 'اقتراح', value: 'suggestion' },
-        { label: 'شراكة / تعاون', value: 'partnership' },
-        { label: 'أخرى', value: 'other' },
-      ],
-    },
-    {
       name: 'message',
       type: 'textarea',
-      required: true,
       label: 'الرسالة',
-    },
-    {
-      name: 'preferredContactMethod',
-      type: 'select',
-      required: true,
-      label: 'طريقة التواصل المفضلة',
-      options: [
-        { label: 'جوال', value: 'phone' },
-        { label: 'بريد إلكتروني', value: 'email' },
-        { label: 'واتساب', value: 'whatsapp' },
-      ],
     },
     {
       name: 'status',
