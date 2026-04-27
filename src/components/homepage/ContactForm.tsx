@@ -54,29 +54,21 @@ const ContactForm = () => {
   return (
     <section className="md:p-4" id="contact">
       <div
-        className="relative w-full overflow-hidden py-16 md:py-20 lg:py-28 rounded-3xl shadow-md border border-gray-100"
+        className="relative w-full overflow-hidden py-16 md:py-24 rounded-3xl shadow-md border border-gray-100"
         style={{
           background: `linear-gradient(180deg, #2563EB08 0%, transparent 60%)`,
         }}
       >
-        <div className="flex flex-col md:flex-row gap-4 md:gap-8 mx-auto px-4 md:px-6 lg:px-8 w-full max-w-7xl">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8 mx-auto px-4 md:px-6 lg:px-8 w-full max-w-[1800px]">
           {/* Header Section */}
-          <div className="md:flex-1 flex flex-col items-center md:items-start text-center md:text-start p-8 md:p-12">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 w-fit px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full mb-6">
-              <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary">تواصل معنا</span>
+          <div className="md:flex-1 flex flex-col items-center md:items-start text-center md:text-start">
+            <div className="text-center md:text-start mb-10 md:mb-12">
+              <div className="text-[10px] tracking-[0.4em] mb-3 text-[#0A84FF]">CONTACT</div>
+              <h2 className="text-[34px] md:text-[52px] font-bold mb-3 md:mb-4">احجز موعدك الآن</h2>
+              <p className="text-[13px] md:text-[14px]" style={{ color: 'rgba(10,10,18,0.55)' }}>
+                فريقنا سيتواصل معك خلال أقل من ساعة
+              </p>
             </div>
-
-            {/* Headline */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-balance">
-              تواصل معنا
-            </h2>
-
-            {/* Subheadline */}
-            <p className="mt-6 text-base md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              نحن هنا لمساعدتك. املأ النموذج وسنرد عليك في أقرب وقت
-            </p>
 
             <ul className="space-y-3 mt-6 max-md:hidden">
               {/* Address */}
@@ -257,6 +249,7 @@ const ContactForm = () => {
 
                 {/* Submit Button */}
                 <Button
+                  variant={'gradient'}
                   type="submit"
                   disabled={isLoading}
                   className="h-12 inline-flex items-center justify-center gap-2 w-full px-6 py-4 mt-2 text-base font-bold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-300"

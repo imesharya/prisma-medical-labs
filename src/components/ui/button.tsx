@@ -9,15 +9,18 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'gradient-bg text-primary-foreground gradient-bg-hover border-0',
+        default: 'bg-primary text-primary-foreground [a]:hover:bg-primary/80',
         outline:
-          'border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50',
-        secondary: 'gradient-bg-secondary text-primary-foreground gradient-bg-secondary-hover',
+          'border-border bg-background hover:bg-muted text-foreground hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50',
+        secondary:
+          'bg-neutral-950 text-white hover:bg-black aria-expanded:bg-neutral-950 aria-expanded:text-white',
         ghost:
           'hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50',
         destructive:
           'bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40',
         link: 'text-primary underline-offset-4 hover:underline',
+        gradient:
+          'bg-[linear-gradient(135deg,rgb(0,191,255),rgb(107,79,187)_60%,rgb(255,79,184))] text-white hover:brightness-110 hover:shadow-lg',
       },
       size: {
         default:

@@ -55,7 +55,7 @@ const page = async () => {
         />
         <div className="absolute inset-0 max-md:bg-background/60 md:bg-gradient-to-l md:from-background/80 md:to-transparent" />
 
-        <div className="relative h-full flex flex-col items-center md:items-start justify-center px-4 md:px-6 lg:px-8 text-center md:text-start md:max-w-7xl mx-auto">
+        <div className="relative h-full flex flex-col items-center md:items-start justify-center px-4 md:px-6 lg:px-8 text-center md:text-start md:max-w-[1800px] mx-auto">
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-balance md:max-w-1/2">
             خدمتنا تصلك أينما كنت!
           </h2>

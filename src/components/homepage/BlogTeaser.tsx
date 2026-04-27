@@ -36,79 +36,66 @@ const BlogTeaser = ({ posts }: { posts: PopulatedBlogPost[] }) => {
   }, [api])
 
   return (
-    <section className="relative w-full overflow-hidden py-16 md:py-20 lg:py-28">
-      {/* Background decoration */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+    <section className="px-5 md:px-10 py-16 md:py-24 bg-white">
+      {/* Header */}
+      <div className="mb-8 md:mb-12 flex flex-col md:flex-row items-start justify-between gap-4">
+        <div>
+          <div className="text-[10px] tracking-[0.4em] mb-3 text-[#0A84FF]">KNOWLEDGE</div>
+          <h2 className="text-[32px] md:text-[48px] font-bold leading-[1.05]">من المدونة الطبية</h2>
+        </div>
+        {/* Navigation Buttons + View All */}
+        <div className="flex items-center justify-between mt-8 gap-4">
+          {/* Prev / Next buttons - order + icons automatically respect RTL/LTR */}
+          <div className="flex gap-2">
+            <button
+              onClick={() => api?.scrollPrev()}
+              disabled={!canScrollPrev}
+              className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+            <button
+              onClick={() => api?.scrollNext()}
+              disabled={!canScrollNext}
+              className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* View All CTA */}
+          <Link
+            href={'/blog'}
+            className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary hover:text-primary/80 transition-colors duration-300"
+          >
+            تصفّح جميع المقالات
+            <ChevronLeft className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex flex-col items-center text-center mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 w-fit px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full mb-6">
-            <Sparkles className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">المدونة الطبية</span>
-          </div>
-
-          <h2 className="text-4xl md:text-5xl lg:text-6xl gradient-text font-bold tracking-tight leading-tight text-balance max-w-3xl">
-            مقالات صحية موثوقة
-          </h2>
-
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            معلومات طبية دقيقة من فريق بريزما — لأن صحتك تستحق معرفة أعمق
-          </p>
-        </div>
-
-        {/* Carousel Section - shadcn Carousel with basis-3 on desktop + full RTL/LTR support */}
-        <div className="relative">
-          <Carousel
-            opts={{
-              align: 'start',
-              direction: 'rtl',
-              loop: false,
-            }}
-            setApi={setApi}
-            className="w-full"
-          >
-            <CarouselContent className="-ms-6 p-2">
-              {posts.map((post) => (
-                <CarouselItem key={post.id} className="ps-6 basis-full sm:basis-1/2 lg:basis-1/3">
-                  <BlogCard post={post} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-
-          {/* Navigation Buttons + View All */}
-          <div className="flex items-center justify-between mt-8 gap-4">
-            {/* Prev / Next buttons - order + icons automatically respect RTL/LTR */}
-            <div className="flex gap-2">
-              <button
-                onClick={() => api?.scrollPrev()}
-                disabled={!canScrollPrev}
-                className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+      {/* Carousel Section - shadcn Carousel with basis-3 on desktop + full RTL/LTR support */}
+      <div className="relative">
+        <Carousel
+          opts={{
+            align: 'start',
+            direction: 'rtl',
+            loop: false,
+          }}
+          setApi={setApi}
+          className="w-full"
+        >
+          <CarouselContent className="-ms-6 p-2">
+            {posts.map((post) => (
+              <CarouselItem
+                key={post.id}
+                className="ps-6 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
               >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-              <button
-                onClick={() => api?.scrollNext()}
-                disabled={!canScrollNext}
-                className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-            </div>
-
-            {/* View All CTA */}
-            <Link
-              href={'/blog'}
-              className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary hover:text-primary/80 transition-colors duration-300"
-            >
-              تصفّح جميع المقالات
-              <ChevronLeft className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
+                <BlogCard post={post} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
     </section>
   )

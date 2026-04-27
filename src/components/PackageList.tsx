@@ -118,7 +118,7 @@ export default function PackagesList({
           <p className="text-muted-foreground">جرب البحث بكلمات مختلفة أو اختر فئة أخرى</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredPackages.map((pkg) => (
             <PackageCard key={pkg.id} pkg={pkg} />
           ))}

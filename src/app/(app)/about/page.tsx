@@ -55,7 +55,7 @@ const page = () => {
         </div>
       </section>
 
-      <section className="relative w-full overflow-hidden max-w-7xl mx-auto py-16 border-t border-border">
+      <section className="relative w-full overflow-hidden max-w-[1800px] mx-auto py-16 border-t border-border">
         <div className="relative h-full flex flex-col items-center justify-center gap-8 px-4 md:px-6 lg:px-8 text-center">
           <p className="md:text-lg">
             تعد مختبرات بريزما (Prisma Laboratories) ثمرة تلاقي الخبرة الطبية العريقة مع التكنولوجيا
@@ -88,7 +88,7 @@ const page = () => {
             قيمنا الأساسية
           </h1>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 max-w-[1800px] mx-auto gap-4">
             {VALUES.map((v) => {
               const iconName = (v.icon || 'help-circle') as keyof typeof dynamicIconImports
               return (

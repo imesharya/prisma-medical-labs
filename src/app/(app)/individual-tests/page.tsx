@@ -46,7 +46,7 @@ const page = async () => {
       </div>
 
       <div className="w-full bg-background">
-        <div className="max-w-7xl mx-auto flex flex-col gap-4 md:gap-8 px-4 md:px-6 lg:px-8 py-12 md:py-16">
+        <div className="max-w-[1800px] mx-auto flex flex-col gap-4 md:gap-8 px-4 md:px-6 lg:px-8 py-12 md:py-16">
           {testCategories.map((c) => {
             const categoryTests = tests.filter(
               (t) =>

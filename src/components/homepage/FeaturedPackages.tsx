@@ -42,67 +42,65 @@ const getPackageLabel = (count: number) => {
 const PackageTypeCard = ({ package: pkg, packageCount }: PackageTypeCardProps) => {
   const accentColor = pkg.color || '#2563EB'
 
-  const iconName = (pkg.icon || 'help-circle') as keyof typeof dynamicIconImports
-
   return (
-    <Link href={`/packages/${pkg.slug}`} className="group h-full">
+    <Link
+      href={`/packages/${pkg.slug}`}
+      className="group relative rounded-2xl p-6 md:p-7 overflow-hidden cursor-pointer transition-transform hover:-translate-y-1"
+      style={{
+        background: '#fff',
+        border: `1px solid rgba(10,10,18,0.08)`,
+        minHeight: 180,
+        boxShadow: '0 4px 20px rgba(10,10,18,0.04)',
+      }}
+    >
       <div
-        className="relative rounded-3xl p-6 md:p-8 shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col justify-between border border-gray-100"
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition"
         style={{
-          background: `linear-gradient(180deg, ${accentColor}08 0%, transparent 60%)`,
+          background: `radial-gradient(ellipse at 100% 0%, ${accentColor}20 0%, transparent 60%)`,
         }}
-      >
-        {/* Accent Glow Layer */}
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300"
-          style={{
-            background: `radial-gradient(circle at top right, ${accentColor}22, transparent 60%)`,
-          }}
-        />
-
-        {/* Top Section */}
-        <div className="relative flex items-center justify-between gap-4 mb-6">
-          <h3 className="text-lg md:text-xl font-bold leading-tight flex-1">{pkg.name}</h3>
-
-          {/* Icon */}
+      />
+      <div className="relative">
+        <div className="flex items-start justify-between mb-5 md:mb-6">
           <div
-            className="rounded-xl p-2 transition-all duration-300 group-hover:scale-110"
+            className="w-11 h-11 rounded-xl flex items-center justify-center"
+            style={{ background: `${accentColor}12`, border: `1px solid ${accentColor}30` }}
+          >
+            <div
+              className="w-5 h-5 rounded-md"
+              style={{ background: accentColor, boxShadow: `0 0 12px ${accentColor}55` }}
+            />
+          </div>
+          <div
+            className="text-[10px] tracking-widest font-bold px-2.5 py-1 rounded-full"
             style={{
-              backgroundColor: `${accentColor}18`,
               color: accentColor,
+              border: `1px solid ${accentColor}30`,
+              background: `${accentColor}08`,
             }}
           >
-            <Icon name={iconName} size={24} />
+            {getPackageLabel(packageCount)}
           </div>
         </div>
-
-        {/* Description */}
-        <p className="relative leading-relaxed text-sm text-gray-600 mb-auto flex-grow">
+        <div className="text-[18px] md:text-[20px] font-bold mb-2">{pkg.name}</div>
+        <div className="text-[12px] leading-[1.8]" style={{ color: 'rgba(10,10,18,0.55)' }}>
           {pkg.description}
-        </p>
-
-        {/* Bottom Section */}
-        <div className="relative flex items-end justify-between gap-4 mt-6 pt-4">
-          <span
-            className={`text-sm font-semibold ${packageCount == 0 ? 'invisible' : ''}`}
-            style={{ color: accentColor }}
-          >
-            {getPackageLabel(packageCount)}
-          </span>
-
-          <ArrowLeft
-            className="h-6 w-6 transition-all duration-300 group-hover:translate-x-1"
-            style={{ color: accentColor }}
-          />
         </div>
-
-        {/* Hover Border Accent */}
         <div
-          className="absolute inset-0 rounded-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition duration-300"
-          style={{
-            boxShadow: `0 0 0 1px ${accentColor}40 inset`,
-          }}
-        />
+          className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-bold"
+          style={{ color: accentColor }}
+        >
+          اعرف أكثر
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </div>
       </div>
     </Link>
   )
@@ -128,40 +126,32 @@ const PackageTypes = async () => {
   })
 
   return (
-    <section className="relative w-full overflow-hidden py-16 md:py-20 lg:py-28">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        {/* Header Section */}
-        <div className="flex flex-col items-center text-center mb-12 md:mb-16">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 w-fit px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full mb-6">
-            <Sparkles className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">اكتشف أقسامنا</span>
-          </div>
-
-          {/* Headline */}
-          <h2 className="text-4xl gradient-text md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-balance max-w-3xl">
-            الأقسام الرئيسية
+    <section className="relative px-5 md:px-10 py-16 md:py-24 bg-white">
+      <div className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <div>
+          <div className="text-[10px] tracking-[0.4em] mb-3 text-[#0A84FF]">EXPLORE</div>
+          <h2 className="text-[36px] md:text-[54px] font-bold leading-[1.05] text-[#0A0A12]">
+            الأقسام <span className="text-[#FF4FB8]">الرئيسية</span>
           </h2>
-
-          {/* Subheadline */}
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            اختر القسم المناسب لاحتياجك — كل قسم يضم باقات مصممة بعناية لتغطية جوانب صحتك
-          </p>
         </div>
-
-        {/* Package Types Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4">
-          {activePackages.map((packageType) => {
-            const packageCount = packages.filter((p) => p.packageType === packageType.id)
-            return (
-              <PackageTypeCard
-                key={packageType.id}
-                package={packageType}
-                packageCount={packageCount.length ?? 0}
-              />
-            )
-          })}
-        </div>
+        <p
+          className="max-w-[380px] text-[13px] md:text-[14px] leading-[1.9]"
+          style={{ color: 'rgba(10,10,18,0.55)' }}
+        >
+          اختر القسم المناسب لاحتياجك — كل قسم يضم باقات مصممة بعناية لتغطية جوانب صحتك.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+        {activePackages.map((packageType) => {
+          const packageCount = packages.filter((p) => p.packageType === packageType.id)
+          return (
+            <PackageTypeCard
+              key={packageType.id}
+              package={packageType}
+              packageCount={packageCount.length ?? 0}
+            />
+          )
+        })}
       </div>
     </section>
   )

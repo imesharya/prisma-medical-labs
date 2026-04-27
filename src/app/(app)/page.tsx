@@ -8,6 +8,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { BlogPost } from '@/payload-types'
 import { Suspense } from 'react'
+import PrismaAICTA from '@/components/homepage/PrismaAICTA'
 
 type PopulatedBlogPost = Populated<BlogPost, 1>
 
@@ -22,6 +23,7 @@ export default async function Home() {
       <Hero />
       <Metrics />
       <PackageTypes />
+      <PrismaAICTA />
       <HomeVisitCTA />
       <Suspense>
         <BlogTeaser posts={posts} />

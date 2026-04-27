@@ -1,58 +1,59 @@
-import { Clock, FlaskConical, ShieldCheck, Users } from 'lucide-react'
+export const PRISMA = {
+  cyan: '#00BFFF',
+  blue: '#0A84FF',
+  teal: '#00A99D',
+  purple: '#6B4FBB',
+  pink: '#FF4FB8',
+  magenta: '#D61F9E',
+  crimson: '#9B2335',
+  ink: '#0A0A12',
+  ink2: '#141420',
+  paper: '#FAFAFB',
+  line: 'rgba(255,255,255,0.08)',
+}
 
-const metrics = [
-  {
-    icon: Users,
-    value: '+10,000',
-    label: 'قصة ثقة',
-  },
-  {
-    icon: Clock,
-    value: 'بسرعة',
-    label: 'نتائجك توصلك بأسرع وقت',
-  },
-  {
-    icon: FlaskConical,
-    value: '+500',
-    label: 'تحليل يغطي كل اللي تحتاجه',
-  },
-  {
-    icon: ShieldCheck,
-    value: '100%',
-    label: 'نتائج موثوقة ومعتمدة',
-  },
+export const STATS = [
+  { n: '+10,000', l: 'قصة ثقة' },
+  { n: '3 ساعات', l: 'نتائجك توصلك بأسرع وقت' },
+  { n: '+500', l: 'تحليل يغطي كل احتياجاتك' },
+  { n: '100%', l: 'نتائج موثوقة ومعتمدة' },
 ]
 
 const Metrics = () => {
+  const softInk = '#0A0A12'
+  const line = 'rgba(10,10,18,0.08)'
+
   return (
-    <section className="w-full bg-card border-y border-border">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4">
-          {metrics.map((metric, index) => (
+    <section
+      className="relative bg-white"
+      style={{ borderTop: `1px solid ${line}`, borderBottom: `1px solid ${line}` }}
+    >
+      <div className="grid grid-cols-2 md:grid-cols-4 relative">
+        {STATS.map((s, i) => (
+          <div
+            key={i}
+            className="py-7 md:py-10 px-4 md:px-8 text-center relative"
+            style={{
+              borderLeft: i % 2 === 0 && i < STATS.length - 1 ? `1px solid ${line}` : undefined,
+              borderBottom: i < 2 ? `1px solid ${line}` : undefined,
+            }}
+          >
             <div
-              key={index}
-              className={`flex flex-col items-center text-center px-3 py-4 md:px-6 md:py-5 ${
-                index < metrics.length - 1 ? 'lg:border-l lg:border-border' : ''
-              } ${index % 2 === 0 ? 'border-l border-border' : ''} ${
-                index < 2 ? 'border-b border-border lg:border-b-0' : ''
-              }`}
+              className="text-[28px] md:text-[44px] font-bold leading-none mb-2"
+              style={{
+                background: `linear-gradient(135deg, ${softInk}, ${[PRISMA.cyan, PRISMA.purple, PRISMA.pink, PRISMA.teal][i]})`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
             >
-              {/* Top row: Icon + Value */}
-              <div className="flex items-center justify-center gap-2">
-                <metric.icon className="h-4 w-4 md:h-5 md:w-5 text-primary shrink-0" />
-                <span className="text-base md:text-lg font-bold gradient-text whitespace-nowrap">
-                  {metric.value}
-                </span>
-              </div>
-              {/* Bottom row: Label */}
-              <span className="mt-1 text-xs md:text-sm text-muted-foreground leading-tight">
-                {metric.label}
-              </span>
+              {s.n}
             </div>
-          ))}
-        </div>
+            <div className="text-[11px] md:text-[13px]" style={{ color: 'rgba(10,10,18,0.55)' }}>
+              {s.l}
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="w-full h-1 gradient-bg"></div>
     </section>
   )
 }

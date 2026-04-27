@@ -90,7 +90,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="sticky top-0 z-50 w-full bg-card/80 backdrop-blur-lg border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="max-w-[1800px] mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
@@ -105,7 +105,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <ul className="hidden lg:flex items-center gap-1">
+            <ul className="relative hidden lg:flex items-center gap-1">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href
                 const shouldExpand =
@@ -121,19 +121,21 @@ const Navbar = () => {
                     >
                       <Link
                         href={link.href}
-                        className={`group flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                        className={`relative group flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-all duration-200 ${
                           shouldExpand
                             ? 'text-foreground'
                             : 'text-foreground/80 hover:text-foreground'
                         }`}
                       >
-                        <span
-                          className={`relative inline-block ${
-                            shouldExpand
-                              ? "after:content-[''] after:absolute after:inset-x-0 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-[linear-gradient(135deg,var(--gradient-start),var(--gradient-end))]"
-                              : "after:content-[''] after:absolute after:inset-x-0 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-[linear-gradient(135deg,var(--gradient-start),var(--gradient-end))] after:scale-x-0 after:origin-right after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100"
-                          }`}
-                        >
+                        <span className={`inline-block`}>
+                          {isActive && (
+                            <span
+                              className="absolute bottom-0 right-2 left-2 h-px"
+                              style={{
+                                background: `linear-gradient(90deg, transparent, #00BFFF, #6B4FBB, transparent)`,
+                              }}
+                            />
+                          )}
                           {link.label}
                         </span>
 
@@ -173,17 +175,26 @@ const Navbar = () => {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className={`group flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                      className={`relative group flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-all duration-200 ${
                         isActive ? 'text-foreground' : 'text-foreground/80 hover:text-foreground'
                       }`}
                     >
-                      <span
-                        className={`relative inline-block ${
-                          isActive
-                            ? "after:content-[''] after:absolute after:inset-x-0 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-[linear-gradient(135deg,var(--gradient-start),var(--gradient-end))]"
-                            : "after:content-[''] after:absolute after:inset-x-0 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-[linear-gradient(135deg,var(--gradient-start),var(--gradient-end))] after:scale-x-0 after:origin-right after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100"
-                        }`}
-                      >
+                      {link.href === '/prisma-ai' && (
+                        <span
+                          className="absolute -top-1 -left-1 w-1.5 h-1.5 rounded-full"
+                          style={{ background: '#00BFFF', boxShadow: `0 0 8px #00BFFF` }}
+                        />
+                      )}
+                      <span className={`inline-block`}>
+                        {isActive && (
+                          <span
+                            className="absolute bottom-0 right-2 left-2 h-px"
+                            style={{
+                              background: `linear-gradient(90deg, transparent, #00BFFF, #6B4FBB, transparent)`,
+                            }}
+                          />
+                        )}
+
                         {link.label}
                       </span>
                     </Link>
@@ -194,21 +205,14 @@ const Navbar = () => {
 
             {/* Desktop CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
-              <Link href="/consultation">
-                <Button
-                  size={'sm'}
-                  className="px-5 py-2.5 text-sm font-medium gradient-bg text-primary-foreground gradient-bg-hover shadow-md"
-                >
-                  استشارة طبية
+              <Link href="/#contact">
+                <Button size={'sm'} variant={'outline'}>
+                  تواصل معنا
                 </Button>
               </Link>
-              <Link href="/#contact">
-                <Button
-                  size={'sm'}
-                  variant={'outline'}
-                  className="px-5 py-2.5 text-sm font-medium bg-card text-foreground transition-all duration-200"
-                >
-                  تواصل معنا
+              <Link href="/consultation">
+                <Button size={'sm'} variant={'gradient'}>
+                  استشارة طبية
                 </Button>
               </Link>
             </div>
@@ -344,20 +348,18 @@ const Navbar = () => {
         {/* Mobile CTA Buttons */}
         <div className="flex flex-col gap-2 p-6 border-t border-border">
           <Link href="/consultation">
-            <button
+            <Button
+              variant={'gradient'}
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3.5 text-base font-medium gradient-bg text-primary-foreground rounded-xl shadow-md"
+              className="w-full"
             >
               استشارة طبية
-            </button>
+            </Button>
           </Link>
           <Link href="/#contact">
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3.5 text-base font-medium bg-muted text-foreground rounded-xl hover:bg-muted/80 transition-colors"
-            >
+            <Button variant={'outline'} onClick={() => setMobileMenuOpen(false)} className="w-full">
               تواصل معنا
-            </button>
+            </Button>
           </Link>
         </div>
       </div>
