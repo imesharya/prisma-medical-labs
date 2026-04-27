@@ -23,7 +23,6 @@ export const PackageTypes: CollectionConfig = {
       useAsSlug: 'name',
       slugify: ({ valueToSlugify }) => {
         if (!valueToSlugify) return ''
-
         return valueToSlugify
           .trim()
           .replace(/[\s:]+/g, '-')
@@ -59,6 +58,37 @@ export const PackageTypes: CollectionConfig = {
       label: 'صورة النوع',
     },
     {
+      name: 'badges',
+      type: 'array',
+      label: 'الشارات',
+      labels: { singular: 'شارة', plural: 'شارات' },
+      fields: [
+        {
+          name: 'customIcon',
+          type: 'textarea',
+          label: 'أيقونة / HTML مخصص',
+          admin: {
+            description: 'الصق كود SVG كاملاً أو HTML. اتركه فارغاً لإظهار نقطة افتراضية.',
+          },
+        },
+        {
+          name: 'text',
+          type: 'text',
+          required: true,
+          label: 'النص',
+        },
+      ],
+    },
+    {
+      name: 'enableFiltering',
+      type: 'checkbox',
+      defaultValue: false,
+      label: 'تفعيل البحث والتصفية',
+      admin: {
+        description: 'إظهار خيارات البحث والتصفية حسب الفئة في صفحة الباقات',
+      },
+    },
+    {
       name: 'displayOrder',
       type: 'number',
       required: false,
@@ -67,7 +97,6 @@ export const PackageTypes: CollectionConfig = {
       admin: { position: 'sidebar' },
     },
     { name: 'isActive', type: 'checkbox', defaultValue: true, label: 'مفعّل' },
-    { name: 'certified', type: 'checkbox', defaultValue: false, label: 'معتمد' },
   ],
   timestamps: true,
 }

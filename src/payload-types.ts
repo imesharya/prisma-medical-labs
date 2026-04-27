@@ -183,9 +183,22 @@ export interface PackageType {
   icon?: string | null;
   badge?: string | null;
   thumbnail?: (string | null) | Media;
+  badges?:
+    | {
+        /**
+         * الصق كود SVG كاملاً أو HTML. اتركه فارغاً لإظهار نقطة افتراضية.
+         */
+        customIcon?: string | null;
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * إظهار خيارات البحث والتصفية حسب الفئة في صفحة الباقات
+   */
+  enableFiltering?: boolean | null;
   displayOrder?: number | null;
   isActive?: boolean | null;
-  certified?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -773,9 +786,16 @@ export interface PackageTypesSelect<T extends boolean = true> {
   icon?: T;
   badge?: T;
   thumbnail?: T;
+  badges?:
+    | T
+    | {
+        customIcon?: T;
+        text?: T;
+        id?: T;
+      };
+  enableFiltering?: T;
   displayOrder?: T;
   isActive?: T;
-  certified?: T;
   updatedAt?: T;
   createdAt?: T;
 }
