@@ -38,14 +38,20 @@ export const PackageTypes: CollectionConfig = {
       overrides: makeUniqueSlug,
     }),
     { name: 'description', type: 'textarea', label: 'الوصف' },
+    { name: 'headline', type: 'textarea', label: 'العنوان' },
+    { name: 'subheadline', type: 'textarea', label: 'عنوان فرعي' },
     {
-      name: 'badgeColor',
-      type: 'select',
-      options: ['blue', 'violet', 'pink', 'teal', 'amber'],
-      defaultValue: 'blue',
-      label: 'لون البادج',
+      name: 'color',
+      type: 'text',
+      label: 'اللون السائد',
+      admin: {
+        components: {
+          Field: '@/components/admin/CustomColorPicker',
+        },
+      },
     },
     { name: 'icon', type: 'text', label: 'اسم الأيقونة' },
+    { name: 'badge', type: 'text', label: 'شارة' },
     {
       name: 'thumbnail',
       type: 'upload',
@@ -61,6 +67,7 @@ export const PackageTypes: CollectionConfig = {
       admin: { position: 'sidebar' },
     },
     { name: 'isActive', type: 'checkbox', defaultValue: true, label: 'مفعّل' },
+    { name: 'certified', type: 'checkbox', defaultValue: false, label: 'معتمد' },
   ],
   timestamps: true,
 }

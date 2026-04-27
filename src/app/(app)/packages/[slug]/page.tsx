@@ -317,35 +317,138 @@ export default async function PackageTypePage({ params }: { params: Promise<{ sl
     )
   }
 
+  const buildWhatsAppLink = () => {
+    const whatsappMessage = `السلام عليكم ورحمة الله وبركاته
+
+أريد حجز ${packageType.name}
+
+أرجو التكرم بالتواصل معي للتأكيد النهائي.`
+
+    const encodedMessage = encodeURIComponent(whatsappMessage)
+
+    return `https://wa.me/+966920031642?text=${encodedMessage}`
+  }
+
+  const hexToRgb = (hex: string) => {
+    const cleanHex = hex.replace('#', '')
+
+    const bigint = parseInt(cleanHex, 16)
+
+    const r = (bigint >> 16) & 255
+    const g = (bigint >> 8) & 255
+    const b = bigint & 255
+
+    return `${r}, ${g}, ${b}`
+  }
+
+  const baseColor = hexToRgb(packageType.color ?? '#1e293a') // e.g. #9b2335
+  const backgroundColor = packageType.color ?? '#1e293a'
+
   return (
     <div className="w-full">
-      {/* Hero Section (unchanged) */}
-      <div className="relative w-full h-80 md:h-96 overflow-hidden">
-        <div className="absolute inset-0">
-          {packageType.thumbnail && (
-            <Image
-              src={(packageType.thumbnail as Media).url ?? '/'}
-              alt=""
-              fill
-              className="object-cover object-center"
-              priority
-            />
+      {/* Hero Section */}
+      <section className="relative h-[480px] flex items-center overflow-hidden bg-cover bg-center bg-blend-overlay pt-20 pb-10 px-8">
+        {packageType.thumbnail && (
+          <Image
+            src={(packageType.thumbnail as Media).url ?? '/'}
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        )}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `
+      linear-gradient(
+        to left,
+        rgba(${baseColor},0.85) 0%,
+        rgba(${baseColor},0.7) 30%,
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse at 70% 30%,
+        rgba(${baseColor},0.15) 0%,
+        transparent 55%
+      )
+    `,
+          }}
+        ></div>
+        <div className="relative max-w-[700px] z-10">
+          {packageType.certified && (
+            <div className="inline-flex items-center gap-2 border text-xs text-white mb-4 px-4 py-2 rounded-[50px] border-solid border-[rgba(255,255,255,0.2)]">
+              <svg
+                width={16}
+                height={16}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path d="M9 12l2 2 4-4" />
+                <circle cx={12} cy={12} r={10} />
+              </svg>
+              معتمد في منصة صحتي
+            </div>
           )}
-          <div className="absolute inset-0 bg-background/60" />
-        </div>
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-        </div>
-        <div className="relative h-full flex flex-col items-center justify-center px-4 md:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-balance">
-            {packageType.name}
+          {packageType.badge && (
+            <p className="text-[10px] tracking-[6px] text-[rgba(255,255,255,0.7)] font-medium uppercase mb-3">
+              {packageType.badge}
+            </p>
+          )}
+          <h1 className="font-extrabold text-[clamp(32px,5vw,52px)] leading-[1.3] text-white mb-4">
+            {packageType.headline ? packageType.headline : packageType.name}
           </h1>
-          {packageType.description && (
-            <p className="text-lg md:text-xl max-w-2xl">{packageType.description}</p>
-          )}
+          <p className="text-[15px] text-[rgba(255,255,255,0.8)] font-light leading-[1.9] mb-6">
+            {packageType.subheadline ? packageType.subheadline : packageType.description}
+          </p>
+          <div className="flex gap-3 flex-wrap">
+            <a
+              href={buildWhatsAppLink()}
+              className={`text-white text-[13px] font-bold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 transition-all duration-[0.3s] px-9 py-3.5 rounded-[10px] border-[none] bg-[${backgroundColor}]`}
+            >
+              <svg
+                width={18}
+                height={18}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x={3} y={4} width={18} height={18} rx={2} ry={2} />
+                <line x1={16} y1={2} x2={16} y2={6} />
+                <line x1={8} y1={2} x2={8} y2={6} />
+                <line x1={3} y1={10} x2={21} y2={10} />
+              </svg>
+              احجز الآن
+            </a>
+            <a
+              href="tel:+966920031642"
+              className="text-white text-[13px] font-semibold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 backdrop-blur-md transition-all duration-[0.3s] px-9 py-3.5 rounded-[10px] border-[1.5px] border-solid border-[rgba(255,255,255,0.3)]"
+              style={{
+                background: 'rgba(255,255,255,0.15)',
+              }}
+            >
+              <svg
+                width={18}
+                height={18}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+              </svg>
+              اتصل بنا
+            </a>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Packages List */}
       <div className="w-full bg-background">

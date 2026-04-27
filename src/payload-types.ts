@@ -177,11 +177,15 @@ export interface PackageType {
   generateSlug?: boolean | null;
   slug: string;
   description?: string | null;
-  badgeColor?: ('blue' | 'violet' | 'pink' | 'teal' | 'amber') | null;
+  headline?: string | null;
+  subheadline?: string | null;
+  color?: string | null;
   icon?: string | null;
+  badge?: string | null;
   thumbnail?: (string | null) | Media;
   displayOrder?: number | null;
   isActive?: boolean | null;
+  certified?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -763,11 +767,15 @@ export interface PackageTypesSelect<T extends boolean = true> {
   generateSlug?: T;
   slug?: T;
   description?: T;
-  badgeColor?: T;
+  headline?: T;
+  subheadline?: T;
+  color?: T;
   icon?: T;
+  badge?: T;
   thumbnail?: T;
   displayOrder?: T;
   isActive?: T;
+  certified?: T;
   updatedAt?: T;
   createdAt?: T;
 }
