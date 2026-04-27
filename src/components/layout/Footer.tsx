@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Phone, Mail, MapPin, Clock, ExternalLink } from 'lucide-react'
-import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter, BsWhatsapp } from 'react-icons/bs'
+import { BsInstagram, BsSnapchat, BsTiktok, BsTwitterX, BsWhatsapp } from 'react-icons/bs'
 
 const quickLinks = [
   { label: 'الرئيسية', href: '/' },
@@ -28,10 +28,10 @@ const branches = [
 ]
 
 const socialLinks = [
-  { icon: BsFacebook, href: '#', label: 'Facebook' },
-  { icon: BsTwitter, href: '#', label: 'Twitter' },
-  { icon: BsInstagram, href: '#', label: 'Instagram' },
-  { icon: BsLinkedin, href: '#', label: 'LinkedIn' },
+  { icon: BsTwitterX, href: 'https://x.com/Prismalab_sa', label: 'Twitter' },
+  { icon: BsTiktok, href: 'https://tiktok.com/@Prismalab_sa', label: 'Tiktok' },
+  { icon: BsInstagram, href: 'https://instagram.com/Prismalab_sa', label: 'Instagram' },
+  { icon: BsSnapchat, href: 'https://snapchat.com/@prismalab_sa', label: 'Snapchat' },
 ]
 
 export default function Footer() {

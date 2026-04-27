@@ -77,8 +77,8 @@ const PackageCard = ({ pkg }: { pkg: Package }) => {
           <div className="flex flex-col justify-center">
             {pkg.discountedPrice ? (
               <>
-                <span className="text-sm text-muted-foreground line-through">
-                  {pkg.price.toFixed(2)}
+                <span className="text-sm text-muted-foreground">
+                  <SaudiPrice className="line-through" amount={pkg.price.toFixed(2)} />
                 </span>
                 <span className="text-2xl font-bold text-primary">
                   <SaudiPrice amount={pkg.discountedPrice.toFixed(2)} />
@@ -134,7 +134,7 @@ const PackageCard = ({ pkg }: { pkg: Package }) => {
                     {pkg.discountedPrice ? (
                       <>
                         <span className="text-sm text-muted-foreground line-through">
-                          {pkg.price.toFixed(2)}
+                          <SaudiPrice className="line-through" amount={pkg.price.toFixed(2)} />
                         </span>
                         <span className="text-xl font-bold text-primary">
                           <SaudiPrice amount={pkg.discountedPrice.toFixed(2)} />
@@ -217,12 +217,12 @@ const PackageCard = ({ pkg }: { pkg: Package }) => {
                     </Button>
                   </a>
                   <a
-                    href="https://wa.me/+966920031642"
+                    href={buildWhatsAppLink(pkg.name)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1"
                   >
-                    <Button className="w-full h-12 rounded-full bg-[#00B5AD] hover:bg-[#00B5AD]/90 text-white gap-2 text-base font-medium">
+                    <Button className="w-full h-12 rounded-full gap-2 text-base font-medium">
                       <BsWhatsapp className="size-5" />
                       احجز عبر واتساب
                     </Button>

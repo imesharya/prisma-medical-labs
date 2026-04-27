@@ -5,6 +5,18 @@ import SaudiPrice from '@/components/shared/SaudiPrice'
 import { Calendar } from 'lucide-react'
 
 const TestCard = ({ test }: { test: Test }) => {
+  const buildWhatsAppLink = (test: string) => {
+    const whatsappMessage = `السلام عليكم ورحمة الله وبركاته
+
+أريد حجز تحليل ${test}
+
+أرجو التكرم بالتواصل معي للتأكيد النهائي.`
+
+    const encodedMessage = encodeURIComponent(whatsappMessage)
+
+    return `https://wa.me/+966920031642?text=${encodedMessage}`
+  }
+
   return (
     <div className="group flex flex-col gap-4 h-full w-full bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 p-4 border border-border hover:border-primary hover:bg-background/80">
       <div className="flex gap-2 items-center justify-between flex-none">
@@ -24,10 +36,17 @@ const TestCard = ({ test }: { test: Test }) => {
 
       <Separator className="h-[1px] flex-none" />
 
-      <Button variant={'secondary'} className="flex-none flex items-center gap-2">
-        <p>احجز مجاناً الآن</p>
-        <Calendar />
-      </Button>
+      <a
+        href={buildWhatsAppLink(test.name)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full"
+      >
+        <Button className="flex-none flex items-center gap-2 w-full">
+          <p>احجز مجاناً الآن</p>
+          <Calendar />
+        </Button>
+      </a>
     </div>
   )
 }
