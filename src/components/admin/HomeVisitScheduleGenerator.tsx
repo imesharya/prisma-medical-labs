@@ -3,7 +3,7 @@ import { useDocumentInfo, Button } from '@payloadcms/ui'
 import { toast } from '@payloadcms/ui' // ← Correct import (no useToast)
 import { useState } from 'react'
 
-const ScheduleGenerator = () => {
+const HomeVisitScheduleGenerator = () => {
   const { id, data } = useDocumentInfo()
   const [loading, setLoading] = useState<'preview' | 'generate' | null>(null)
 
@@ -22,7 +22,7 @@ const ScheduleGenerator = () => {
     setLoading(preview ? 'preview' : 'generate')
 
     try {
-      const res = await fetch(`/api/consultation-schedule-templates/${id}/generate`, {
+      const res = await fetch(`/api/home-visit-schedule-templates/${id}/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ preview }),
@@ -96,4 +96,4 @@ const ScheduleGenerator = () => {
   )
 }
 
-export default ScheduleGenerator
+export default HomeVisitScheduleGenerator

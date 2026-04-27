@@ -6,6 +6,8 @@ import { Home, Sparkles } from 'lucide-react'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getPayload } from 'payload'
+import config from '@payload-config'
 
 const METRICS: { title: string; description: string; icon: string; color: string }[] = [
   {
@@ -28,7 +30,18 @@ const METRICS: { title: string; description: string; icon: string; color: string
   },
 ]
 
-const page = () => {
+const page = async () => {
+  const payload = await getPayload({ config })
+
+  const { docs: availableSlots } = await payload.find({
+    collection: 'home-visit-time-slots',
+    where: {
+      availabilityStatus: { not_equals: 'manually_closed' },
+    },
+    limit: 1000,
+    depth: 0,
+  })
+
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -63,7 +76,7 @@ const page = () => {
       </section>
 
       {/* Form Section */}
-      <section className="relative w-full overflow-hidden px-4 py-16 border-t border-border">
+      <section className="relative w-full overflow-hidden py-16 border-t border-border">
         <DnaCanvas />
 
         <div className="relative h-full flex flex-col items-center justify-center px-4 md:px-6 lg:px-8 text-center">
@@ -79,7 +92,7 @@ const page = () => {
           </p>
         </div>
 
-        <HomeVisitForm />
+        <HomeVisitForm availableSlots={availableSlots} />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto mt-8">
           {METRICS.map((m) => {

@@ -208,7 +208,7 @@ const Navbar = () => {
                   variant={'outline'}
                   className="px-5 py-2.5 text-sm font-medium bg-card text-foreground transition-all duration-200"
                 >
-                  احجز الآن
+                  تواصل معنا
                 </Button>
               </Link>
             </div>
@@ -356,7 +356,7 @@ const Navbar = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="w-full py-3.5 text-base font-medium bg-muted text-foreground rounded-xl hover:bg-muted/80 transition-colors"
             >
-              احجز الآن
+              تواصل معنا
             </button>
           </Link>
         </div>

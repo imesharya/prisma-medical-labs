@@ -32,6 +32,11 @@ export interface Config {
     'consultation-time-slots': ConsultationTimeSlot;
     'consultation-schedule-templates': ConsultationScheduleTemplate;
     consultations: Consultation;
+    'home-visit-requests': HomeVisitRequest;
+    'home-visit-time-slots': HomeVisitTimeSlot;
+    'home-visit-schedule-templates': HomeVisitScheduleTemplate;
+    'home-visits': HomeVisit;
+    'contact-messages': ContactMessage;
     'payload-kv': PayloadKv;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
@@ -41,6 +46,9 @@ export interface Config {
   collectionsJoins: {
     'consultation-time-slots': {
       bookings: 'consultation-requests';
+    };
+    'home-visit-time-slots': {
+      bookings: 'home-visit-requests';
     };
   };
   collectionsSelect: {
@@ -56,6 +64,11 @@ export interface Config {
     'consultation-time-slots': ConsultationTimeSlotsSelect<false> | ConsultationTimeSlotsSelect<true>;
     'consultation-schedule-templates': ConsultationScheduleTemplatesSelect<false> | ConsultationScheduleTemplatesSelect<true>;
     consultations: ConsultationsSelect<false> | ConsultationsSelect<true>;
+    'home-visit-requests': HomeVisitRequestsSelect<false> | HomeVisitRequestsSelect<true>;
+    'home-visit-time-slots': HomeVisitTimeSlotsSelect<false> | HomeVisitTimeSlotsSelect<true>;
+    'home-visit-schedule-templates': HomeVisitScheduleTemplatesSelect<false> | HomeVisitScheduleTemplatesSelect<true>;
+    'home-visits': HomeVisitsSelect<false> | HomeVisitsSelect<true>;
+    'contact-messages': ContactMessagesSelect<false> | ContactMessagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -404,6 +417,139 @@ export interface Consultation {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-visit-requests".
+ */
+export interface HomeVisitRequest {
+  id: string;
+  fullName: string;
+  phoneNumber: string;
+  slot: string | HomeVisitTimeSlot;
+  status?: ('pending' | 'confirmed' | 'cancelled' | 'completed') | null;
+  referenceNumber?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-visit-time-slots".
+ */
+export interface HomeVisitTimeSlot {
+  id: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  maxCapacity: number;
+  /**
+   * عند الوصول للسعة القصوى، سيتم تغيير الحالة إلى "ممتلئ" تلقائياً
+   */
+  autoCloseWhenFull?: boolean | null;
+  availabilityStatus?: ('available' | 'full' | 'manually_closed') | null;
+  bookedCount?: number | null;
+  remainingCapacity?: number | null;
+  displayTitle?: string | null;
+  bookings?: {
+    docs?: (string | HomeVisitRequest)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * قم بإنشاء نموذج أسبوعي للمواعيد ثم توليده تلقائياً
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-visit-schedule-templates".
+ */
+export interface HomeVisitScheduleTemplate {
+  id: string;
+  /**
+   * مثال: جدول العيادة الصباحي - رمضان 2026
+   */
+  name: string;
+  /**
+   * أول يوم يبدأ فيه تطبيق النموذج
+   */
+  startDate: string;
+  /**
+   * آخر يوم ينتهي فيه تطبيق النموذج
+   */
+  endDate: string;
+  /**
+   * حدد أيام الأسبوع وفترات الوقت المتاحة لكل يوم
+   */
+  schedule: {
+    dayOfWeek: '0' | '1' | '2' | '3' | '4' | '5' | '6';
+    timeSlots: {
+      startTime: string;
+      endTime: string;
+      maxCapacity: number;
+      autoCloseWhenFull?: boolean | null;
+      id?: string | null;
+    }[];
+    id?: string | null;
+  }[];
+  /**
+   * يتم تحديثه تلقائياً بعد كل عملية توليد ناجحة
+   */
+  lastGeneratedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-visits".
+ */
+export interface HomeVisit {
+  id: string;
+  homeVisitRequest: string | HomeVisitRequest;
+  status?: ('scheduled' | 'in_progress' | 'completed' | 'cancelled') | null;
+  chiefComplaint?: string | null;
+  notes?: string | null;
+  diagnosis?: string | null;
+  treatmentPlan?: string | null;
+  prescriptions?:
+    | {
+        medicationName: string;
+        dosage?: string | null;
+        frequency?: string | null;
+        duration?: string | null;
+        instructions?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  attachments?:
+    | {
+        file?: (string | null) | Media;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  followUpRequired?: boolean | null;
+  followUpDate?: string | null;
+  completedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-messages".
+ */
+export interface ContactMessage {
+  id: string;
+  fullName: string;
+  phoneNumber: string;
+  email?: string | null;
+  subject: 'general' | 'complaint' | 'suggestion' | 'partnership' | 'other';
+  message: string;
+  preferredContactMethod: 'phone' | 'email' | 'whatsapp';
+  status?: ('new' | 'read' | 'replied' | 'archived') | null;
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -498,6 +644,26 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'consultations';
         value: string | Consultation;
+      } | null)
+    | ({
+        relationTo: 'home-visit-requests';
+        value: string | HomeVisitRequest;
+      } | null)
+    | ({
+        relationTo: 'home-visit-time-slots';
+        value: string | HomeVisitTimeSlot;
+      } | null)
+    | ({
+        relationTo: 'home-visit-schedule-templates';
+        value: string | HomeVisitScheduleTemplate;
+      } | null)
+    | ({
+        relationTo: 'home-visits';
+        value: string | HomeVisit;
+      } | null)
+    | ({
+        relationTo: 'contact-messages';
+        value: string | ContactMessage;
       } | null)
     | ({
         relationTo: 'users';
@@ -780,6 +946,114 @@ export interface ConsultationsSelect<T extends boolean = true> {
   followUpRequired?: T;
   followUpDate?: T;
   completedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-visit-requests_select".
+ */
+export interface HomeVisitRequestsSelect<T extends boolean = true> {
+  fullName?: T;
+  phoneNumber?: T;
+  slot?: T;
+  status?: T;
+  referenceNumber?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-visit-time-slots_select".
+ */
+export interface HomeVisitTimeSlotsSelect<T extends boolean = true> {
+  date?: T;
+  startTime?: T;
+  endTime?: T;
+  maxCapacity?: T;
+  autoCloseWhenFull?: T;
+  availabilityStatus?: T;
+  bookedCount?: T;
+  remainingCapacity?: T;
+  displayTitle?: T;
+  bookings?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-visit-schedule-templates_select".
+ */
+export interface HomeVisitScheduleTemplatesSelect<T extends boolean = true> {
+  name?: T;
+  startDate?: T;
+  endDate?: T;
+  schedule?:
+    | T
+    | {
+        dayOfWeek?: T;
+        timeSlots?:
+          | T
+          | {
+              startTime?: T;
+              endTime?: T;
+              maxCapacity?: T;
+              autoCloseWhenFull?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  lastGeneratedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-visits_select".
+ */
+export interface HomeVisitsSelect<T extends boolean = true> {
+  homeVisitRequest?: T;
+  status?: T;
+  chiefComplaint?: T;
+  notes?: T;
+  diagnosis?: T;
+  treatmentPlan?: T;
+  prescriptions?:
+    | T
+    | {
+        medicationName?: T;
+        dosage?: T;
+        frequency?: T;
+        duration?: T;
+        instructions?: T;
+        id?: T;
+      };
+  attachments?:
+    | T
+    | {
+        file?: T;
+        description?: T;
+        id?: T;
+      };
+  followUpRequired?: T;
+  followUpDate?: T;
+  completedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-messages_select".
+ */
+export interface ContactMessagesSelect<T extends boolean = true> {
+  fullName?: T;
+  phoneNumber?: T;
+  email?: T;
+  subject?: T;
+  message?: T;
+  preferredContactMethod?: T;
+  status?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
 }

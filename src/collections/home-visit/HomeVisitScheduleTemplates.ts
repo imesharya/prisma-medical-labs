@@ -2,16 +2,16 @@ import { customRowLabel } from '@/components/admin/array-row-label/utility'
 import { hasSlotOverlap } from '@/lib/checkSlotOverlap'
 import type { CollectionConfig, PayloadRequest } from 'payload'
 
-export const ConsultationScheduleTemplates: CollectionConfig = {
-  slug: 'consultation-schedule-templates',
+export const HomeVisitScheduleTemplates: CollectionConfig = {
+  slug: 'home-visit-schedule-templates',
   labels: {
-    singular: 'جدول مواعيد',
-    plural: 'جداول المواعيد',
+    singular: 'جدول مواعيد الزيارة المنزلية',
+    plural: 'جداول مواعيد الزيارة المنزلية',
   },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'startDate', 'endDate', 'lastGeneratedAt', 'updatedAt'],
-    group: 'الإستشارات',
+    group: 'الزيارات المنزلية',
     description: 'قم بإنشاء نموذج أسبوعي للمواعيد ثم توليده تلقائياً',
   },
   fields: [
@@ -140,7 +140,7 @@ export const ConsultationScheduleTemplates: CollectionConfig = {
       type: 'ui',
       admin: {
         components: {
-          Field: '@/components/admin/ScheduleGenerator',
+          Field: '@/components/admin/HomeVisitScheduleGenerator',
         },
       },
     },
@@ -183,7 +183,7 @@ export const ConsultationScheduleTemplates: CollectionConfig = {
         }
 
         const template = await req.payload.findByID({
-          collection: 'consultation-schedule-templates',
+          collection: 'home-visit-schedule-templates',
           id,
         })
 
@@ -234,7 +234,7 @@ export const ConsultationScheduleTemplates: CollectionConfig = {
                 skipped.push({ date: dateStr, startTime: sIso, endTime: eIso })
               } else if (!preview) {
                 const slot = await req.payload.create({
-                  collection: 'consultation-time-slots',
+                  collection: 'home-visit-time-slots',
                   data: {
                     date: dateStr,
                     startTime: sIso,
@@ -254,7 +254,7 @@ export const ConsultationScheduleTemplates: CollectionConfig = {
 
         if (!preview) {
           await req.payload.update({
-            collection: 'consultation-schedule-templates',
+            collection: 'home-visit-schedule-templates',
             id,
             data: { lastGeneratedAt: new Date().toISOString() },
             user: req.user,

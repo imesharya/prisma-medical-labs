@@ -150,7 +150,7 @@ const ConsultationForm = ({ availableSlots }: { availableSlots: ConsultationTime
 
     const message = `السلام عليكم ورحمة الله وبركاته
 
-تم تأكيد حجزي بنجاح
+تم تأكيد حجز الإستشارة الطبية بنجاح
 
 الاسم: ${fullName}
 رقم الجوال: ${phone}
@@ -170,7 +170,7 @@ const ConsultationForm = ({ availableSlots }: { availableSlots: ConsultationTime
   }
 
   return (
-    <section className="max-w-3xl mx-auto px-4 -mt-20 relative z-10 pb-16" id="form-sec">
+    <section className="max-w-3xl mx-auto px-2 md:px-4 -mt-20 relative z-10 pb-16" id="form-sec">
       <div className="bg-gradient-to-br from-[#1a2332]/90 to-[#1a2332]/70 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl">
         {!isSuccess && (
           <>

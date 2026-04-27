@@ -1,75 +1,72 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
-import { Sparkles, ArrowLeft } from 'lucide-react'
-import Link from 'next/link'
-import { Phone, Mail, MapPin } from 'lucide-react'
+import { contactSchema, TContactScheme } from '@/lib/validators/contact-validator'
+import { useState } from 'react'
+import { useForm, Controller } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
+import { AlertCircle, Loader2, Sparkles, Phone, Mail, MapPin } from 'lucide-react'
 import { BsWhatsapp } from 'react-icons/bs'
-import { Button } from '../ui/button'
+import Link from 'next/link'
+import { submitContactForm } from '@/actions/contact'
 
-interface ContactFormData {
-  fullName: string
-  phoneNumber: string
-  package: string
-  service: string
-  date: string
-}
-
-interface ContactFormProps {
-  onSubmit?: (data: ContactFormData) => void | Promise<void>
-}
-
-const ContactForm = ({ onSubmit }: ContactFormProps) => {
-  const [formData, setFormData] = useState<ContactFormData>({
-    fullName: '',
-    phoneNumber: '',
-    package: '',
-    service: '',
-    date: '',
-  })
+const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState<{
-    type: 'success' | 'error'
-    text: string
-  } | null>(null)
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [serverError, setServerError] = useState('')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
+  const form = useForm<TContactScheme>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      fullName: '',
+      phoneNumber: '',
+      email: '',
+      subject: undefined,
+      message: '',
+      preferredContactMethod: undefined,
+    },
+  })
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const { control, handleSubmit } = form
+
+  const onSubmit = async (data: TContactScheme) => {
     setIsLoading(true)
+    setServerError('')
 
     try {
-      if (onSubmit) {
-        await onSubmit(formData)
+      const result = await submitContactForm(data)
+
+      if (result.success) {
+        setIsSuccess(true)
+      } else {
+        if (result.code === 'ERROR_INVALID_INPUT') {
+          setServerError('البيانات المدخلة غير صحيحة. يرجى التحقق من الحقول.')
+        } else {
+          setServerError(result.message || 'حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.')
+        }
       }
-      setSubmitMessage({
-        type: 'success',
-        text: 'شكراً لك! سنتواصل معك قريباً',
-      })
-      setFormData({
-        fullName: '',
-        phoneNumber: '',
-        package: '',
-        service: '',
-        date: '',
-      })
-      setTimeout(() => setSubmitMessage(null), 5000)
-    } catch (error) {
-      setSubmitMessage({
-        type: 'error',
-        text: 'حدث خطأ. يرجى المحاولة مرة أخرى',
-      })
+    } catch (error: any) {
+      setServerError(error.message || 'حدث خطأ في الاتصال بالخادم.')
     } finally {
       setIsLoading(false)
     }
   }
+
+  const subjectOptions = [
+    { value: 'general', label: 'استفسار عام' },
+    { value: 'complaint', label: 'شكوى' },
+    { value: 'suggestion', label: 'اقتراح' },
+    { value: 'partnership', label: 'شراكة / تعاون' },
+    { value: 'other', label: 'أخرى' },
+  ] as const
+
+  const contactMethods = [
+    { value: 'phone', label: 'جوال', icon: Phone },
+    { value: 'email', label: 'بريد إلكتروني', icon: Mail },
+    { value: 'whatsapp', label: 'واتساب', icon: BsWhatsapp },
+  ] as const
 
   return (
     <section className="md:p-4" id="contact">
@@ -90,12 +87,12 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
 
             {/* Headline */}
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-balance">
-              احجز موعدك الآن
+              تواصل معنا
             </h2>
 
             {/* Subheadline */}
             <p className="mt-6 text-base md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              فريقنا سيتواصل معك خلال أقل من ساعة
+              نحن هنا لمساعدتك. املأ النموذج وسنرد عليك في أقرب وقت
             </p>
 
             <ul className="space-y-3 mt-6 max-md:hidden">
@@ -190,101 +187,236 @@ const ContactForm = ({ onSubmit }: ContactFormProps) => {
 
           {/* Form Container */}
           <div className="md:flex-1 bg-card/90 backdrop-blur-sm border border-border rounded-3xl p-4 md:p-12 shadow-lg hover:shadow-2xl transition-all duration-300">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-              {/* Full Name */}
-              <div className="flex flex-col gap-2">
-                <label htmlFor="fullName" className="text-sm font-semibold text-foreground">
-                  الاسم الكامل
-                </label>
-                <input
-                  id="fullName"
-                  type="text"
+            {!isSuccess ? (
+              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+                {/* Full Name */}
+                <Controller
+                  control={control}
                   name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
-                  placeholder="أدخل اسمك الكامل"
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <FieldLabel
+                        htmlFor="fullName"
+                        className="text-sm font-semibold text-foreground"
+                      >
+                        الاسم الكامل *
+                      </FieldLabel>
+                      <Input
+                        {...field}
+                        id="fullName"
+                        aria-invalid={fieldState.invalid}
+                        placeholder="أدخل اسمك الكامل"
+                        autoComplete="name"
+                        className="h-12 w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
+                      />
+                      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                    </Field>
+                  )}
                 />
-              </div>
 
-              {/* Phone Number */}
-              <div className="flex flex-col gap-2">
-                <label htmlFor="phoneNumber" className="text-sm font-semibold text-foreground">
-                  رقم الجوال
-                </label>
-                <input
-                  id="phoneNumber"
-                  dir="rtl"
-                  type="tel"
+                {/* Phone Number */}
+                <Controller
+                  control={control}
                   name="phoneNumber"
-                  value={formData.phoneNumber}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
-                  placeholder="أدخل رقم جوالك"
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <FieldLabel
+                        htmlFor="phoneNumber"
+                        className="text-sm font-semibold text-foreground"
+                      >
+                        رقم الجوال *
+                      </FieldLabel>
+                      <Input
+                        {...field}
+                        id="phoneNumber"
+                        aria-invalid={fieldState.invalid}
+                        placeholder="05xxxxxxxx"
+                        autoComplete="tel"
+                        className="h-12 w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
+                      />
+                      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                    </Field>
+                  )}
                 />
-              </div>
 
-              {/* Service Select */}
-              <div className="flex flex-col gap-2">
-                <label htmlFor="service" className="text-sm font-semibold text-foreground">
-                  الخدمة
-                </label>
-                <div className="border border-input rounded-xl">
-                  <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border-e-16 border-e-transparent bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200 cursor-pointer"
-                  >
-                    <option value="">اختر الخدمة</option>
-                    <option value="home-visit">زيارة منزلية</option>
-                    <option value="online">استشارة طبية</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Date */}
-              <div className="flex flex-col gap-2">
-                <label htmlFor="date" className="text-sm font-semibold text-foreground">
-                  التاريخ
-                </label>
-                <input
-                  id="date"
-                  type="date"
-                  name="date"
-                  value={formData.date}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
+                {/* Email */}
+                <Controller
+                  control={control}
+                  name="email"
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <FieldLabel htmlFor="email" className="text-sm font-semibold text-foreground">
+                        البريد الإلكتروني{' '}
+                        <span className="text-muted-foreground font-normal">(اختياري)</span>
+                      </FieldLabel>
+                      <Input
+                        {...field}
+                        id="email"
+                        type="email"
+                        aria-invalid={fieldState.invalid}
+                        placeholder="example@email.com"
+                        autoComplete="email"
+                        className="h-12 w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
+                      />
+                      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                    </Field>
+                  )}
                 />
-              </div>
 
-              {/* Submit Message */}
-              {submitMessage && (
-                <div
-                  className={`w-full px-4 py-3 rounded-xl text-sm font-medium ${
-                    submitMessage.type === 'success'
-                      ? 'bg-green-500/10 text-green-700 border border-green-500/20'
-                      : 'bg-destructive/10 text-destructive border border-destructive/20'
-                  }`}
+                {/* Subject */}
+                <Controller
+                  control={control}
+                  name="subject"
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <FieldLabel className="text-sm font-semibold text-foreground block mb-2">
+                        الموضوع *
+                      </FieldLabel>
+                      <div className="grid grid-cols-2 gap-3">
+                        {subjectOptions.map((option) => (
+                          <label key={option.value} className="cursor-pointer">
+                            <input
+                              type="radio"
+                              name={field.name}
+                              value={option.value}
+                              checked={field.value === option.value}
+                              onChange={() => field.onChange(option.value)}
+                              className="peer hidden"
+                            />
+                            <div className="peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary border-2 border-input bg-background rounded-xl p-4 transition-all hover:border-primary/30 text-center text-foreground font-medium text-sm">
+                              {option.label}
+                            </div>
+                          </label>
+                        ))}
+                      </div>
+                      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                    </Field>
+                  )}
+                />
+
+                {/* Message */}
+                <Controller
+                  control={control}
+                  name="message"
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <FieldLabel
+                        htmlFor="message"
+                        className="text-sm font-semibold text-foreground"
+                      >
+                        الرسالة *
+                      </FieldLabel>
+                      <textarea
+                        {...field}
+                        id="message"
+                        rows={4}
+                        aria-invalid={fieldState.invalid}
+                        placeholder="اكتب رسالتك هنا..."
+                        className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200 resize-none text-right"
+                      />
+                      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                    </Field>
+                  )}
+                />
+
+                {/* Preferred Contact Method */}
+                <Controller
+                  control={control}
+                  name="preferredContactMethod"
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <FieldLabel className="text-sm font-semibold text-foreground block mb-2">
+                        طريقة التواصل المفضلة *
+                      </FieldLabel>
+                      <div className="grid grid-cols-3 gap-3">
+                        {contactMethods.map((method) => {
+                          const Icon = method.icon
+                          return (
+                            <label key={method.value} className="cursor-pointer">
+                              <input
+                                type="radio"
+                                name={field.name}
+                                value={method.value}
+                                checked={field.value === method.value}
+                                onChange={() => field.onChange(method.value)}
+                                className="peer hidden"
+                              />
+                              <div className="peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:text-primary border-2 border-input bg-background rounded-xl p-3 transition-all hover:border-primary/30 flex flex-col items-center gap-2 text-foreground">
+                                <Icon className="w-5 h-5" />
+                                <span className="text-xs font-medium">{method.label}</span>
+                              </div>
+                            </label>
+                          )
+                        })}
+                      </div>
+                      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                    </Field>
+                  )}
+                />
+
+                {/* Server Error */}
+                {serverError && (
+                  <div className="bg-red-500/10 border border-red-500/30 text-red-700 p-4 rounded-xl flex items-start gap-3 text-sm font-medium">
+                    <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                    <p>{serverError}</p>
+                  </div>
+                )}
+
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="h-12 inline-flex items-center justify-center gap-2 w-full px-6 py-4 mt-2 text-base font-bold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  {submitMessage.text}
+                  {isLoading ? (
+                    <span className="flex items-center gap-2">
+                      جاري الإرسال... <Loader2 className="w-4 h-4 animate-spin" />
+                    </span>
+                  ) : (
+                    'إرسال الرسالة'
+                  )}
+                </Button>
+              </form>
+            ) : (
+              <div className="text-center py-12 relative overflow-hidden">
+                <div className="mx-auto w-24 h-24 relative mb-6">
+                  <div className="absolute inset-0 border-4 border-green-200 rounded-full animate-[ping_1.5s_ease-out_infinite]" />
+                  <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-xl">
+                    <svg width="50" height="50" viewBox="0 0 52 52" className="text-white">
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M14 27l10 10 16-20"
+                      />
+                    </svg>
+                  </div>
                 </div>
-              )}
 
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                disabled={isLoading}
-                className="h-12 inline-flex items-center justify-center gap-2 w-full px-6 py-4 mt-4 text-base font-bold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                {isLoading ? 'جاري الإرسال...' : 'احجز الآن'}
-                <ArrowLeft className="h-5 w-5" />
-              </Button>
-            </form>
+                <div className="inline-flex items-center gap-2 bg-green-100 border border-green-200 text-green-800 px-5 py-1.5 rounded-full text-sm font-semibold mb-4">
+                  <span className="w-2 h-2 bg-green-600 rounded-full animate-pulse" />
+                  تم الإرسال بنجاح
+                </div>
+
+                <h3 className="text-2xl font-bold mb-2 text-foreground">شكراً لتواصلك معنا</h3>
+                <p className="text-muted-foreground max-w-sm mx-auto mb-8">
+                  تم استلام رسالتك وسيقوم فريقنا بالرد عليك عبر طريقة التواصل المفضلة في أقرب وقت
+                </p>
+
+                <Button
+                  variant="secondary"
+                  className="w-full"
+                  onClick={() => {
+                    setIsSuccess(false)
+                    form.reset()
+                  }}
+                >
+                  إرسال رسالة جديدة
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>

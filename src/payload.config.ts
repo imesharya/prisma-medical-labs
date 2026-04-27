@@ -17,10 +17,15 @@ import { fileURLToPath } from 'url'
 import { BlogCategories } from './collections/BlogCategories'
 import { BlogPosts } from './collections/BlogPost'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { ConsultationRequests } from './collections/ConsultationRequests'
-import { ConsultationTimeSlots } from './collections/ConsultationTimeSlots'
-import { Consultations } from './collections/Consultations'
-import { ConsultationScheduleTemplates } from './collections/ConsultationScheduleTemplates'
+import { ConsultationRequests } from './collections/consultations/ConsultationRequests'
+import { ConsultationTimeSlots } from './collections/consultations/ConsultationTimeSlots'
+import { Consultations } from './collections/consultations/Consultations'
+import { ConsultationScheduleTemplates } from './collections/consultations/ConsultationScheduleTemplates'
+import { HomeVisitRequests } from './collections/home-visit/HomeVisitRequests'
+import { HomeVisitTimeSlots } from './collections/home-visit/HomeVisitTimeSlots'
+import { HomeVisitScheduleTemplates } from './collections/home-visit/HomeVisitScheduleTemplates'
+import { HomeVisits } from './collections/home-visit/HomeVisits'
+import { ContactMessages } from './collections/ContactMessages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -36,10 +41,18 @@ export default buildConfig({
     Packages,
     BlogCategories,
     BlogPosts,
+
     ConsultationRequests,
     ConsultationTimeSlots,
     ConsultationScheduleTemplates,
     Consultations,
+
+    HomeVisitRequests,
+    HomeVisitTimeSlots,
+    HomeVisitScheduleTemplates,
+    HomeVisits,
+
+    ContactMessages,
   ],
   admin: {
     timezones: {

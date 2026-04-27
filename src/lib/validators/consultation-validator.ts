@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-const phoneNumberSchema = z
+export const phoneNumberSchema = z
   .string()
   .min(1, { message: 'رقم الجوال مطلوب' })
   .transform((val) => val.replace(/[\s-]+/g, '')) // remove spaces and dashes

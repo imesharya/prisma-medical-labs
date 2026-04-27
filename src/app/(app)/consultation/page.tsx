@@ -76,7 +76,7 @@ export default async function Page() {
               key={i}
               className="bg-gradient-to-br from-[#1a2332]/70 to-[#1a2332]/40 border border-white/10 rounded-3xl p-10 text-center hover:border-cyan-400/50 transition-all hover:-translate-y-1"
             >
-              <div className="text-6xl mb-6">{feature.icon}</div>
+              {/* <div className="text-6xl mb-6">{feature.icon}</div> */}
               <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
               <p className="text-[#a8b5c3] leading-relaxed">{feature.desc}</p>
             </div>

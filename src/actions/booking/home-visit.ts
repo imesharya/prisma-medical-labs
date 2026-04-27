@@ -2,40 +2,37 @@
 
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
-import { consultationSchema, TConsultationScheme } from '@/lib/validators/consultation-validator'
+import { homeVisitSchema, THomeVisitScheme } from '@/lib/validators/home-visit-validator'
 import { generateRef } from '@/lib/utils'
 import { APIError } from 'payload'
 
 const payload = await getPayload({ config: configPromise })
 
-export type SubmitConsultationFormCode =
+export type SubmitHomeVisitFormCode =
   | 'SUCCESS'
   | 'ERROR_INVALID_INPUT'
   | 'ERROR_DOUBLE_BOOKING'
   | 'ERROR_SERVER'
 
-type SubmitConsultationResponse =
-  | { success: false; code: Exclude<SubmitConsultationFormCode, 'SUCCESS'>; message?: string }
+type SubmitHomeVisitResponse =
+  | { success: false; code: Exclude<SubmitHomeVisitFormCode, 'SUCCESS'>; message?: string }
   | { success: true; code: 'SUCCESS'; referenceNumber: string }
 
-export const submitConsultationForm = async (
-  data: TConsultationScheme,
-): Promise<SubmitConsultationResponse> => {
+export const submitHomeVisitForm = async (
+  data: THomeVisitScheme,
+): Promise<SubmitHomeVisitResponse> => {
   try {
     // 1. Zod validation
-    const validated = consultationSchema.safeParse(data)
+    const validated = homeVisitSchema.safeParse(data)
     if (!validated.success) {
       return { success: false, code: 'ERROR_INVALID_INPUT' }
     }
 
-    const {
-      step1: { fullName, phoneNumber, consultationType },
-      step2: { requestedTimeSlot },
-    } = validated.data
+    const { fullName, phoneNumber, requestedTimeSlot } = validated.data
 
-    // 2. Proactive slot guard (defensive, does not throw)
+    // 2. Proactive slot guard
     const slotCheck = await payload.find({
-      collection: 'consultation-time-slots',
+      collection: 'home-visit-time-slots',
       where: {
         id: { equals: requestedTimeSlot },
         availabilityStatus: { not_equals: 'manually_closed' },
@@ -66,11 +63,10 @@ export const submitConsultationForm = async (
     const referenceNumber = generateRef()
 
     await payload.create({
-      collection: 'consultation-requests',
+      collection: 'home-visit-requests',
       data: {
         fullName,
         phoneNumber,
-        consultationType,
         slot: requestedTimeSlot,
         referenceNumber,
         status: 'pending',
@@ -83,9 +79,9 @@ export const submitConsultationForm = async (
       referenceNumber,
     }
   } catch (error: any) {
-    console.error('Consultation booking error:', error)
+    console.error('Home visit booking error:', error)
 
-    // 4. Handle race-condition / hook-level rejection
+    // 4. Handle hook-level rejection
     if (
       error instanceof APIError ||
       error.message?.includes('محجوز') ||
