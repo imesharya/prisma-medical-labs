@@ -1,6 +1,6 @@
 'use client'
 
-import { Sparkles, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel'
@@ -95,7 +95,7 @@ const BlogTeaser = ({ posts }: { posts: PopulatedBlogPost[] }) => {
                   key={post.id}
                   className="ps-6 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
                 >
-                  <FadeIn delay={700 + i * 100} direction="up" distance={20}>
+                  <FadeIn delay={700} direction="up" distance={20}>
                     <BlogCard post={post} />
                   </FadeIn>
                 </CarouselItem>
