@@ -143,11 +143,21 @@ const PackageCard = ({ pkg }: { pkg: Package }) => {
             <DialogTrigger asChild>
               {hasCustomColor ? (
                 <button
-                  className="w-full mt-auto gap-2 rounded-lg border text-sm font-medium inline-flex items-center justify-center h-12 px-2.5 transition-all hover:brightness-110"
+                  className="w-full mt-auto gap-2 rounded-lg border text-sm font-medium inline-flex items-center justify-center h-12 px-2.5 transition-all duration-200"
                   style={{
-                    borderColor: `${accentColor}40`,
-                    backgroundColor: `${accentColor}10`,
+                    borderColor: `${accentColor}33`,
+                    backgroundColor: `${accentColor}1A`,
                     color: accentColor,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = accentColor
+                    e.currentTarget.style.color = '#ffffff'
+                    e.currentTarget.style.borderColor = accentColor
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = `${accentColor}1A`
+                    e.currentTarget.style.color = accentColor
+                    e.currentTarget.style.borderColor = `${accentColor}33`
                   }}
                 >
                   عرض التحاليل

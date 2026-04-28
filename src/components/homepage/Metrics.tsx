@@ -1,60 +1,34 @@
-export const PRISMA = {
-  cyan: '#00BFFF',
-  blue: '#0A84FF',
-  teal: '#00A99D',
-  purple: '#6B4FBB',
-  pink: '#FF4FB8',
-  magenta: '#D61F9E',
-  crimson: '#9B2335',
-  ink: '#0A0A12',
-  ink2: '#141420',
-  paper: '#FAFAFB',
-  line: 'rgba(255,255,255,0.08)',
-}
+import CountUp from '../shared/CountUp'
+import FadeIn from '../shared/FadeIn'
 
 export const STATS = [
-  { n: '+10,000', l: 'قصة ثقة' },
-  { n: '3 ساعات', l: 'نتائجك توصلك بأسرع وقت' },
-  { n: '+500', l: 'تحليل يغطي كل احتياجاتك' },
-  { n: '100%', l: 'نتائج موثوقة ومعتمدة' },
+  { name: '+10,000', label: 'قصة ثقة', color: '#00BFFF' },
+  { name: '3 ساعات', label: 'نتائجك توصلك بأسرع وقت', color: '#6B4FBB' },
+  { name: '+500', label: 'تحليل يغطي كل احتياجاتك', color: '#FF4FB8' },
+  { name: '100%', label: 'نتائج موثوقة ومعتمدة', color: '#00A99D' },
 ]
 
 const Metrics = () => {
-  const softInk = '#0A0A12'
-  const line = 'rgba(10,10,18,0.08)'
-
   return (
-    <section
-      className="relative bg-white"
-      style={{ borderTop: `1px solid ${line}`, borderBottom: `1px solid ${line}` }}
-    >
+    <FadeIn className="relative bg-white border-y">
       <div className="grid grid-cols-2 md:grid-cols-4 relative">
-        {STATS.map((s, i) => (
-          <div
-            key={i}
-            className="py-7 md:py-10 px-4 md:px-8 text-center relative"
-            style={{
-              borderLeft: i % 2 === 0 && i < STATS.length - 1 ? `1px solid ${line}` : undefined,
-              borderBottom: i < 2 ? `1px solid ${line}` : undefined,
-            }}
-          >
+        {STATS.map((s) => (
+          <div key={s.name} className={`py-7 md:py-10 px-4 md:px-8 text-center relative`}>
             <div
-              className="text-[28px] md:text-[44px] font-bold leading-none mb-2"
+              className="text-3xl md:text-5xl font-bold leading-none mb-2"
               style={{
-                background: `linear-gradient(135deg, ${softInk}, ${[PRISMA.cyan, PRISMA.purple, PRISMA.pink, PRISMA.teal][i]})`,
+                background: `linear-gradient(135deg, #0A0A12, ${s.color})`,
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              {s.n}
+              <CountUp end={s.name} />
             </div>
-            <div className="text-[11px] md:text-[13px]" style={{ color: 'rgba(10,10,18,0.55)' }}>
-              {s.l}
-            </div>
+            <div className="text-xs md:text-sm text-muted-foreground">{s.label}</div>
           </div>
         ))}
       </div>
-    </section>
+    </FadeIn>
   )
 }
 

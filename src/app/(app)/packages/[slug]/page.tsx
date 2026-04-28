@@ -4,6 +4,8 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import PackagesList from '@/components/PackageList'
 import CustomBadgeIcon from '@/collections/CustomBadgeIcon'
+import FadeIn from '@/components/shared/FadeIn'
+import { Calendar, Phone } from 'lucide-react'
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -74,6 +76,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             priority
           />
         )}
+
         {/* Mobile: always solid opaque background */}
         <div
           className="absolute inset-0 md:hidden"
@@ -86,89 +89,78 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           style={{
             background: packageType.thumbnail
               ? `linear-gradient(
-            to left,
-            rgba(${baseColor},0.85) 0%,
-            rgba(${baseColor},0.7) 30%,
-            transparent 70%
-          ),
-          radial-gradient(
-            ellipse at 70% 30%,
-            rgba(${baseColor},0.15) 0%,
-            transparent 55%
-          )`
+                  to left,
+                  rgba(${baseColor},0.85) 0%,
+                  rgba(${baseColor},0.7) 30%,
+                  transparent 70%
+                ),
+                radial-gradient(
+                  ellipse at 70% 30%,
+                  rgba(${baseColor},0.15) 0%,
+                  transparent 55%
+                )`
               : `rgba(${baseColor},0.85)`,
           }}
         />
+
         <div className="relative max-w-[700px] z-10">
           {/* Custom Badges */}
           {packageType.badges && packageType.badges.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-4">
-              {packageType.badges.map((badge, idx) => (
-                <div
-                  key={idx}
-                  className="inline-flex items-center gap-2 border text-xs text-white px-4 py-2 rounded-[50px] border-solid border-[rgba(255,255,255,0.2)]"
-                >
-                  <CustomBadgeIcon html={badge.customIcon} />
-                  {badge.text}
-                </div>
-              ))}
-            </div>
+            <FadeIn delay={200} direction="left" distance={20}>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {packageType.badges.map((badge, idx) => (
+                  <div
+                    key={idx}
+                    className="inline-flex items-center gap-2 border text-xs text-white px-4 py-2 rounded-[50px] border-solid border-white/20"
+                  >
+                    <CustomBadgeIcon html={badge.customIcon} />
+                    {badge.text}
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
           )}
 
           {packageType.badge && (
-            <p className="text-[10px] tracking-[6px] text-[rgba(255,255,255,0.7)] font-medium uppercase mb-3">
-              {packageType.badge}
-            </p>
+            <FadeIn delay={300} direction="left" distance={20}>
+              <p className="text-[10px] tracking-[6px] text-white/70 font-medium uppercase mb-3">
+                {packageType.badge}
+              </p>
+            </FadeIn>
           )}
-          <h1 className="font-extrabold text-[clamp(32px,5vw,52px)] leading-[1.3] text-white mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-            {packageType.headline ? packageType.headline : packageType.name}
-          </h1>
-          <p className="text-[15px] text-[rgba(255,255,255,0.8)] font-light leading-[1.9] mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-            {packageType.subheadline ? packageType.subheadline : packageType.description}
-          </p>
-          <div className="flex gap-3 flex-wrap">
-            <a
-              href={buildWhatsAppLink()}
-              className="text-white text-[13px] font-bold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 transition-all duration-[0.3s] px-9 py-3.5 rounded-[10px] border-[none]"
-              style={{ backgroundColor: backgroundColor }}
-            >
-              <svg
-                width={18}
-                height={18}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
+
+          <FadeIn delay={400} direction="left" distance={40}>
+            <h1 className="font-extrabold text-[clamp(32px,5vw,52px)] leading-[1.3] text-white mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+              {packageType.headline ? packageType.headline : packageType.name}
+            </h1>
+          </FadeIn>
+
+          <FadeIn delay={600} distance={24}>
+            <p className="text-[15px] text-white/80 font-light leading-[1.9] mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+              {packageType.subheadline ? packageType.subheadline : packageType.description}
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={700} distance={20}>
+            <div className="flex gap-3 flex-wrap">
+              <a
+                href={buildWhatsAppLink()}
+                className="text-white text-[13px] font-bold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 transition-all duration-300 px-9 py-3.5 rounded-[10px] border-none hover:brightness-110 hover:shadow-lg"
+                style={{ backgroundColor: backgroundColor }}
               >
-                <rect x={3} y={4} width={18} height={18} rx={2} ry={2} />
-                <line x1={16} y1={2} x2={16} y2={6} />
-                <line x1={8} y1={2} x2={8} y2={6} />
-                <line x1={3} y1={10} x2={21} y2={10} />
-              </svg>
-              احجز الآن
-            </a>
-            <a
-              href="tel:+966920031642"
-              className="text-white text-[13px] font-semibold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 backdrop-blur-md transition-all duration-[0.3s] px-9 py-3.5 rounded-[10px] border-[1.5px] border-solid border-[rgba(255,255,255,0.3)]"
-              style={{ background: 'rgba(255,255,255,0.15)' }}
-            >
-              <svg
-                width={18}
-                height={18}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                <Calendar className="size-[18px]" strokeWidth={2} />
+                احجز الآن
+              </a>
+              <a
+                href="tel:+966920031642"
+                className="text-white text-[13px] font-semibold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 backdrop-blur-md transition-all duration-300 px-9 py-3.5 rounded-[10px] border-[1.5px] border-solid border-white/30 hover:bg-white/25"
+                style={{ background: 'rgba(255,255,255,0.15)' }}
               >
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-              </svg>
-              اتصل بنا
-            </a>
-          </div>
+                <Phone className="size-[18px]" strokeWidth={2} />
+                اتصل بنا
+              </a>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
