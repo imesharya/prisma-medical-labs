@@ -145,7 +145,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             <div className="flex gap-3 flex-wrap">
               <a
                 href={buildWhatsAppLink()}
-                className="text-white text-[13px] font-bold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 transition-all duration-300 px-9 py-3.5 rounded-[10px] border-none hover:brightness-110 hover:shadow-lg"
+                className="text-white text-[13px] font-bold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 transition-all duration-300 px-9 py-3.5 rounded-[10px] hover:brightness-110 hover:shadow-lg border-[1.5px] border-solid border-border/20"
                 style={{ backgroundColor: backgroundColor }}
               >
                 <Calendar className="size-[18px]" strokeWidth={2} />

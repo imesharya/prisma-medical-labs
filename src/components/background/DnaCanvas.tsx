@@ -80,11 +80,15 @@ export default function DnaCanvas() {
 
       const s = time * 0.007
 
-      const angle = Math.PI * 0.22
+      const angle = Math.PI * 0.1
       const cosA = Math.cos(angle)
       const sinA = Math.sin(angle)
 
       const diag = Math.sqrt(W * W + H * H)
+
+      // Center offsets for the entire strand group
+      const centerX = W * 0.5
+      const centerY = H * 0.5
 
       strands.forEach((st, si) => {
         const layers = 10
@@ -100,13 +104,16 @@ export default function DnaCanvas() {
 
           for (let i = 0; i <= steps; i++) {
             const pct = i / steps
-            const along = pct * diag * 1.3 - diag * 0.15
+
+            // ADJUSTED: Center the "along" path around 0, then translate
+            const along = (pct - 0.5) * diag * 1.3
 
             const wave = Math.sin(pct * Math.PI * st.freq + s + st.phase + lo) * W * st.amp
 
-            const px = along * cosA - wave * sinA + W * 0.5 + (si - 1) * W * 0.1 * cosA
+            // ADJUSTED: Centered coordinates
+            const px = centerX + along * cosA - wave * sinA + (si - 1) * W * 0.1 * cosA
 
-            const py = along * sinA + wave * cosA + (si - 1) * W * 0.1 * sinA
+            const py = centerY + along * sinA + wave * cosA + (si - 1) * W * 0.1 * sinA
 
             if (i === 0) ctx.moveTo(px, py)
             else ctx.lineTo(px, py)

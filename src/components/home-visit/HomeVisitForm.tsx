@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
-import { AlertCircle, Loader2 } from 'lucide-react'
+import { AlertCircle, Loader2, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { submitHomeVisitForm } from '@/actions/booking/home-visit'
 
@@ -211,15 +211,21 @@ const HomeVisitForm = ({ availableSlots }: Props) => {
   }
 
   return (
-    <section className="relative max-w-3xl mx-auto px-2 md:px-4 pb-16" id="form-sec">
-      <div className="bg-background border border-gray-200 rounded-2xl p-8 md:p-12 shadow-xl">
+    <section className="relative max-w-3xl mx-auto" id="form-sec">
+      <div className="bg-background border border-gray-200 rounded-2xl px-4 py-8 md:px-8 md:py-12 shadow-xl">
         {!isSuccess ? (
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             {/* Header */}
-            <div className="text-center space-y-2">
-              <h2 className="text-2xl font-bold text-gray-900">طلب زيارة منزلية</h2>
-              <p className="text-gray-500 text-sm">
-                أدخل بياناتك واختر الموعد المناسب وسنتواصل معك للتأكيد
+            <div className="flex flex-col items-center justify-center text-center">
+              <div className="inline-flex items-center gap-2 w-fit px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full mb-6">
+                <Sparkles className="h-4 w-4 text-primary" />
+                <span className="text-sm font-medium text-primary">خدمة حصرية</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-4 text-balance">
+                احجز زيارتك المنزلية
+              </h2>
+              <p className="text-lg text-muted-foreground mb-4 max-w-2xl mx-auto leading-relaxed text-balance">
+                عبّئ بياناتك وسيتواصل معك فريقنا لتأكيد الزيارة المنزلية في أقرب وقت
               </p>
             </div>
 
