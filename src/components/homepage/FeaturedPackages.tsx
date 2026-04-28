@@ -118,7 +118,7 @@ const PackageTypes = async () => {
 
   return (
     <section className="relative px-5 md:px-10 py-16 md:py-24 bg-white">
-      <div className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+      <div className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-start md:justify-between gap-4 overflow-x-hidden">
         <FadeIn direction="left">
           <div className="text-[10px] tracking-[0.4em] mb-3 text-[#0A84FF]">EXPLORE</div>
           <h2 className="text-[36px] md:text-[54px] font-bold leading-[1.05] text-[#0A0A12]">
