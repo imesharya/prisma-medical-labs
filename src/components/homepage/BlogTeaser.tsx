@@ -38,13 +38,17 @@ const BlogTeaser = ({ posts }: { posts: PopulatedBlogPost[] }) => {
   return (
     <section className="px-5 md:px-10 py-16 md:py-24 bg-white">
       {/* Header */}
-      <div className="mb-8 md:mb-12 flex flex-col md:flex-row items-start justify-between gap-4 overflow-x-hidden">
-        <FadeIn delay={200} direction="right" distance={30}>
-          <div className="text-[10px] tracking-[0.4em] mb-3 text-[#0A84FF]">KNOWLEDGE</div>
-        </FadeIn>
-        <FadeIn delay={400} direction="right" distance={40}>
-          <h2 className="text-[32px] md:text-[48px] font-bold leading-[1.05]">من المدونة الطبية</h2>
-        </FadeIn>
+      <div className="mb-8 md:mb-12 flex flex-col md:flex-row items-start justify-between gap-4">
+        <div className="flex flex-col items-start justify-between gap-4">
+          <FadeIn delay={200} direction="right" distance={30}>
+            <div className="text-[10px] tracking-[0.4em] mb-3 text-[#0A84FF]">KNOWLEDGE</div>
+          </FadeIn>
+          <FadeIn delay={400} direction="right" distance={40}>
+            <h2 className="text-[32px] md:text-[48px] font-bold leading-[1.05]">
+              من المدونة الطبية
+            </h2>
+          </FadeIn>
+        </div>
 
         {/* Navigation Buttons + View All */}
         <FadeIn delay={500} direction="left" distance={30}>
