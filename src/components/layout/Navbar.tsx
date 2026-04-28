@@ -128,7 +128,7 @@ const Navbar = () => {
                         }`}
                       >
                         <span className={`inline-block`}>
-                          {isActive && (
+                          {shouldExpand && (
                             <span
                               className="absolute bottom-0 right-2 left-2 h-px"
                               style={{
