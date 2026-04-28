@@ -59,6 +59,23 @@ export default buildConfig({
       defaultTimezone: 'Asia/Riyadh',
       supportedTimezones: [{ label: 'Riyadh', value: 'Asia/Riyadh' }],
     },
+    meta: {
+      titleSuffix: '- مختبرات بريزما',
+      title: 'لوحة التحكم',
+      icons: [
+        {
+          rel: 'icon',
+          type: 'image/x-icon',
+          url: '/favicon.ico',
+        },
+      ],
+    },
+    components: {
+      graphics: {
+        Logo: '@/components/admin/brand/Logo',
+        Icon: '@/components/admin/brand/Logo',
+      },
+    },
   },
 
   // Your Payload secret - should be a complex and secure string, unguessable
