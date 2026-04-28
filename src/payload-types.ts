@@ -234,6 +234,7 @@ export interface Package {
   discountedPrice?: number | null;
   badge?: string | null;
   thumbnail?: (string | null) | Media;
+  color?: string | null;
   displayOrder?: number | null;
   isActive?: boolean | null;
   packageType?: (string | null) | PackageType;
@@ -823,6 +824,7 @@ export interface PackagesSelect<T extends boolean = true> {
   discountedPrice?: T;
   badge?: T;
   thumbnail?: T;
+  color?: T;
   displayOrder?: T;
   isActive?: T;
   packageType?: T;

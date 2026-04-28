@@ -42,15 +42,23 @@ export const Packages: CollectionConfig = {
 
     { name: 'price', type: 'number', required: true, min: 0, label: 'السعر الأصلي (ريال)' },
     { name: 'discountedPrice', type: 'number', min: 0, label: 'السعر بعد الخصم (ريال)' },
-    { name: 'badge', type: 'text', label: 'البادج' },
-
+    { name: 'badge', type: 'text', label: 'الشارة' },
     {
       name: 'thumbnail',
       type: 'upload',
       relationTo: 'media',
       label: 'صورة الباقة',
     },
-
+    {
+      name: 'color',
+      type: 'text',
+      label: 'اللون السائد',
+      admin: {
+        components: {
+          Field: '@/components/admin/CustomColorPicker',
+        },
+      },
+    },
     {
       name: 'displayOrder',
       type: 'number',
