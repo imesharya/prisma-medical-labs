@@ -73,7 +73,7 @@ export default buildConfig({
     components: {
       graphics: {
         Logo: '@/components/admin/brand/Logo',
-        Icon: '@/components/admin/brand/Logo',
+        Icon: '@/components/admin/brand/Icon',
       },
     },
   },
