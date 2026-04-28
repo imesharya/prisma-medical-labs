@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  experimental: {
+    globalNotFound: true,
+  },
 }
 
 export default withPayload(nextConfig)

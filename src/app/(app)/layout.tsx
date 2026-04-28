@@ -10,17 +10,22 @@ import { ReactNode } from 'react'
 import { Toaster } from '@/components/ui/sonner'
 
 export const metadata: Metadata = {
-  title: 'مختبرات بريزما الطبية',
+  title: {
+    template: '%s | مختبرات بريزما الطبية',
+    default: 'مختبرات بريزما الطبية',
+  },
   description:
     'باقات تحاليل شاملة بأحدث التقنيات، خدمة زيارة منزلية، نتائج دقيقة وسريعة. احجز الآن!',
 
   applicationName: 'مختبرات بريزما الطبية',
 
-  creator: 'Your Name',
   publisher: 'مختبرات بريزما الطبية',
 
   openGraph: {
-    title: 'مختبرات بريزما الطبية',
+    title: {
+      template: '%s | مختبرات بريزما الطبية',
+      default: 'مختبرات بريزما الطبية',
+    },
     description:
       'باقات تحاليل شاملة بأحدث التقنيات، خدمة زيارة منزلية، نتائج دقيقة وسريعة. احجز الآن!',
     siteName: 'مختبرات بريزما الطبية',
@@ -38,7 +43,10 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'مختبرات بريزما الطبية',
+    title: {
+      template: '%s | مختبرات بريزما الطبية',
+      default: 'مختبرات بريزما الطبية',
+    },
     description:
       'باقات تحاليل شاملة بأحدث التقنيات، خدمة زيارة منزلية، نتائج دقيقة وسريعة. احجز الآن!',
     images: [`${process.env.NEXT_PUBLIC_SERVER_URL}/og-image.png`],

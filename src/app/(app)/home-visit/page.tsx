@@ -1,14 +1,17 @@
 import DnaCanvas from '@/components/background/DnaCanvas'
 import HomeVisitForm from '@/components/home-visit/HomeVisitForm'
-import { Button } from '@/components/ui/button'
 import { Icon } from '@/lib/icon'
-import { Calendar, Home, Phone, Sparkles } from 'lucide-react'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
 import Image from 'next/image'
-import Link from 'next/link'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import FadeIn from '@/components/shared/FadeIn'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'زيارة منزلية',
+  description: 'احجز خدمة الزيارة المنزلية من مختبرات بريزما الفحص الطبي في راحة منزلك',
+}
 
 const METRICS: { title: string; description: string; icon: string; color: string }[] = [
   {

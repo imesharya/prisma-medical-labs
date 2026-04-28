@@ -6,6 +6,39 @@ import PackagesList from '@/components/PackageList'
 import CustomBadgeIcon from '@/collections/CustomBadgeIcon'
 import FadeIn from '@/components/shared/FadeIn'
 import { Calendar, Phone } from 'lucide-react'
+import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> => {
+  const { slug } = await params
+  const payload = await getPayload({ config })
+
+  const {
+    docs: [packageType],
+  } = await payload.find({
+    collection: 'package-types',
+    where: { slug: { equals: slug }, isActive: { equals: true } },
+    sort: 'displayOrder',
+    depth: 1,
+    limit: 1,
+  })
+
+  if (!packageType) return notFound()
+
+  return {
+    title: packageType.headline || packageType.name,
+    description: packageType.subheadline || packageType.description,
+    openGraph: {
+      ...(packageType.thumbnail &&
+        typeof packageType.thumbnail === 'object' &&
+        packageType.thumbnail.url && { images: packageType.thumbnail.url }),
+    },
+  }
+}
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -21,16 +54,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     limit: 1,
   })
 
-  if (!packageType) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-foreground mb-2">الصفحة غير موجودة</h1>
-          <p className="text-muted-foreground">نوع الباقة المطلوب غير متوفر</p>
-        </div>
-      </div>
-    )
-  }
+  if (!packageType) return notFound()
 
   const { docs: packages } = await payload.find({
     collection: 'packages',

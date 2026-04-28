@@ -7,11 +7,9 @@ import BlogFilters from '@/components/blog/BlogFilters'
 
 type PopulatedBlogPost = Populated<BlogPost, 1>
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'منشورات المدونة',
-    description: 'اقرأ أحدث المقالات والنصائح من مدونتنا',
-  }
+export const metadaat: Metadata = {
+  title: 'مدونة مختبرات بريزما',
+  description: 'معلومات طبية موثوقة وشاملة عن التحاليل والفحوصات الصحية',
 }
 
 interface PageProps {

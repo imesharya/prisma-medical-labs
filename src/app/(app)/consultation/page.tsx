@@ -3,6 +3,12 @@ import ConsultationForm from '@/components/forms/ConsultationForm'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import FadeIn from '@/components/shared/FadeIn'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'استشارة طبية',
+  description: 'تحدّث مع استشاريينا المتخصصين — نساعدك قبل التحليل أو نشرح لك نتائجك بدقة وعناية',
+}
 
 export default async function Page() {
   const payload = await getPayload({ config })

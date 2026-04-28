@@ -2,7 +2,14 @@ import { Button } from '@/components/ui/button'
 import { Icon } from '@/lib/icon'
 import { Sparkles } from 'lucide-react'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
+import { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'من نحن',
+  description:
+    'تعد مختبرات بريزما (Prisma Laboratories) ثمرة تلاقي الخبرة الطبية العريقة مع التكنولوجيا التشخيصية المتقدمة. انطلقت رحلتنا في قلب المملكة العربية السعودية، بقيادة مجموعة من الاستشاريين السعوديين الذين وضعوا نصب أعينهم هدفاً واحداً: الارتقاء بالمعايير المخبرية لتتجاوز حدود الفحص التقليدي إلى تقديم تجربة صحية متكاملة.',
+}
 
 const VALUES: { title: string; description: string; icon: string; color: string }[] = [
   {

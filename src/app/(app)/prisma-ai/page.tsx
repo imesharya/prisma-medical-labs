@@ -2,6 +2,12 @@ import HeroStory from '@/components/HeroStory'
 import Image from 'next/image'
 import React from 'react'
 import { Amiri } from 'next/font/google'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'بريزما AI',
+  description: 'من أعراض ما تفهمها … إلى باقة تحاليل مصممة خصيصاً لعيونك في دقيقتين',
+}
 
 const amiri = Amiri({
   subsets: ['arabic'],
