@@ -107,10 +107,10 @@ const Hero = () => {
           </FadeIn>
 
           <FadeIn delay={600} distance={24}>
-            <p className="mt-6 md:mt-10 text-[15px] md:text-lg leading-[1.9] max-w-[520px] text-[#0A0A129E]">
+            <p className="mt-6 md:mt-10 text-[15px] md:text-lg leading-[1.9] max-w-[600px] text-[#0A0A129E]">
               باقات فحص شاملة بأحدث التقنيات الطبية — نتائج دقيقة في{' '}
-              <strong className="text-[#0A0A12]">3 ساعات</strong>، خدمة منزلية فورية، واستشارة طبية
-              مجانية مع كل باقة.
+              <strong className="text-[#0A0A12]">وقت قياسي</strong>،<br /> خدمة منزلية فورية،
+              واستشارة طبية مجانية مع كل باقة.``
             </p>
           </FadeIn>
 
@@ -155,7 +155,7 @@ const Hero = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="size-4" style={{ color: PRISMA.teal }} strokeWidth={2} />
-                نتائج في 3 ساعات
+                نتائج سريعة
               </div>
               <div className="flex items-center gap-2">
                 <Home className="size-4" style={{ color: PRISMA.teal }} strokeWidth={2} />
@@ -230,12 +230,7 @@ const Hero = () => {
                     <Zap className="size-4" style={{ color: PRISMA.blue }} strokeWidth={2} />
                   </div>
                   <div>
-                    <div
-                      className="text-lg font-extrabold text-[#0A0A12] text-right"
-                      style={{ direction: 'ltr' }}
-                    >
-                      3h
-                    </div>
+                    <div className="text-[13px] font-bold text-[#0A0A12]">سريعة</div>
                     <div className="text-[10px] text-[#0A0A1280]">النتيجة جاهزة</div>
                   </div>
                 </div>
