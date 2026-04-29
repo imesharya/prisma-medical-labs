@@ -39,6 +39,16 @@ const nextConfig: NextConfig = {
 
     return webpackConfig
   },
+  async redirects() {
+    return [
+      { source: '/home2', destination: '/packages', permanent: true },
+      { source: '/special-packages', destination: '/packages/specialized', permanent: true },
+      { source: '/body', destination: '/packages/specialized', permanent: true },
+      { source: '/genetest', destination: '/packages/marriage', permanent: true },
+      { source: '/full-packages', destination: '/packages/comprehensive', permanent: true },
+      { source: '/about-us', destination: '/about', permanent: true },
+    ]
+  },
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })
