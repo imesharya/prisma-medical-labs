@@ -72,7 +72,7 @@ const HomeVisitCTA = () => {
 
           <FadeIn delay={400} direction="right" distance={40}>
             <h2 className="text-[36px] md:text-[48px] lg:text-[56px] font-bold leading-[1.05] mb-5 md:mb-6">
-              نأتي إليك.
+              لا تشيل همّ المشوار..
               <br />
               <span
                 className="bg-clip-text text-transparent"
@@ -80,9 +80,9 @@ const HomeVisitCTA = () => {
                   backgroundImage: `linear-gradient(135deg, #0A84FF, #FF4FB8)`,
                 }}
               >
-                راحتك تبدأ
+                جودة المختبر
               </span>{' '}
-              من باب المنزل.
+              توصلك لبيتك الآن.
             </h2>
           </FadeIn>
 
