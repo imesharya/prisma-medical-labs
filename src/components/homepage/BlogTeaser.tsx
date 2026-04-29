@@ -55,6 +55,7 @@ const BlogTeaser = ({ posts }: { posts: PopulatedBlogPost[] }) => {
           <div className="flex items-center justify-between mt-8 gap-4">
             <div className="flex gap-2">
               <button
+                aria-label="previous blog post"
                 onClick={() => api?.scrollPrev()}
                 disabled={!canScrollPrev}
                 className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
@@ -62,6 +63,7 @@ const BlogTeaser = ({ posts }: { posts: PopulatedBlogPost[] }) => {
                 <ChevronRight className="h-5 w-5" />
               </button>
               <button
+                aria-label="next blog post"
                 onClick={() => api?.scrollNext()}
                 disabled={!canScrollNext}
                 className="p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
