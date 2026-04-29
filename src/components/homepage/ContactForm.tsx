@@ -98,7 +98,7 @@ const ContactForm = () => {
               <div className="text-center md:text-start mb-10 md:mb-12">
                 <div className="text-[10px] tracking-[0.4em] mb-3 text-[#0A84FF]">CONTACT</div>
                 <h2 className="text-[34px] md:text-[52px] font-bold mb-3 md:mb-4">
-                  احجز موعدك الآن
+                  تواصل معنا الآن
                 </h2>
                 <p className="text-[13px] md:text-[14px] text-[#0A0A128C]">
                   فريقنا سيتواصل معك خلال أقل من ساعة
