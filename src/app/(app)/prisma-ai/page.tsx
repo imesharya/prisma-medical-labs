@@ -132,7 +132,7 @@ const Page: React.FC = () => {
             bg-clip-text text-transparent
             drop-shadow-[0_0_20px_rgba(43,182,115,0.5)]
             drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]
-            tracking-[6px] leading-[1.1]
+            leading-[1.1]
             text-[clamp(56px,10vw,130px)] ${amiri.className}`}
               style={{ fontFamily: 'Amiri, serif', fontWeight: 700 }}
             >
@@ -149,7 +149,7 @@ const Page: React.FC = () => {
             bg-clip-text text-transparent
             opacity-25
             drop-shadow-[0_0_40px_rgba(43,182,115,0.3)]
-            tracking-[-4px] leading-[0.75]
+            leading-[0.75]
             text-[clamp(90px,16vw,200px)]"
               style={{ fontFamily: 'Tajawal, sans-serif', fontWeight: 900 }}
             >
@@ -163,7 +163,7 @@ const Page: React.FC = () => {
           className="flex items-center justify-center gap-[6px]
           whitespace-nowrap flex-nowrap
           text-[clamp(20px,4vw,34px)]
-          font-semibold tracking-[1.5px]
+          font-semibold
           text-white/95
           drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]
           drop-shadow-[0_0_30px_rgba(0,0,0,0.4)]"
@@ -193,7 +193,6 @@ const Page: React.FC = () => {
           -mt-4
           text-[clamp(15px,3vw,20px)]
           font-normal leading-[1.9]
-          tracking-[0.5px]
           text-white/75
           animate-[fadeUp_1s_ease-out_0.35s_backwards]
           drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]"
@@ -210,7 +209,7 @@ const Page: React.FC = () => {
       relative inline-flex items-center gap-2
       rounded-full border border-[#2bb673]/40
       bg-[#2bb673]/10 px-5 py-1.5
-      text-sm font-semibold tracking-wider
+      text-sm font-semibold
       text-[#4ee8a0]
       shadow-[0_0_20px_rgba(43,182,115,0.25)]
       backdrop-blur-md

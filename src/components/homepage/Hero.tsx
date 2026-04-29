@@ -63,7 +63,7 @@ const Hero = () => {
         <div className="lg:col-span-7">
           <FadeIn delay={200} distance={20}>
             <div
-              className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full mb-6 md:mb-8 text-[10px] font-bold tracking-[0.18em]"
+              className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full mb-6 md:mb-8 text-[10px] font-bold"
               style={{
                 border: `1px solid ${PRISMA.blue}35`,
                 background: `${PRISMA.blue}08`,
@@ -79,7 +79,7 @@ const Hero = () => {
           </FadeIn>
 
           <FadeIn delay={400} direction="left" distance={40}>
-            <h1 className="text-[64px] sm:text-[88px] md:text-[104px] lg:text-[128px] font-extrabold leading-[0.95] tracking-[-0.04em]">
+            <h1 className="text-[64px] sm:text-[88px] md:text-[104px] lg:text-[128px] font-extrabold leading-[0.95]">
               <span
                 className="bg-clip-text text-transparent"
                 style={{
@@ -92,7 +92,7 @@ const Hero = () => {
           </FadeIn>
 
           <FadeIn delay={500} direction="left" distance={40}>
-            <h1 className="text-[64px] sm:text-[88px] md:text-[104px] lg:text-[128px] font-extrabold leading-[0.95] tracking-[-0.04em]">
+            <h1 className="text-[64px] sm:text-[88px] md:text-[104px] lg:text-[128px] font-extrabold leading-[0.95]">
               <span className="relative text-[#0A0A12]">
                 بثقة
                 <span
@@ -205,10 +205,6 @@ const Hero = () => {
                     alt=""
                     fill
                   />
-                  <div className="text-[10px] tracking-[0.3em] text-[#0A0A1273]">PATIENT FIRST</div>
-                  <div className="text-lg md:text-[22px] font-bold mt-2 text-[#0A0A12]">
-                    دقة طبية. خدمة إنسانية.
-                  </div>
                 </div>
               </div>
 

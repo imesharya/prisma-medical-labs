@@ -102,6 +102,11 @@ export default buildConfig({
           url: '/favicon.ico',
         },
       ],
+      openGraph: {
+        title: 'لوحة التحكم',
+        description: 'لوحة التحكم مختبرات بريزما',
+        images: [`${process.env.NEXT_PUBLIC_SERVER_URL}/prisma-logo.png`],
+      },
     },
     components: {
       graphics: {

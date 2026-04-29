@@ -132,7 +132,7 @@ const page = async () => {
           </FadeIn>
 
           <FadeIn delay={600} distance={24}>
-            <p className="text-[15px] text-white/80 font-light leading-[1.9] mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+            <p className="text-white/80 font-light leading-[1.9] mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
               خدمة الزيارة المنزلية من مختبرات بريزما الفحص الطبي في راحة منزلك
             </p>
           </FadeIn>

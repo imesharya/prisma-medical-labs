@@ -169,7 +169,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             <div className="flex gap-3 flex-wrap">
               <a
                 href={buildWhatsAppLink()}
-                className="text-white text-[13px] font-bold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 transition-all duration-300 px-9 py-3.5 rounded-[10px] hover:brightness-110 hover:shadow-lg border-[1.5px] border-solid border-border/20"
+                className="text-white text-sm font-bold cursor-pointer no-underline inline-flex items-center gap-2 transition-all duration-300 px-9 py-3.5 rounded-[10px] hover:brightness-110 hover:shadow-lg border-[1.5px] border-solid border-border/20"
                 style={{ backgroundColor: backgroundColor }}
               >
                 <Calendar className="size-[18px]" strokeWidth={2} />
@@ -177,7 +177,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               </a>
               <a
                 href="tel:+966920031642"
-                className="text-white text-[13px] font-semibold cursor-pointer tracking-[1px] no-underline inline-flex items-center gap-2 backdrop-blur-md transition-all duration-300 px-9 py-3.5 rounded-[10px] border-[1.5px] border-solid border-white/30 hover:bg-white/25"
+                className="text-white text-sm font-semibold cursor-pointer no-underline inline-flex items-center gap-2 backdrop-blur-md transition-all duration-300 px-9 py-3.5 rounded-[10px] border-[1.5px] border-solid border-white/30 hover:bg-white/25"
                 style={{ background: 'rgba(255,255,255,0.15)' }}
               >
                 <Phone className="size-[18px]" strokeWidth={2} />

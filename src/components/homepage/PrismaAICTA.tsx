@@ -114,7 +114,7 @@ const PrismaAICTA = () => {
             </FadeIn>
 
             <FadeIn delay={400} direction="right" distance={40}>
-              <h3 className="font-bold mb-5 text-[30px] md:text-[40px] lg:text-[44px] leading-[1.15] tracking-[-0.02em]">
+              <h3 className="font-bold mb-5 text-[30px] md:text-[40px] lg:text-[44px] leading-[1.15]">
                 دع{' '}
                 <span
                   className="bg-clip-text text-transparent"
