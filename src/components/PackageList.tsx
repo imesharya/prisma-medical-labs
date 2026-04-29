@@ -5,13 +5,20 @@ import { Package, PackageCategory } from '@/payload-types'
 import { Skeleton } from '@/components/ui/skeleton'
 import PackageCard from '@/components/PackageCard'
 import { Search } from 'lucide-react'
-import { Button } from './ui/button'
 import FadeIn from '@/components/shared/FadeIn'
+import { normalizeArabic } from '@/lib/normalizeArabic'
 
 interface PackagesListProps {
   packages: Package[]
   enableFiltering?: boolean
   isLoading?: boolean
+}
+
+const getCategoryName = (pkg: Package, categories: PackageCategory[]): string => {
+  if (!pkg.packageCategory) return ''
+  const catId =
+    typeof pkg.packageCategory === 'object' ? pkg.packageCategory.id : pkg.packageCategory
+  return categories.find((c) => c.id === catId)?.name || ''
 }
 
 export default function PackagesList({
@@ -20,7 +27,6 @@ export default function PackagesList({
   isLoading = false,
 }: PackagesListProps) {
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
   const categories = useMemo(() => {
     const cats = new Map<string, PackageCategory>()
@@ -35,24 +41,21 @@ export default function PackagesList({
   const filteredPackages = useMemo(() => {
     if (!enableFiltering) return packages
 
+    const normalizedQuery = normalizeArabic(searchQuery)
+    if (!normalizedQuery) return packages
+
     return packages.filter((pkg) => {
-      const matchesSearch =
-        !searchQuery ||
-        pkg.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        pkg.description?.toLowerCase().includes(searchQuery.toLowerCase())
+      const nameMatch = normalizeArabic(pkg.name).includes(normalizedQuery)
+      const descMatch = normalizeArabic(pkg.description ?? '').includes(normalizedQuery)
+      const catMatch = normalizeArabic(getCategoryName(pkg, categories)).includes(normalizedQuery)
 
-      const matchesCategory =
-        selectedCategory === 'all' ||
-        (typeof pkg.packageCategory === 'object' && pkg.packageCategory?.id === selectedCategory) ||
-        (typeof pkg.packageCategory === 'string' && pkg.packageCategory === selectedCategory)
-
-      return matchesSearch && matchesCategory
+      return nameMatch || descMatch || catMatch
     })
-  }, [packages, searchQuery, selectedCategory, enableFiltering])
+  }, [packages, searchQuery, enableFiltering, categories])
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {[...Array(6)].map((_, i) => (
           <div key={i} className="space-y-4">
             <Skeleton className="w-full h-48 rounded-2xl" />
@@ -70,7 +73,7 @@ export default function PackagesList({
       <FadeIn delay={200} direction="up" distance={20}>
         <div className="flex flex-col items-center justify-center py-12 text-center">
           <h3 className="text-xl font-semibold text-foreground mb-2">لا توجد باقات متاحة</h3>
-          <p className="text-muted-foreground">يرجى المحاولة لاحقاً أو اختيار فئة أخرى</p>
+          <p className="text-muted-foreground">يرجى المحاولة لاحقاً</p>
         </div>
       </FadeIn>
     )
@@ -80,39 +83,17 @@ export default function PackagesList({
     <div className="space-y-8 md:space-y-16 py-8 md:py-16">
       {enableFiltering && (
         <FadeIn delay={200} direction="up" distance={20}>
-          <div className="flex flex-col justify-center items-center bg-card/50">
-            {categories.length > 0 && (
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Button
-                  variant={selectedCategory === 'all' ? 'secondary' : 'outline'}
-                  type="button"
-                  onClick={() => setSelectedCategory('all')}
-                >
-                  الكل
-                </Button>
-                {categories.map((cat) => (
-                  <Button
-                    key={cat.id}
-                    type="button"
-                    onClick={() => setSelectedCategory(cat.id)}
-                    variant={selectedCategory === cat.id ? 'secondary' : 'outline'}
-                  >
-                    {cat.name}
-                  </Button>
-                ))}
-
-                <div className="relative max-w-xl w-full">
-                  <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                  <input
-                    type="text"
-                    placeholder="ابحث في الباقات..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full max-w-3xl mx-auto px-4 py-3 pr-10 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
-                  />
-                </div>
-              </div>
-            )}
+          <div className="flex justify-center">
+            <div className="relative max-w-xl w-full">
+              <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="ابحث في الباقات..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-4 py-3 pr-10 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
+              />
+            </div>
           </div>
         </FadeIn>
       )}
@@ -121,7 +102,7 @@ export default function PackagesList({
         <FadeIn delay={300} direction="up" distance={20}>
           <div className="flex flex-col items-center justify-center py-12 text-center">
             <h3 className="text-xl font-semibold text-foreground mb-2">لا توجد نتائج</h3>
-            <p className="text-muted-foreground">جرب البحث بكلمات مختلفة أو اختر فئة أخرى</p>
+            <p className="text-muted-foreground">جرب البحث بكلمات مختلفة</p>
           </div>
         </FadeIn>
       ) : (
