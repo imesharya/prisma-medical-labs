@@ -7,7 +7,7 @@ import BlogFilters from '@/components/blog/BlogFilters'
 
 type PopulatedBlogPost = Populated<BlogPost, 1>
 
-export const metadaat: Metadata = {
+export const metadata: Metadata = {
   title: 'مدونة مختبرات بريزما',
   description: 'معلومات طبية موثوقة وشاملة عن التحاليل والفحوصات الصحية',
 }

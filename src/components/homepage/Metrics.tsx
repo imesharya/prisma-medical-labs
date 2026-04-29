@@ -3,7 +3,7 @@ import FadeIn from '../shared/FadeIn'
 
 export const STATS = [
   { name: '+10,000', label: 'قصة ثقة', color: '#00BFFF' },
-  { name: '3 ساعات', label: 'نتائجك توصلك بأسرع وقت', color: '#6B4FBB' },
+  { name: '24/7', label: 'خدمة مستمرة وقت ما تحتاج', color: '#6B4FBB' },
   { name: '+500', label: 'تحليل يغطي كل احتياجاتك', color: '#FF4FB8' },
   { name: '100%', label: 'نتائج موثوقة ومعتمدة', color: '#00A99D' },
 ]

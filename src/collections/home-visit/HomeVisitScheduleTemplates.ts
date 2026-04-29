@@ -175,7 +175,7 @@ export const HomeVisitScheduleTemplates: CollectionConfig = {
 
         if (typeof req.json === 'function') {
           try {
-            const body = await req.json()
+            const body = (await req.json()) as { preview: boolean }
             preview = !!body?.preview
           } catch {
             // ignore invalid JSON

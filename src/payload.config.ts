@@ -1,10 +1,14 @@
-import sharp from 'sharp'
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import path from 'path'
+import fs from 'fs'
+
+import { CloudflareContext, getCloudflareContext } from '@opennextjs/cloudflare'
+import { GetPlatformProxyOptions } from 'wrangler'
+
 import { buildConfig } from 'payload'
+import { sqliteD1Adapter } from '@payloadcms/db-d1-sqlite'
+import { r2Storage } from '@payloadcms/storage-r2'
 import { en } from '@payloadcms/translations/languages/en'
 import { ar } from '@payloadcms/translations/languages/ar'
-// import imagekitPlugin from 'payloadcms-plugin-imagekit'
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 import { TestCategories } from './collections/TestCategories'
 import { Tests } from './collections/Tests'
@@ -12,7 +16,6 @@ import { PackageCategories } from './collections/PackageCategories'
 import { Packages } from './collections/Packages'
 import { PackageTypes } from './collections/PackageTypes'
 import { Media } from './collections/media'
-import path from 'path'
 import { fileURLToPath } from 'url'
 import { BlogCategories } from './collections/BlogCategories'
 import { BlogPosts } from './collections/BlogPost'
@@ -29,9 +32,39 @@ import { ContactMessages } from './collections/ContactMessages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+const realpath = (value: string) => (fs.existsSync(value) ? fs.realpathSync(value) : undefined)
+
+const isCLI = process.argv.some((value) =>
+  realpath(value)?.endsWith(path.join('payload', 'bin.js')),
+)
+const isProduction = process.env.NODE_ENV === 'production'
+
+const createLog =
+  (level: string, fn: typeof console.log) => (objOrMsg: object | string, msg?: string) => {
+    if (typeof objOrMsg === 'string') {
+      fn(JSON.stringify({ level, msg: objOrMsg }))
+    } else {
+      fn(JSON.stringify({ level, ...objOrMsg, msg: msg ?? (objOrMsg as { msg?: string }).msg }))
+    }
+  }
+
+const cloudflareLogger = {
+  level: process.env.PAYLOAD_LOG_LEVEL || 'info',
+  trace: createLog('trace', console.debug),
+  debug: createLog('debug', console.debug),
+  info: createLog('info', console.log),
+  warn: createLog('warn', console.warn),
+  error: createLog('error', console.error),
+  fatal: createLog('fatal', console.error),
+  silent: () => {},
+} as any // Use PayloadLogger type when it's exported
+
+const cloudflare =
+  isCLI || !isProduction
+    ? await getCloudflareContextFromWrangler()
+    : await getCloudflareContext({ async: true })
 
 export default buildConfig({
-  // Define and configure your collections in this array
   collections: [
     Media,
     TestCategories,
@@ -78,72 +111,30 @@ export default buildConfig({
     },
   },
 
-  // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  // Whichever Database Adapter you're using should go here
-  // Mongoose is shown as an example, but you can also use Postgres
-  db: mongooseAdapter({
-    url: process.env.DATABASE_URL || '',
-  }),
-  // If you want to resize images, crop, set focal point, etc.
-  // make sure to install it and pass it to the config.
-  // This is optional - if you don't need to do these things,
-  // you don't need it!
   i18n: {
     fallbackLanguage: 'ar',
     supportedLanguages: { ar, en },
   },
-  sharp,
   editor: lexicalEditor({}),
+  db: sqliteD1Adapter({ binding: cloudflare.env.D1, idType: 'uuid' }),
+  logger: isProduction ? cloudflareLogger : undefined,
   plugins: [
-    // imagekitPlugin({
-    //   config: {
-    //     publicKey: process.env.IK_PUBLIC_KEY!,
-    //     privateKey: process.env.IK_PRIVATE_KEY!,
-    //     endpoint: process.env.IK_ENDPOINT!,
-    //   },
-    //   collections: {
-    //     media: {
-    //       uploadOption: {
-    //         folder: 'prisma-medical-labs',
-    //         // extensions: [
-    //         //   {
-    //         //     name: 'aws-auto-tagging',
-    //         //     minConfidence: 80, // only tags with a confidence value higher than 80% will be attached
-    //         //     maxTags: 10, // a maximum of 10 tags from aws will be attached
-    //         //   },
-    //         //   {
-    //         //     name: 'google-auto-tagging',
-    //         //     minConfidence: 70, // only tags with a confidence value higher than 70% will be attached
-    //         //     maxTags: 10, // a maximum of 10 tags from google will be attached
-    //         //   },
-    //         // ],
-    //       },
-    //       // savedProperties: ['url', 'AITags'],
-    //     },
-    //   },
-    // }),
-    vercelBlobStorage({
-      enabled: true, // defaults to true
-      token: process.env.BLOB_READ_WRITE_TOKEN, // Required
-
-      // Specify which upload collections use Vercel Blob
+    r2Storage({
+      bucket: cloudflare.env.R2,
       collections: {
-        media: true, // 'media' must match your collection slug
-        // You can add more:
-        // documents: true,
-        // videos: {
-        //   prefix: 'videos/',         // Optional: organize files in folders
-        // },
+        media: {
+          generateFileURL: isProduction
+            ? ({ filename, prefix }) => {
+                const path = prefix ? `${prefix}/${filename}` : filename
+                return `${process.env.R2_PUBLIC_DOMAIN}/${path}`
+              }
+            : undefined,
+        },
       },
-
-      // Optional but recommended settings
-      addRandomSuffix: true, // Prevents filename collisions
-      cacheControlMaxAge: 31536000, // 1 year (default)
-      clientUploads: true, // Highly recommended on Vercel (see below)
     }),
   ],
   bin: [
@@ -153,3 +144,14 @@ export default buildConfig({
     },
   ],
 })
+
+// Adapted from https://github.com/opennextjs/opennextjs-cloudflare/blob/d00b3a13e42e65aad76fba41774815726422cc39/packages/cloudflare/src/api/cloudflare-context.ts#L328C36-L328C46
+function getCloudflareContextFromWrangler(): Promise<CloudflareContext> {
+  return import(/* webpackIgnore: true */ `${'__wrangler'.replaceAll('_', '')}`).then(
+    ({ getPlatformProxy }) =>
+      getPlatformProxy({
+        environment: process.env.CLOUDFLARE_ENV,
+        remoteBindings: isProduction,
+      } satisfies GetPlatformProxyOptions),
+  )
+}

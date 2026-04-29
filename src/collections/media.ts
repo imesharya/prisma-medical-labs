@@ -15,9 +15,10 @@ export const Media: CollectionConfig = {
     defaultColumns: ['filename', 'mimeType', 'size'],
   },
   upload: {
-    disableLocalStorage: true,
     mimeTypes: ['image/*'],
     adminThumbnail: 'thumbnail',
+    crop: false,
+    focalPoint: false,
   },
   fields: [
     {

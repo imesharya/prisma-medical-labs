@@ -30,7 +30,7 @@ import { default as default_9ee6bce0f09c851f8bd40040267f72f8 } from '@/component
 import { default as default_3d7e9593c199e61847804c284e33d3d2 } from '@/components/admin/HomeVisitScheduleGenerator'
 import { default as default_d724e3c9fa2fc7ba502c18e1e0541534 } from '@/components/admin/brand/Icon'
 import { default as default_f5b90b1f137d54d2b96fee0d0c4d5b67 } from '@/components/admin/brand/Logo'
-import { VercelBlobClientUploadHandler as VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e } from '@payloadcms/storage-vercel-blob/client'
+import { R2ClientUploadHandler as R2ClientUploadHandler_85cc02ed84006fcc91d3aff39dda669d } from '@payloadcms/storage-r2/client'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 /** @type import('payload').ImportMap */
@@ -67,6 +67,6 @@ export const importMap = {
   "@/components/admin/HomeVisitScheduleGenerator#default": default_3d7e9593c199e61847804c284e33d3d2,
   "@/components/admin/brand/Icon#default": default_d724e3c9fa2fc7ba502c18e1e0541534,
   "@/components/admin/brand/Logo#default": default_f5b90b1f137d54d2b96fee0d0c4d5b67,
-  "@payloadcms/storage-vercel-blob/client#VercelBlobClientUploadHandler": VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e,
+  "@payloadcms/storage-r2/client#R2ClientUploadHandler": R2ClientUploadHandler_85cc02ed84006fcc91d3aff39dda669d,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

@@ -1,0 +1,44 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "prisma-laboratory",
+  "account_id": "e35c119b44295d65fdb24685543449c5",
+  "workers_dev": true,
+  "preview_urls": true,
+  "compatibility_date": "2026-04-28",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "keep_names": false,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "images": {
+    "binding": "IMAGES"
+  },
+  "d1_databases": [
+    {
+      "binding": "D1",
+      "database_id": "a66640c4-3ad1-4547-81f9-25f55800e83c",
+      "database_name": "prisma-laboratory",
+      "remote": true
+    }
+  ],
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "prisma-laboratory"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "R2",
+      "bucket_name": "prisma-laboratory",
+      "remote": true
+    }
+  ],
+
+  "vars": {
+    "NEXT_PUBLIC_SERVER_URL": "https://prismalaboratory.com",
+    "R2_PUBLIC_DOMAIN": "https://media.prismalaboratory.com"
+  }
+}

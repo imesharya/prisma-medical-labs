@@ -28,7 +28,12 @@ const ConsultationScheduleGenerator = () => {
         body: JSON.stringify({ preview }),
       })
 
-      const result = await res.json()
+      const result = (await res.json()) as {
+        error: string
+        message: string
+        created: number
+        skipped: number
+      }
 
       if (!res.ok) throw new Error(result.error || 'حدث خطأ')
 
