@@ -39,11 +39,12 @@ export const Users: CollectionConfig = {
   fields: [
     {
       name: 'fullName',
+      label: 'الاسم الكامل',
       type: 'text',
     },
     {
       name: 'role',
-      label: 'Role',
+      label: 'الدور',
       type: 'select',
       saveToJWT: true,
       admin: {
@@ -54,9 +55,9 @@ export const Users: CollectionConfig = {
         beforeChange: [protectRoles],
       },
       options: [
-        { label: 'Admin', value: 'admin' },
-        { label: 'Doctor', value: 'doctor' },
-        { label: 'Receptionist', value: 'receptionist' },
+        { label: 'الادمن', value: 'admin' },
+        { label: 'الدكتور', value: 'doctor' },
+        { label: 'موظف الإستقبال', value: 'receptionist' },
       ],
     },
   ],
