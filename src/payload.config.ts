@@ -29,6 +29,7 @@ import { HomeVisitTimeSlots } from './collections/home-visit/HomeVisitTimeSlots'
 import { HomeVisitScheduleTemplates } from './collections/home-visit/HomeVisitScheduleTemplates'
 import { HomeVisits } from './collections/home-visit/HomeVisits'
 import { ContactMessages } from './collections/ContactMessages'
+import { Users } from './collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -66,6 +67,8 @@ const cloudflare =
 
 export default buildConfig({
   collections: [
+    Users,
+
     Media,
     TestCategories,
     Tests,
@@ -88,6 +91,7 @@ export default buildConfig({
     ContactMessages,
   ],
   admin: {
+    // user: Users.slug,
     timezones: {
       defaultTimezone: 'Asia/Riyadh',
       supportedTimezones: [{ label: 'Riyadh', value: 'Asia/Riyadh' }],

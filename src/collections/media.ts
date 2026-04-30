@@ -1,9 +1,13 @@
+import { checkRole } from '@/access/checkRole'
 import type { CollectionConfig } from 'payload'
 
 export const Media: CollectionConfig = {
   slug: 'media',
   access: {
     read: () => true,
+    create: checkRole(['admin']),
+    update: checkRole(['admin']),
+    delete: checkRole(['admin']),
   },
   labels: {
     singular: 'ملف وسائط',

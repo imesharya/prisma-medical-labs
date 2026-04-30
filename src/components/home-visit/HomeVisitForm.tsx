@@ -184,7 +184,7 @@ const HomeVisitForm = ({ availableSlots }: Props) => {
           weekday: 'long',
           day: 'numeric',
           month: 'long',
-        }).format(new Date(requestedTimeSlot))
+        }).format(new Date(form.getValues('requestedDate')))
       : ''
     const time = selectedSlot
       ? `${formatTime(selectedSlot.startTime)} – ${formatTime(selectedSlot.endTime)}`

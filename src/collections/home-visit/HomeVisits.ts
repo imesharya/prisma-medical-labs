@@ -1,3 +1,4 @@
+import { checkRole } from '@/access/checkRole'
 import type { CollectionConfig } from 'payload'
 
 export const HomeVisits: CollectionConfig = {
@@ -5,6 +6,12 @@ export const HomeVisits: CollectionConfig = {
   labels: {
     singular: 'زيارة منزلية',
     plural: 'الزيارات المنزلية',
+  },
+  access: {
+    read: checkRole(['admin', 'receptionist', 'doctor']),
+    create: checkRole(['admin', 'doctor']),
+    update: checkRole(['admin', 'doctor']),
+    delete: checkRole(['admin']),
   },
   admin: {
     useAsTitle: 'homeVisitRequest',
@@ -36,21 +43,37 @@ export const HomeVisits: CollectionConfig = {
       name: 'chiefComplaint',
       type: 'textarea',
       label: 'الشكوى الرئيسية',
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
+      },
     },
     {
       name: 'notes',
       type: 'textarea',
       label: 'ملاحظات الطبيب',
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
+      },
     },
     {
       name: 'diagnosis',
       type: 'textarea',
       label: 'التشخيص',
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
+      },
     },
     {
       name: 'treatmentPlan',
       type: 'textarea',
       label: 'خطة العلاج',
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
+      },
     },
     {
       name: 'prescriptions',
@@ -59,6 +82,10 @@ export const HomeVisits: CollectionConfig = {
       labels: {
         singular: 'وصفة طبية',
         plural: 'الوصفات الطبية',
+      },
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
       },
       fields: [
         {
@@ -97,6 +124,10 @@ export const HomeVisits: CollectionConfig = {
       labels: {
         singular: 'مرفق',
         plural: 'المرفقات',
+      },
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
       },
       fields: [
         {

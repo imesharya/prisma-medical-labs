@@ -1,3 +1,4 @@
+import { checkRole } from '@/access/checkRole'
 import { hasSlotOverlap } from '@/lib/checkSlotOverlap'
 import type { CollectionConfig } from 'payload'
 
@@ -6,6 +7,12 @@ export const HomeVisitTimeSlots: CollectionConfig = {
   labels: {
     singular: 'موعد زيارة منزلية',
     plural: 'مواعيد الزيارات المنزلية',
+  },
+  access: {
+    read: checkRole(['admin', 'doctor', 'receptionist']),
+    create: checkRole(['admin', 'doctor', 'receptionist']),
+    update: checkRole(['admin', 'doctor', 'receptionist']),
+    delete: checkRole(['admin']),
   },
   admin: {
     useAsTitle: 'displayTitle',

@@ -1,3 +1,4 @@
+import { checkRole } from '@/access/checkRole'
 import { customRowLabel } from '@/components/admin/array-row-label/utility'
 import { hasSlotOverlap } from '@/lib/checkSlotOverlap'
 import type { CollectionConfig, PayloadRequest } from 'payload'
@@ -7,6 +8,12 @@ export const HomeVisitScheduleTemplates: CollectionConfig = {
   labels: {
     singular: 'جدول مواعيد الزيارة المنزلية',
     plural: 'جداول مواعيد الزيارة المنزلية',
+  },
+  access: {
+    read: checkRole(['admin', 'doctor', 'receptionist']),
+    create: checkRole(['admin', 'doctor', 'receptionist']),
+    update: checkRole(['admin', 'doctor', 'receptionist']),
+    delete: checkRole(['admin']),
   },
   admin: {
     useAsTitle: 'name',

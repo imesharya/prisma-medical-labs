@@ -4,6 +4,7 @@ import { slugField } from 'payload'
 import { makeUniqueSlug } from '@/lib/makeUniqueSlug'
 import { lexicalEditor, EXPERIMENTAL_TableFeature } from '@payloadcms/richtext-lexical'
 import { BlocksFeature } from '@payloadcms/richtext-lexical'
+import { checkRole } from '@/access/checkRole'
 
 const DisclaimerBlock: Block = {
   slug: 'disclaimer',
@@ -61,6 +62,12 @@ export const BlogPosts: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     group: 'المدونة',
+  },
+  access: {
+    read: checkRole(['admin']),
+    create: checkRole(['admin']),
+    update: checkRole(['admin']),
+    delete: checkRole(['admin']),
   },
   fields: [
     {

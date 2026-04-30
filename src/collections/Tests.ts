@@ -1,10 +1,14 @@
+import { checkRole } from '@/access/checkRole'
 import { makeUniqueSlug } from '@/lib/makeUniqueSlug'
 import { slugField, type CollectionConfig } from 'payload'
 
 export const Tests: CollectionConfig = {
   slug: 'tests',
   access: {
-    read: () => true,
+    read: checkRole(['admin']),
+    create: checkRole(['admin']),
+    update: checkRole(['admin']),
+    delete: checkRole(['admin']),
   },
   labels: {
     singular: 'تحليل',

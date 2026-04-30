@@ -1,4 +1,5 @@
-import type { CollectionConfig } from 'payload'
+import { checkRole } from '@/access/checkRole'
+import type { CollectionConfig, FieldAccess } from 'payload'
 
 export const Consultations: CollectionConfig = {
   slug: 'consultations',
@@ -10,6 +11,12 @@ export const Consultations: CollectionConfig = {
     useAsTitle: 'consultationRequest',
     defaultColumns: ['consultationRequest', 'status', 'completedAt', 'createdAt'],
     group: 'الإستشارات',
+  },
+  access: {
+    read: checkRole(['admin', 'receptionist', 'doctor']),
+    create: checkRole(['admin', 'doctor']),
+    update: checkRole(['admin', 'receptionist', 'doctor']),
+    delete: checkRole(['admin']),
   },
   fields: [
     {
@@ -37,21 +44,37 @@ export const Consultations: CollectionConfig = {
       name: 'chiefComplaint',
       type: 'textarea',
       label: 'الشكوى الرئيسية',
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
+      },
     },
     {
       name: 'notes',
       type: 'textarea',
       label: 'ملاحظات الطبيب',
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
+      },
     },
     {
       name: 'diagnosis',
       type: 'textarea',
       label: 'التشخيص',
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
+      },
     },
     {
       name: 'treatmentPlan',
       type: 'textarea',
       label: 'خطة العلاج',
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
+      },
     },
     {
       name: 'prescriptions',
@@ -60,6 +83,10 @@ export const Consultations: CollectionConfig = {
       labels: {
         singular: 'وصفة طبية',
         plural: 'الوصفات الطبية',
+      },
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
       },
       fields: [
         {
@@ -98,6 +125,10 @@ export const Consultations: CollectionConfig = {
       labels: {
         singular: 'مرفق',
         plural: 'المرفقات',
+      },
+      access: {
+        read: checkRole(['admin', 'doctor']),
+        update: checkRole(['admin', 'doctor']),
       },
       fields: [
         {

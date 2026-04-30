@@ -48,3 +48,6 @@ next-env.d.ts
 
 /files
 .env*.local
+
+# Localflare generated files
+.localflare/

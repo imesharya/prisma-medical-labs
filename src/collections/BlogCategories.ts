@@ -1,3 +1,4 @@
+import { checkRole } from '@/access/checkRole'
 import { makeUniqueSlug } from '@/lib/makeUniqueSlug'
 import type { CollectionConfig } from 'payload'
 import { slugField } from 'payload'
@@ -7,6 +8,12 @@ export const BlogCategories: CollectionConfig = {
   labels: {
     singular: 'تصنيف',
     plural: 'تصنيفات المدونة',
+  },
+  access: {
+    read: checkRole(['admin']),
+    create: checkRole(['admin']),
+    update: checkRole(['admin']),
+    delete: checkRole(['admin']),
   },
   admin: {
     useAsTitle: 'name',

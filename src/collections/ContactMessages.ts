@@ -1,3 +1,4 @@
+import { checkRole } from '@/access/checkRole'
 import type { CollectionConfig } from 'payload'
 
 export const ContactMessages: CollectionConfig = {
@@ -5,6 +6,12 @@ export const ContactMessages: CollectionConfig = {
   labels: {
     singular: 'رسالة تواصل',
     plural: 'رسائل التواصل',
+  },
+  access: {
+    read: checkRole(['admin', 'doctor', 'receptionist']),
+    create: checkRole(['admin', 'doctor', 'receptionist']),
+    update: checkRole(['admin', 'doctor', 'receptionist']),
+    delete: checkRole(['admin', 'doctor', 'receptionist']),
   },
   admin: {
     useAsTitle: 'fullName',
@@ -17,17 +24,29 @@ export const ContactMessages: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'الاسم الكامل',
+      access: {
+        create: checkRole(['admin']),
+        update: checkRole(['admin']),
+      },
     },
     {
       name: 'phoneNumber',
       type: 'text',
       required: true,
       label: 'رقم الجوال',
+      access: {
+        create: checkRole(['admin']),
+        update: checkRole(['admin']),
+      },
     },
     {
       name: 'message',
       type: 'textarea',
       label: 'الرسالة',
+      access: {
+        create: checkRole(['admin']),
+        update: checkRole(['admin']),
+      },
     },
     {
       name: 'status',

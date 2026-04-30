@@ -1,3 +1,4 @@
+import { checkRole } from '@/access/checkRole'
 import type { CollectionConfig } from 'payload'
 
 export const ConsultationRequests: CollectionConfig = {
@@ -5,6 +6,12 @@ export const ConsultationRequests: CollectionConfig = {
   labels: {
     singular: 'طلب إستشارة طبيية',
     plural: 'طلبات الإستشارات الطبية',
+  },
+  access: {
+    read: checkRole(['admin', 'doctor', 'receptionist']),
+    create: checkRole(['admin', 'doctor']),
+    update: checkRole(['admin', 'doctor', 'receptionist']),
+    delete: checkRole(['admin']),
   },
   admin: {
     useAsTitle: 'referenceNumber',
